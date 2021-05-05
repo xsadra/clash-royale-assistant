@@ -12,6 +12,6 @@ class GetUpcomingChests {
     @required this.repository,
   });
 
-  Future<Either<Failure, List<UpcomingChest>>> call(String tag) async =>
-      await repository.getUpcomingChests(tag);
+  Future<Either<Failure, List<UpcomingChest>>> call(String playerTag) async =>
+      await repository.getUpcomingChests(playerTag);
 }

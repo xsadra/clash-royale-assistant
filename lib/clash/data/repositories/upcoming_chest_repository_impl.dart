@@ -22,11 +22,11 @@ class UpcomingChestsRepositoryImpl implements UpcomingChestsRepository {
 
   @override
   Future<Either<Failure, List<UpcomingChest>>> getUpcomingChests(
-      String tag) async {
+      String playerTag) async {
     if (await networkInfo.isConnected) {
       try {
         final remoteUpcomingChests =
-            await remoteDataSource.getUpcomingChests(tag);
+            await remoteDataSource.getUpcomingChests(playerTag);
         localDataSource.cacheUpcomingChests(remoteUpcomingChests);
         return right(remoteUpcomingChests);
       } on ServerException {

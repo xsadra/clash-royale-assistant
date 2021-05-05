@@ -3,4 +3,8 @@ import 'package:meta/meta.dart';
 @immutable
 abstract class UpcomingChestsEvent {}
 
-class GetUpcomingChests extends UpcomingChestsEvent {}
+class GetUpcomingChestsEvent extends UpcomingChestsEvent {
+  final String playerTag;
+
+  GetUpcomingChestsEvent(this.playerTag);
+}

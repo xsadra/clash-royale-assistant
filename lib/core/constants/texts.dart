@@ -1,6 +1,7 @@
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
 const CACHE_FAILURE_MESSAGE = 'Cache Failure';
 const UNEXPECTED_ERROR = 'Unexpected error';
+const UNEXPECTED_EVENT = 'Unexpected event';
 
 const API_TOKEN =
     String.fromEnvironment('UPCOMING_CHESTS_API_TOKEN', defaultValue: '');

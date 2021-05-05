@@ -9,10 +9,10 @@ import 'package:flutter/foundation.dart';
 import '../../../core/error/exceptions.dart';
 
 abstract class UpcomingChestsRemoteDataSource {
-  ///Calls the [API_BASE_URL]/v1/players/{tag}}/upcomingchests endpoint
+  ///Calls the [API_BASE_URL]/v1/players/{playerTag}}/upcomingchests endpoint
   ///
   /// Throws [ServerException] for all error codes.
-  Future<List<UpcomingChest>> getUpcomingChests(String tag);
+  Future<List<UpcomingChest>> getUpcomingChests(String playerTag);
 }
 
 class UpcomingChestsRemoteDataSourceImpl
@@ -24,14 +24,15 @@ class UpcomingChestsRemoteDataSourceImpl
   });
 
   @override
-  Future<List<UpcomingChest>> getUpcomingChests(String tag) async {
+  Future<List<UpcomingChest>> getUpcomingChests(String playerTag) async {
     Response response = await dio
-        .get(API_BASE_PLAYER_URL + tag + UPCOMING_CHESTS, queryParameters: {
-          'headers': {
-            'Content-Type': 'application/json',
-            'authorization': "Bearer $API_TOKEN",
-          }
-        })
+        .get(API_BASE_PLAYER_URL + playerTag + UPCOMING_CHESTS,
+            queryParameters: {
+              'headers': {
+                'Content-Type': 'application/json',
+                'authorization': "Bearer $API_TOKEN",
+              }
+            })
         .timeout(Duration(seconds: 30))
         .catchError((onError) {
           throw ServerException();
