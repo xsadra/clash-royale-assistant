@@ -3,5 +3,5 @@ import 'package:clash_royale_assistant/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class UpcomingChestsRepository {
-  Future<Either<Failure, List<UpcomingChest>>> getUpcomingChests();
+  Future<Either<Failure, List<UpcomingChest>>> getUpcomingChests(String tag);
 }

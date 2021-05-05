@@ -15,11 +15,11 @@ abstract class UpcomingChestsRemoteDataSource {
   Future<List<UpcomingChest>> getUpcomingChests(String tag);
 }
 
-class UpcomingChestRemoteDataSourceImpl
+class UpcomingChestsRemoteDataSourceImpl
     implements UpcomingChestsRemoteDataSource {
   final Dio dio;
 
-  UpcomingChestRemoteDataSourceImpl({
+  UpcomingChestsRemoteDataSourceImpl({
     @required this.dio,
   });
 
