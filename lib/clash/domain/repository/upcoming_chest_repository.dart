@@ -1,7 +1,8 @@
-import 'package:clash_royale_assistant/clash/domain/entities/upcoming_chest.dart';
-import 'package:clash_royale_assistant/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 
+import '../../../core/error/failure.dart';
+import '../entities/up_chests.dart';
+
 abstract class UpcomingChestsRepository {
-  Future<Either<Failure, List<UpcomingChest>>> getUpcomingChests(String tag);
+  Future<Either<Failure, UpChests>> getUpcomingChests(String tag);
 }

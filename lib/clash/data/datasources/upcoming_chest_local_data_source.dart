@@ -1,10 +1,11 @@
 import 'dart:convert';
 
-import 'package:clash_royale_assistant/core/constants/texts.dart';
-import 'package:clash_royale_assistant/core/error/exceptions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/constants/texts.dart';
+import '../../../core/error/exceptions.dart';
+import '../models/up_chests_model.dart';
 import '../models/upcoming_chest_model.dart';
 
 abstract class UpcomingChestsLocalDataSource {
@@ -12,10 +13,9 @@ abstract class UpcomingChestsLocalDataSource {
   /// the user had an internet connection.
   ///
   /// Trows [CacheException] if no cached data is present.
-  Future<List<UpcomingChestModel>> getLastData();
+  Future<UpChestsModel> getLastData();
 
-  Future<void> cacheUpcomingChests(
-      List<UpcomingChestModel> upcomingChestsToCache);
+  Future<void> cacheUpcomingChests(UpChestsModel upcomingChestsToCache);
 }
 
 class UpcomingChestsLocalDataSourceImpl
@@ -27,20 +27,20 @@ class UpcomingChestsLocalDataSourceImpl
   });
 
   @override
-  Future<void> cacheUpcomingChests(
-      List<UpcomingChestModel> upcomingChestsToCache) {
-    return sharedPreferences.setString(
-      CACHED_UPCOMING_CHESTS,
-      jsonEncode(upcomingChestsToCache),
-    );
-  }
-
-  @override
-  Future<List<UpcomingChestModel>> getLastData() {
+  Future<UpChestsModel> getLastData() {
     final jsonString = sharedPreferences.getString(CACHED_UPCOMING_CHESTS);
     if (jsonString == null) {
       throw CacheException();
     }
-    return Future.value(UpcomingChestModel.fromJsonList(jsonString));
+
+    return Future.value(UpChestsModel.fromJson(json.decode(jsonString)));
+  }
+
+  @override
+  Future<void> cacheUpcomingChests(UpChestsModel upcomingChestsToCache) {
+    return sharedPreferences.setString(
+      CACHED_UPCOMING_CHESTS,
+      jsonEncode(upcomingChestsToCache),
+    );
   }
 }

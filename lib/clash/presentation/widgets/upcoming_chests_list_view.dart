@@ -16,9 +16,9 @@ class UpcomingChestsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       //scrollDirection: Axis.horizontal,
-      itemCount: state.upcomingChests.length,
+      itemCount: state.upcomingChests.items.length,
       itemBuilder: (context, index) {
-        UpcomingChest chest = state.upcomingChests.elementAt(index);
+        UpcomingChest chest = state.upcomingChests.items.elementAt(index);
         return UpcomingChestItem(chest: chest);
       },
     );

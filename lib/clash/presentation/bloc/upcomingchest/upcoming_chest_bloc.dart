@@ -1,7 +1,7 @@
-import 'dart:async';
+import 'dart:async' show Stream;
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show required;
 
 import '../../../../core/constants/texts.dart';
 import '../../../../core/error/failure_extensions.dart';

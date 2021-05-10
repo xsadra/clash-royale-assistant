@@ -21,9 +21,9 @@ class UpcomingChestsGridView extends StatelessWidget {
         child: GridView.count(
           crossAxisCount: columnCount,
           children: List.generate(
-            state.upcomingChests.length,
+            state.upcomingChests.items.length,
             (int index) {
-              UpcomingChest chest = state.upcomingChests.elementAt(index);
+              UpcomingChest chest = state.upcomingChests.items.elementAt(index);
               return AnimationConfiguration.staggeredGrid(
                 position: index,
                 duration: const Duration(milliseconds: 575),

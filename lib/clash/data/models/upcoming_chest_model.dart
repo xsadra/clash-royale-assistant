@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:clash_royale_assistant/clash/domain/entities/upcoming_chest.dart';
 import 'package:flutter/foundation.dart';
+
+import '../../domain/entities/upcoming_chest.dart';
 
 class UpcomingChestModel extends UpcomingChest {
   const UpcomingChestModel({
@@ -25,7 +26,7 @@ class UpcomingChestModel extends UpcomingChest {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast
     return {
       'index': this.index,

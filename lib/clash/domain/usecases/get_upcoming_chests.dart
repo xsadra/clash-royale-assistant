@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../core/error/failure.dart';
-import '../entities/upcoming_chest.dart';
+import '../entities/up_chests.dart';
 import '../repository/upcoming_chest_repository.dart';
 
 class GetUpcomingChests {
@@ -12,6 +12,6 @@ class GetUpcomingChests {
     @required this.repository,
   });
 
-  Future<Either<Failure, List<UpcomingChest>>> call(String playerTag) async =>
+  Future<Either<Failure, UpChests>> call(String playerTag) async =>
       await repository.getUpcomingChests(playerTag);
 }
