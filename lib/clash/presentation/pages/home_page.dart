@@ -1,10 +1,11 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants/texts.dart';
-import '../../../core/platform/assets_controller.dart';
-import '../../domain/entities/upcoming_chest.dart';
 import '../bloc/upcomingchest/bloc.dart';
+import '../widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -17,6 +18,25 @@ class HomePage extends StatelessWidget {
         actions: [],
       ),
       body: HomeBody(),
+      bottomNavigationBar: ConvexAppBar.badge(
+        {},
+        items: [
+          TabItem(
+            icon: Icons.person,
+            title: 'Profile',
+          ),
+          TabItem(icon: Icons.search, title: 'Search'),
+        ],
+        badgeMargin: EdgeInsets.only(bottom: 36, left: 30),
+        height: 56.0,
+        curveSize: 94.0,
+        style: TabStyle.reactCircle,
+        backgroundColor: Color(0xFF190F2A),
+        // top: -24,
+        initialActiveIndex: 0,
+        //optional, default as 0
+        onTap: (int i) => print('click index=$i'),
+      ),
     );
   }
 }
@@ -43,7 +63,7 @@ class _HomeBodyState extends State<HomeBody> {
             } else if (state is Loading) {
               return LoadingWidget();
             } else if (state is Loaded) {
-              return UpcomingChestsDisplay(state: state);
+              return UpcomingChestsGridView(state: state);
             }
             return MessageDisplay(message: 'Unhandled State');
           },
@@ -58,70 +78,5 @@ class _HomeBodyState extends State<HomeBody> {
     context
         .read<UpcomingChestsBloc>()
         .add(GetUpcomingChestsEvent('%23PPGRVJJQ'));
-  }
-}
-
-class UpcomingChestsDisplay extends StatelessWidget {
-  final Loaded state;
-
-  UpcomingChestsDisplay({
-    this.state,
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: state.upcomingChests.length,
-      itemBuilder: (context, index) {
-        UpcomingChest chest = state.upcomingChests.elementAt(index);
-        return ListTile(
-          title: Text(chest.name),
-          trailing: Text((chest.index + 1).toString()),
-          leading: Image.asset(chestNameToPath(chest.name)),
-        );
-      },
-    );
-  }
-}
-
-class LoadingWidget extends StatelessWidget {
-  const LoadingWidget({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height / 3,
-      child: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
-  }
-}
-
-class MessageDisplay extends StatelessWidget {
-  const MessageDisplay({
-    Key key,
-    @required this.message,
-  }) : super(key: key);
-
-  final String message;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height / 3,
-      child: Center(
-        child: SingleChildScrollView(
-          child: Text(
-            message,
-            style: TextStyle(fontSize: 25.0),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
-    );
   }
 }

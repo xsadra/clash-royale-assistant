@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: APP_TITLE,
+      theme: ThemeData().copyWith(
+        primaryColor: Color(0xFF190F2A),
+      ),
       home: BlocProvider(
         create: (context) => sl<UpcomingChestsBloc>(),
         child: HomePage(),
