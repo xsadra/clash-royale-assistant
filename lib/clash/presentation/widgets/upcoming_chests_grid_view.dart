@@ -16,26 +16,26 @@ class UpcomingChestsGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int columnCount = 4;
-    return Scaffold(
-      body: AnimationLimiter(
-        child: GridView.count(
-          crossAxisCount: columnCount,
-          children: List.generate(
-            state.upcomingChests.items.length,
-            (int index) {
-              UpcomingChest chest = state.upcomingChests.items.elementAt(index);
-              return AnimationConfiguration.staggeredGrid(
-                position: index,
-                duration: const Duration(milliseconds: 575),
-                columnCount: columnCount,
-                child: ScaleAnimation(
-                  child: FadeInAnimation(
-                    child: UpcomingChestItem(chest: chest),
-                  ),
+
+    return AnimationLimiter(
+      child: GridView.count(
+        shrinkWrap: true,
+        crossAxisCount: columnCount,
+        children: List.generate(
+          state.upcomingChests.items.length,
+          (int index) {
+            UpcomingChest chest = state.upcomingChests.items.elementAt(index);
+            return AnimationConfiguration.staggeredGrid(
+              position: index,
+              duration: const Duration(milliseconds: 575),
+              columnCount: columnCount,
+              child: ScaleAnimation(
+                child: FadeInAnimation(
+                  child: UpcomingChestItem(chest: chest),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
