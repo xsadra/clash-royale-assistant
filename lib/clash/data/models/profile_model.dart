@@ -132,7 +132,7 @@ class ProfileModel extends Profile {
       'badges': _toBadgesJson(),
       'achievements': _toAchievementsJson(),
       'cards': _toCardsJson(),
-      'currentDeck': _toCurrentDeckJson() ,
+      'currentDeck': _toCurrentDeckJson(),
       'currentFavouriteCard': (this.currentFavouriteCard as CardModel).toJson(),
       'starPoints': this.starPoints,
     } as Map<String, dynamic>;

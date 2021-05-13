@@ -8,7 +8,7 @@ import '../../domain/entities/up_chests.dart';
 import '../models/up_chests_model.dart';
 
 abstract class UpcomingChestsRemoteDataSource {
-  ///Calls the [API_BASE_URL]/v1/players/{playerTag}}/upcomingchests endpoint
+  ///Calls the [API_BASE_URL]/v1/players/{playerTag}/upcomingchests endpoint
   ///
   /// Throws [ServerException] for all error codes.
   Future<UpChests> getUpcomingChests(String playerTag);
