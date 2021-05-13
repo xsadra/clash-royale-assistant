@@ -36,7 +36,8 @@ Future<void> init() async {
       remoteDataSource: sl(),
       networkInfo: sl(),
     ),
-  );  sl.registerLazySingleton<ProfileRepository>(
+  );
+  sl.registerLazySingleton<ProfileRepository>(
     () => ProfileRepositoryImpl(
       localDataSource: sl(),
       remoteDataSource: sl(),
