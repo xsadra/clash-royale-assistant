@@ -24,8 +24,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
   Future<Either<Failure, Profile>> getProfile(String playerTag) async {
     if (await networkInfo.isConnected) {
       try {
-        final remoteProfile =
-        await remoteDataSource.getProfile(playerTag);
+        final remoteProfile = await remoteDataSource.getProfile(playerTag);
         localDataSource.cacheProfile(remoteProfile);
         return right(remoteProfile);
       } on ServerException {
