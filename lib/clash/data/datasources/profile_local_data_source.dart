@@ -35,10 +35,10 @@ class ProfileLocalDataSourceImpl implements ProfileLocalDataSource {
   }
 
   @override
-  Future<void> cacheProfile(ProfileModel upcomingChestsToCache) {
+  Future<void> cacheProfile(ProfileModel profileToCache) {
     return sharedPreferences.setString(
       CACHED_PROFILE,
-      jsonEncode(upcomingChestsToCache),
+      jsonEncode(profileToCache),
     );
   }
 }
