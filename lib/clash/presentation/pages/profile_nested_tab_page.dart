@@ -1,5 +1,10 @@
+import 'package:clash_royale_assistant/clash/presentation/bloc/profile/bloc.dart';
+import 'package:clash_royale_assistant/clash/presentation/widgets/profile_view.dart';
 import 'package:clash_royale_assistant/clash/presentation/widgets/upcoming_chests_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../injection_container.dart' as injection;
 
 class ProfileNestedTabPage extends StatefulWidget {
   @override
@@ -47,9 +52,9 @@ class _ProfileNestedTabPageState extends State<ProfileNestedTabPage>
             controller: _nestedTabController,
             children: <Widget>[
               Container(
-                decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(8.0),
-                  color: Colors.orangeAccent,
+                child: BlocProvider(
+                  create: (context) => injection.sl<ProfileBloc>(),
+                  child: ProfileView(),
                 ),
               ),
               Container(

@@ -20,7 +20,7 @@ class UpcomingChestItem extends StatelessWidget {
         width: 80.0,
         child: Stack(
           children: [
-            Image.asset(chestNameToPath(chest.name)),
+            Image.asset(Assets.chestNameToPath(chest.name)),
             Container(
               alignment: Alignment.bottomCenter,
               margin: EdgeInsets.only(bottom: 18.0),

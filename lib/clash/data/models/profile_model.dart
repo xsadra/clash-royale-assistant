@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:clash_royale_assistant/clash/domain/entities/profile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 
 class ProfileModel extends Profile {
@@ -33,7 +32,7 @@ class ProfileModel extends Profile {
     @required List<CardModel> cards,
     @required List<CardModel> currentDeck,
     @required CardModel currentFavouriteCard,
-    @required String starPoints,
+    @required int starPoints,
   }) : super(
           tag: tag,
           name: name,
@@ -99,7 +98,7 @@ class ProfileModel extends Profile {
           .map((e) => CardModel.fromJson(e))
           .toList(),
       currentFavouriteCard: CardModel.fromJson(json['currentFavouriteCard']),
-      starPoints: json['starPoints'] as String,
+      starPoints: json['starPoints'] as int,
     );
   }
 
@@ -391,14 +390,14 @@ class CurrentSeasonModel extends CurrentSeason {
 
 class PreviousSeasonModel extends PreviousSeason {
   const PreviousSeasonModel({
-    @required int id,
+    @required String id,
     @required int trophies,
     @required int bestTrophies,
   }) : super(id: id, trophies: trophies, bestTrophies: bestTrophies);
 
   factory PreviousSeasonModel.fromJson(Map<String, dynamic> json) {
     return new PreviousSeasonModel(
-      id: json['id'] as int,
+      id: json['id'] as String,
       trophies: json['trophies'] as int,
       bestTrophies: json['bestTrophies'] as int,
     );
@@ -433,13 +432,13 @@ class PreviousSeasonModel extends PreviousSeason {
 
 class BestSeasonModel extends BestSeason {
   const BestSeasonModel({
-    @required int id,
+    @required String id,
     @required int trophies,
   }) : super(id: id, trophies: trophies);
 
   factory BestSeasonModel.fromJson(Map<String, dynamic> json) {
     return new BestSeasonModel(
-      id: json['id'] as int,
+      id: json['id'] as String,
       trophies: json['trophies'] as int,
     );
   }
@@ -472,13 +471,13 @@ class BestSeasonModel extends BestSeason {
 class BadgeModel extends Badge {
   const BadgeModel({
     @required String name,
-    @required String progress,
+    @required int progress,
   }) : super(name: name, progress: progress);
 
   factory BadgeModel.fromJson(Map<String, dynamic> json) {
     return new BadgeModel(
       name: json['name'] as String,
-      progress: json['progress'] as String,
+      progress: json['progress'] as int,
     );
   }
 

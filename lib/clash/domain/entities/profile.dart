@@ -28,7 +28,7 @@ class Profile {
   final List<Card> cards;
   final List<Card> currentDeck;
   final Card currentFavouriteCard;
-  final String starPoints;
+  final int starPoints;
 
   const Profile({
     @required this.tag,
@@ -107,7 +107,7 @@ class CurrentSeason {
 }
 
 class PreviousSeason {
-  final int id;
+  final String id;
   final int trophies;
   final int bestTrophies;
 
@@ -119,7 +119,7 @@ class PreviousSeason {
 }
 
 class BestSeason {
-  final int id;
+  final String id;
   final int trophies;
 
   const BestSeason({
@@ -128,9 +128,15 @@ class BestSeason {
   });
 }
 
+// Fix Step - badge:
+//             "name": "ClanWarWins",
+//             "level": 3,
+//             "maxLevel": 3,
+//             "progress": 148
+
 class Badge {
   final String name;
-  final String progress;
+  final int progress;
 
   const Badge({
     @required this.name,
