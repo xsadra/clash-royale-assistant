@@ -1,7 +1,8 @@
 import 'package:clash_royale_assistant/clash/domain/entities/profile.dart';
 import 'package:clash_royale_assistant/core/platform/assets_controller.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../bloc/profile/bloc.dart';
 import 'widgets.dart';
@@ -71,6 +72,7 @@ class ProfileDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var profile = state.profile;
+    int currentDeckColumnCount = 4;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -201,7 +203,137 @@ class ProfileDetails extends StatelessWidget {
             ],
           ),
           SizedBox(height: 6),
+          Column(
+            children: [
+              Row(
+                children: [
+                  StatHeader(icon: Icons.deck, title: 'Current Deck'),
+                  Text(
+                    ' > Favorite Card: ',
+                    style: TextStyle(fontSize: 12, color: Colors.purple),
+                  ),
+                  Text(
+                    profile.currentFavouriteCard.name,
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.purple,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              AnimationLimiter(
+                child: GridView.count(
+                  mainAxisSpacing: 8,
+                  shrinkWrap: true,
+                  crossAxisCount: currentDeckColumnCount,
+                  children: List.generate(
+                    profile.currentDeck.length,
+                    (int index) {
+                      Card card = profile.currentDeck.elementAt(index);
+                      return AnimationConfiguration.staggeredGrid(
+                        position: index,
+                        duration: const Duration(milliseconds: 575),
+                        columnCount: currentDeckColumnCount,
+                        child: ScaleAnimation(
+                          child: FadeInAnimation(
+                            child: CardDeckItem(card: card),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 20),
         ],
+      ),
+    );
+  }
+}
+
+class CardDeckItem extends StatelessWidget {
+  const CardDeckItem({
+    Key key,
+    @required this.card,
+  }) : super(key: key);
+
+  final Card card;
+
+  @override
+  Widget build(BuildContext context) {
+    print(card.starLevel);
+    return Center(
+      child: Container(
+        height: 86.0,
+        width: 86.0,
+        child: Stack(
+          children: [
+            Image.network(card.iconUrls.medium),
+            Container(
+              alignment: Alignment.bottomCenter,
+              margin: EdgeInsets.only(bottom: 60.0, top: 12),
+              width: 76,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    for (var index = 0; index < (card.starLevel ?? 0); index++)
+                      Icon(Icons.stars, color: Colors.yellowAccent, size: 12),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              margin: EdgeInsets.only(bottom: 12.0, left: 9),
+              width: 56,
+              child: Text(
+                'lvl ' + (card.level + 13 - card.maxLevel).toString(),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 3,
+                        offset: Offset(-2, 3)),
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 5,
+                        offset: Offset(-2, 3)),
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 10,
+                        offset: Offset(-2, 3)),
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 1,
+                        offset: Offset(1, 1)),
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 1,
+                        offset: Offset(-1, -1)),
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 1,
+                        offset: Offset(-1, 1)),
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 1,
+                        offset: Offset(1, -1)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        // title: Text(chest.name),
+        // trailing: Text((chest.index + 1).toString()),
+        // leading: Image.asset(chestNameToPath(chest.name)),
       ),
     );
   }
