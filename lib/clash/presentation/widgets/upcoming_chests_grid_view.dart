@@ -3,7 +3,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../../domain/entities/upcoming_chest.dart';
 import '../bloc/upcomingchest/bloc.dart';
-import 'upcoming_chest_item.dart';
+import 'widgets.dart';
 
 class UpcomingChestsGridView extends StatelessWidget {
   final Loaded state;

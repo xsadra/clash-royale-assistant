@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/upcomingchest/bloc.dart';
-import 'input_tag.dart';
 import 'widgets.dart';
 
 class UpcomingChestsView extends StatelessWidget {

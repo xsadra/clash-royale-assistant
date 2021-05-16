@@ -13,9 +13,7 @@ class HomePage extends StatelessWidget {
         title: Text(APP_TITLE),
       ),
       body: ProfileNestedTabPage(),
-      // body: ProfilePage(),
       bottomNavigationBar: BottomNavBar(),
-      // bottomNavigationBar: BottomNavBar(),
     );
   }
 }

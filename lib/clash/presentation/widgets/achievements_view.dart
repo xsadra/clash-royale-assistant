@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart' hide Card;
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/profile/bloc.dart';
+import '../../presentation/bloc/profile/bloc.dart';
 import 'widgets.dart';
 
-class ProfileView extends StatelessWidget {
-  const ProfileView({Key key}) : super(key: key);
+class AchievementsView extends StatelessWidget {
+  const AchievementsView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +42,8 @@ class ProfileView extends StatelessWidget {
   }
 
   Widget _loadedDisplay(Loaded state) {
-    return ProfileDetails(state: state);
+    return SingleChildScrollView(
+      child: AchievementsDetails(state: state),
+    );
   }
 }

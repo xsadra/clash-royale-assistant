@@ -12,7 +12,8 @@ class InputTag extends StatefulWidget {
 
 class _InputTagState extends State<InputTag> {
   final controller = TextEditingController();
-  String inputString = '%23PPGRVJJQ';
+  String inputString =
+      '%23PPGRVJJQ'; // Remove Step: remove it after Fix 'read user tag' and replace it
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,10 @@
-import 'package:clash_royale_assistant/clash/domain/entities/profile.dart'
-    hide Card;
-import 'package:clash_royale_assistant/clash/presentation/bloc/profile/bloc.dart';
-import 'package:clash_royale_assistant/core/platform/assets_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
-import 'stat_header_widget.dart';
+import '../../../core/platform/assets_controller.dart';
+import '../../domain/entities/profile.dart' hide Card;
+import '../../presentation/bloc/profile/bloc.dart';
+import 'widgets.dart';
 
 class AchievementsDetails extends StatelessWidget {
   const AchievementsDetails({Key key, this.state}) : super(key: key);
@@ -14,23 +13,14 @@ class AchievementsDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Achievement> achieves = state.profile.achievements;
-    // cards.sort((b, a) =>
-    //     (a.level + 13 - a.maxLevel).compareTo(b.level + 13 - b.maxLevel));
-    // var newList = groupBy(
-    //     cards, (card) => (card as Card).level + 13 - (card as Card).maxLevel);
-    // newList.map((key, value) => null).
-
     int currentDeckColumnCount = 2;
     return Column(
-      // crossAxisAlignment: CrossAxisAlignment.stretch,
-      // mainAxisSize: MainAxisSize.min,
       children: [
         StatHeader(
             icon: Icons.playlist_add_check_rounded, title: 'Achievements:'),
         AnimationLimiter(
           child: GridView.count(
             physics: const NeverScrollableScrollPhysics(),
-            //mainAxisSpacing: 8,
             shrinkWrap: true,
             crossAxisCount: currentDeckColumnCount,
             children: List.generate(
