@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../bloc/profile/bloc.dart';
+import 'stat_header_widget.dart';
 import 'widgets.dart';
 
 class ProfileView extends StatelessWidget {
@@ -79,7 +80,7 @@ class ProfileDetails extends StatelessWidget {
           UserProfileName(profile: profile),
           SizedBox(height: 4),
           Padding(
-            padding: const EdgeInsets.only(left: 36),
+            padding: const EdgeInsets.only(left: 6),
             child: UserClanName(profile: profile),
           ),
           SizedBox(height: 8),
@@ -132,6 +133,13 @@ class ProfileDetails extends StatelessWidget {
           ),
           SizedBox(height: 6),
           Stat(
+            header: StatHeader(icon: Icons.data_usage, title: 'League Season'),
+            tiles: [
+              StatTile(field: 'Arena: ', value: profile.arena.name),
+            ],
+          ),
+          SizedBox(height: 6),
+          Stat(
             header: StatHeader(
               title: 'Challenge and Tournament',
               icon: Icons.toys_rounded,
@@ -155,6 +163,18 @@ class ProfileDetails extends StatelessWidget {
               StatTile(
                   field: 'Tournament Battle Count: ',
                   value: profile.tournamentBattleCount.toString()),
+            ],
+          ),
+          SizedBox(height: 6),
+          Stat(
+            header: StatHeader(icon: Icons.data_usage, title: 'War (Old)'),
+            tiles: [
+              StatTile(
+                  field: 'War Day Wins: ',
+                  value: profile.warDayWins.toString()),
+              StatTile(
+                  field: 'Clan Cards Collected: ',
+                  value: profile.clanCardsCollected.toString()),
             ],
           ),
           SizedBox(height: 6),
@@ -222,6 +242,7 @@ class ProfileDetails extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: 6),
               AnimationLimiter(
                 child: GridView.count(
                   mainAxisSpacing: 8,
@@ -281,7 +302,7 @@ class CardDeckItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     for (var index = 0; index < (card.starLevel ?? 0); index++)
-                      Icon(Icons.stars, color: Colors.yellowAccent, size: 12),
+                      Image.asset(Assets.starLevel, width: 20, height: 20),
                   ],
                 ),
               ),
@@ -391,31 +412,6 @@ class StatTile extends StatelessWidget {
   }
 }
 
-class StatHeader extends StatelessWidget {
-  const StatHeader({
-    @required this.icon,
-    @required this.title,
-    Key key,
-  }) : super(key: key);
-
-  final IconData icon;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon),
-        SizedBox(width: 4),
-        Text(
-          title,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ],
-    );
-  }
-}
-
 class UserClanName extends StatelessWidget {
   const UserClanName({
     Key key,
@@ -468,7 +464,42 @@ class UserProfileName extends StatelessWidget {
               style: TextStyle(fontSize: 9, color: Colors.green),
             ),
           ],
-        )
+        ),
+        if (profile.expLevel == 13) ...[
+          SizedBox(width: 16),
+          Row(
+            children: [
+              Image.asset(Assets.starLevel, width: 24, height: 24),
+              SizedBox(width: 6),
+              Text(
+                profile.starPoints.toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.yellow,
+                  fontSize: 14,
+                  shadows: [
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 0,
+                        offset: Offset(1, 1)),
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 6,
+                        offset: Offset(-1, -1)),
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 6,
+                        offset: Offset(-1, 1)),
+                    Shadow(
+                        color: Colors.black,
+                        blurRadius: 0,
+                        offset: Offset(1, -1)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
       ],
     );
   }
