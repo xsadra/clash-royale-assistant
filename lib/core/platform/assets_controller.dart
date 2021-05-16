@@ -1,4 +1,8 @@
 class Assets {
+  static String get experience => 'assets/images/ui/ui-experience.png';
+  static String get starLevel => 'assets/images/ui/ui-star-level.png';
+  static String get notFound => 'assets/images/ui/not-found.png';
+
   static String chestNameToPath(String name) {
     final images = {
       'Silver Chest': 'assets/images/chests/chest-silver.png',
@@ -14,6 +18,19 @@ class Assets {
         : 'assets/images/ui/not-found.png';
   }
 
-  static String get experience => 'assets/images/ui/ui-experience.png';
-  static String get starLevel => 'assets/images/ui/ui-star-level.png';
+  static String arenaIdToPath(int id) {
+    return 'assets/images/arena/${id.toString()}.png';
+  }
+
+  static String cardToPath(String name, {bool isGold}) {
+    String path = isGold ? 'images/cards-gold/' : 'images/cards/';
+    String fileName =
+        name.replaceAll(' ', '-').replaceAll('.', '.').toLowerCase() + '.png';
+
+    return path + fileName;
+  }
+
+  static String clanBadgeIdToPath(int id) {
+    return 'assets/images/clan-badges/${id.toString()}.png';
+  }
 }
