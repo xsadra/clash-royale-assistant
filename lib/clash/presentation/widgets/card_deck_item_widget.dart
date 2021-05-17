@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart' hide Card;
 
 import '../../../core/platform/assets_controller.dart';
-import '../../domain/entities/profile.dart';
+import '../../domain/entities/player.dart';
+import 'widgets.dart';
 
 class CardDeckItem extends StatelessWidget {
   const CardDeckItem({
@@ -13,14 +14,13 @@ class CardDeckItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(card.starLevel);
     return Center(
       child: Container(
         height: 86.0,
         width: 86.0,
         child: Stack(
           children: [
-            Image.network(card.iconUrls.medium),
+            CardAssetImage(card: card),
             Container(
               alignment: Alignment.bottomCenter,
               margin: EdgeInsets.only(bottom: 60.0, top: 12),

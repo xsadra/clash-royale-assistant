@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:clash_royale_assistant/clash/domain/entities/profile.dart';
+import 'package:clash_royale_assistant/clash/domain/entities/player.dart';
 import 'package:meta/meta.dart';
 
-class ProfileModel extends Profile {
-  const ProfileModel({
+class PlayerModel extends Player {
+  const PlayerModel({
     @required String tag,
     @required String name,
     @required int expLevel,
@@ -64,8 +64,8 @@ class ProfileModel extends Profile {
           starPoints: starPoints,
         );
 
-  factory ProfileModel.fromJson(Map<String, dynamic> json) {
-    return new ProfileModel(
+  factory PlayerModel.fromJson(Map<String, dynamic> json) {
+    return new PlayerModel(
       tag: json['tag'] as String,
       name: json['name'] as String,
       expLevel: json['expLevel'] as int,
@@ -152,7 +152,7 @@ class ProfileModel extends Profile {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ProfileModel &&
+      other is PlayerModel &&
           runtimeType == other.runtimeType &&
           tag == other.tag &&
           name == other.name &&
@@ -216,7 +216,7 @@ class ProfileModel extends Profile {
 
   @override
   String toString() {
-    return 'ProfileModel{tag: $tag, name: $name, expLevel: $expLevel, trophies: $trophies, bestTrophies: $bestTrophies, wins: $wins, losses: $losses, battleCount: $battleCount, threeCrownWins: $threeCrownWins, challengeCardsWon: $challengeCardsWon, challengeMaxWins: $challengeMaxWins, tournamentCardsWon: $tournamentCardsWon, tournamentBattleCount: $tournamentBattleCount, role: $role, donations: $donations, donationsReceived: $donationsReceived, totalDonations: $totalDonations, warDayWins: $warDayWins, clanCardsCollected: $clanCardsCollected, clan: $clan, arena: $arena, leagueStatistics: $leagueStatistics, badges: $badges, achievements: $achievements, cards: $cards, currentDeck: $currentDeck, currentFavouriteCard: $currentFavouriteCard, starPoints: $starPoints}';
+    return 'PlayerModel{tag: $tag, name: $name, expLevel: $expLevel, trophies: $trophies, bestTrophies: $bestTrophies, wins: $wins, losses: $losses, battleCount: $battleCount, threeCrownWins: $threeCrownWins, challengeCardsWon: $challengeCardsWon, challengeMaxWins: $challengeMaxWins, tournamentCardsWon: $tournamentCardsWon, tournamentBattleCount: $tournamentBattleCount, role: $role, donations: $donations, donationsReceived: $donationsReceived, totalDonations: $totalDonations, warDayWins: $warDayWins, clanCardsCollected: $clanCardsCollected, clan: $clan, arena: $arena, leagueStatistics: $leagueStatistics, badges: $badges, achievements: $achievements, cards: $cards, currentDeck: $currentDeck, currentFavouriteCard: $currentFavouriteCard, starPoints: $starPoints}';
   }
 }
 

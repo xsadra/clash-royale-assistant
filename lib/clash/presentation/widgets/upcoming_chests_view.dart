@@ -45,8 +45,10 @@ class UpcomingChestsView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          InputTag(),
           UpcomingChestsGridView(state: state),
+          Container(
+            height: 250,
+          ),
         ],
       ),
     );

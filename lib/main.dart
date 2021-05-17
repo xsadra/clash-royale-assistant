@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'clash/presentation/bloc/upcomingchest/bloc.dart';
 import 'clash/presentation/pages/home_page.dart';
 import 'core/constants/texts.dart';
 import 'injection_container.dart' as injection;
@@ -20,10 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData().copyWith(
         primaryColor: Color(0xFF190F2A),
       ),
-      home: BlocProvider(
-        create: (context) => injection.sl<UpcomingChestsBloc>(),
-        child: HomePage(),
-      ),
+      home: HomePage(),
     );
   }
 }

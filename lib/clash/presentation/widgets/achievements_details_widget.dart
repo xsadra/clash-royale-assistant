@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../../../core/platform/assets_controller.dart';
-import '../../domain/entities/profile.dart' hide Card;
-import '../../presentation/bloc/profile/bloc.dart';
+import '../../domain/entities/player.dart' hide Card;
+import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
 
 class AchievementsDetails extends StatelessWidget {
@@ -12,7 +12,7 @@ class AchievementsDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Achievement> achieves = state.profile.achievements;
+    List<Achievement> achieves = state.player.achievements;
     int currentDeckColumnCount = 2;
     return Column(
       children: [

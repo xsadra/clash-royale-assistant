@@ -4,25 +4,25 @@ import 'package:flutter/foundation.dart';
 import '../../../core/constants/secret.dart';
 import '../../../core/constants/texts.dart';
 import '../../../core/error/exceptions.dart';
-import '../../domain/entities/profile.dart';
-import '../models/profile_model.dart';
+import '../../domain/entities/player.dart';
+import '../models/player_model.dart';
 
-abstract class ProfileRemoteDataSource {
+abstract class PlayerRemoteDataSource {
   ///Calls the [API_BASE_URL]/v1/players/{playerTag} endpoint
   ///
   /// Throws [ServerException] for all error codes.
-  Future<Profile> getProfile(String playerTag);
+  Future<Player> getPlayer(String playerTag);
 }
 
-class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
+class PlayerRemoteDataSourceImpl implements PlayerRemoteDataSource {
   final Dio dio;
 
-  ProfileRemoteDataSourceImpl({
+  PlayerRemoteDataSourceImpl({
     @required this.dio,
   });
 
   @override
-  Future<Profile> getProfile(String playerTag) async {
+  Future<Player> getPlayer(String playerTag) async {
     final response = await dio
         .get(
           API_BASE_PLAYER_URL_PROXY + playerTag,
@@ -36,6 +36,6 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
       throw ServerException();
     });
 
-    return ProfileModel.fromJson(response.data);
+    return PlayerModel.fromJson(response.data);
   }
 }

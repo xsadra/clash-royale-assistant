@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../presentation/bloc/profile/bloc.dart';
+import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
 
 class AchievementsView extends StatelessWidget {
@@ -12,7 +12,7 @@ class AchievementsView extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: BlocBuilder<ProfileBloc, ProfileState>(
+        child: BlocBuilder<PlayerBloc, PlayerState>(
           builder: (context, state) {
             if (state is Empty) {
               return _emptyDisplay();
@@ -34,7 +34,7 @@ class AchievementsView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          RefreshProfile(),
+          RefreshPlayer(),
           MessageDisplay(message: 'No data'),
         ],
       ),

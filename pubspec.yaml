@@ -33,3 +33,7 @@ flutter:
   assets:
     - assets/images/ui/
     - assets/images/chests/
+    - assets/images/arena/
+    - assets/images/cards/
+    - assets/images/cards-gold/
+    - assets/images/clan-badges/

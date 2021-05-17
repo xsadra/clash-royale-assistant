@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/profile/bloc.dart';
+import '../bloc/player/bloc.dart';
 import 'widgets.dart';
 
-class ProfileView extends StatelessWidget {
-  const ProfileView({Key key}) : super(key: key);
+class PlayerView extends StatelessWidget {
+  const PlayerView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: BlocBuilder<ProfileBloc, ProfileState>(
+        child: BlocBuilder<PlayerBloc, PlayerState>(
           builder: (context, state) {
             if (state is Empty) {
               return _emptyDisplay();
@@ -34,7 +34,7 @@ class ProfileView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          RefreshProfile(),
+          RefreshPlayer(),
           MessageDisplay(message: 'No data'),
         ],
       ),
@@ -42,6 +42,6 @@ class ProfileView extends StatelessWidget {
   }
 
   Widget _loadedDisplay(Loaded state) {
-    return ProfileDetails(state: state);
+    return PlayerDetails(state: state);
   }
 }

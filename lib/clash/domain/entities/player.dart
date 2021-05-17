@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 
-class Profile {
+class Player {
   final String tag;
   final String name;
   final int expLevel;
@@ -30,7 +30,7 @@ class Profile {
   final Card currentFavouriteCard;
   final int starPoints;
 
-  const Profile({
+  const Player({
     @required this.tag,
     @required this.name,
     @required this.expLevel,

@@ -4,36 +4,36 @@ import 'package:flutter/foundation.dart';
 import '../../../core/error/exceptions.dart';
 import '../../../core/error/failure.dart';
 import '../../../core/platform/network_info.dart';
-import '../../domain/entities/profile.dart';
-import '../../domain/repository/profile_repository.dart';
+import '../../domain/entities/player.dart';
+import '../../domain/repository/player_repository.dart';
 import '../datasources/datasources.dart';
 
-class ProfileRepositoryImpl implements ProfileRepository {
+class PlayerRepositoryImpl implements PlayerRepository {
   final NetworkInfo networkInfo;
-  final ProfileLocalDataSource localDataSource;
+  final PlayerLocalDataSource localDataSource;
 
-  final ProfileRemoteDataSource remoteDataSource;
+  final PlayerRemoteDataSource remoteDataSource;
 
-  const ProfileRepositoryImpl({
+  const PlayerRepositoryImpl({
     @required this.networkInfo,
     @required this.localDataSource,
     @required this.remoteDataSource,
   });
 
   @override
-  Future<Either<Failure, Profile>> getProfile(String playerTag) async {
+  Future<Either<Failure, Player>> getPlayer(String playerTag) async {
     if (await networkInfo.isConnected) {
       try {
-        final remoteProfile = await remoteDataSource.getProfile(playerTag);
-        localDataSource.cacheProfile(remoteProfile);
-        return right(remoteProfile);
+        final remotePlayer = await remoteDataSource.getPlayer(playerTag);
+        localDataSource.cachePlayer(remotePlayer);
+        return right(remotePlayer);
       } on ServerException {
         return left(ServerFailure());
       }
     }
     try {
-      final localProfile = await localDataSource.getLastData();
-      return Right(localProfile);
+      final localPlayer = await localDataSource.getLastData();
+      return Right(localPlayer);
     } on CacheException {
       return Left(CacheFailure());
     }

@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
-import '../../domain/entities/profile.dart';
-import '../../presentation/bloc/profile/bloc.dart';
+import '../../domain/entities/player.dart';
+import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
 
-class ProfileDetails extends StatelessWidget {
+class PlayerDetails extends StatelessWidget {
   final Loaded state;
 
-  const ProfileDetails({Key key, this.state}) : super(key: key);
+  const PlayerDetails({Key key, this.state}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var profile = state.profile;
+    var player = state.player;
     int currentDeckColumnCount = 4;
     return SingleChildScrollView(
       child: Column(
         children: [
-          UserProfileName(profile: profile),
+          PlayerName(player: player),
           SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.only(left: 6),
-            child: UserClanName(profile: profile),
+            child: UserClanName(player: player),
           ),
           SizedBox(height: 8),
           Stat(
@@ -29,8 +29,8 @@ class ProfileDetails extends StatelessWidget {
             tiles: [
               StatTile(
                   field: 'Best Trophies: ',
-                  value: profile.bestTrophies.toString()),
-              StatTile(field: 'Trophies: ', value: profile.trophies.toString()),
+                  value: player.bestTrophies.toString()),
+              StatTile(field: 'Trophies: ', value: player.trophies.toString()),
             ],
           ),
           SizedBox(height: 6),
@@ -38,14 +38,13 @@ class ProfileDetails extends StatelessWidget {
             header:
                 StatHeader(icon: Icons.account_balance, title: 'Battle Stats'),
             tiles: [
-              StatTile(field: 'Wins: ', value: profile.wins.toString()),
-              StatTile(field: 'Losses: ', value: profile.losses.toString()),
+              StatTile(field: 'Wins: ', value: player.wins.toString()),
+              StatTile(field: 'Losses: ', value: player.losses.toString()),
               StatTile(
                   field: 'threeCrownWins: ',
-                  value: profile.threeCrownWins.toString()),
+                  value: player.threeCrownWins.toString()),
               StatTile(
-                  field: 'battleCount: ',
-                  value: profile.battleCount.toString()),
+                  field: 'battleCount: ', value: player.battleCount.toString()),
             ],
           ),
           SizedBox(height: 6),
@@ -54,28 +53,26 @@ class ProfileDetails extends StatelessWidget {
             tiles: [
               StatTile(
                 field: 'Donations balance: ',
-                value: (profile.donations - profile.donationsReceived) > 0
+                value: (player.donations - player.donationsReceived) > 0
                     ? '+' +
-                        (profile.donations - profile.donationsReceived)
-                            .toString()
-                    : (profile.donations - profile.donationsReceived)
-                        .toString(),
+                        (player.donations - player.donationsReceived).toString()
+                    : (player.donations - player.donationsReceived).toString(),
               ),
               StatTile(
-                  field: 'Donations: ', value: profile.donations.toString()),
+                  field: 'Donations: ', value: player.donations.toString()),
               StatTile(
                   field: 'Donations Received: ',
-                  value: profile.donationsReceived.toString()),
+                  value: player.donationsReceived.toString()),
               StatTile(
                   field: 'Total Donations: ',
-                  value: profile.totalDonations.toString()),
+                  value: player.totalDonations.toString()),
             ],
           ),
           SizedBox(height: 6),
           Stat(
             header: StatHeader(icon: Icons.data_usage, title: 'League Season'),
             tiles: [
-              StatTile(field: 'Arena: ', value: profile.arena.name),
+              StatTile(field: 'Arena: ', value: player.arena.name),
             ],
           ),
           SizedBox(height: 6),
@@ -86,23 +83,22 @@ class ProfileDetails extends StatelessWidget {
             ),
             tiles: [
               StatTile(
-                  field: 'War Day Wins: ',
-                  value: profile.warDayWins.toString()),
+                  field: 'War Day Wins: ', value: player.warDayWins.toString()),
               StatTile(
                   field: 'Clan Cards Collected: ',
-                  value: profile.clanCardsCollected.toString()),
+                  value: player.clanCardsCollected.toString()),
               StatTile(
                   field: 'Challenge Cards Won: ',
-                  value: profile.challengeCardsWon.toString()),
+                  value: player.challengeCardsWon.toString()),
               StatTile(
                   field: 'Challenge Max Wins: ',
-                  value: profile.challengeMaxWins.toString()),
+                  value: player.challengeMaxWins.toString()),
               StatTile(
                   field: 'Tournament Cards Won: ',
-                  value: profile.tournamentCardsWon.toString()),
+                  value: player.tournamentCardsWon.toString()),
               StatTile(
                   field: 'Tournament Battle Count: ',
-                  value: profile.tournamentBattleCount.toString()),
+                  value: player.tournamentBattleCount.toString()),
             ],
           ),
           SizedBox(height: 6),
@@ -110,11 +106,10 @@ class ProfileDetails extends StatelessWidget {
             header: StatHeader(icon: Icons.data_usage, title: 'War (Old)'),
             tiles: [
               StatTile(
-                  field: 'War Day Wins: ',
-                  value: profile.warDayWins.toString()),
+                  field: 'War Day Wins: ', value: player.warDayWins.toString()),
               StatTile(
                   field: 'Clan Cards Collected: ',
-                  value: profile.clanCardsCollected.toString()),
+                  value: player.clanCardsCollected.toString()),
             ],
           ),
           SizedBox(height: 6),
@@ -123,11 +118,11 @@ class ProfileDetails extends StatelessWidget {
             tiles: [
               StatTile(
                   field: 'Trophies: ',
-                  value: profile.leagueStatistics.currentSeason.trophies
+                  value: player.leagueStatistics.currentSeason.trophies
                       .toString()),
               StatTile(
                   field: 'Best Trophies: ',
-                  value: profile.leagueStatistics.currentSeason.bestTrophies
+                  value: player.leagueStatistics.currentSeason.bestTrophies
                       .toString()),
             ],
           ),
@@ -138,14 +133,14 @@ class ProfileDetails extends StatelessWidget {
             tiles: [
               StatTile(
                   field: 'Date: ',
-                  value: profile.leagueStatistics.previousSeason.id.toString()),
+                  value: player.leagueStatistics.previousSeason.id.toString()),
               StatTile(
                   field: 'Trophies: ',
-                  value: profile.leagueStatistics.previousSeason.trophies
+                  value: player.leagueStatistics.previousSeason.trophies
                       .toString()),
               StatTile(
                   field: 'Best Trophies: ',
-                  value: profile.leagueStatistics.previousSeason.bestTrophies
+                  value: player.leagueStatistics.previousSeason.bestTrophies
                       .toString()),
             ],
           ),
@@ -155,11 +150,11 @@ class ProfileDetails extends StatelessWidget {
             tiles: [
               StatTile(
                   field: 'Best Trophies: ',
-                  value: profile.leagueStatistics.bestSeason.id.toString()),
+                  value: player.leagueStatistics.bestSeason.id.toString()),
               StatTile(
                   field: 'Trophies: ',
                   value:
-                      profile.leagueStatistics.bestSeason.trophies.toString()),
+                      player.leagueStatistics.bestSeason.trophies.toString()),
             ],
           ),
           SizedBox(height: 6),
@@ -173,7 +168,7 @@ class ProfileDetails extends StatelessWidget {
                     style: TextStyle(fontSize: 12, color: Colors.purple),
                   ),
                   Text(
-                    profile.currentFavouriteCard.name,
+                    player.currentFavouriteCard.name,
                     style: TextStyle(
                         fontSize: 13,
                         fontStyle: FontStyle.italic,
@@ -185,13 +180,14 @@ class ProfileDetails extends StatelessWidget {
               SizedBox(height: 6),
               AnimationLimiter(
                 child: GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
                   mainAxisSpacing: 8,
                   shrinkWrap: true,
                   crossAxisCount: currentDeckColumnCount,
                   children: List.generate(
-                    profile.currentDeck.length,
+                    player.currentDeck.length,
                     (int index) {
-                      Card card = profile.currentDeck.elementAt(index);
+                      Card card = player.currentDeck.elementAt(index);
                       return AnimationConfiguration.staggeredGrid(
                         position: index,
                         duration: const Duration(milliseconds: 575),

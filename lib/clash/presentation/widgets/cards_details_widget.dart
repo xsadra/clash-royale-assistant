@@ -2,8 +2,8 @@ import 'package:collection/collection.dart' show groupBy;
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
-import '../../domain/entities/profile.dart';
-import '../../presentation/bloc/profile/bloc.dart';
+import '../../domain/entities/player.dart';
+import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
 
 class CardsDetails extends StatelessWidget {
@@ -12,7 +12,7 @@ class CardsDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cards = state.profile.cards;
+    var cards = state.player.cards;
     cards.sort((b, a) =>
         (a.level + 13 - a.maxLevel).compareTo(b.level + 13 - b.maxLevel));
     var newList = groupBy(
@@ -45,7 +45,7 @@ class CardsDetails extends StatelessWidget {
                   Card card = newList[cardLevels].elementAt(index);
                   return AnimationConfiguration.staggeredGrid(
                     position: index,
-                    duration: const Duration(milliseconds: 575),
+                    duration: const Duration(milliseconds: 775),
                     columnCount: currentDeckColumnCount,
                     child: ScaleAnimation(
                       child: FadeInAnimation(

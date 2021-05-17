@@ -1,4 +1,5 @@
 class Assets {
+  Assets._();
   static String get experience => 'assets/images/ui/ui-experience.png';
   static String get starLevel => 'assets/images/ui/ui-star-level.png';
   static String get notFound => 'assets/images/ui/not-found.png';
@@ -23,9 +24,9 @@ class Assets {
   }
 
   static String cardToPath(String name, {bool isGold}) {
-    String path = isGold ? 'images/cards-gold/' : 'images/cards/';
+    String path = isGold ? 'assets/images/cards-gold/' : 'assets/images/cards/';
     String fileName =
-        name.replaceAll(' ', '-').replaceAll('.', '.').toLowerCase() + '.png';
+        name.replaceAll(' ', '-').replaceAll('.', '').toLowerCase() + '.png';
 
     return path + fileName;
   }

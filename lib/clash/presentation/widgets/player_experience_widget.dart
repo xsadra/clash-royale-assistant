@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/platform/assets_controller.dart';
 
-class ProfileExperienceWidget extends StatelessWidget {
-  const ProfileExperienceWidget({
+class PlayerExperienceWidget extends StatelessWidget {
+  const PlayerExperienceWidget({
     @required this.expLevel,
     Key key,
   }) : super(key: key);
