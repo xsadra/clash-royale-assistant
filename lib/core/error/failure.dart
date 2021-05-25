@@ -10,3 +10,7 @@ class ServerFailure extends Failure {
 class CacheFailure extends Failure {
   noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
+
+class NotFoundFailure extends Failure {
+  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+}
