@@ -1,3 +1,4 @@
+import 'package:clash_royale_assistant/clash/presentation/widgets/cards_chart.dart';
 import 'package:collection/collection.dart' show groupBy;
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -18,8 +19,15 @@ class CardsDetails extends StatelessWidget {
     var newList = groupBy(
         cards, (card) => (card as Card).level + 13 - (card as Card).maxLevel);
     int currentDeckColumnCount = 4;
+    var cardsChartData = newList.keys
+        .map((e) => CardsChartData('Level ' + e.toString(), newList[e].length))
+        .toList();
     return Column(
       children: [
+        SizedBox(
+          height: 220,
+          child: CardsChart(chartData: cardsChartData),
+        ),
         for (var cardLevels in newList.keys) ...[
           Row(
             children: [

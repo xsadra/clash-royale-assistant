@@ -1,7 +1,7 @@
-import 'package:clash_royale_assistant/core/constants/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/constants/texts.dart';
 import '../../../injection_container.dart' as injection;
 import '../../presentation/bloc/player/bloc.dart';
 import '../../presentation/bloc/upcomingchest/bloc.dart';

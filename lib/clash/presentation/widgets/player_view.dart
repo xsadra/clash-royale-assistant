@@ -21,7 +21,7 @@ class PlayerView extends StatelessWidget {
             } else if (state is Loading) {
               return LoadingWidget();
             } else if (state is Loaded) {
-              return _loadedDisplay(state);
+              return PlayerDetails(state: state);
             }
             return MessageDisplay(message: 'Unhandled State');
           },
@@ -39,9 +39,5 @@ class PlayerView extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Widget _loadedDisplay(Loaded state) {
-    return PlayerDetails(state: state);
   }
 }
