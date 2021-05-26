@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'input_tag.dart';
+
 class SetCurrentPlayerView extends StatelessWidget {
   const SetCurrentPlayerView({
     Key key,
@@ -7,6 +9,12 @@ class SetCurrentPlayerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    double screenWidth = MediaQuery.of(context).size.width;
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(screenWidth / 7),
+        child: InputTag(),
+      ),
+    );
   }
 }

@@ -28,11 +28,14 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
           isScrollable: true,
           tabs: _playerTabBarList(),
         ),
-        Container(
-          height: screenHeight * 0.72,
-          child: TabBarView(
-            controller: _nestedTabController,
-            children: _playerTabBarViewList(),
+        Expanded(
+          //flex: 1,
+          child: Container(
+            height: screenHeight * 0.72,
+            child: TabBarView(
+              controller: _nestedTabController,
+              children: _playerTabBarViewList(),
+            ),
           ),
         )
       ],

@@ -17,11 +17,11 @@ abstract class CurrentPlayerTagLocalDataSource {
   Future<bool> saveCurrentPlayerTag(CurrentPlayerTagModel infoToSave);
 }
 
-class CurrentPlayerInfoLocalDataSourceImpl
+class CurrentPlayerTagLocalDataSourceImpl
     implements CurrentPlayerTagLocalDataSource {
   final SharedPreferences sharedPreferences;
 
-  const CurrentPlayerInfoLocalDataSourceImpl({
+  const CurrentPlayerTagLocalDataSourceImpl({
     @required this.sharedPreferences,
   });
 
