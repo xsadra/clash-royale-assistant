@@ -11,7 +11,6 @@ import '../datasources/datasources.dart';
 class PlayerRepositoryImpl implements PlayerRepository {
   final NetworkInfo networkInfo;
   final PlayerLocalDataSource localDataSource;
-
   final PlayerRemoteDataSource remoteDataSource;
 
   const PlayerRepositoryImpl({
