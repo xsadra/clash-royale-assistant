@@ -7,9 +7,19 @@ const UNEXPECTED_EVENT = 'Unexpected event';
 
 const API_BASE_URL = 'https://api.clashroyale.com/';
 const API_BASE_URL_PROXY = 'https://proxy.royaleapi.dev/';
+
 const API_PLAYER_URL = 'v1/players/';
 const API_BASE_PLAYER_URL = API_BASE_URL + API_PLAYER_URL;
 const API_BASE_PLAYER_URL_PROXY = API_BASE_URL_PROXY + API_PLAYER_URL;
+
+const API_CLAN_URL = 'v1/clans/';
+const API_BASE_CLAN_URL = API_BASE_URL + API_CLAN_URL;
+const API_BASE_CLAN_URL_PROXY = API_BASE_URL_PROXY + API_CLAN_URL;
+
+const API_TOURNAMENT_URL = 'v1/tournaments/';
+const API_BASE_TOURNAMENT_URL = API_BASE_URL + API_TOURNAMENT_URL;
+const API_BASE_TOURNAMENT_URL_PROXY = API_BASE_URL_PROXY + API_TOURNAMENT_URL;
+
 const UPCOMING_CHESTS = '/upcomingchests';
 
 const CACHED_UPCOMING_CHESTS = 'CACHED_UPCOMING_CHESTS';
