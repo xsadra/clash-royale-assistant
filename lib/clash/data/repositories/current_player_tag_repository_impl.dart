@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 
@@ -6,6 +8,7 @@ import '../../../core/error/failure.dart';
 import '../../domain/entities/current_player_tag.dart';
 import '../../domain/repository/current_player_tag_repository.dart';
 import '../datasources/datasources.dart' show CurrentPlayerTagLocalDataSource;
+import '../models/current_player_tag_model.dart';
 
 class CurrentPlayerTagRepositoryImpl implements CurrentPlayerTagRepository {
   final CurrentPlayerTagLocalDataSource localDataSource;
@@ -30,7 +33,10 @@ class CurrentPlayerTagRepositoryImpl implements CurrentPlayerTagRepository {
   Future<Either<Failure, bool>> saveCurrentPlayerTag(
       {CurrentPlayerTag playerTag}) async {
     try {
-      bool result = await localDataSource.saveCurrentPlayerTag(playerTag);
+      bool result = true;
+      log('saveCurrentPlayerTag', name: 'CurrentPlayerTagRepositoryImpl');
+      await localDataSource
+          .saveCurrentPlayerTag(CurrentPlayerTagModel.fromObject(playerTag));
 
       return Right(result);
     } on CacheException {

@@ -1,10 +1,10 @@
 import 'dart:async' show Stream;
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart' show Bloc;
 import 'package:meta/meta.dart' show required;
 
 import '../../../../core/constants/texts.dart';
-import '../../../../core/error/failure.dart';
 import '../../../../core/error/failure_extensions.dart';
 import '../../../domain/repository/current_player_tag_repository.dart';
 import 'bloc.dart';
@@ -24,24 +24,31 @@ class CurrentPlayerTagBloc
       CurrentPlayerTagEvent event) async* {
     if (event is GetCurrentPlayerTagEvent) {
       yield Loading();
+      log('event is GetCurrentPlayerTagEvent', name: 'CurrentPlayerTagBloc');
       final failureOrPlayerTag = await _repository.getCurrentPlayerTag();
-      failureOrPlayerTag.fold(
+      yield failureOrPlayerTag.fold(
         (failure) {
-          if (failure is NotFoundFailure) {
-            return Empty();
-          } else {
-            return Error(message: failure.toMessage);
-          }
+          log('get current player tag from local failed',
+              name: 'CurrentPlayerTagBloc');
+          return Empty();
         },
-        (playerTag) => Loaded(playerTag: playerTag),
+        (playerTag) {
+          log('get current player tag from local success',
+              name: 'CurrentPlayerTagBloc');
+          log(playerTag.playerTag, name: 'CurrentPlayerTagBloc');
+          return Loaded(playerTag: playerTag);
+        },
       );
     } else if (event is SaveCurrentPlayerTagEvent) {
+      log('event is SaveCurrentPlayerTagEvent', name: 'CurrentPlayerTagBloc');
       yield Saving();
       final failureOrSavePlayerTag =
           await _repository.saveCurrentPlayerTag(playerTag: event.playerTag);
-      failureOrSavePlayerTag.fold(
+      yield failureOrSavePlayerTag.fold(
         (failure) => Error(message: failure.toMessage),
         (isSaved) {
+          log('saveCurrentPlayerTag is ' + isSaved.toString(),
+              name: 'CurrentPlayerTagBloc');
           if (isSaved) {
             return Saved();
           }

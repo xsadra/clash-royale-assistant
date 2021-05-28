@@ -1,4 +1,5 @@
 import 'dart:convert' show json, jsonEncode;
+import 'dart:developer';
 
 import 'package:meta/meta.dart' show required;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,6 +28,9 @@ class CurrentPlayerTagLocalDataSourceImpl
 
   @override
   Future<bool> saveCurrentPlayerTag(CurrentPlayerTagModel tagToSave) {
+    log('call local', name: 'CurrentPlayerTagLocalDataSourceImpl');
+    log(tagToSave.playerTag, name: 'CurrentPlayerTagLocalDataSourceImpl');
+
     return sharedPreferences.setString(
       CURRENT_PLAYER_TAG,
       jsonEncode(tagToSave),

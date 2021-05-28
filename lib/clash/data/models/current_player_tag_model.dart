@@ -18,6 +18,13 @@ class CurrentPlayerTagModel extends CurrentPlayerTag {
     );
   }
 
+  factory CurrentPlayerTagModel.fromObject(CurrentPlayerTag playerTag) {
+    return new CurrentPlayerTagModel(
+      playerTag: playerTag.playerTag,
+      playerClanTag: playerTag.playerClanTag,
+    );
+  }
+
   Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast
     return {
