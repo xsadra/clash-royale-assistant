@@ -1,7 +1,15 @@
-import 'package:clash_royale_assistant/clash/presentation/bloc/player/bloc.dart';
-import 'package:flutter/material.dart';
+import 'dart:developer';
+
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart' hide Router;
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../core/routes/router.gr.dart';
+import '../../data/datasources/validate_tag_remote_data_source.dart';
+import '../../domain/entities/current_player_tag.dart';
+import '../bloc/currentplayertag/bloc.dart';
+import '../bloc/validatetag/bloc.dart';
 
 class InputTag extends StatefulWidget {
   const InputTag({Key key}) : super(key: key);
@@ -12,8 +20,7 @@ class InputTag extends StatefulWidget {
 
 class _InputTagState extends State<InputTag> {
   final controller = TextEditingController();
-  String inputString =
-      'PPGRVJJQ'; // Remove Step: remove it after Fix 'read user tag' and replace it
+  String inputString = '';
 
   @override
   Widget build(BuildContext context) {
@@ -66,25 +73,43 @@ class _InputTagState extends State<InputTag> {
     );
   }
 
-  TextField _inputTextField() {
-    return TextField(
-      onChanged: (value) => inputString = value,
-      onSubmitted: (_) => addPlayerTag(),
-      controller: controller,
-      keyboardType: TextInputType.text,
-      inputFormatters: [UpperCaseTextFormatter()],
-      maxLength: 10,
-      maxLines: 1,
-      style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF00893F)),
-      decoration: InputDecoration(
-          fillColor: Colors.blueGrey,
-          labelText: 'Enter your Player Tag',
-          labelStyle:
-              TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
-          prefixIcon: Icon(Icons.tag, color: Colors.green),
-          border: OutlineInputBorder(),
-          hintText: 'XXXXXXXXX',
-          hintStyle: TextStyle(color: Colors.teal)),
+  Widget _inputTextField() {
+    bool showError = false;
+    return BlocBuilder<ValidateTagBloc, ValidateTagState>(
+      builder: (BuildContext context, state) {
+        log(state.runtimeType.toString(),
+            name: ' InputTag > _inputTextField()');
+        if (state is IsValid) {
+          context.read<CurrentPlayerTagBloc>().add(SaveCurrentPlayerTagEvent(
+              playerTag: CurrentPlayerTag(playerTag: inputString)));
+          log('Navigate to HomePage', name: 'InputTag > _inputTextField()');
+          ExtendedNavigator.of(context).replace(Routes.HomePageRoute);
+        } else if (state is NotValid) {
+          showError = true;
+        }
+        return TextField(
+          onChanged: (value) => inputString = value,
+          onSubmitted: (_) => _validateTag(),
+          controller: controller,
+          keyboardType: TextInputType.text,
+          inputFormatters: [UpperCaseTextFormatter()],
+          maxLength: 10,
+          maxLines: 1,
+          style:
+              TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF00893F)),
+          decoration: InputDecoration(
+              errorText: showError ? 'Wrong tag, try again!' : null,
+              fillColor: Colors.blueGrey,
+              labelText: 'Enter your Player Tag',
+              labelStyle:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
+              prefixIcon: Icon(Icons.tag, color: Colors.green),
+              border: OutlineInputBorder(),
+              hintText: 'XXXXXXXXX',
+              hintStyle: TextStyle(color: Colors.teal)),
+        );
+      },
+      //listenWhen: (previous, current) => current != previous,
     );
   }
 
@@ -93,7 +118,7 @@ class _InputTagState extends State<InputTag> {
       children: [
         Expanded(
           child: ElevatedButton(
-            onPressed: addPlayerTag,
+            onPressed: _validateTag,
             child: Text('Search'),
           ),
         ),
@@ -101,13 +126,17 @@ class _InputTagState extends State<InputTag> {
     );
   }
 
-  void addPlayerTag() {
+  void _validateTag() {
     controller.clear();
     inputString = '%23' + inputString.replaceAll('#', '');
 
-    context.read<PlayerBloc>().add(GetPlayerEvent(inputString));
-    // context.read<CurrentPlayerTagBloc>().add(
-    //     SaveCurrentPlayerTagEvent(CurrentPlayerTag(playerTag: inputString)));
+    log(inputString, name: 'InputTag > _validateTag()');
+
+    context
+        .read<ValidateTagBloc>()
+        .add(CheckValidateTagEvent(tag: inputString, type: RoyaleTags.player));
+    log('add CheckValidateTagEvent event to ValidateTagBloc',
+        name: 'InputTag > _validateTag()');
   }
 }
 
@@ -149,7 +178,6 @@ class SetPlayerHelpText extends StatelessWidget {
           child: Text(
             rowText,
             style: TextStyle(fontSize: 16),
-            //softWrap: true,
           ),
         ),
       ],

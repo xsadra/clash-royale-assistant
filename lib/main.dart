@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart' hide Router;
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'clash/presentation/pages/home_page.dart';
+import 'clash/presentation/bloc/currentplayertag/bloc.dart';
 import 'core/constants/texts.dart';
+import 'core/routes/router.gr.dart';
 import 'injection_container.dart' as injection;
 
 void main() async {
@@ -13,12 +16,22 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: APP_TITLE,
-      theme: ThemeData().copyWith(
-        primaryColor: Color(0xFF190F2A),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+            create: (context) => injection.sl<CurrentPlayerTagBloc>()
+              ..add(GetCurrentPlayerTagEvent())),
+      ],
+      child: MaterialApp(
+        title: APP_TITLE,
+
+        builder: ExtendedNavigator(router: Router()),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData().copyWith(
+          primaryColor: Color(0xFF190F2A),
+        ),
+        //home: HomePage(),
       ),
-      home: HomePage(),
     );
   }
 }
