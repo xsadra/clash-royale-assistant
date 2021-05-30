@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:clash_royale_assistant/clash/presentation/widgets/cards_chart.dart';
 import 'package:collection/collection.dart' show groupBy;
 import 'package:flutter/material.dart' hide Card;
@@ -22,6 +25,18 @@ class CardsDetails extends StatelessWidget {
     var cardsChartData = newList.keys
         .map((e) => CardsChartData('Level ' + e.toString(), newList[e].length))
         .toList();
+    final _colorPalettes =
+        charts.MaterialPalette.getOrderedPalettes(newList.keys.length);
+    var colorIndex = 0;
+    log('Color Palette: ' + _colorPalettes.length.toString(),
+        name: 'CardsDetails');
+
+    final _colors = _colorPalettes
+        .map((e) =>
+            e.shadeDefault.hexString.replaceAll('#', '0xff').toUpperCase())
+        .toList();
+    log('Color Palette: [' + _colors.join(' ') + ']', name: 'CardsDetails');
+
     return Column(
       children: [
         SizedBox(
@@ -34,6 +49,8 @@ class CardsDetails extends StatelessWidget {
               StatHeader(
                 icon: Icons.label_rounded,
                 title: 'Level ' + cardLevels.toString(),
+                color: Color(int.parse(_colors.elementAt(colorIndex))),
+                textColor: Color(int.parse(_colors.elementAt(colorIndex++))),
               ),
               Text(
                 ' (${newList[cardLevels].length})',

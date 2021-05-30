@@ -1,3 +1,4 @@
+export 'achievements_card_widget.dart';
 export 'achievements_details_widget.dart';
 export 'achievements_view.dart';
 export 'card_asset_image_widget.dart';

@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData().copyWith(
           primaryColor: Color(0xFF190F2A),
         ),
-        //home: HomePage(),
       ),
     );
   }
