@@ -11,8 +11,8 @@ import '../bloc/currentplayertag/bloc.dart';
 import 'bottom_navigation_bar.dart';
 import 'player_nested_tab_page.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+class PlayerPage extends StatelessWidget {
+  const PlayerPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
       BlocProvider(create: (context) => injection.sl<CurrentPlayerTagBloc>()),
       BlocProvider(create: (context) => injection.sl<UpcomingChestsBloc>())
     ];
-    log('build', name: 'HomePage');
+    log('build', name: 'PlayerPage');
     return Scaffold(
       appBar: AppBar(
         title: Text(APP_TITLE),
@@ -30,7 +30,9 @@ class HomePage extends StatelessWidget {
         providers: playerProviders,
         child: PlayerNestedTabPage(),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(
+        initialActiveIndex: 0,
+      ),
     );
   }
 }

@@ -83,7 +83,7 @@ class _InputTagState extends State<InputTag> {
           context.read<CurrentPlayerTagBloc>().add(SaveCurrentPlayerTagEvent(
               playerTag: CurrentPlayerTag(playerTag: inputString)));
           log('Navigate to HomePage', name: 'InputTag > _inputTextField()');
-          ExtendedNavigator.of(context).replace(Routes.HomePageRoute);
+          ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);
         } else if (state is NotValid) {
           showError = true;
         }

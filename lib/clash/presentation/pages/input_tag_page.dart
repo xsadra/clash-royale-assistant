@@ -31,7 +31,7 @@ class InputTagPage extends StatelessWidget {
             child: InputTag(),
           ),
         ),
-        bottomNavigationBar: BottomNavBar(),
+        bottomNavigationBar: BottomNavBar(initialActiveIndex: 1),
       ),
     );
   }

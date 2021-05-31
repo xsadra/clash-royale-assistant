@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart' hide Router;
@@ -5,8 +7,11 @@ import 'package:flutter/material.dart' hide Router;
 import '../../../core/routes/router.gr.dart';
 
 class BottomNavBar extends StatelessWidget {
+  final int initialActiveIndex;
+
   const BottomNavBar({
     Key key,
+    @required this.initialActiveIndex,
   }) : super(key: key);
 
   @override
@@ -23,13 +28,15 @@ class BottomNavBar extends StatelessWidget {
       style: TabStyle.reactCircle,
       backgroundColor: Color(0xFF190F2A),
       top: -14,
-      initialActiveIndex: 0,
-      //optional, default as 0
+      initialActiveIndex: initialActiveIndex,
       onTap: (int pageIndex) {
+        log('pageIndex: ' + pageIndex.toString(), name: 'BottomNavBar');
+
         if (pageIndex == 0) {
-          ExtendedNavigator.of(context).replace(Routes.HomePageRoute);
+          // Fix Step: get local data instead of Live
+          ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);
         } else if (pageIndex == 1) {
-          ExtendedNavigator.of(context).pushInputTagPageRoute();
+          ExtendedNavigator.of(context).replace(Routes.InputTagPageRoute);
         }
       },
     );

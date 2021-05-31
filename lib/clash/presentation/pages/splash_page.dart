@@ -20,7 +20,7 @@ class SplashPage extends StatelessWidget {
         } else if (state is Loaded) {
           log('Loaded > Loaded', name: 'SplashPage');
           log(state.playerTag.playerTag, name: 'SplashPage');
-          ExtendedNavigator.of(context).replace(Routes.HomePageRoute);
+          ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);
         } else {
           log('Else State ' + state.runtimeType.toString(), name: 'SplashPage');
         }

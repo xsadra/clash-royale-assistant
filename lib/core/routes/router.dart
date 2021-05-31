@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route_annotations.dart';
 
-import '../../clash/presentation/pages/home_page.dart';
 import '../../clash/presentation/pages/input_tag_page.dart';
 import '../../clash/presentation/pages/input_tag_page_full.dart';
+import '../../clash/presentation/pages/player_page.dart';
 import '../../clash/presentation/pages/splash_page.dart';
 
 @MaterialAutoRouter(
@@ -23,8 +23,8 @@ import '../../clash/presentation/pages/splash_page.dart';
         fullscreenDialog: true,
       ),
       MaterialRoute(
-        page: HomePage,
-        name: 'HomePageRoute',
+        page: PlayerPage,
+        name: 'PlayerPageRoute',
       ),
     ])
 class $Router {}
