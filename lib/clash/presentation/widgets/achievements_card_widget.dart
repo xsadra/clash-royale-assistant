@@ -75,33 +75,33 @@ class AchievementsCard extends StatelessWidget {
 
   Center _achieved() {
     return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            '..... Achieved: ',
-            style: TextStyle(
-              color: Colors.green,
-              fontWeight: FontWeight.w600,
-              fontSize: 12,
-              letterSpacing: 1.5,
-              fontStyle: FontStyle.italic,
-            ),
+      child: RichText(
+        text: TextSpan(
+          text: 'Bla Bla Bla Achieved: ',
+          style: TextStyle(
+            color: Colors.green,
+            fontWeight: FontWeight.w600,
+            fontSize: 12,
+            letterSpacing: 1.5,
+            fontStyle: FontStyle.italic,
           ),
-          Text(
-            achieve.value.toString(),
-            style: TextStyle(
-              color:
-                  (achieve.value < achieve.target) ? Colors.red : Colors.green,
-              fontWeight: (achieve.value < achieve.target)
-                  ? FontWeight.w600
-                  : FontWeight.bold,
-              fontSize: 12,
-              letterSpacing: 1.5,
-              fontStyle: FontStyle.italic,
+          children: [
+            TextSpan(
+              text: achieve.value.toString(),
+              style: TextStyle(
+                color: (achieve.value < achieve.target)
+                    ? Colors.red
+                    : Colors.green,
+                fontWeight: (achieve.value < achieve.target)
+                    ? FontWeight.w600
+                    : FontWeight.bold,
+                fontSize: 12,
+                letterSpacing: 1.5,
+                fontStyle: FontStyle.italic,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

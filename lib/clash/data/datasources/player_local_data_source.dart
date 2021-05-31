@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,16 +27,22 @@ class PlayerLocalDataSourceImpl implements PlayerLocalDataSource {
 
   @override
   Future<PlayerModel> getLastData() {
+    log('Getting Data from sharedPreferences', name: 'PlayerLocalDataSource');
     final jsonString = sharedPreferences.getString(CACHED_PLAYER);
     if (jsonString == null) {
       throw CacheException();
     }
+    log(jsonString, name: 'PlayerLocalDataSource');
 
     return Future.value(PlayerModel.fromJson(json.decode(jsonString)));
   }
 
   @override
   Future<void> cachePlayer(PlayerModel playerToCache) {
+    log('Save Data to sharedPreferences', name: 'PlayerLocalDataSource');
+    log(playerToCache.toString().substring(0, 100),
+        name: 'PlayerLocalDataSource');
+
     return sharedPreferences.setString(
       CACHED_PLAYER,
       jsonEncode(playerToCache),
