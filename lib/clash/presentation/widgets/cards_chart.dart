@@ -9,8 +9,14 @@ class CardsChartData {
 }
 
 class CardsChart extends StatefulWidget {
-  const CardsChart({Key key, @required this.chartData}) : super(key: key);
   final List<CardsChartData> chartData;
+  final int cardsCount;
+
+  const CardsChart({
+    Key key,
+    @required this.chartData,
+    @required this.cardsCount,
+  }) : super(key: key);
 
   @override
   _CardsChartState createState() => _CardsChartState();
@@ -28,11 +34,10 @@ class _CardsChartState extends State<CardsChart> {
         SizedBox(
           height: 200,
           child: charts.PieChart(
-            // Pie chart can only render one series.
             /*seriesList=*/
             [
               charts.Series<CardsChartData, String>(
-                id: 'Sales-1',
+                id: 'AllCards',
                 colorFn: (_, idx) => _colorPalettes[idx].shadeDefault,
                 domainFn: (CardsChartData sales, _) => sales.category,
                 measureFn: (CardsChartData sales, _) => sales.cost,
@@ -51,14 +56,15 @@ class _CardsChartState extends State<CardsChart> {
             ),
             behaviors: [
               charts.ChartTitle(
-                'All Cards',
+                'All Cards: ' + widget.cardsCount.toString(),
                 behaviorPosition: charts.BehaviorPosition.bottom,
               ),
               charts.DatumLegend(
                 position: charts.BehaviorPosition.end,
                 horizontalFirst: false,
                 cellPadding: new EdgeInsets.only(right: 4.0, bottom: 4.0),
-                showMeasures: true,
+                // showMeasures: true,
+
                 legendDefaultMeasure: charts.LegendDefaultMeasure.sum,
                 // measureFormatter: (num value) {
                 //   return value == null ? '-' : ':${value}';

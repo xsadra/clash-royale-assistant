@@ -16,6 +16,7 @@ class CardsDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Step move all logic to a controller class
     var cards = state.player.cards;
     cards.sort((b, a) =>
         (a.level + 13 - a.maxLevel).compareTo(b.level + 13 - b.maxLevel));
@@ -41,7 +42,10 @@ class CardsDetails extends StatelessWidget {
       children: [
         SizedBox(
           height: 220,
-          child: CardsChart(chartData: cardsChartData),
+          child: CardsChart(
+            chartData: cardsChartData,
+            cardsCount: cards.length,
+          ),
         ),
         for (var cardLevels in newList.keys) ...[
           Row(
