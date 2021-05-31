@@ -92,7 +92,9 @@ class _InputTagState extends State<InputTag> {
           onSubmitted: (_) => _validateTag(),
           controller: controller,
           keyboardType: TextInputType.text,
+          textCapitalization: TextCapitalization.characters,
           inputFormatters: [UpperCaseTextFormatter()],
+          textInputAction: TextInputAction.search,
           maxLength: 10,
           maxLines: 1,
           style:
