@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/constants/texts.dart';
+import '../../../core/constants/consts.dart';
 import '../../../injection_container.dart' as injection;
 import '../../presentation/bloc/player/bloc.dart';
 import '../../presentation/bloc/upcomingchest/bloc.dart';
@@ -24,7 +24,7 @@ class PlayerPage extends StatelessWidget {
     log('build', name: 'PlayerPage');
     return Scaffold(
       appBar: AppBar(
-        title: Text(APP_TITLE),
+        title: Text(AppBodyTexts.APP_TITLE),
       ),
       body: MultiBlocProvider(
         providers: playerProviders,

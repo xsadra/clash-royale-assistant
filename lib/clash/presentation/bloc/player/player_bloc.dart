@@ -3,7 +3,7 @@ import 'dart:async' show Stream;
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../core/constants/texts.dart';
+import '../../../../core/constants/consts.dart';
 import '../../../../core/error/failure_extensions.dart';
 import '../../../domain/usecases/get_player.dart';
 import 'bloc.dart';
@@ -26,7 +26,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
         (chests) => Loaded(player: chests),
       );
     } else {
-      yield Error(message: UNEXPECTED_EVENT);
+      yield Error(message: AppErrorTexts.UNEXPECTED_EVENT);
     }
   }
 }

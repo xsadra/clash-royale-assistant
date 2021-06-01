@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../domain/entities/player.dart' hide Card;
 import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
@@ -16,7 +17,8 @@ class AchievementsDetails extends StatelessWidget {
     return Column(
       children: [
         StatHeader(
-            icon: Icons.playlist_add_check_rounded, title: 'Achievements:'),
+            icon: Icons.playlist_add_check_rounded,
+            title: AppUITexts.ACHIEVEMENTS_COL),
         AnimationLimiter(
           child: GridView.count(
             physics: const NeverScrollableScrollPhysics(),

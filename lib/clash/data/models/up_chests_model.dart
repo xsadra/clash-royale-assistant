@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:clash_royale_assistant/clash/domain/entities/upcoming_chest.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../domain/entities/up_chests.dart';
+import '../../domain/entities/upcoming_chest.dart';
 import 'upcoming_chest_model.dart';
 
 class UpChestsModel extends UpChests {

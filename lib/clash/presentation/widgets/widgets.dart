@@ -4,6 +4,8 @@ export 'achievements_view.dart';
 export 'card_asset_image_widget.dart';
 export 'card_deck_item_widget.dart';
 export 'card_view.dart';
+export 'cards_chart.dart';
+export 'cards_chart.dart';
 export 'cards_details_widget.dart';
 export 'input_tag.dart';
 export 'loading_widget.dart';

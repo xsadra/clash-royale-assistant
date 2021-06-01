@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
 
@@ -23,7 +24,7 @@ class AchievementsView extends StatelessWidget {
             } else if (state is Loaded) {
               return _loadedDisplay(state);
             }
-            return MessageDisplay(message: 'Unhandled State');
+            return MessageDisplay(message: AppUIMessagesText.UNHANDLED_STATE);
           },
         ),
       ),

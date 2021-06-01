@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:clash_royale_assistant/clash/domain/entities/player.dart';
 import 'package:meta/meta.dart';
+
+import '../../domain/entities/player.dart';
 
 class PlayerModel extends Player {
   const PlayerModel({

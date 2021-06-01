@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../domain/entities/player.dart';
 import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
@@ -25,103 +26,116 @@ class PlayerDetails extends StatelessWidget {
           ),
           SizedBox(height: 8),
           Stat(
-            header: StatHeader(icon: Icons.ac_unit, title: 'Trophies'),
+            header: StatHeader(icon: Icons.ac_unit, title: AppUITexts.TROPHIES),
             tiles: [
               StatTile(
-                  field: 'Best Trophies: ',
+                  field: AppUITexts.BEST_TROPHIES_COL,
                   value: player.bestTrophies.toString()),
-              StatTile(field: 'Trophies: ', value: player.trophies.toString()),
-            ],
-          ),
-          SizedBox(height: 6),
-          Stat(
-            header:
-                StatHeader(icon: Icons.account_balance, title: 'Battle Stats'),
-            tiles: [
-              StatTile(field: 'Wins: ', value: player.wins.toString()),
-              StatTile(field: 'Losses: ', value: player.losses.toString()),
               StatTile(
-                  field: 'threeCrownWins: ',
-                  value: player.threeCrownWins.toString()),
-              StatTile(
-                  field: 'battleCount: ', value: player.battleCount.toString()),
-            ],
-          ),
-          SizedBox(height: 6),
-          Stat(
-            header: StatHeader(icon: Icons.data_usage, title: 'Donation'),
-            tiles: [
-              StatTile(
-                field: 'Donations balance: ',
-                value: (player.donations - player.donationsReceived) > 0
-                    ? '+' +
-                        (player.donations - player.donationsReceived).toString()
-                    : (player.donations - player.donationsReceived).toString(),
-              ),
-              StatTile(
-                  field: 'Donations: ', value: player.donations.toString()),
-              StatTile(
-                  field: 'Donations Received: ',
-                  value: player.donationsReceived.toString()),
-              StatTile(
-                  field: 'Total Donations: ',
-                  value: player.totalDonations.toString()),
-            ],
-          ),
-          SizedBox(height: 6),
-          Stat(
-            header: StatHeader(icon: Icons.data_usage, title: 'League Season'),
-            tiles: [
-              StatTile(field: 'Arena: ', value: player.arena.name),
+                  field: AppUITexts.TROPHIES_COl,
+                  value: player.trophies.toString()),
             ],
           ),
           SizedBox(height: 6),
           Stat(
             header: StatHeader(
-              title: 'Challenge and Tournament',
+                icon: Icons.account_balance, title: AppUITexts.BATTLE_STATS),
+            tiles: [
+              StatTile(
+                  field: AppUITexts.WINS_COL, value: player.wins.toString()),
+              StatTile(
+                  field: AppUITexts.LOSSES_COL,
+                  value: player.losses.toString()),
+              StatTile(
+                  field: AppUITexts.THREE_CROWN_WINS_COL,
+                  value: player.threeCrownWins.toString()),
+              StatTile(
+                  field: AppUITexts.BATTLE_COUNT_COL,
+                  value: player.battleCount.toString()),
+            ],
+          ),
+          SizedBox(height: 6),
+          Stat(
+            header:
+                StatHeader(icon: Icons.data_usage, title: AppUITexts.DONATION),
+            tiles: [
+              StatTile(
+                field: AppUITexts.DONATIONS_BALANCE_COL,
+                value: (player.donations - player.donationsReceived) > 0
+                    ? AppUITexts.PLUS +
+                        (player.donations - player.donationsReceived).toString()
+                    : (player.donations - player.donationsReceived).toString(),
+              ),
+              StatTile(
+                  field: AppUITexts.DONATIONS_COL,
+                  value: player.donations.toString()),
+              StatTile(
+                  field: AppUITexts.DONATIONS_RECEIVED_COL,
+                  value: player.donationsReceived.toString()),
+              StatTile(
+                  field: AppUITexts.TOTAL_DONATIONS_COL,
+                  value: player.totalDonations.toString()),
+            ],
+          ),
+          SizedBox(height: 6),
+          Stat(
+            header: StatHeader(
+                icon: Icons.data_usage, title: AppUITexts.LEAGUE_SEASON),
+            tiles: [
+              StatTile(field: AppUITexts.ARENA_COL, value: player.arena.name),
+            ],
+          ),
+          SizedBox(height: 6),
+          Stat(
+            header: StatHeader(
+              title: AppUITexts.CHALLENGE_AND_TOURNAMENT,
               icon: Icons.toys_rounded,
             ),
             tiles: [
               StatTile(
-                  field: 'War Day Wins: ', value: player.warDayWins.toString()),
+                  field: AppUITexts.WAR_DAY_WINS_COL,
+                  value: player.warDayWins.toString()),
               StatTile(
-                  field: 'Clan Cards Collected: ',
+                  field: AppUITexts.CLAN_CARDS_COLLECTED_COL,
                   value: player.clanCardsCollected.toString()),
               StatTile(
-                  field: 'Challenge Cards Won: ',
+                  field: AppUITexts.CHALLENGE_CARDS_WON_COL,
                   value: player.challengeCardsWon.toString()),
               StatTile(
-                  field: 'Challenge Max Wins: ',
+                  field: AppUITexts.CHALLENGE_MAX_WINS_COL,
                   value: player.challengeMaxWins.toString()),
               StatTile(
-                  field: 'Tournament Cards Won: ',
+                  field: AppUITexts.TOURNAMENT_CARDS_WON_COL,
                   value: player.tournamentCardsWon.toString()),
               StatTile(
-                  field: 'Tournament Battle Count: ',
+                  field: AppUITexts.TOURNAMENT_BATTLE_COUNT_COL,
                   value: player.tournamentBattleCount.toString()),
             ],
           ),
           SizedBox(height: 6),
           Stat(
-            header: StatHeader(icon: Icons.data_usage, title: 'War (Old)'),
+            header:
+                StatHeader(icon: Icons.data_usage, title: AppUITexts.WAR_OLD),
             tiles: [
               StatTile(
-                  field: 'War Day Wins: ', value: player.warDayWins.toString()),
+                  field: AppUITexts.WAR_DAY_WINS_COL,
+                  value: player.warDayWins.toString()),
               StatTile(
-                  field: 'Clan Cards Collected: ',
+                  field: AppUITexts.CLAN_CARDS_COLLECTED_COL,
                   value: player.clanCardsCollected.toString()),
             ],
           ),
           SizedBox(height: 6),
           Stat(
-            header: StatHeader(icon: Icons.info, title: 'Current Season'),
+            header:
+                StatHeader(icon: Icons.info, title: AppUITexts.CURRENT_SEASON),
             tiles: [
               StatTile(
-                  field: 'Trophies: ',
+                  field: AppUITexts.TROPHIES_COl,
                   value: player.leagueStatistics.currentSeason.trophies
                       .toString()),
               StatTile(
-                  field: 'Best Trophies: ',
+                  field: AppUITexts.BEST_TROPHIES_COL,
                   value: player.leagueStatistics.currentSeason.bestTrophies
                       .toString()),
             ],
@@ -129,30 +143,32 @@ class PlayerDetails extends StatelessWidget {
           SizedBox(height: 6),
           Stat(
             header: StatHeader(
-                icon: Icons.all_inclusive_sharp, title: 'Previous Season'),
+                icon: Icons.all_inclusive_sharp,
+                title: AppUITexts.PREVIOUS_SEASON),
             tiles: [
               StatTile(
-                  field: 'Date: ',
+                  field: AppUITexts.DATE_COL,
                   value: player.leagueStatistics.previousSeason.id.toString()),
               StatTile(
-                  field: 'Trophies: ',
+                  field: AppUITexts.TROPHIES_COl,
                   value: player.leagueStatistics.previousSeason.trophies
                       .toString()),
               StatTile(
-                  field: 'Best Trophies: ',
+                  field: AppUITexts.BEST_TROPHIES_COL,
                   value: player.leagueStatistics.previousSeason.bestTrophies
                       .toString()),
             ],
           ),
           SizedBox(height: 6),
           Stat(
-            header: StatHeader(icon: Icons.add_alert, title: 'Best Season'),
+            header: StatHeader(
+                icon: Icons.add_alert, title: AppUITexts.BEST_SEASON),
             tiles: [
               StatTile(
-                  field: 'Best Trophies: ',
+                  field: AppUITexts.BEST_TROPHIES_COL,
                   value: player.leagueStatistics.bestSeason.id.toString()),
               StatTile(
-                  field: 'Trophies: ',
+                  field: AppUITexts.TROPHIES_COl,
                   value:
                       player.leagueStatistics.bestSeason.trophies.toString()),
             ],
@@ -162,9 +178,9 @@ class PlayerDetails extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  StatHeader(icon: Icons.deck, title: 'Current Deck'),
+                  StatHeader(icon: Icons.deck, title: AppUITexts.CURRENT_DECK),
                   Text(
-                    ' > Favorite Card: ',
+                    AppUITexts.ARROW_FAVORITE_CARD_COL,
                     style: TextStyle(fontSize: 12, color: Colors.purple),
                   ),
                   Text(

@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:clash_royale_assistant/clash/presentation/widgets/cards_chart.dart';
 import 'package:collection/collection.dart' show groupBy;
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../domain/entities/player.dart';
 import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
@@ -24,7 +24,8 @@ class CardsDetails extends StatelessWidget {
         cards, (card) => (card as Card).level + 13 - (card as Card).maxLevel);
     int currentDeckColumnCount = 4;
     var cardsChartData = newList.keys
-        .map((e) => CardsChartData('Level ' + e.toString(), newList[e].length))
+        .map((e) => CardsChartData(
+            AppUITexts.LEVEL_SPC + e.toString(), newList[e].length))
         .toList();
     final _colorPalettes =
         charts.MaterialPalette.getOrderedPalettes(newList.keys.length);
@@ -52,7 +53,7 @@ class CardsDetails extends StatelessWidget {
             children: [
               StatHeader(
                 icon: Icons.label_rounded,
-                title: 'Level ' + cardLevels.toString(),
+                title: AppUITexts.LEVEL_SPC + cardLevels.toString(),
                 color: Color(int.parse(_colors.elementAt(colorIndex))),
                 textColor: Color(int.parse(_colors.elementAt(colorIndex++))),
               ),

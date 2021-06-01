@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../../core/platform/assets_controller.dart';
 import '../../domain/entities/player.dart' hide Card;
 
@@ -49,7 +50,7 @@ class AchievementsCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Target: ',
+            AppUITexts.TARGET_COL,
             style: TextStyle(
               color: Colors.blueGrey,
               fontWeight: FontWeight.w400,
@@ -77,7 +78,7 @@ class AchievementsCard extends StatelessWidget {
     return Center(
       child: RichText(
         text: TextSpan(
-          text: 'Bla Bla Bla Achieved: ',
+          text: AppUITexts.ACHIEVED_COL,
           style: TextStyle(
             color: Colors.green,
             fontWeight: FontWeight.w600,
@@ -112,7 +113,7 @@ class AchievementsCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Stars: ',
+            AppUITexts.STARS_COL,
             style: TextStyle(
               color: Color(0XFF826001),
               fontWeight: FontWeight.w600,
@@ -123,7 +124,7 @@ class AchievementsCard extends StatelessWidget {
           ),
           if (achieve.stars == 0)
             Text(
-              'Not yet!',
+              AppUITexts.NOT_YET,
               style: TextStyle(
                 color: Colors.red,
                 fontWeight: FontWeight.w400,

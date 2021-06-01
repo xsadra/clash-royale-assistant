@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Card;
 
+import '../../../core/constants/consts.dart';
 import '../../../core/platform/assets_controller.dart';
 import '../../domain/entities/player.dart';
 import 'widgets.dart';
@@ -40,7 +41,8 @@ class CardDeckItem extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 12.0, left: 9),
               width: 56,
               child: Text(
-                'lvl ' + (card.level + 13 - card.maxLevel).toString(),
+                AppUITexts.LVL_SPC +
+                    (card.level + 13 - card.maxLevel).toString(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,

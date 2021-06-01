@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../core/constants/secret.dart';
-import '../../../core/constants/texts.dart';
+import '../../../core/constants/consts.dart';
 import '../../../core/error/exceptions.dart';
 import '../../domain/entities/up_chests.dart';
 import '../models/up_chests_model.dart';
@@ -26,12 +26,13 @@ class UpcomingChestsRemoteDataSourceImpl
   Future<UpChests> getUpcomingChests(String playerTag) async {
     final response = await dio
         .get(
-          API_BASE_PLAYER_URL_PROXY + playerTag + UPCOMING_CHESTS,
-          options: Options(headers: {
-            'Content-Type': 'application/json',
-            'authorization': "Bearer $API_TOKEN_PROXY",
-          }),
-        )
+      AppApiTexts.API_BASE_PLAYER_URL_PROXY + playerTag +
+          AppApiTexts.UPCOMING_CHESTS,
+      options: Options(headers: {
+        'Content-Type': 'application/json',
+        'authorization': "Bearer $API_TOKEN_PROXY",
+      }),
+    )
         .timeout(Duration(seconds: 30))
         .catchError((onError) {
       throw ServerException();

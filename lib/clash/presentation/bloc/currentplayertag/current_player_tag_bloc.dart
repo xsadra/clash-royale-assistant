@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart' show Bloc;
 import 'package:meta/meta.dart' show required;
 
-import '../../../../core/constants/texts.dart';
+import '../../../../core/constants/consts.dart';
 import '../../../../core/error/failure_extensions.dart';
 import '../../../domain/repository/current_player_tag_repository.dart';
 import 'bloc.dart';
@@ -52,11 +52,11 @@ class CurrentPlayerTagBloc
           if (isSaved) {
             return Saved();
           }
-          return Error(message: PLAYER_TAG_NOT_SAVED_MESSAGE);
+          return Error(message: AppErrorTexts.PLAYER_TAG_NOT_SAVED_MESSAGE);
         },
       );
     } else {
-      yield Error(message: UNEXPECTED_EVENT);
+      yield Error(message: AppErrorTexts.UNEXPECTED_EVENT);
     }
   }
 }

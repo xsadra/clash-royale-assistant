@@ -3,7 +3,7 @@ import 'dart:async' show Stream;
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart' show required;
 
-import '../../../../core/constants/texts.dart';
+import '../../../../core/constants/consts.dart';
 import '../../../../core/error/failure_extensions.dart';
 import '../../../domain/usecases/get_upcoming_chests.dart';
 import 'bloc.dart';
@@ -28,7 +28,7 @@ class UpcomingChestsBloc
         (chests) => Loaded(upcomingChests: chests),
       );
     } else {
-      yield Error(message: UNEXPECTED_EVENT);
+      yield Error(message: AppErrorTexts.UNEXPECTED_EVENT);
     }
   }
 }

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../../core/constants/secret.dart';
-import '../../../core/constants/texts.dart';
 import '../../../core/error/exceptions.dart';
 import '../../domain/entities/player.dart';
 import '../models/player_model.dart';
@@ -25,7 +25,7 @@ class PlayerRemoteDataSourceImpl implements PlayerRemoteDataSource {
   Future<Player> getPlayer(String playerTag) async {
     final response = await dio
         .get(
-          API_BASE_PLAYER_URL_PROXY + playerTag,
+          AppApiTexts.API_BASE_PLAYER_URL_PROXY + playerTag,
           options: Options(headers: {
             'Content-Type': 'application/json',
             'authorization': "Bearer $API_TOKEN_PROXY",

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/constants/texts.dart';
+import '../../../core/constants/consts.dart';
 import '../../../injection_container.dart' as injection;
 import '../bloc/player/bloc.dart';
 import '../bloc/validatetag/bloc.dart';
@@ -23,7 +23,7 @@ class InputTagPage extends StatelessWidget {
       providers: playerProviders,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(APP_TITLE),
+          title: Text(AppBodyTexts.APP_TITLE),
         ),
         body: Center(
           child: Padding(

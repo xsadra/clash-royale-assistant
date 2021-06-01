@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../core/constants/texts.dart';
+import '../../../core/constants/consts.dart';
 import '../../../core/error/exceptions.dart';
 import '../models/player_model.dart';
 
@@ -28,7 +28,7 @@ class PlayerLocalDataSourceImpl implements PlayerLocalDataSource {
   @override
   Future<PlayerModel> getLastData() {
     log('Getting Data from sharedPreferences', name: 'PlayerLocalDataSource');
-    final jsonString = sharedPreferences.getString(CACHED_PLAYER);
+    final jsonString = sharedPreferences.getString(AppConstTests.CACHED_PLAYER);
     if (jsonString == null) {
       throw CacheException();
     }
@@ -44,7 +44,7 @@ class PlayerLocalDataSourceImpl implements PlayerLocalDataSource {
         name: 'PlayerLocalDataSource');
 
     return sharedPreferences.setString(
-      CACHED_PLAYER,
+      AppConstTests.CACHED_PLAYER,
       jsonEncode(playerToCache),
     );
   }

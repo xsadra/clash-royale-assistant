@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/constants/consts.dart';
 import '../bloc/currentplayertag/bloc.dart';
 import '../bloc/player/bloc.dart' hide Loaded;
 import '../bloc/upcomingchest/bloc.dart' hide Loaded;
@@ -72,16 +73,16 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
   List<Widget> _playerTabBarList() {
     return <Widget>[
       Tab(
-        text: "Player",
+        text: AppUITexts.PLAYER,
       ),
       Tab(
-        text: "Upcoming",
+        text: AppUITexts.UPCOMING,
       ),
       Tab(
-        text: "Cards",
+        text: AppUITexts.CARDS,
       ),
       Tab(
-        text: "Achieved",
+        text: AppUITexts.ACHIEVED,
       ),
     ];
   }

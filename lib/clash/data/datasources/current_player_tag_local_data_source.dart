@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:meta/meta.dart' show required;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../core/constants/texts.dart';
+import '../../../core/constants/consts.dart';
 import '../../../core/error/exceptions.dart';
 import '../../domain/entities/current_player_tag.dart';
 import '../models/current_player_tag_model.dart';
@@ -32,7 +32,7 @@ class CurrentPlayerTagLocalDataSourceImpl
     log(tagToSave.playerTag, name: 'CurrentPlayerTagLocalDataSourceImpl');
 
     return sharedPreferences.setString(
-      CURRENT_PLAYER_TAG,
+      AppConstTests.CURRENT_PLAYER_TAG,
       jsonEncode(tagToSave),
     );
   }
@@ -40,7 +40,8 @@ class CurrentPlayerTagLocalDataSourceImpl
   @override
   Future<CurrentPlayerTagModel> getCurrentPlayerTagData() {
     try {
-      final jsonString = sharedPreferences.getString(CURRENT_PLAYER_TAG);
+      final jsonString =
+          sharedPreferences.getString(AppConstTests.CURRENT_PLAYER_TAG);
       if (jsonString == null) {
         throw NotFoundException();
       }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../../core/platform/assets_controller.dart';
 import '../../domain/entities/upcoming_chest.dart';
 
@@ -26,7 +27,9 @@ class UpcomingChestItem extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 18.0),
               padding: EdgeInsets.only(left: 10.0),
               child: Text(
-                (chest.index == 0) ? 'Next' : '+' + (chest.index).toString(),
+                (chest.index == 0)
+                    ? AppUITexts.Next
+                    : AppUITexts.PLUS + (chest.index).toString(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,

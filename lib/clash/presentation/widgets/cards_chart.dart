@@ -1,6 +1,8 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart' hide Paint;
 
+import '../../../core/constants/consts.dart';
+
 class CardsChartData {
   final String category;
   final int cost;
@@ -37,7 +39,7 @@ class _CardsChartState extends State<CardsChart> {
             /*seriesList=*/
             [
               charts.Series<CardsChartData, String>(
-                id: 'AllCards',
+                id: AppConstTests.ALL_CARDS,
                 colorFn: (_, idx) => _colorPalettes[idx].shadeDefault,
                 domainFn: (CardsChartData sales, _) => sales.category,
                 measureFn: (CardsChartData sales, _) => sales.cost,
@@ -56,7 +58,7 @@ class _CardsChartState extends State<CardsChart> {
             ),
             behaviors: [
               charts.ChartTitle(
-                'All Cards: ' + widget.cardsCount.toString(),
+                AppUITexts.ALL_CARDS_COL + widget.cardsCount.toString(),
                 behaviorPosition: charts.BehaviorPosition.bottom,
               ),
               charts.DatumLegend(

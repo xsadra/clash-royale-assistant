@@ -5,6 +5,7 @@ import 'package:flutter/material.dart' hide Router;
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../../core/routes/router.gr.dart';
 import '../../data/datasources/validate_tag_remote_data_source.dart';
 import '../../domain/entities/current_player_tag.dart';
@@ -44,16 +45,20 @@ class _InputTagState extends State<InputTag> {
     return Column(
       children: [
         SetPlayerHelpText(
-            rowNumber: '1', rowText: 'Launch Clash Royale and tap your name'),
+            rowNumber: AppBodyTexts.NUM_1,
+            rowText: AppBodyTexts.FIND_TAG_HELP_1),
         SizedBox(height: 12.0),
         SetPlayerHelpText(
-            rowNumber: '2', rowText: 'Find your player Tag below your name'),
+            rowNumber: AppBodyTexts.NUM_2,
+            rowText: AppBodyTexts.FIND_TAG_HELP_2),
         SizedBox(height: 12.0),
         SetPlayerHelpText(
-            rowNumber: '3', rowText: 'Tap on your Tag and Copy it'),
+            rowNumber: AppBodyTexts.NUM_3,
+            rowText: AppBodyTexts.FIND_TAG_HELP_3),
         SizedBox(height: 12.0),
         SetPlayerHelpText(
-            rowNumber: '4', rowText: 'Paste your Tag in the field above'),
+            rowNumber: AppBodyTexts.NUM_4,
+            rowText: AppBodyTexts.FIND_TAG_HELP_4),
         SizedBox(height: 12.0),
       ],
     );
@@ -61,7 +66,7 @@ class _InputTagState extends State<InputTag> {
 
   Text _titleText() {
     return Text(
-      'To Start',
+      AppUITexts.TO_START,
       textAlign: TextAlign.center,
       style: TextStyle(
         letterSpacing: 2,
@@ -100,14 +105,15 @@ class _InputTagState extends State<InputTag> {
           style:
               TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF00893F)),
           decoration: InputDecoration(
-              errorText: showError ? 'Wrong tag, try again!' : null,
+              errorText:
+                  showError ? AppErrorTexts.FIND_TAG_TEXT_FIELD_ERROR : null,
               fillColor: Colors.blueGrey,
-              labelText: 'Enter your Player Tag',
+              labelText: AppBodyTexts.FIND_TAG_TEXT_FIELD_LABEL,
               labelStyle:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
               prefixIcon: Icon(Icons.tag, color: Colors.green),
               border: OutlineInputBorder(),
-              hintText: 'XXXXXXXXX',
+              hintText: AppBodyTexts.FIND_TAG_TEXT_FIELD_HINT,
               hintStyle: TextStyle(color: Colors.teal)),
         );
       },
@@ -121,7 +127,7 @@ class _InputTagState extends State<InputTag> {
         Expanded(
           child: ElevatedButton(
             onPressed: _validateTag,
-            child: Text('Search'),
+            child: Text(AppUITexts.SEARCH),
           ),
         ),
       ],
@@ -130,7 +136,8 @@ class _InputTagState extends State<InputTag> {
 
   void _validateTag() {
     controller.clear();
-    inputString = '%23' + inputString.replaceAll('#', '');
+    inputString = AppUITexts.SPACE_URL +
+        inputString.replaceAll(AppUITexts.HASH_TAG, AppUITexts.EMPTY);
 
     log(inputString, name: 'InputTag > _validateTag()');
 

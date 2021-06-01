@@ -3,7 +3,7 @@ import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'clash/presentation/bloc/currentplayertag/bloc.dart';
-import 'core/constants/texts.dart';
+import 'core/constants/consts.dart';
 import 'core/routes/router.gr.dart';
 import 'injection_container.dart' as injection;
 
@@ -23,8 +23,7 @@ class MyApp extends StatelessWidget {
               ..add(GetCurrentPlayerTagEvent())),
       ],
       child: MaterialApp(
-        title: APP_TITLE,
-
+        title: AppBodyTexts.APP_TITLE,
         builder: ExtendedNavigator(router: Router()),
         debugShowCheckedModeBanner: false,
         theme: ThemeData().copyWith(

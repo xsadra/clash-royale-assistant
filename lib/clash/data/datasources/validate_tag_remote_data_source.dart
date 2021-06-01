@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../../core/constants/secret.dart';
-import '../../../core/constants/texts.dart';
 import '../../../core/error/exceptions.dart';
 
 // Fix Step: force to use [RoyaleTags] type
 class RoyaleTags {
-  static String player = API_BASE_PLAYER_URL_PROXY;
-  static String clan = API_BASE_CLAN_URL_PROXY;
-  static String tournaments = API_BASE_TOURNAMENT_URL_PROXY;
+  static String player = AppApiTexts.API_BASE_PLAYER_URL_PROXY;
+  static String clan = AppApiTexts.API_BASE_CLAN_URL_PROXY;
+  static String tournaments = AppApiTexts.API_BASE_TOURNAMENT_URL_PROXY;
 }
 
 abstract class ValidateTagRemoteDataSource {

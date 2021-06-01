@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../core/constants/texts.dart';
+import '../../../core/constants/consts.dart';
 import '../../../core/error/exceptions.dart';
 import '../models/up_chests_model.dart';
 import '../models/upcoming_chest_model.dart';
@@ -28,7 +28,8 @@ class UpcomingChestsLocalDataSourceImpl
 
   @override
   Future<UpChestsModel> getLastData() {
-    final jsonString = sharedPreferences.getString(CACHED_UPCOMING_CHESTS);
+    final jsonString =
+        sharedPreferences.getString(AppConstTests.CACHED_UPCOMING_CHESTS);
     if (jsonString == null) {
       throw CacheException();
     }
@@ -39,7 +40,7 @@ class UpcomingChestsLocalDataSourceImpl
   @override
   Future<void> cacheUpcomingChests(UpChestsModel upcomingChestsToCache) {
     return sharedPreferences.setString(
-      CACHED_UPCOMING_CHESTS,
+      AppConstTests.CACHED_UPCOMING_CHESTS,
       jsonEncode(upcomingChestsToCache),
     );
   }

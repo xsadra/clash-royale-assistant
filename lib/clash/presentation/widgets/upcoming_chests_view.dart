@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/constants/consts.dart';
 import '../bloc/upcomingchest/bloc.dart';
 import 'widgets.dart';
 
@@ -14,20 +15,24 @@ class UpcomingChestsView extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<UpcomingChestsBloc, UpcomingChestsState>(
           builder: (context, state) {
-            if (state is Empty) {
-              return _emptyDisplay();
-            } else if (state is Error) {
-              return MessageDisplay(message: state.message);
-            } else if (state is Loading) {
-              return LoadingWidget();
-            } else if (state is Loaded) {
-              return _loadedDisplay(state);
-            }
-            return MessageDisplay(message: 'Unhandled State');
+            return _stateToWidget(state);
           },
         ),
       ),
     );
+  }
+
+  StatelessWidget _stateToWidget(UpcomingChestsState state) {
+    if (state is Empty) {
+      return _emptyDisplay();
+    } else if (state is Error) {
+      return MessageDisplay(message: state.message);
+    } else if (state is Loading) {
+      return LoadingWidget();
+    } else if (state is Loaded) {
+      return _loadedDisplay(state);
+    }
+    return MessageDisplay(message: AppUIMessagesText.UNHANDLED_STATE);
   }
 
   SingleChildScrollView _emptyDisplay() {
@@ -35,7 +40,7 @@ class UpcomingChestsView extends StatelessWidget {
       child: Column(
         children: [
           InputTag(),
-          MessageDisplay(message: 'No data'),
+          MessageDisplay(message: AppUIMessagesText.NO_DATA),
         ],
       ),
     );

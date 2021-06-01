@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/constants/consts.dart';
 import '../bloc/player/bloc.dart';
 import 'widgets.dart';
 
@@ -23,7 +24,7 @@ class PlayerView extends StatelessWidget {
             } else if (state is Loaded) {
               return PlayerDetails(state: state);
             }
-            return MessageDisplay(message: 'Unhandled State');
+            return MessageDisplay(message: AppUIMessagesText.UNHANDLED_STATE);
           },
         ),
       ),
@@ -35,7 +36,7 @@ class PlayerView extends StatelessWidget {
       child: Column(
         children: [
           RefreshPlayer(),
-          MessageDisplay(message: 'No data'),
+          MessageDisplay(message: AppUIMessagesText.NO_DATA),
         ],
       ),
     );

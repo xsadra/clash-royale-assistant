@@ -19,12 +19,17 @@ class CurrentPlayerTagRepositoryImpl implements CurrentPlayerTagRepository {
 
   @override
   Future<Either<Failure, CurrentPlayerTag>> getCurrentPlayerTag() async {
+    log('getCurrentPlayerTag', name: 'CurrentPlayerTagRepositoryImpl');
     try {
       final currentTag = await localDataSource.getCurrentPlayerTagData();
       return Right(currentTag);
     } on CacheException {
+      log('getCurrentPlayerTag',
+          name: 'CurrentPlayerTagRepositoryImpl', error: 'CacheException');
       return Left(CacheFailure());
     } on NotFoundException {
+      log('getCurrentPlayerTag',
+          name: 'CurrentPlayerTagRepositoryImpl', error: 'NotFoundException');
       return Left(NotFoundFailure());
     }
   }
@@ -40,6 +45,8 @@ class CurrentPlayerTagRepositoryImpl implements CurrentPlayerTagRepository {
 
       return Right(result);
     } on CacheException {
+      log('saveCurrentPlayerTag',
+          name: 'CurrentPlayerTagRepositoryImpl', error: 'CacheException');
       return Left(CacheFailure());
     }
   }
