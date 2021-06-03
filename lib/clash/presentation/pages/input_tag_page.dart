@@ -27,7 +27,7 @@ class InputTagPage extends StatelessWidget {
         ),
         body: Center(
           child: Padding(
-            padding: EdgeInsets.all(screenWidth / 7),
+            padding: EdgeInsets.symmetric(horizontal: screenWidth / 7),
             child: InputTag(),
           ),
         ),

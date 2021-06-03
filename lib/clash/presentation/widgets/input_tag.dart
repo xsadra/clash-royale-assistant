@@ -30,11 +30,11 @@ class _InputTagState extends State<InputTag> {
         mainAxisSize: MainAxisSize.min,
         children: [
           _titleText(),
-          SizedBox(height: 24.0),
+          AppWidgets.sizedBox.height24,
           _inputTextField(),
-          SizedBox(height: 12.0),
+          AppWidgets.sizedBox.height12,
           _searchButton(),
-          SizedBox(height: 12.0),
+          AppWidgets.sizedBox.height12,
           _helpText(),
         ],
       ),
@@ -47,19 +47,19 @@ class _InputTagState extends State<InputTag> {
         SetPlayerHelpText(
             rowNumber: AppBodyTexts.NUM_1,
             rowText: AppBodyTexts.FIND_TAG_HELP_1),
-        SizedBox(height: 12.0),
+        AppWidgets.sizedBox.height12,
         SetPlayerHelpText(
             rowNumber: AppBodyTexts.NUM_2,
             rowText: AppBodyTexts.FIND_TAG_HELP_2),
-        SizedBox(height: 12.0),
+        AppWidgets.sizedBox.height12,
         SetPlayerHelpText(
             rowNumber: AppBodyTexts.NUM_3,
             rowText: AppBodyTexts.FIND_TAG_HELP_3),
-        SizedBox(height: 12.0),
+        AppWidgets.sizedBox.height12,
         SetPlayerHelpText(
             rowNumber: AppBodyTexts.NUM_4,
             rowText: AppBodyTexts.FIND_TAG_HELP_4),
-        SizedBox(height: 12.0),
+        AppWidgets.sizedBox.height12,
       ],
     );
   }
@@ -182,7 +182,7 @@ class SetPlayerHelpText extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(width: 10),
+        AppWidgets.sizedBox.width10,
         Expanded(
           child: Text(
             rowText,

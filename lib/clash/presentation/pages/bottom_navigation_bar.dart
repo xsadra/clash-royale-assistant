@@ -27,7 +27,7 @@ class BottomNavBar extends StatelessWidget {
       height: 48.0,
       curveSize: 74.0,
       style: TabStyle.reactCircle,
-      backgroundColor: Color(0xFF190F2A),
+      backgroundColor: AppColors.bottomNavBar.backgroundColor,
       top: -14,
       initialActiveIndex: initialActiveIndex,
       onTap: (int pageIndex) {

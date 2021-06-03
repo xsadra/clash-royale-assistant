@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../../core/platform/assets_controller.dart';
 import '../../domain/entities/player.dart';
 import 'widgets.dart';
@@ -17,7 +18,7 @@ class PlayerName extends StatelessWidget {
     return Row(
       children: [
         PlayerExperienceWidget(expLevel: player.expLevel.toString()),
-        SizedBox(width: 8),
+        AppWidgets.sizedBox.width8,
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -25,7 +26,7 @@ class PlayerName extends StatelessWidget {
               player.name,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 2),
+            AppWidgets.sizedBox.height2,
             Text(
               player.tag,
               style: TextStyle(fontSize: 9, color: Colors.green),
@@ -33,11 +34,11 @@ class PlayerName extends StatelessWidget {
           ],
         ),
         if (player.expLevel == 13) ...[
-          SizedBox(width: 16),
+          AppWidgets.sizedBox.width16,
           Row(
             children: [
               Image.asset(Assets.starLevel, width: 24, height: 24),
-              SizedBox(width: 6),
+              AppWidgets.sizedBox.width6,
               Text(
                 player.starPoints.toString(),
                 style: TextStyle(

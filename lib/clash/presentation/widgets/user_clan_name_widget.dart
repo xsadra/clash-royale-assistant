@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/consts.dart';
 import '../../domain/entities/player.dart';
 
 class UserClanName extends StatelessWidget {
@@ -15,12 +16,12 @@ class UserClanName extends StatelessWidget {
     return Row(
       children: [
         Text(player.clan.name),
-        SizedBox(width: 4),
+        AppWidgets.sizedBox.width4,
         Text(
           player.clan.tag,
           style: TextStyle(fontSize: 10, color: Colors.blueGrey),
         ),
-        SizedBox(width: 4),
+        AppWidgets.sizedBox.width4,
         Text(player.role),
       ],
     );

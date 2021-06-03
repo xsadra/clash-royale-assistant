@@ -49,9 +49,9 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
         children: <Widget>[
           TabBar(
             controller: _nestedTabController,
-            indicatorColor: Colors.teal,
-            labelColor: Colors.teal,
-            unselectedLabelColor: Colors.black54,
+            indicatorColor: AppColors.player.tabBarIndicatorColor,
+            labelColor: AppColors.player.tabBarLabelColor,
+            unselectedLabelColor: AppColors.player.tabBarUnselectedLabelColor,
             isScrollable: true,
             tabs: _playerTabBarList(),
           ),

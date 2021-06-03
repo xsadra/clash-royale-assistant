@@ -1,0 +1,3 @@
+class WidgetsConfig {
+  WidgetsConfig._();
+}

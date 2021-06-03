@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/consts.dart';
 import 'widgets.dart';
 
 class Stat extends StatelessWidget {
@@ -17,7 +18,7 @@ class Stat extends StatelessWidget {
     return Column(
       children: [
         header,
-        SizedBox(height: 4),
+        AppWidgets.sizedBox.height4,
         for (var tile in tiles) tile,
       ],
     );

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         builder: ExtendedNavigator(router: Router()),
         debugShowCheckedModeBanner: false,
         theme: ThemeData().copyWith(
-          primaryColor: Color(0xFF190F2A),
+          primaryColor: AppColors.main.primaryColor,
         ),
       ),
     );

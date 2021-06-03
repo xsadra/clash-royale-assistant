@@ -88,7 +88,7 @@ class CardsDetails extends StatelessWidget {
             ),
           ),
         ],
-        SizedBox(height: 16),
+        AppWidgets.sizedBox.height16,
       ],
     );
   }

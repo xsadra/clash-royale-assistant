@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/consts.dart';
+
 class StatHeader extends StatelessWidget {
   const StatHeader({
     @required this.icon,
@@ -19,7 +21,7 @@ class StatHeader extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, color: color ?? null),
-        SizedBox(width: 4),
+        AppWidgets.sizedBox.width4,
         Text(
           title,
           style:
