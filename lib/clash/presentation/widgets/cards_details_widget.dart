@@ -17,18 +17,18 @@ class CardsDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Step move all logic to a controller class
-    var cards = state.player.cards;
-    cards.sort((b, a) =>
+    var _cards = state.player.cards;
+    _cards.sort((b, a) =>
         (a.level + 13 - a.maxLevel).compareTo(b.level + 13 - b.maxLevel));
-    var newList = groupBy(
-        cards, (card) => (card as Card).level + 13 - (card as Card).maxLevel);
+    var _newList = groupBy(
+        _cards, (card) => (card as Card).level + 13 - (card as Card).maxLevel);
     int currentDeckColumnCount = 4;
-    var cardsChartData = newList.keys
+    var _cardsChartData = _newList.keys
         .map((e) => CardsChartData(
-            AppUITexts.LEVEL_SPC + e.toString(), newList[e].length))
+            AppUITexts.LEVEL_SPC + e.toString(), _newList[e].length))
         .toList();
     final _colorPalettes =
-        charts.MaterialPalette.getOrderedPalettes(newList.keys.length);
+        charts.MaterialPalette.getOrderedPalettes(_newList.keys.length);
     var colorIndex = 0;
     log('Color Palette: ' + _colorPalettes.length.toString(),
         name: 'CardsDetails');
@@ -44,52 +44,64 @@ class CardsDetails extends StatelessWidget {
         SizedBox(
           height: 220,
           child: CardsChart(
-            chartData: cardsChartData,
-            cardsCount: cards.length,
+            chartData: _cardsChartData,
+            cardsCount: _cards.length,
           ),
         ),
-        for (var cardLevels in newList.keys) ...[
-          Row(
-            children: [
-              StatHeader(
-                icon: Icons.label_rounded,
-                title: AppUITexts.LEVEL_SPC + cardLevels.toString(),
-                color: Color(int.parse(_colors.elementAt(colorIndex))),
-                textColor: Color(int.parse(_colors.elementAt(colorIndex++))),
-              ),
-              Text(
-                ' (${newList[cardLevels].length})',
-                style: TextStyle(color: Colors.green),
-              )
-            ],
-          ),
-          AnimationLimiter(
-            child: GridView.count(
-              physics: const NeverScrollableScrollPhysics(),
-              mainAxisSpacing: 8,
-              shrinkWrap: true,
-              crossAxisCount: currentDeckColumnCount,
-              children: List.generate(
-                newList[cardLevels].length,
-                (int index) {
-                  Card card = newList[cardLevels].elementAt(index);
-                  return AnimationConfiguration.staggeredGrid(
-                    position: index,
-                    duration: const Duration(milliseconds: 775),
-                    columnCount: currentDeckColumnCount,
-                    child: ScaleAnimation(
-                      child: FadeInAnimation(
-                        child: CardDeckItem(card: card),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-        ],
+        for (var cardLevels in _newList.keys)
+          ..._createCard(cardLevels, _colors, colorIndex, _newList,
+              currentDeckColumnCount),
         AppWidgets.sizedBox.height16,
       ],
     );
+  }
+
+  List<Widget> _createCard(
+    int cardLevel,
+    List<String> colors,
+    int colorIndex,
+    Map<int, List<Card>> cardList,
+    int columnCount,
+  ) {
+    return [
+      Row(
+        children: [
+          StatHeader(
+            icon: Icons.label_rounded,
+            title: AppUITexts.LEVEL_SPC + cardLevel.toString(),
+            color: Color(int.parse(colors.elementAt(colorIndex))),
+            textColor: Color(int.parse(colors.elementAt(colorIndex++))),
+          ),
+          Text(
+            ' (${cardList[cardLevel].length})',
+            style: TextStyle(color: Colors.green),
+          )
+        ],
+      ),
+      AnimationLimiter(
+        child: GridView.count(
+          physics: const NeverScrollableScrollPhysics(),
+          mainAxisSpacing: 8,
+          shrinkWrap: true,
+          crossAxisCount: columnCount,
+          children: List.generate(
+            cardList[cardLevel].length,
+            (int index) {
+              Card card = cardList[cardLevel].elementAt(index);
+              return AnimationConfiguration.staggeredGrid(
+                position: index,
+                duration: const Duration(milliseconds: 775),
+                columnCount: columnCount,
+                child: ScaleAnimation(
+                  child: FadeInAnimation(
+                    child: CardDeckItem(card: card),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    ];
   }
 }

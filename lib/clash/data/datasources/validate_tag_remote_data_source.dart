@@ -6,7 +6,7 @@ import '../../../core/constants/secret.dart';
 import '../../../core/error/exceptions.dart';
 
 // Fix Step: force to use [RoyaleTags] type
-class RoyaleTags {
+class RoyaleTagsType {
   static String player = AppApiTexts.API_BASE_PLAYER_URL_PROXY;
   static String clan = AppApiTexts.API_BASE_CLAN_URL_PROXY;
   static String tournaments = AppApiTexts.API_BASE_TOURNAMENT_URL_PROXY;

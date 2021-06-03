@@ -117,7 +117,6 @@ class _InputTagState extends State<InputTag> {
               hintStyle: TextStyle(color: Colors.teal)),
         );
       },
-      //listenWhen: (previous, current) => current != previous,
     );
   }
 
@@ -141,9 +140,8 @@ class _InputTagState extends State<InputTag> {
 
     log(inputString, name: 'InputTag > _validateTag()');
 
-    context
-        .read<ValidateTagBloc>()
-        .add(CheckValidateTagEvent(tag: inputString, type: RoyaleTags.player));
+    context.read<ValidateTagBloc>().add(
+        CheckValidateTagEvent(tag: inputString, type: RoyaleTagsType.player));
     log('add CheckValidateTagEvent event to ValidateTagBloc',
         name: 'InputTag > _validateTag()');
   }
