@@ -1,3 +1,4 @@
+import 'package:clash_royale_assistant/clash/domain/repository/battles_repository.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -5,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'clash/data/datasources/datasources.dart';
 import 'clash/data/datasources/player_local_data_source.dart';
+import 'clash/data/repositories/battles_repository_impl.dart';
 import 'clash/data/repositories/current_player_tag_repository_impl.dart';
 import 'clash/data/repositories/player_repository_impl.dart';
 import 'clash/data/repositories/upcoming_chest_repository_impl.dart';
@@ -15,6 +17,7 @@ import 'clash/domain/repository/upcoming_chest_repository.dart';
 import 'clash/domain/repository/validate_tag_repository.dart';
 import 'clash/domain/usecases/get_player.dart';
 import 'clash/domain/usecases/get_upcoming_chests.dart';
+import 'clash/presentation/bloc/battles/bloc.dart';
 import 'clash/presentation/bloc/currentplayertag/bloc.dart';
 import 'clash/presentation/bloc/player/bloc.dart';
 import 'clash/presentation/bloc/upcomingchest/bloc.dart';
@@ -36,6 +39,10 @@ Future<void> init() async {
 
   sl.registerFactory(
     () => ValidateTagBloc(repository: sl()),
+  );
+
+  sl.registerFactory(
+    () => BattlesBloc(repository: sl()),
   );
 
   sl.registerLazySingleton(() => GetUpcomingChests(repository: sl()));
@@ -69,6 +76,14 @@ Future<void> init() async {
     ),
   );
 
+  sl.registerLazySingleton<BattlesRepository>(
+    () => BattlesRepositoryImpl(
+      networkInfo: sl(),
+      remoteDataSource: sl(),
+      localDataSource: sl(),
+    ),
+  );
+
   sl.registerLazySingleton<UpcomingChestsLocalDataSource>(
     () => UpcomingChestsLocalDataSourceImpl(sharedPreferences: sl()),
   );
@@ -89,6 +104,14 @@ Future<void> init() async {
 
   sl.registerLazySingleton<ValidateTagRemoteDataSource>(
     () => ValidateTagRemoteDataSourceImpl(dio: sl()),
+  );
+
+  sl.registerLazySingleton<BattlesRemoteDataSource>(
+    () => BattlesRemoteDataSourceImpl(dio: sl()),
+  );
+
+  sl.registerLazySingleton<BattlesLocalDataSource>(
+    () => BattlesLocalDataSourceImpl(sharedPreferences: sl()),
   );
 
   sl.registerLazySingleton<NetworkInfo>(
