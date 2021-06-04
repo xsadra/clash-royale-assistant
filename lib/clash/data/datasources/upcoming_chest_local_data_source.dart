@@ -5,11 +5,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/constants/consts.dart';
 import '../../../core/error/exceptions.dart';
-import '../models/up_chests_model.dart';
-import '../models/upcoming_chest_model.dart';
+import '../models/up_chests_model.dart' show UpChestsModel;
 
 abstract class UpcomingChestsLocalDataSource {
-  /// Gets the cached list of [UpcomingChestModel] which was gotten the last time.
+  /// Gets the cached list of [UpChestsModel] which was gotten the last time.
   /// the user had an internet connection.
   ///
   /// Trows [CacheException] if no cached data is present.

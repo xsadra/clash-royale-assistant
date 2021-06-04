@@ -5,6 +5,7 @@ class AppConstTests {
   static const CACHED_PLAYER = 'CACHED_PLAYER';
   static const CURRENT_PLAYER_TAG = 'CURRENT_PLAYER_TAG';
   static const ALL_CARDS = 'ALL_CARDS';
+  static const CACHED_BATTLES = 'CACHED_BATTLES';
 }
 
 class AppApiTexts {
@@ -23,6 +24,7 @@ class AppApiTexts {
   static const API_BASE_TOURNAMENT_URL_PROXY =
       API_BASE_URL_PROXY + API_TOURNAMENT_URL;
   static const UPCOMING_CHESTS = '/upcomingchests';
+  static const BATTLES = '/battlelog';
 }
 
 class AppRouteTexts {
