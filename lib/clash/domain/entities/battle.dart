@@ -65,7 +65,7 @@ class TeamMember {
   final int kingTowerHitPoints;
   final List<int> princessTowersHitPoints;
   final Clan clan;
-  final List<Card> clans;
+  final List<Card> cards;
 
   const TeamMember({
     @required this.tag,
@@ -74,7 +74,7 @@ class TeamMember {
     @required this.kingTowerHitPoints,
     @required this.princessTowersHitPoints,
     @required this.clan,
-    @required this.clans,
+    @required this.cards,
   });
 }
 
