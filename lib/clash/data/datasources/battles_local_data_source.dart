@@ -7,7 +7,7 @@ import '../../../core/constants/consts.dart';
 import '../../../core/error/exceptions.dart';
 import '../models/battles_model.dart';
 
-abstract class BattleLocalDataSource {
+abstract class BattlesLocalDataSource {
   /// Gets the cached list of [BattlesModel] which was gotten the last time.
   /// the user had an internet connection.
   ///
@@ -17,10 +17,10 @@ abstract class BattleLocalDataSource {
   Future<void> cacheBattles(BattlesModel battlesToCache);
 }
 
-class BattleLocalDataSourceImpl implements BattleLocalDataSource {
+class BattlesLocalDataSourceImpl implements BattlesLocalDataSource {
   final SharedPreferences sharedPreferences;
 
-  BattleLocalDataSourceImpl({
+  BattlesLocalDataSourceImpl({
     @required this.sharedPreferences,
   });
 
