@@ -1,7 +1,6 @@
-import 'package:clash_royale_assistant/clash/domain/repository/battles_repository.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
-import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
+import 'package:dio/dio.dart' show Dio;
+import 'package:get_it/get_it.dart' show GetIt;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'clash/data/datasources/datasources.dart';
@@ -11,6 +10,7 @@ import 'clash/data/repositories/current_player_tag_repository_impl.dart';
 import 'clash/data/repositories/player_repository_impl.dart';
 import 'clash/data/repositories/upcoming_chest_repository_impl.dart';
 import 'clash/data/repositories/validate_tag_repository_impl.dart';
+import 'clash/domain/repository/battles_repository.dart';
 import 'clash/domain/repository/current_player_tag_repository.dart';
 import 'clash/domain/repository/player_repository.dart';
 import 'clash/domain/repository/upcoming_chest_repository.dart';

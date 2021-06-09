@@ -221,7 +221,9 @@ class TeamMemberModel extends TeamMember {
       name: json['name'] as String,
       crowns: json['crowns'] as int,
       kingTowerHitPoints: json['kingTowerHitPoints'] as int,
-      princessTowersHitPoints: json['princessTowersHitPoints'] as List<int>,
+      princessTowersHitPoints: (json['princessTowersHitPoints'] as List)
+          .map((e) => int.parse(e.toString()))
+          .toList(),
       clan: json['clan'] as Clan,
       cards: (json['cards'] as List).map((e) => CardModel.fromJson(e)).toList(),
     );

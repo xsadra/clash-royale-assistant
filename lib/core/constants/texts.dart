@@ -79,12 +79,13 @@ class AppUITexts {
   static const UPCOMING = 'Upcoming';
   static const CARDS = 'Cards';
   static const ACHIEVED = 'Achieved';
+  static const BATTLES = 'Battles';
   static const ACHIEVED_COL = 'Achieved: ';
   static const SEARCH = 'Search';
   static const PLUS = '+';
   static const HASH_TAG = '#';
   static const EMPTY = '';
-  static const SPACE_URL = '';
+  static const SPACE_URL = '%23';
   static const Next = 'Next';
   static const LVL_SPC = 'lvl ';
   static const LEVEL_SPC = 'Level ';

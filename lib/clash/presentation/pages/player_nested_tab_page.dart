@@ -4,9 +4,11 @@ import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants/consts.dart';
+import '../bloc/battles/bloc.dart' hide Loaded;
 import '../bloc/currentplayertag/bloc.dart';
 import '../bloc/player/bloc.dart' hide Loaded;
 import '../bloc/upcomingchest/bloc.dart' hide Loaded;
+import '../widgets/battles_view.dart';
 import '../widgets/widgets.dart';
 
 class PlayerNestedTabPage extends StatefulWidget {
@@ -42,6 +44,10 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
           context
               .read<UpcomingChestsBloc>()
               .add(GetUpcomingChestsEvent(playerTag));
+
+          log('add GetBattlesEvent to BattlesBloc: ' + playerTag,
+              name: 'PlayerNestedTabPage BlocListener');
+          context.read<BattlesBloc>().add(GetBattlesEvent(playerTag));
         }
       },
       child: Column(
@@ -82,6 +88,9 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
         text: AppUITexts.CARDS,
       ),
       Tab(
+        text: AppUITexts.BATTLES,
+      ),
+      Tab(
         text: AppUITexts.ACHIEVED,
       ),
     ];
@@ -97,6 +106,9 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
       ),
       Container(
         child: CardsView(),
+      ),
+      Container(
+        child: BattlesView(),
       ),
       Container(
         child: AchievementsView(),
