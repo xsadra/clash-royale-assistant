@@ -92,29 +92,51 @@ class _InputTagState extends State<InputTag> {
         } else if (state is NotValid) {
           showError = true;
         }
-        return TextField(
-          onChanged: (value) => inputString = value,
-          onSubmitted: (_) => _validateTag(),
-          controller: controller,
-          keyboardType: TextInputType.text,
-          textCapitalization: TextCapitalization.characters,
-          inputFormatters: [UpperCaseTextFormatter()],
-          textInputAction: TextInputAction.search,
-          maxLength: 10,
-          maxLines: 1,
-          style:
-              TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF00893F)),
-          decoration: InputDecoration(
-              errorText:
-                  showError ? AppErrorTexts.FIND_TAG_TEXT_FIELD_ERROR : null,
-              fillColor: Colors.blueGrey,
-              labelText: AppBodyTexts.FIND_TAG_TEXT_FIELD_LABEL,
-              labelStyle:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
-              prefixIcon: Icon(Icons.tag, color: Colors.green),
-              border: OutlineInputBorder(),
-              hintText: AppBodyTexts.FIND_TAG_TEXT_FIELD_HINT,
-              hintStyle: TextStyle(color: Colors.teal)),
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 7,
+              child: TextField(
+                onChanged: (value) {
+                  log('Input value is: ' + value,
+                      name: 'InputTag > _inputTextField');
+                  inputString = value;
+                },
+                onSubmitted: (_) => _validateTag(),
+                controller: controller,
+                keyboardType: TextInputType.text,
+                textCapitalization: TextCapitalization.characters,
+                // inputFormatters: [UpperCaseTextFormatter()],
+                textInputAction: TextInputAction.search,
+                maxLength: 10,
+                maxLines: 1,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Color(0xFF00893F)),
+                decoration: InputDecoration(
+                    errorText: showError
+                        ? AppErrorTexts.FIND_TAG_TEXT_FIELD_ERROR
+                        : null,
+                    fillColor: Colors.blueGrey,
+                    labelText: AppBodyTexts.FIND_TAG_TEXT_FIELD_LABEL,
+                    labelStyle: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black54),
+                    prefixIcon: Icon(Icons.tag, color: Colors.green),
+                    border: OutlineInputBorder(),
+                    hintText: AppBodyTexts.FIND_TAG_TEXT_FIELD_HINT,
+                    hintStyle: TextStyle(color: Colors.teal)),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: IconButton(
+                onPressed: () => controller.clear(),
+                icon: Icon(Icons.delete),
+              ),
+            ),
+          ],
         );
       },
     );
@@ -142,7 +164,12 @@ class _InputTagState extends State<InputTag> {
 
     context.read<ValidateTagBloc>().add(
         CheckValidateTagEvent(tag: inputString, type: RoyaleTagsType.player));
-    log('add CheckValidateTagEvent event to ValidateTagBloc',
+    log(
+        'add CheckValidateTagEvent event to ValidateTagBloc: [' +
+            inputString +
+            '] - [' +
+            RoyaleTagsType.player +
+            ']',
         name: 'InputTag > _validateTag()');
   }
 }
@@ -192,10 +219,19 @@ class SetPlayerHelpText extends StatelessWidget {
   }
 }
 
+// Fix Step: remove -  it cause repeated letters on input
 class UpperCaseTextFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
+    log('oldValue: ' + oldValue.text,
+        name: 'InputTag > SetPlayerHelpText > UpperCaseTextFormatter');
+    log('oldValue Selection: ' + oldValue.selection.toString(),
+        name: 'InputTag > SetPlayerHelpText > UpperCaseTextFormatter');
+    log('newValue: ' + newValue.text,
+        name: 'InputTag > SetPlayerHelpText > UpperCaseTextFormatter');
+    log('newValue Selection: ' + newValue.selection.toString(),
+        name: 'InputTag > SetPlayerHelpText > UpperCaseTextFormatter');
     return TextEditingValue(
       text: newValue.text?.toUpperCase(),
       selection: newValue.selection,
