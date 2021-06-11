@@ -22,30 +22,47 @@ class BattleModel extends Battle {
     @required List<TeamMemberModel> opponent,
     @required String challengeTitle,
     @required bool isHostedMatch,
-  });
+  }) : super(
+          type: type,
+          battleTime: battleTime,
+          princessTowersHitPoints: princessTowersHitPoints,
+          boatBattleSide: boatBattleSide,
+          boatBattleWon: boatBattleWon,
+          newTowersDestroyed: newTowersDestroyed,
+          prevTowersDestroyed: prevTowersDestroyed,
+          challengeId: challengeId,
+          isLadderTournament: isLadderTournament,
+          arena: arena,
+          gameMode: gameMode,
+          deckSelection: deckSelection,
+          team: team,
+          opponent: opponent,
+          challengeTitle: challengeTitle,
+          isHostedMatch: isHostedMatch,
+        );
 
-  factory BattleModel.fromJson(Map<String, dynamic> json) {
+  factory BattleModel.fromJson(Map<String, dynamic> jsonData) {
     return BattleModel(
-      type: json['type'] as String,
-      battleTime: json['battleTime'] as String,
-      princessTowersHitPoints: json['princessTowersHitPoints'] as int,
-      boatBattleSide: json['boatBattleSide'] as String,
-      boatBattleWon: json['boatBattleWon'] as bool,
-      newTowersDestroyed: json['newTowersDestroyed'] as int,
-      prevTowersDestroyed: json['prevTowersDestroyed'] as int,
-      challengeId: json['challengeId'] as int,
-      isLadderTournament: json['isLadderTournament'] as bool,
-      arena: ArenaModel.fromJson(json['arena']),
-      gameMode: GameModeModel.fromJson(json['gameMode']),
-      deckSelection: json['deckSelection'] as String,
-      team: (json['team'] as List)
+      type: jsonData['type'] as String,
+      battleTime: jsonData['battleTime'] as String,
+      princessTowersHitPoints: jsonData['princessTowersHitPoints'] as int,
+      boatBattleSide: jsonData['boatBattleSide'] as String,
+      boatBattleWon: jsonData['boatBattleWon'] as bool,
+      newTowersDestroyed: jsonData['newTowersDestroyed'] as int,
+      prevTowersDestroyed: jsonData['prevTowersDestroyed'] as int,
+      challengeId: jsonData['challengeId'] as int,
+      isLadderTournament: jsonData['isLadderTournament'] as bool,
+      arena: ArenaModel.fromJson(jsonData['arena']),
+      gameMode: GameModeModel.fromJson(jsonData['gameMode']),
+      deckSelection: jsonData['deckSelection'] as String,
+      team: (jsonData['team'] as List)
           .map((e) => TeamMemberModel.fromJson(e))
           .toList(),
-      opponent: (json['opponent'] as List)
+      opponent: (jsonData['opponent'] as List)
           .map((e) => TeamMemberModel.fromJson(e))
           .toList(),
-      challengeTitle: json['challengeTitle'] as String,
-      isHostedMatch: json['isHostedMatch'] as bool,
+      challengeTitle: jsonData['challengeTitle'] as String,
+      isHostedMatch: jsonData['isHostedMatch'] as bool,
     );
   }
 
@@ -124,7 +141,10 @@ class ArenaModel extends Arena {
   const ArenaModel({
     @required int id,
     @required String name,
-  }) : super(name: name, id: id);
+  }) : super(
+          name: name,
+          id: id,
+        );
 
   factory ArenaModel.fromJson(Map<String, dynamic> json) {
     return new ArenaModel(
@@ -162,7 +182,10 @@ class GameModeModel extends GameMode {
   const GameModeModel({
     @required int id,
     @required String name,
-  }) : super(name: name, id: id);
+  }) : super(
+          name: name,
+          id: id,
+        );
 
   factory GameModeModel.fromJson(Map<String, dynamic> json) {
     return new GameModeModel(
@@ -221,10 +244,12 @@ class TeamMemberModel extends TeamMember {
       name: json['name'] as String,
       crowns: json['crowns'] as int,
       kingTowerHitPoints: json['kingTowerHitPoints'] as int,
-      princessTowersHitPoints: (json['princessTowersHitPoints'] as List)
-          .map((e) => int.parse(e.toString()))
-          .toList(),
-      clan: json['clan'] as Clan,
+      princessTowersHitPoints: json['princessTowersHitPoints'] != null
+          ? (json['princessTowersHitPoints'] as List)
+              .map((e) => int.parse(e.toString()))
+              .toList()
+          : [],
+      clan: ClanModel.fromJson(json['clan']),
       cards: (json['cards'] as List).map((e) => CardModel.fromJson(e)).toList(),
     );
   }
@@ -284,11 +309,13 @@ class ClanModel extends Clan {
         );
 
   factory ClanModel.fromJson(Map<String, dynamic> json) {
-    return new ClanModel(
-      tag: json['tag'] as String,
-      name: json['name'] as String,
-      badgeId: json['badgeId'] as int,
-    );
+    return json == null
+        ? null
+        : new ClanModel(
+            tag: json['tag'] as String,
+            name: json['name'] as String,
+            badgeId: json['badgeId'] as int,
+          );
   }
 
   Map<String, dynamic> toJson() {
@@ -388,7 +415,9 @@ class CardModel extends Card {
 class IconUrlsModel extends IconUrls {
   const IconUrlsModel({
     @required String medium,
-  }) : super(medium: medium);
+  }) : super(
+          medium: medium,
+        );
 
   factory IconUrlsModel.fromJson(Map<String, dynamic> json) {
     return new IconUrlsModel(

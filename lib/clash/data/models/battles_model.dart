@@ -11,10 +11,9 @@ class BattlesModel extends Battles {
     @required List<BattleModel> battles,
   }) : super(battles: battles);
 
-  factory BattlesModel.fromJson(Map<String, dynamic> jsonMap) {
+  factory BattlesModel.fromJson(List<dynamic> jsonMap) {
     return BattlesModel(
-      battles:
-          (jsonMap as List).map((item) => BattleModel.fromJson(item)).toList(),
+      battles: jsonMap.map((item) => BattleModel.fromJson(item)).toList(),
     );
   }
 
