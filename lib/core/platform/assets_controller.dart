@@ -13,6 +13,7 @@ class Assets {
       'Magical Chest': 'assets/images/chests/chest-magical.png',
       'Legendary Chest': 'assets/images/chests/chest-legendary.png',
       'Mega Lightning Chest': 'assets/images/chests/chest-megalightning.png',
+      'Gold Crate': 'assets/images/chests/chest-goldcrate.png',
     };
     return images.keys.contains(name)
         ? images[name]
