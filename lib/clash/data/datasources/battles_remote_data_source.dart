@@ -37,11 +37,6 @@ class BattlesRemoteDataSourceImpl implements BattlesRemoteDataSource {
         .catchError((onError) {
       throw ServerException();
     });
-    print('---------------------');
-    print(response.data.runtimeType.toString());
-    List<dynamic> data = response.data;
-    print('---------------------');
-    print(data.runtimeType.toString());
 
     return BattlesModel.fromJson(response.data);
   }
