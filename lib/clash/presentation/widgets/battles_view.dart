@@ -1,9 +1,9 @@
-import 'package:clash_royale_assistant/clash/presentation/widgets/BattlesDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants/consts.dart';
 import '../bloc/battles/bloc.dart';
+import 'battles_details.dart';
 import 'widgets.dart';
 
 class BattlesView extends StatelessWidget {
