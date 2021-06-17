@@ -2,7 +2,7 @@ import 'package:flutter/material.dart' hide Card;
 
 import '../../../core/constants/consts.dart';
 import '../../../core/platform/assets_controller.dart';
-import '../../domain/entities/player.dart';
+import '../../domain/entities/card.dart';
 import 'widgets.dart';
 
 class CardDeckItem extends StatelessWidget {

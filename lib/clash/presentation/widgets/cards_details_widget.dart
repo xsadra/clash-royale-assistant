@@ -6,7 +6,7 @@ import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../../../core/constants/consts.dart';
-import '../../domain/entities/player.dart';
+import '../../domain/entities/card.dart';
 import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
 

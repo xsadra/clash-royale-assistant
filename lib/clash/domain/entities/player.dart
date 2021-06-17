@@ -1,5 +1,7 @@
 import 'package:meta/meta.dart';
 
+import 'card.dart';
+
 class Player {
   final String tag;
   final String name;
@@ -159,33 +161,5 @@ class Achievement {
     @required this.target,
     @required this.info,
     @required this.completionInfo,
-  });
-}
-
-class Card {
-  final String name;
-  final int id;
-  final int level;
-  final int starLevel;
-  final int maxLevel;
-  final int count;
-  final IconUrls iconUrls;
-
-  const Card({
-    @required this.name,
-    @required this.id,
-    @required this.level,
-    @required this.starLevel,
-    @required this.maxLevel,
-    @required this.count,
-    @required this.iconUrls,
-  });
-}
-
-class IconUrls {
-  final String medium;
-
-  const IconUrls({
-    @required this.medium,
   });
 }
