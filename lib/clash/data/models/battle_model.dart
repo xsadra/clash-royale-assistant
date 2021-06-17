@@ -24,24 +24,25 @@ class BattleModel extends Battle {
     @required List<TeamMemberModel> opponent,
     @required String challengeTitle,
     @required bool isHostedMatch,
+    @required int challengeWinCountBefore,
   }) : super(
-          type: type,
-          battleTime: battleTime,
-          princessTowersHitPoints: princessTowersHitPoints,
-          boatBattleSide: boatBattleSide,
-          boatBattleWon: boatBattleWon,
-          newTowersDestroyed: newTowersDestroyed,
-          prevTowersDestroyed: prevTowersDestroyed,
-          challengeId: challengeId,
-          isLadderTournament: isLadderTournament,
-          arena: arena,
-          gameMode: gameMode,
-          deckSelection: deckSelection,
-          team: team,
-          opponent: opponent,
-          challengeTitle: challengeTitle,
-          isHostedMatch: isHostedMatch,
-        );
+            type: type,
+            battleTime: battleTime,
+            princessTowersHitPoints: princessTowersHitPoints,
+            boatBattleSide: boatBattleSide,
+            boatBattleWon: boatBattleWon,
+            newTowersDestroyed: newTowersDestroyed,
+            prevTowersDestroyed: prevTowersDestroyed,
+            challengeId: challengeId,
+            isLadderTournament: isLadderTournament,
+            arena: arena,
+            gameMode: gameMode,
+            deckSelection: deckSelection,
+            team: team,
+            opponent: opponent,
+            challengeTitle: challengeTitle,
+            isHostedMatch: isHostedMatch,
+            challengeWinCountBefore: challengeWinCountBefore);
 
   factory BattleModel.fromJson(Map<String, dynamic> jsonData) {
     return BattleModel(
@@ -65,6 +66,7 @@ class BattleModel extends Battle {
           .toList(),
       challengeTitle: jsonData['challengeTitle'] as String,
       isHostedMatch: jsonData['isHostedMatch'] as bool,
+      challengeWinCountBefore: jsonData['challengeWinCountBefore'] as int,
     );
   }
 
@@ -226,6 +228,7 @@ class TeamMemberModel extends TeamMember {
     @required String tag,
     @required String name,
     @required int crowns,
+    @required int startingTrophies,
     @required int kingTowerHitPoints,
     @required List<int> princessTowersHitPoints,
     @required Clan clan,
@@ -234,6 +237,7 @@ class TeamMemberModel extends TeamMember {
           tag: tag,
           name: name,
           crowns: crowns,
+          startingTrophies: startingTrophies,
           kingTowerHitPoints: kingTowerHitPoints,
           princessTowersHitPoints: princessTowersHitPoints,
           clan: clan,
@@ -245,6 +249,7 @@ class TeamMemberModel extends TeamMember {
       tag: json['tag'] as String,
       name: json['name'] as String,
       crowns: json['crowns'] as int,
+      startingTrophies: json['startingTrophies'] as int,
       kingTowerHitPoints: json['kingTowerHitPoints'] as int,
       princessTowersHitPoints: json['princessTowersHitPoints'] != null
           ? (json['princessTowersHitPoints'] as List)

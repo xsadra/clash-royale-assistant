@@ -19,6 +19,7 @@ class Battle {
   final List<TeamMember> opponent;
   final String challengeTitle;
   final bool isHostedMatch;
+  final int challengeWinCountBefore;
 
   const Battle({
     @required this.type,
@@ -37,6 +38,7 @@ class Battle {
     @required this.opponent,
     @required this.challengeTitle,
     @required this.isHostedMatch,
+    @required this.challengeWinCountBefore,
   });
 }
 
@@ -64,6 +66,7 @@ class TeamMember {
   final String tag;
   final String name;
   final int crowns;
+  final int startingTrophies;
   final int kingTowerHitPoints;
   final List<int> princessTowersHitPoints;
   final Clan clan;
@@ -73,6 +76,7 @@ class TeamMember {
     @required this.tag,
     @required this.name,
     @required this.crowns,
+    @required this.startingTrophies,
     @required this.kingTowerHitPoints,
     @required this.princessTowersHitPoints,
     @required this.clan,
