@@ -1,6 +1,8 @@
 export 'achievements_card_widget.dart';
 export 'achievements_details_widget.dart';
 export 'achievements_view.dart';
+export 'battle_list_tile.dart';
+export 'card_asset_image_battle_widget.dart';
 export 'card_asset_image_widget.dart';
 export 'card_deck_item_widget.dart';
 export 'card_view.dart';
@@ -19,6 +21,7 @@ export 'set_current_player_view.dart';
 export 'stat_header_widget.dart';
 export 'stat_tile_widget.dart';
 export 'stat_widget.dart';
+export 'team_member_widget.dart';
 export 'upcoming_chest_item.dart';
 export 'upcoming_chest_item.dart';
 export 'upcoming_chests_grid_view.dart';

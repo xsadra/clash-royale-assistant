@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide Card;
 
 import '../../../core/platform/assets_controller.dart';
-import '../../domain/entities/battle.dart';
+import '../../domain/entities/card.dart';
 
 class CardAssetImageBattle extends StatelessWidget {
   const CardAssetImageBattle({
@@ -13,11 +13,11 @@ class CardAssetImageBattle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double cardWidth = MediaQuery.of(context).size.width / 9;
     return SizedBox(
-      height: 30.0,
-      width: 30.0,
-      child: Image.asset(
-          Assets.cardToPath(card.name, isGold: card.starLevel != null)),
+      height: cardWidth,
+      width: cardWidth,
+      child: Assets.cardToImage(card),
     );
   }
 }
