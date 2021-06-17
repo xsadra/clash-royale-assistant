@@ -16,7 +16,10 @@ class BattlesDetails extends StatelessWidget {
       itemCount: _battles.length,
       itemBuilder: (context, index) {
         Battle battle = _battles[index];
-        return BattleListTile(battle: battle);
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: BattleListTile(battle: battle),
+        );
       },
     );
   }
