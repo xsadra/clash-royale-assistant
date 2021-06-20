@@ -11,6 +11,8 @@ class Assets {
 
   static String get notFound => 'assets/images/ui/not-found.png';
 
+  static String get trophy => 'assets/images/ui/ui-trophy.png';
+
   static String get crownRed => 'assets/images/crown/crown-red.png';
 
   static String get crownBlue => 'assets/images/crown/crown-blue.png';
@@ -25,6 +27,10 @@ class Assets {
       'Legendary Chest': 'assets/images/chests/chest-legendary.png',
       'Mega Lightning Chest': 'assets/images/chests/chest-megalightning.png',
       'Gold Crate': 'assets/images/chests/chest-goldcrate.png',
+      'Overflowing Gold Crate':
+          'assets/images/chests/chest-overflowinggoldcrate.png',
+      'Plentiful Gold Crate':
+          'assets/images/chests/chest-plentifulgoldcrate.png',
     };
     return images.keys.contains(name)
         ? images[name]
