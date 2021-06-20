@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/consts.dart';
 import '../../../core/platform/assets_controller.dart';
-import '../../domain/entities/player.dart' hide Card;
+import '../../domain/entities/player.dart';
 
 class AchievementsCard extends StatelessWidget {
   const AchievementsCard({
