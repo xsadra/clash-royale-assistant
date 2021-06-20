@@ -24,15 +24,35 @@ extension BattleTypeExtention on BattleType {
   String get title {
     switch (this) {
       case BattleType.boatBattle:
-        return 'boatBattle';
+        return 'Boat Battle';
       case BattleType.casual1v1:
-        return 'casual1v1';
+        return 'Casual 1v1';
       case BattleType.challenge:
         return 'Challenge';
       case BattleType.PvP:
-        return 'PvP';
+        return 'P vs P';
       case BattleType.riverRacePvP:
-        return 'riverRacePvP';
+        return 'River Race P vs P';
+      case BattleType.casual2v2:
+        return 'Casual 2v2';
+
+      default:
+        return 'not in list';
+    }
+  }
+}
+
+extension BattleResultExtension on BattleResult {
+  String get name => describeEnum(this);
+
+  String get title {
+    switch (this) {
+      case BattleResult.Victory:
+        return 'Victory';
+      case BattleResult.Draw:
+        return 'Draw';
+      case BattleResult.Defeat:
+        return 'Defeat';
 
       default:
         return 'not in list';

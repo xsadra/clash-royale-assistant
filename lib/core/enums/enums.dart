@@ -9,4 +9,11 @@ enum BattleType {
   casual1v1,
   riverRacePvP,
   boatBattle,
+  casual2v2,
+}
+
+enum BattleResult {
+  Victory,
+  Draw,
+  Defeat,
 }
