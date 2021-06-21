@@ -35,6 +35,8 @@ extension BattleTypeExtention on BattleType {
         return 'River Race P vs P';
       case BattleType.casual2v2:
         return 'Casual 2v2';
+      case BattleType.riverRaceDuel:
+        return 'River Race Duel';
 
       default:
         return 'not in list';
