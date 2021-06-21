@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../../clash/domain/entities/battle.dart';
 import '../enums/enums_with_extensions.dart';
 import 'string_extensions.dart';
@@ -12,7 +14,6 @@ extension BattleEntityExtensions on Battle {
       this.opponent[1].crowns != null &&
       this.opponent[1].crowns != null;
 
-  @Deprecated('use [battleResult] instead')
   bool get didTeamWin =>
       (this.team[0].crowns ?? 0) > (this.opponent[0].crowns ?? 0);
 
@@ -50,4 +51,22 @@ extension BattleEntityExtensions on Battle {
   TeamMember get team2 => this.team[1] ?? null;
 
   TeamMember get opponent2 => this.opponent[1] ?? null;
+
+  Color get resultBackgroundColor {
+    if (this.teamCrowns == this.opponentCrowns) {
+      return Colors.black54;
+    } else if (this.teamCrowns > this.opponentCrowns) {
+      return Colors.green.shade100;
+    }
+    return Colors.red.shade50;
+  }
+
+  Color get resultStatsColor {
+    if (this.teamCrowns == this.opponentCrowns) {
+      return Colors.white70;
+    } else if (this.teamCrowns > this.opponentCrowns) {
+      return Colors.green;
+    }
+    return Colors.red;
+  }
 }

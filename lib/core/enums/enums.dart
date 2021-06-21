@@ -10,6 +10,7 @@ enum BattleType {
   riverRacePvP,
   boatBattle,
   casual2v2,
+  riverRaceDuel,
 }
 
 enum BattleResult {
