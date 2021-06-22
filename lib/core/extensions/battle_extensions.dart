@@ -6,16 +6,26 @@ import 'string_extensions.dart';
 
 extension BattleEntityExtensions on Battle {
   bool get hasCrowns =>
-      this.team[0].crowns != null && this.opponent[0].crowns != null;
+      this.team1.crowns != null && this.opponent1.crowns != null;
+
+  bool get hasTrophies =>
+      this.team1.startingTrophies != null &&
+      this.opponent1.startingTrophies != null;
 
   bool get hasCrowns2v2 =>
-      this.team[0].crowns != null &&
-      this.opponent[0].crowns != null &&
-      this.opponent[1].crowns != null &&
-      this.opponent[1].crowns != null;
+      this.team1.crowns != null &&
+      this.opponent1.crowns != null &&
+      this.opponent2.crowns != null &&
+      this.opponent2.crowns != null;
 
   bool get didTeamWin =>
-      (this.team[0].crowns ?? 0) > (this.opponent[0].crowns ?? 0);
+      (this.team1.crowns ?? 0) > (this.opponent1.crowns ?? 0);
+
+  bool get isDisplayTeamWin =>
+      this.didTeamWin || (this.challengeWinCountBefore ?? 0) > 0;
+
+  bool get isDisplayPreviousTeamWinNumber =>
+      (this.challengeWinCountBefore ?? 0) > 0;
 
   String get winCount => (this.challengeWinCountBefore ?? 'no').toString();
 
@@ -40,6 +50,8 @@ extension BattleEntityExtensions on Battle {
 
   String get gameModeName => this.gameMode.name;
 
+  String get gameModeNameFormatted => this.gameMode.name.replaceAll('_', ' ');
+
   int get teamCrowns => this.team1.crowns ?? 0;
 
   int get opponentCrowns => this.opponent1.crowns ?? 0;
@@ -54,7 +66,7 @@ extension BattleEntityExtensions on Battle {
 
   Color get resultBackgroundColor {
     if (this.teamCrowns == this.opponentCrowns) {
-      return Colors.black54;
+      return Colors.black26;
     } else if (this.teamCrowns > this.opponentCrowns) {
       return Colors.green.shade100;
     }

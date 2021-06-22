@@ -26,9 +26,63 @@ class BattleListTile extends StatelessWidget {
       return Battle2V2ItemWidget(battle: battle);
     } else if (battle.type == BattleType.riverRaceDuel.name) {
       return BattleRiverRaceDuelItemWidget(battle: battle);
+    } else if (battle.type == BattleType.casual1v1.name) {
+      // return BattlePvPItemWidget(battle: battle);
+      return Container();
     } else
       return Container(child: Text(battle.type));
   }
+}
+
+List<Widget> generateBattleItemHeader({@required Battle battle}) {
+  return [
+    Text(
+      battle.gameModeNameFormatted,
+      style: TextStyle(
+        color: Colors.black87,
+        fontWeight: FontWeight.w900,
+        letterSpacing: 0.9,
+      ),
+    ),
+    Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          Assets.crownBlue,
+          height: 24,
+          width: 24,
+        ),
+        AppWidgets.sizedBox.width6,
+        RichText(
+            text: TextSpan(
+          children: [
+            TextSpan(
+              text: battle.teamCrowns.toString(),
+              style:
+                  TextStyle(color: Colors.black54, fontWeight: FontWeight.w500),
+            ),
+            TextSpan(
+              text: ' - ',
+              style:
+                  TextStyle(color: Colors.black54, fontWeight: FontWeight.w500),
+            ),
+            TextSpan(
+              text: battle.opponentCrowns.toString(),
+              style:
+                  TextStyle(color: Colors.black54, fontWeight: FontWeight.w500),
+            ),
+          ],
+        )),
+        AppWidgets.sizedBox.width6,
+        Image.asset(
+          Assets.crownRed,
+          height: 24,
+          width: 24,
+        ),
+      ],
+    ),
+    if (battle.isDisplayTeamWin) TeamWinCounterDisplayWidget(battle: battle),
+  ];
 }
 
 class BattlePvPItemWidget extends StatelessWidget {
@@ -41,120 +95,34 @@ class BattlePvPItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var team = battle.team[0];
-    var opponent = battle.opponent[0];
-    var gameModeName = battle.gameMode.name;
-    // var battleTime = battle.battleTime.timeAgo(local: 'en_short');
-    var battleTime = battle.battleTime.timeAgo();
-    bool didWin = (team.crowns ?? 0) > (opponent.crowns ?? 0);
-    var result = didWin ? 'Victory' : 'Defeat';
-    Color statusColor = didWin ? Colors.green : Colors.red;
-    var challengeWinCount = battle.challengeWinCountBefore;
-    String winCount = (challengeWinCount ?? 'no').toString();
-    TextStyle winsStyle = TextStyle(
-      fontSize: 12.0,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-      shadows: [
-        Shadow(color: Colors.red, blurRadius: 2, offset: Offset(1, 1)),
-        Shadow(color: Colors.black, blurRadius: 4, offset: Offset(1, -1)),
-        Shadow(color: Colors.black, blurRadius: 2, offset: Offset(-1, 1)),
-        Shadow(color: Colors.black, blurRadius: 2, offset: Offset(-1, -1)),
-      ],
-    );
-    List<Widget> battleHeader = [
-      Text(
-        gameModeName.replaceAll('_', ' '),
-        style: TextStyle(
-          color: Colors.black87,
-          fontWeight: FontWeight.w900,
-          letterSpacing: 0.9,
-        ),
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            Assets.crownBlue,
-            height: 24,
-            width: 24,
-          ),
-          AppWidgets.sizedBox.width6,
-          RichText(
-              text: TextSpan(
-            children: [
-              TextSpan(
-                text: (team.crowns ?? 0).toString(),
-                style: TextStyle(
-                    color: Colors.black54, fontWeight: FontWeight.w500),
-              ),
-              TextSpan(
-                text: ' - ',
-                style: TextStyle(
-                    color: Colors.black54, fontWeight: FontWeight.w500),
-              ),
-              TextSpan(
-                text: (opponent.crowns ?? 0).toString(),
-                style: TextStyle(
-                    color: Colors.black54, fontWeight: FontWeight.w500),
-              ),
-            ],
-          )),
-          AppWidgets.sizedBox.width6,
-          Image.asset(
-            Assets.crownRed,
-            height: 24,
-            width: 24,
-          ),
-        ],
-      ),
-      RichText(
-        text: TextSpan(
-          children: [
-            if (!(winCount.contains('no') && didWin))
-              TextSpan(
-                text: winCount,
-                style: winsStyle,
-              ),
-            if (didWin)
-              TextSpan(
-                text: ' +1',
-                style: winsStyle,
-              ),
-            TextSpan(
-              text: (challengeWinCount ?? 0) > 0 ? ' Wins' : ' Win',
-              style: winsStyle,
-            ),
-          ],
-        ),
-      ),
-    ];
     return Container(
-      color: didWin ? Colors.green.shade100 : Colors.red.shade50,
+      color: battle.resultBackgroundColor,
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         children: [
-          ...battleHeader,
+          ...generateBattleItemHeader(battle: battle),
           AppWidgets.sizedBox.height10,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TeamMemberWidget(
-                team: team,
+                team: battle.team1,
                 teamType: TeamMemberType.Team,
+                showTrophies: battle.hasTrophies,
               ),
               TeamMemberWidget(
-                team: opponent,
+                team: battle.opponent1,
                 teamType: TeamMemberType.opponent,
+                showTrophies: battle.hasTrophies,
               ),
             ],
           ),
           AppWidgets.sizedBox.height8,
           BattleStatus(
-            didWin: didWin,
-            statusColor: statusColor,
-            result: result,
-            battleTime: battleTime,
+            didWin: battle.didTeamWin,
+            statusColor: battle.resultStatsColor,
+            result: battle.battleResultTitle,
+            battleTime: battle.timeAgo,
           ),
         ],
       ),
@@ -172,19 +140,6 @@ class Battle2V2ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color statusColor = battle.didTeamWin ? Colors.green : Colors.red;
-
-    TextStyle winsStyle = TextStyle(
-      fontSize: 12.0,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-      shadows: [
-        Shadow(color: Colors.red, blurRadius: 2, offset: Offset(1, 1)),
-        Shadow(color: Colors.black, blurRadius: 4, offset: Offset(1, -1)),
-        Shadow(color: Colors.black, blurRadius: 2, offset: Offset(-1, 1)),
-        Shadow(color: Colors.black, blurRadius: 2, offset: Offset(-1, -1)),
-      ],
-    );
     List<Widget> battleHeader = [
       Text(
         battle.gameModeName.replaceAll('_', ' '),
@@ -231,27 +186,7 @@ class Battle2V2ItemWidget extends StatelessWidget {
           ),
         ],
       ),
-      RichText(
-        text: TextSpan(
-          children: [
-            // Step: Fix
-            // if (!(battle.winCount.contains('no') && battle.didTeamWin))
-            TextSpan(
-              text: battle.winCount,
-              style: winsStyle,
-            ),
-            if (battle.didTeamWin)
-              TextSpan(
-                text: ' +1',
-                style: winsStyle,
-              ),
-            TextSpan(
-              text: battle.winCountText,
-              style: winsStyle,
-            ),
-          ],
-        ),
-      ),
+      if (battle.isDisplayTeamWin) TeamWinCounterDisplayWidget(battle: battle),
     ];
     return Container(
       color: battle.didTeamWin ? Colors.green.shade100 : Colors.red.shade50,
@@ -266,10 +201,12 @@ class Battle2V2ItemWidget extends StatelessWidget {
               TeamMemberWidget(
                 team: battle.team1,
                 teamType: TeamMemberType.Team,
+                showTrophies: battle.hasTrophies,
               ),
               TeamMemberWidget(
                 team: battle.opponent1,
                 teamType: TeamMemberType.opponent,
+                showTrophies: battle.hasTrophies,
               ),
             ],
           ),
@@ -280,17 +217,19 @@ class Battle2V2ItemWidget extends StatelessWidget {
               TeamMemberWidget(
                 team: battle.team2,
                 teamType: TeamMemberType.Team,
+                showTrophies: battle.hasTrophies,
               ),
               TeamMemberWidget(
                 team: battle.opponent2,
                 teamType: TeamMemberType.opponent,
+                showTrophies: battle.hasTrophies,
               ),
             ],
           ),
           AppWidgets.sizedBox.height8,
           BattleStatus(
             didWin: battle.didTeamWin,
-            statusColor: statusColor,
+            statusColor: battle.resultStatsColor,
             result: battle.battleResult.title,
             battleTime: battle.timeAgo,
           ),
@@ -310,11 +249,9 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color statusColor = battle.resultStatsColor;
-
     List<Widget> battleHeader = [
       Text(
-        battle.gameModeName.replaceAll('_', ' '),
+        battle.gameModeNameFormatted,
         style: TextStyle(
           color: Colors.black87,
           fontWeight: FontWeight.w900,
@@ -330,26 +267,8 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
             width: 24,
           ),
           AppWidgets.sizedBox.width6,
-          RichText(
-              text: TextSpan(
-            children: [
-              TextSpan(
-                text: (battle.team1.crowns ?? 0).toString(),
-                style: TextStyle(
-                    color: Colors.black54, fontWeight: FontWeight.w500),
-              ),
-              TextSpan(
-                text: ' - ',
-                style: TextStyle(
-                    color: Colors.black54, fontWeight: FontWeight.w500),
-              ),
-              TextSpan(
-                text: (battle.opponent1.crowns ?? 0).toString(),
-                style: TextStyle(
-                    color: Colors.black54, fontWeight: FontWeight.w500),
-              ),
-            ],
-          )),
+          if (battle.isDisplayTeamWin)
+            TeamWinCounterDisplayWidget(battle: battle),
           AppWidgets.sizedBox.width6,
           Image.asset(
             Assets.crownRed,
@@ -684,7 +603,7 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
           AppWidgets.sizedBox.height12,
           BattleStatus(
             didWin: battle.didTeamWin,
-            statusColor: statusColor,
+            statusColor: battle.resultStatsColor,
             result: battle.battleResult.title,
             battleTime: battle.timeAgo,
           ),
@@ -744,6 +663,50 @@ class BattleStatus extends StatelessWidget {
               fontStyle: FontStyle.italic,
               color: Colors.blueAccent,
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TeamWinCounterDisplayWidget extends StatelessWidget {
+  const TeamWinCounterDisplayWidget({
+    Key key,
+    @required this.battle,
+  }) : super(key: key);
+
+  final Battle battle;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle winsStyle = TextStyle(
+      fontSize: 12.0,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+      shadows: [
+        Shadow(color: Colors.red, blurRadius: 2, offset: Offset(1, 1)),
+        Shadow(color: Colors.black, blurRadius: 4, offset: Offset(1, -1)),
+        Shadow(color: Colors.black, blurRadius: 2, offset: Offset(-1, 1)),
+        Shadow(color: Colors.black, blurRadius: 2, offset: Offset(-1, -1)),
+      ],
+    );
+    return RichText(
+      text: TextSpan(
+        children: [
+          if (battle.isDisplayPreviousTeamWinNumber)
+            TextSpan(
+              text: battle.winCount,
+              style: winsStyle,
+            ),
+          if (battle.didTeamWin)
+            TextSpan(
+              text: ' +1',
+              style: winsStyle,
+            ),
+          TextSpan(
+            text: battle.winCountText,
+            style: winsStyle,
           ),
         ],
       ),

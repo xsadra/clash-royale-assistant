@@ -12,10 +12,12 @@ class TeamMemberWidget extends StatelessWidget {
     Key key,
     @required this.team,
     @required this.teamType,
+    @required this.showTrophies,
   }) : super(key: key);
 
   final TeamMember team;
   final TeamMemberType teamType;
+  final bool showTrophies;
 
   @override
   Widget build(BuildContext context) {
@@ -54,26 +56,27 @@ class TeamMemberWidget extends StatelessWidget {
             ],
           ),
           AppWidgets.sizedBox.height2,
-          Row(
-            children: [
-              AppWidgets.sizedBox.width4,
-              if (teamType == TeamMemberType.Team)
-                Image.asset(Assets.trophy, height: 12, width: 12),
-              AppWidgets.sizedBox.width7,
-              Text(
-                team.startingTrophies.toString(),
-                style: TextStyle(
-                  fontSize: 10.0,
-                  color: Colors.black87,
-                  // fontStyle: FontStyle.italic,
+          if (showTrophies)
+            Row(
+              children: [
+                AppWidgets.sizedBox.width4,
+                if (teamType == TeamMemberType.Team)
+                  Image.asset(Assets.trophy, height: 12, width: 12),
+                AppWidgets.sizedBox.width7,
+                Text(
+                  team.startingTrophies.toString(),
+                  style: TextStyle(
+                    fontSize: 10.0,
+                    color: Colors.black87,
+                    // fontStyle: FontStyle.italic,
+                  ),
                 ),
-              ),
-              AppWidgets.sizedBox.width7,
-              if (teamType == TeamMemberType.opponent)
-                Image.asset(Assets.trophy, height: 12, width: 12),
-              AppWidgets.sizedBox.width3,
-            ],
-          ),
+                AppWidgets.sizedBox.width7,
+                if (teamType == TeamMemberType.opponent)
+                  Image.asset(Assets.trophy, height: 12, width: 12),
+                AppWidgets.sizedBox.width3,
+              ],
+            ),
           AppWidgets.sizedBox.height8,
           Row(
             children: [
