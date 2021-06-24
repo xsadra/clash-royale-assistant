@@ -52,11 +52,11 @@ class CurrentPlayerTagBloc
           if (isSaved) {
             return Saved();
           }
-          return Error(message: AppErrorTexts.PLAYER_TAG_NOT_SAVED_MESSAGE);
+          return Error(message: AppText.error.playerTagNotSavedMessage);
         },
       );
     } else {
-      yield Error(message: AppErrorTexts.UNEXPECTED_EVENT);
+      yield Error(message: AppText.error.unexpectedEvent);
     }
   }
 }

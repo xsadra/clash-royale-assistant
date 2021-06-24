@@ -28,7 +28,7 @@ class PlayerLocalDataSourceImpl implements PlayerLocalDataSource {
   @override
   Future<PlayerModel> getLastData() {
     log('Getting Data from sharedPreferences', name: 'PlayerLocalDataSource');
-    final jsonString = sharedPreferences.getString(AppConstTests.CACHED_PLAYER);
+    final jsonString = sharedPreferences.getString(AppText.consts.cachedPlayer);
     if (jsonString == null) {
       throw CacheException();
     }
@@ -44,7 +44,7 @@ class PlayerLocalDataSourceImpl implements PlayerLocalDataSource {
         name: 'PlayerLocalDataSource');
 
     return sharedPreferences.setString(
-      AppConstTests.CACHED_PLAYER,
+      AppText.consts.cachedPlayer,
       jsonEncode(playerToCache),
     );
   }

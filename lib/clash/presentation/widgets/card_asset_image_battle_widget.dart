@@ -17,7 +17,7 @@ class CardAssetImageBattle extends StatelessWidget {
     return SizedBox(
       height: cardWidth,
       width: cardWidth,
-      child: Assets.cardToImage(card),
+      child: AppAssets.toWidget.cardToImage(card: card),
     );
   }
 }

@@ -26,7 +26,7 @@ class BattlesBloc extends Bloc<BattlesEvent, BattlesState> {
         (battles) => Loaded(battles: battles),
       );
     } else {
-      yield Error(message: AppErrorTexts.UNEXPECTED_EVENT);
+      yield Error(message: AppText.error.unexpectedEvent);
     }
   }
 }

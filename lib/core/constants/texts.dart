@@ -1,128 +1,137 @@
-class AppConstTests {
-  AppConstTests._();
+class AppText {
+  static ConstTests consts = const ConstTests();
+  static ApiTexts api = const ApiTexts();
+  static ErrorTexts error = const ErrorTexts();
+  static UIMessagesText uiMessages = const UIMessagesText();
+  static BodyTexts body = const BodyTexts();
+  static UITexts ui = const UITexts();
 
-  static const CACHED_UPCOMING_CHESTS = 'CACHED_UPCOMING_CHESTS';
-  static const CACHED_PLAYER = 'CACHED_PLAYER';
-  static const CURRENT_PLAYER_TAG = 'CURRENT_PLAYER_TAG';
-  static const ALL_CARDS = 'ALL_CARDS';
-  static const CACHED_BATTLES = 'CACHED_BATTLES';
-}
-
-class AppApiTexts {
-  AppApiTexts._();
-
-  static const API_BASE_URL = 'https://api.clashroyale.com/';
-  static const API_BASE_URL_PROXY = 'https://proxy.royaleapi.dev/';
-  static const API_PLAYER_URL = 'v1/players/';
-  static const API_BASE_PLAYER_URL = API_BASE_URL + API_PLAYER_URL;
-  static const API_BASE_PLAYER_URL_PROXY = API_BASE_URL_PROXY + API_PLAYER_URL;
-  static const API_CLAN_URL = 'v1/clans/';
-  static const API_BASE_CLAN_URL = API_BASE_URL + API_CLAN_URL;
-  static const API_BASE_CLAN_URL_PROXY = API_BASE_URL_PROXY + API_CLAN_URL;
-  static const API_TOURNAMENT_URL = 'v1/tournaments/';
-  static const API_BASE_TOURNAMENT_URL = API_BASE_URL + API_TOURNAMENT_URL;
-  static const API_BASE_TOURNAMENT_URL_PROXY =
-      API_BASE_URL_PROXY + API_TOURNAMENT_URL;
-  static const UPCOMING_CHESTS = '/upcomingchests';
-  static const BATTLES = '/battlelog';
+  AppText._();
 }
 
 class AppRouteTexts {
-  AppRouteTexts._();
-
+  AppRouteTexts();
   static const SPLASH_PAGE_ROUTE = 'SplashPageRoute';
   static const INPUT_TAG_PAGE_ROUTE = 'InputTagPageRoute';
   static const INPUT_TAG_PAGE_FULL_SCREEN_ROUTE = 'InputTagPageFullScreenRoute';
   static const PLAYER_PAGE_ROUTE = 'PlayerPageRoute';
 }
 
-class AppErrorTexts {
-  AppErrorTexts._();
+class ConstTests {
+  const ConstTests();
 
-  static const SERVER_FAILURE_MESSAGE = 'Server Failure';
-  static const CACHE_FAILURE_MESSAGE = 'Cache Failure';
-  static const NOT_FOUND_FAILURE_MESSAGE = 'Set your player Tag: #xxxxxxx';
-  static const PLAYER_TAG_NOT_SAVED_MESSAGE = 'Could not save player Tag!';
-  static const UNEXPECTED_ERROR = 'Unexpected error';
-  static const UNEXPECTED_EVENT = 'Unexpected event';
-  static const FIND_TAG_TEXT_FIELD_ERROR = 'Wrong tag, try again!';
+  String get cachedUpcomingChests => 'CACHED_UPCOMING_CHESTS';
+  String get cachedPlayer => 'CACHED_PLAYER';
+  String get currentPlayerTag => 'CURRENT_PLAYER_TAG';
+  String get allCards => 'ALL_CARDS';
+  String get cachedBattles => 'CACHED_BATTLES';
 }
 
-class AppUIMessagesText {
-  AppUIMessagesText._();
+class ApiTexts {
+  const ApiTexts();
 
-  static const UNHANDLED_STATE = 'Unhandled State';
-  static const NO_DATA = 'No data';
+  String get apiBaseUrl => 'https://api.clashroyale.com/';
+  String get apiBaseUrlProxy => 'https://proxy.royaleapi.dev/';
+  String get apiPlayerUrl => 'v1/players/';
+  String get apiBasePlayerUrl => apiBaseUrl + apiPlayerUrl;
+  String get apiBasePlayerUrlProxy => apiBaseUrlProxy + apiPlayerUrl;
+  String get apiClanUrl => 'v1/clans/';
+  String get apiBaseClanUrl => apiBaseUrl + apiClanUrl;
+  String get apiBaseClanUrlProxy => apiBaseUrlProxy + apiClanUrl;
+  String get apiTournamentUrl => 'v1/tournaments/';
+  String get apiBaseTournamentUrl => apiBaseUrl + apiTournamentUrl;
+  String get apiBaseTournamentUrlProxy => apiBaseUrlProxy + apiTournamentUrl;
+  String get upcomingChests => '/upcomingchests';
+  String get battles => '/battlelog';
 }
 
-class AppBodyTexts {
-  AppBodyTexts._();
+class ErrorTexts {
+  const ErrorTexts();
 
-  static const APP_TITLE = 'Clash Royale Assistant';
-  static const NUM_1 = '1';
-  static const NUM_2 = '2';
-  static const NUM_3 = '3';
-  static const NUM_4 = '4';
-  static const FIND_TAG_HELP_1 = 'Launch Clash Royale and tap your name';
-  static const FIND_TAG_HELP_2 = 'Find your player Tag below your name';
-  static const FIND_TAG_HELP_3 = 'Tap on your Tag and Copy it';
-  static const FIND_TAG_HELP_4 = 'Paste your Tag in the field above';
-  static const FIND_TAG_TEXT_FIELD_LABEL = 'Enter your Player Tag';
-  static const FIND_TAG_TEXT_FIELD_HINT = 'ABCD123';
+  String get serverFailureMessage => 'Server Failure';
+  String get cacheFailureMessage => 'Cache Failure';
+  String get notFoundFailureMessage => 'Set your player Tag: #xxxxxxx';
+  String get playerTagNotSavedMessage => 'Could not save player Tag!';
+  String get unexpectedError => 'Unexpected error';
+  String get unexpectedEvent => 'Unexpected event';
+  String get findTagTextFieldError => 'Wrong tag, try again!';
 }
 
-class AppUITexts {
-  AppUITexts._();
+class UIMessagesText {
+  const UIMessagesText();
 
-  static const PLAYER = 'Player';
-  static const TO_START = 'To Start';
-  static const UPCOMING = 'Upcoming';
-  static const CARDS = 'Cards';
-  static const ACHIEVED = 'Achieved';
-  static const BATTLES = 'Battles';
-  static const ACHIEVED_COL = 'Achieved: ';
-  static const SEARCH = 'Search';
-  static const PLUS = '+';
-  static const HASH_TAG = '#';
-  static const EMPTY = '';
-  static const SPACE_URL = '%23';
-  static const Next = 'Next';
-  static const LVL_SPC = 'lvl ';
-  static const LEVEL_SPC = 'Level ';
-  static const ACHIEVEMENTS_COL = 'Achievements:';
-  static const TARGET_COL = 'Target: ';
-  static const STARS_COL = 'Stars: ';
-  static const NOT_YET = 'Not yet!';
-  static const ALL_CARDS_COL = 'AllCards: ';
-  static const TROPHIES = 'Trophies';
-  static const TROPHIES_COl = 'Trophies: ';
-  static const BEST_TROPHIES_COL = 'Best Trophies: ';
-  static const BATTLE_STATS = 'Battle Stats';
-  static const WINS_COL = 'Wins: ';
-  static const LOSSES_COL = 'Losses: ';
-  static const THREE_CROWN_WINS_COL = 'Three Crown Wins: ';
-  static const BATTLE_COUNT_COL = 'Battle Count: ';
-  static const DONATION = 'Donation';
-  static const DONATIONS_COL = 'Donations: ';
-  static const DONATIONS_BALANCE_COL = 'Donations balance: ';
-  static const DONATIONS_RECEIVED_COL = 'Donations Received: ';
-  static const TOTAL_DONATIONS_COL = 'Total Donations: ';
-  static const LEAGUE_SEASON = 'League Season';
-  static const ARENA_COL = 'Arena: ';
-  static const CHALLENGE_AND_TOURNAMENT = 'Challenge and Tournament';
-  static const WAR_DAY_WINS_COL = 'War Day Wins: ';
-  static const CLAN_CARDS_COLLECTED_COL = 'Clan Cards Collected: ';
-  static const CHALLENGE_CARDS_WON_COL = 'Challenge Cards Won: ';
-  static const CHALLENGE_MAX_WINS_COL = 'Challenge Max Wins: ';
-  static const TOURNAMENT_CARDS_WON_COL = 'Tournament Cards Won: ';
-  static const TOURNAMENT_BATTLE_COUNT_COL = 'Tournament Battle Count: ';
-  static const WAR_OLD = 'War (Old)';
-  static const CURRENT_SEASON = 'Current Season';
-  static const PREVIOUS_SEASON = 'Previous Season';
-  static const DATE_COL = 'Date: ';
-  static const BEST_SEASON = 'Best Season';
-  static const CURRENT_DECK = 'Current Deck';
-  static const ARROW_FAVORITE_CARD_COL = ' > Favorite Card: ';
+  String get unhandledState => 'Unhandled State';
+
+  String get noData => 'No data';
+}
+
+class BodyTexts {
+  const BodyTexts();
+
+  String get appTitle => 'Clash Royale Assistant';
+  String get num1 => '1';
+  String get num2 => '2';
+  String get num3 => '3';
+  String get num4 => '4';
+  String get findTagHelp1 => 'Launch Clash Royale and tap your name';
+  String get findTagHelp2 => 'Find your player Tag below your name';
+  String get findTagHelp3 => 'Tap on your Tag and Copy it';
+  String get findTagHelp4 => 'Paste your Tag in the field above';
+  String get findTagTextFieldLabel => 'Enter your Player Tag';
+  String get findTagTextFieldHint => 'ABCD123';
+}
+
+class UITexts {
+  const UITexts();
+  String get player => 'Player';
+  String get toStart => 'To Start';
+  String get upcoming => 'Upcoming';
+  String get cards => 'Cards';
+  String get achieved => 'Achieved';
+  String get achievedCol => 'Achieved: ';
+  String get battles => 'Battles';
+  String get search => 'Search';
+  String get plus => '+';
+  String get hashTag => '#';
+  String get empty => '';
+  String get spaceUrl => '%23';
+  String get next => 'Next';
+  String get lvlSpc => 'lvl ';
+  String get levelSpc => 'Level ';
+  String get achievementsCol => 'Achievements:';
+  String get targetCol => 'Target: ';
+  String get starsCol => 'Stars: ';
+  String get notYet => 'Not yet!';
+  String get allCardsCol => 'AllCards: ';
+  String get trophies => 'Trophies';
+  String get trophiesCol => 'Trophies: ';
+  String get bestTrophiesCol => 'Best Trophies: ';
+  String get battleStats => 'Battle Stats';
+  String get winsCol => 'Wins: ';
+  String get lossesCol => 'Losses: ';
+  String get threeCrownWinsCol => 'Three Crown Wins: ';
+  String get battleCountCol => 'Battle Count: ';
+  String get donation => 'Donation';
+  String get donationsCol => 'Donations: ';
+  String get donationsBalanceCol => 'Donations balance: ';
+  String get donationsReceivedCol => 'Donations Received: ';
+  String get totalDonationsCol => 'Total Donations: ';
+  String get leagueSeason => 'League Season';
+  String get arenaCol => 'Arena: ';
+  String get challengeAndTournament => 'Challenge and Tournament';
+  String get warDayWinsCol => 'War Day Wins: ';
+  String get clanCardsCollectedCol => 'Clan Cards Collected: ';
+  String get challengeCardsWonCol => 'Challenge Cards Won: ';
+  String get challengeMaxWinsCol => 'Challenge Max Wins: ';
+  String get tournamentCardsWonCol => 'Tournament Cards Won: ';
+  String get tournamentBattleCountCol => 'Tournament Battle Count: ';
+  String get warOld => 'War (Old)';
+  String get currentSeason => 'Current Season';
+  String get previousSeason => 'Previous Season';
+  String get dateCol => 'Date: ';
+  String get bestSeason => 'Best Season';
+  String get currentDeck => 'Current Deck';
+  String get arrowFavoriteCardCol => ' > Favorite Card: ';
 
 // static const BATTLE_STATS =  ;
 }

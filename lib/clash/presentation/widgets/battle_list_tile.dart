@@ -48,7 +48,7 @@ List<Widget> generateBattleItemHeader({@required Battle battle}) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
-          Assets.crownBlue,
+          AppAssets.paths.crownBlue,
           height: 24,
           width: 24,
         ),
@@ -75,7 +75,7 @@ List<Widget> generateBattleItemHeader({@required Battle battle}) {
         )),
         AppWidgets.sizedBox.width6,
         Image.asset(
-          Assets.crownRed,
+          AppAssets.paths.crownRed,
           height: 24,
           width: 24,
         ),
@@ -153,7 +153,7 @@ class Battle2V2ItemWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            Assets.crownBlue,
+            AppAssets.paths.crownBlue,
             height: 24,
             width: 24,
           ),
@@ -180,7 +180,7 @@ class Battle2V2ItemWidget extends StatelessWidget {
           )),
           AppWidgets.sizedBox.width6,
           Image.asset(
-            Assets.crownRed,
+            AppAssets.paths.crownRed,
             height: 24,
             width: 24,
           ),
@@ -262,7 +262,7 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            Assets.crownBlue,
+            AppAssets.paths.crownBlue,
             height: 24,
             width: 24,
           ),
@@ -271,7 +271,7 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
             TeamWinCounterDisplayWidget(battle: battle),
           AppWidgets.sizedBox.width6,
           Image.asset(
-            Assets.crownRed,
+            AppAssets.paths.crownRed,
             height: 24,
             width: 24,
           ),
@@ -302,7 +302,8 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Assets.clanBadgeIdToImage(battle.team1.clan.badgeId,
+                        AppAssets.toWidget.clanBadgeIdToImage(
+                            battle.team1.clan.badgeId,
                             size: 18),
                         AppWidgets.sizedBox.width4,
                         Text(
@@ -359,7 +360,8 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
                           ),
                         ),
                         AppWidgets.sizedBox.width4,
-                        Assets.clanBadgeIdToImage(battle.opponent1.clan.badgeId,
+                        AppAssets.toWidget.clanBadgeIdToImage(
+                            battle.opponent1.clan.badgeId,
                             size: 18),
                       ],
                     ),
@@ -403,7 +405,7 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Assets.clanBadgeIdToImage(
+                        AppAssets.toWidget.clanBadgeIdToImage(
                           battle.team1.clan.badgeId,
                           size: 18,
                         ),
@@ -462,7 +464,8 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
                           ),
                         ),
                         AppWidgets.sizedBox.width4,
-                        Assets.clanBadgeIdToImage(battle.opponent1.clan.badgeId,
+                        AppAssets.toWidget.clanBadgeIdToImage(
+                            battle.opponent1.clan.badgeId,
                             size: 18),
                       ],
                     ),
@@ -507,7 +510,8 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Assets.clanBadgeIdToImage(battle.team1.clan.badgeId,
+                          AppAssets.toWidget.clanBadgeIdToImage(
+                              battle.team1.clan.badgeId,
                               size: 18),
                           AppWidgets.sizedBox.width4,
                           Text(
@@ -564,7 +568,7 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
                             ),
                           ),
                           AppWidgets.sizedBox.width4,
-                          Assets.clanBadgeIdToImage(
+                          AppAssets.toWidget.clanBadgeIdToImage(
                               battle.opponent1.clan.badgeId,
                               size: 18),
                         ],

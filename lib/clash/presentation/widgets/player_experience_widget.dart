@@ -16,7 +16,7 @@ class PlayerExperienceWidget extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Image.asset(
-          Assets.experience,
+          AppAssets.paths.experience,
           height: 32,
           width: 32,
         ),

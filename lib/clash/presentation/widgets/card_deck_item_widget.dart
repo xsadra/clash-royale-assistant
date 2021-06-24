@@ -3,7 +3,6 @@ import 'package:flutter/material.dart' hide Card;
 import '../../../core/constants/consts.dart';
 import '../../../core/platform/assets_controller.dart';
 import '../../domain/entities/card.dart';
-import 'widgets.dart';
 
 class CardDeckItem extends StatelessWidget {
   const CardDeckItem({
@@ -21,7 +20,7 @@ class CardDeckItem extends StatelessWidget {
         width: 86.0,
         child: Stack(
           children: [
-            CardAssetImage(card: card),
+            AppAssets.toWidget.cardToImage(card: card),
             Container(
               alignment: Alignment.bottomCenter,
               margin: EdgeInsets.only(bottom: 60.0, top: 12),
@@ -31,7 +30,8 @@ class CardDeckItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     for (var index = 0; index < (card.starLevel ?? 0); index++)
-                      Image.asset(Assets.starLevel, width: 20, height: 20),
+                      Image.asset(AppAssets.paths.starLevel,
+                          width: 20, height: 20),
                   ],
                 ),
               ),
@@ -41,7 +41,7 @@ class CardDeckItem extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 12.0, left: 9),
               width: 56,
               child: Text(
-                AppUITexts.LVL_SPC +
+                AppText.ui.levelSpc +
                     (card.level + 13 - card.maxLevel).toString(),
                 style: TextStyle(
                   color: Colors.white,

@@ -21,15 +21,15 @@ class UpcomingChestItem extends StatelessWidget {
         width: 80.0,
         child: Stack(
           children: [
-            Image.asset(Assets.chestNameToPath(chest.name)),
+            Image.asset(AppAssets.toPath.chestNameToPath(chest.name)),
             Container(
               alignment: Alignment.bottomCenter,
               margin: EdgeInsets.only(bottom: 18.0),
               padding: EdgeInsets.only(left: 10.0),
               child: Text(
                 (chest.index == 0)
-                    ? AppUITexts.Next
-                    : AppUITexts.PLUS + (chest.index).toString(),
+                    ? AppText.ui.next
+                    : AppText.ui.plus + (chest.index).toString(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,

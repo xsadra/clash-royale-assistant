@@ -45,20 +45,16 @@ class _InputTagState extends State<InputTag> {
     return Column(
       children: [
         SetPlayerHelpText(
-            rowNumber: AppBodyTexts.NUM_1,
-            rowText: AppBodyTexts.FIND_TAG_HELP_1),
+            rowNumber: AppText.body.num1, rowText: AppText.body.findTagHelp1),
         AppWidgets.sizedBox.height12,
         SetPlayerHelpText(
-            rowNumber: AppBodyTexts.NUM_2,
-            rowText: AppBodyTexts.FIND_TAG_HELP_2),
+            rowNumber: AppText.body.num2, rowText: AppText.body.findTagHelp2),
         AppWidgets.sizedBox.height12,
         SetPlayerHelpText(
-            rowNumber: AppBodyTexts.NUM_3,
-            rowText: AppBodyTexts.FIND_TAG_HELP_3),
+            rowNumber: AppText.body.num3, rowText: AppText.body.findTagHelp3),
         AppWidgets.sizedBox.height12,
         SetPlayerHelpText(
-            rowNumber: AppBodyTexts.NUM_4,
-            rowText: AppBodyTexts.FIND_TAG_HELP_4),
+            rowNumber: AppText.body.num4, rowText: AppText.body.findTagHelp4),
         AppWidgets.sizedBox.height12,
       ],
     );
@@ -66,7 +62,7 @@ class _InputTagState extends State<InputTag> {
 
   Text _titleText() {
     return Text(
-      AppUITexts.TO_START,
+      AppText.ui.toStart,
       textAlign: TextAlign.center,
       style: TextStyle(
         letterSpacing: 2,
@@ -116,16 +112,15 @@ class _InputTagState extends State<InputTag> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Color(0xFF00893F)),
                 decoration: InputDecoration(
-                    errorText: showError
-                        ? AppErrorTexts.FIND_TAG_TEXT_FIELD_ERROR
-                        : null,
+                    errorText:
+                        showError ? AppText.error.findTagTextFieldError : null,
                     fillColor: Colors.blueGrey,
-                    labelText: AppBodyTexts.FIND_TAG_TEXT_FIELD_LABEL,
+                    labelText: AppText.body.findTagTextFieldLabel,
                     labelStyle: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black54),
                     prefixIcon: Icon(Icons.tag, color: Colors.green),
                     border: OutlineInputBorder(),
-                    hintText: AppBodyTexts.FIND_TAG_TEXT_FIELD_HINT,
+                    hintText: AppText.body.findTagTextFieldHint,
                     hintStyle: TextStyle(color: Colors.teal)),
               ),
             ),
@@ -148,7 +143,7 @@ class _InputTagState extends State<InputTag> {
         Expanded(
           child: ElevatedButton(
             onPressed: _validateTag,
-            child: Text(AppUITexts.SEARCH),
+            child: Text(AppText.ui.search),
           ),
         ),
       ],
@@ -157,8 +152,8 @@ class _InputTagState extends State<InputTag> {
 
   void _validateTag() {
     controller.clear();
-    inputString = AppUITexts.SPACE_URL +
-        inputString.replaceAll(AppUITexts.HASH_TAG, AppUITexts.EMPTY);
+    inputString = AppText.ui.spaceUrl +
+        inputString.replaceAll(AppText.ui.hashTag, AppText.ui.empty);
 
     log(inputString, name: 'InputTag > _validateTag()');
 

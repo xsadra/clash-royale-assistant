@@ -26,7 +26,7 @@ class PlayerPage extends StatelessWidget {
     log('build', name: 'PlayerPage');
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppBodyTexts.APP_TITLE),
+        title: Text(AppText.body.appTitle),
       ),
       body: MultiBlocProvider(
         providers: playerProviders,

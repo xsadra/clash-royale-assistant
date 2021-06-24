@@ -28,7 +28,7 @@ class UpcomingChestsLocalDataSourceImpl
   @override
   Future<UpChestsModel> getLastData() {
     final jsonString =
-        sharedPreferences.getString(AppConstTests.CACHED_UPCOMING_CHESTS);
+        sharedPreferences.getString(AppText.consts.cachedUpcomingChests);
     if (jsonString == null) {
       throw CacheException();
     }
@@ -39,7 +39,7 @@ class UpcomingChestsLocalDataSourceImpl
   @override
   Future<void> cacheUpcomingChests(UpChestsModel upcomingChestsToCache) {
     return sharedPreferences.setString(
-      AppConstTests.CACHED_UPCOMING_CHESTS,
+      AppText.consts.cachedUpcomingChests,
       jsonEncode(upcomingChestsToCache),
     );
   }

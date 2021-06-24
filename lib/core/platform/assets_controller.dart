@@ -2,22 +2,32 @@ import 'package:flutter/material.dart' hide Card;
 
 import '../../clash/domain/entities/card.dart';
 
-class Assets {
-  Assets._();
+class AppAssets {
+  static AssetPaths paths = const AssetPaths();
+  static AssetToPaths toPath = const AssetToPaths();
+  static AssetToWidgets toWidget = const AssetToWidgets();
 
-  static String get experience => 'assets/images/ui/ui-experience.png';
+  AppAssets._();
+}
 
-  static String get starLevel => 'assets/images/ui/ui-star-level.png';
+class AssetPaths {
+  String get experience => 'assets/images/ui/ui-experience.png';
 
-  static String get notFound => 'assets/images/ui/not-found.png';
+  String get starLevel => 'assets/images/ui/ui-star-level.png';
 
-  static String get trophy => 'assets/images/ui/ui-trophy.png';
+  String get notFound => 'assets/images/ui/not-found.png';
 
-  static String get crownRed => 'assets/images/crown/crown-red.png';
+  String get trophy => 'assets/images/ui/ui-trophy.png';
 
-  static String get crownBlue => 'assets/images/crown/crown-blue.png';
+  String get crownRed => 'assets/images/crown/crown-red.png';
 
-  static String chestNameToPath(String name) {
+  String get crownBlue => 'assets/images/crown/crown-blue.png';
+
+  const AssetPaths();
+}
+
+class AssetToPaths {
+  String chestNameToPath(String name) {
     final images = {
       'Silver Chest': 'assets/images/chests/chest-silver.png',
       'Golden Chest': 'assets/images/chests/chest-golden.png',
@@ -37,21 +47,19 @@ class Assets {
         : 'assets/images/ui/not-found.png';
   }
 
-  static String arenaIdToPath(int id) {
+  String arenaIdToPath(int id) {
     return 'assets/images/arena/${id.toString()}.png';
   }
 
-  @Deprecated(
-      'Use `cardToImage` instead. This method cause an ERROR, on parsing missing Card')
-  static String cardToPath(String name, {bool isGold}) {
-    String path = isGold ? 'assets/images/cards-gold/' : 'assets/images/cards/';
-    String fileName =
-        name.replaceAll(' ', '-').replaceAll('.', '').toLowerCase() + '.png';
-
-    return path + fileName;
+  String clanBadgeIdToPath(int id) {
+    return 'assets/images/clan-badges/${id.toString()}.png';
   }
 
-  static Image cardToImage(Card card) {
+  const AssetToPaths();
+}
+
+class AssetToWidgets {
+  Image cardToImage({Card card}) {
     String path = card.starLevel != null
         ? 'assets/images/cards-gold/'
         : 'assets/images/cards/';
@@ -67,11 +75,7 @@ class Assets {
     );
   }
 
-  static String clanBadgeIdToPath(int id) {
-    return 'assets/images/clan-badges/${id.toString()}.png';
-  }
-
-  static Widget clanBadgeIdToImage(int id, {double size}) {
+  Widget clanBadgeIdToImage(int id, {double size}) {
     String path = 'assets/images/clan-badges/${id.toString()}.png';
     if (size == null) {
       return Image.asset(path);
@@ -82,5 +86,21 @@ class Assets {
       height: size,
       child: Image.asset(path),
     );
+  }
+
+  const AssetToWidgets();
+}
+
+class Assets {
+  Assets._();
+
+  @Deprecated(
+      'Use `AppAssets.toWidget.cardToImage` to get an image instead. This method cause an ERROR, on parsing missing Card')
+  static String cardToPath(String name, {bool isGold}) {
+    String path = isGold ? 'assets/images/cards-gold/' : 'assets/images/cards/';
+    String fileName =
+        name.replaceAll(' ', '-').replaceAll('.', '').toLowerCase() + '.png';
+
+    return path + fileName;
   }
 }

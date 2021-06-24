@@ -37,7 +37,7 @@ class PlayerName extends StatelessWidget {
           AppWidgets.sizedBox.width16,
           Row(
             children: [
-              Image.asset(Assets.starLevel, width: 24, height: 24),
+              Image.asset(AppAssets.paths.starLevel, width: 24, height: 24),
               AppWidgets.sizedBox.width6,
               Text(
                 player.starPoints.toString(),

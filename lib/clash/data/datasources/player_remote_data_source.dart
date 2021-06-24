@@ -25,7 +25,7 @@ class PlayerRemoteDataSourceImpl implements PlayerRemoteDataSource {
   Future<Player> getPlayer(String playerTag) async {
     final response = await dio
         .get(
-          AppApiTexts.API_BASE_PLAYER_URL_PROXY + playerTag,
+          AppText.api.apiBasePlayerUrlProxy + playerTag,
           options: Options(headers: {
             'Content-Type': 'application/json',
             'authorization': "Bearer $API_TOKEN_PROXY",

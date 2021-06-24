@@ -26,7 +26,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
         (chests) => Loaded(player: chests),
       );
     } else {
-      yield Error(message: AppErrorTexts.UNEXPECTED_EVENT);
+      yield Error(message: AppText.error.unexpectedEvent);
     }
   }
 }

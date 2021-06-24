@@ -18,7 +18,7 @@ class AchievementsDetails extends StatelessWidget {
       children: [
         StatHeader(
             icon: Icons.playlist_add_check_rounded,
-            title: AppUITexts.ACHIEVEMENTS_COL),
+            title: AppText.ui.achievementsCol),
         AnimationLimiter(
           child: GridView.count(
             physics: const NeverScrollableScrollPhysics(),

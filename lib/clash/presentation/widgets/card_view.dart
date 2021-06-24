@@ -24,7 +24,7 @@ class CardsView extends StatelessWidget {
             } else if (state is Loaded) {
               return _loadedDisplay(state);
             }
-            return MessageDisplay(message: AppUIMessagesText.UNHANDLED_STATE);
+            return MessageDisplay(message: AppText.uiMessages.unhandledState);
           },
         ),
       ),
@@ -36,7 +36,7 @@ class CardsView extends StatelessWidget {
       child: Column(
         children: [
           RefreshPlayer(),
-          MessageDisplay(message: AppUIMessagesText.NO_DATA),
+          MessageDisplay(message: AppText.uiMessages.noData),
         ],
       ),
     );

@@ -79,19 +79,19 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
   List<Widget> _playerTabBarList() {
     return <Widget>[
       Tab(
-        text: AppUITexts.PLAYER,
+        text: AppText.ui.player,
       ),
       Tab(
-        text: AppUITexts.UPCOMING,
+        text: AppText.ui.upcoming,
       ),
       Tab(
-        text: AppUITexts.CARDS,
+        text: AppText.ui.cards,
       ),
       Tab(
-        text: AppUITexts.BATTLES,
+        text: AppText.ui.battles,
       ),
       Tab(
-        text: AppUITexts.ACHIEVED,
+        text: AppText.ui.achieved,
       ),
     ];
   }
