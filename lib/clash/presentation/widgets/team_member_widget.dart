@@ -2,6 +2,7 @@ import 'package:clash_royale_assistant/core/constants/consts.dart';
 import 'package:flutter/material.dart' hide Card;
 
 import '../../../core/enums/enums_with_extensions.dart';
+import '../../../core/extensions/extensions.dart';
 import '../../../core/platform/assets_controller.dart';
 import '../../domain/entities/battle.dart';
 import '../../domain/entities/card.dart';
@@ -37,24 +38,25 @@ class TeamMemberWidget extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Row(
-            children: [
-              if (teamType == TeamMemberType.Team)
-                Assets.clanBadgeIdToImage(team.clan.badgeId, size: 18),
-              AppWidgets.sizedBox.width4,
-              Text(
-                team.clan.name,
-                style: TextStyle(
-                  fontSize: 10.0,
-                  color: Colors.black54,
-                  fontStyle: FontStyle.italic,
+          if (team.hasClan)
+            Row(
+              children: [
+                if (teamType == TeamMemberType.Team)
+                  Assets.clanBadgeIdToImage(team.clan.badgeId, size: 18),
+                AppWidgets.sizedBox.width4,
+                Text(
+                  team.clan.name,
+                  style: TextStyle(
+                    fontSize: 10.0,
+                    color: Colors.black54,
+                    fontStyle: FontStyle.italic,
+                  ),
                 ),
-              ),
-              AppWidgets.sizedBox.width4,
-              if (teamType == TeamMemberType.opponent)
-                Assets.clanBadgeIdToImage(team.clan.badgeId, size: 18),
-            ],
-          ),
+                AppWidgets.sizedBox.width4,
+                if (teamType == TeamMemberType.opponent)
+                  Assets.clanBadgeIdToImage(team.clan.badgeId, size: 18),
+              ],
+            ),
           AppWidgets.sizedBox.height2,
           if (showTrophies)
             Row(
