@@ -32,7 +32,7 @@ class PlayerLocalDataSourceImpl implements PlayerLocalDataSource {
     if (jsonString == null) {
       throw CacheException();
     }
-    log(jsonString, name: 'PlayerLocalDataSource');
+    log(jsonString.toString().substring(0, 200), name: 'PlayerLocalDataSource');
 
     return Future.value(PlayerModel.fromJson(json.decode(jsonString)));
   }
