@@ -41,9 +41,18 @@ class _InputTagState extends State<InputTag> {
     );
   }
 
-  Column _helpText() {
+  Widget _helpText() {
     return Column(
       children: [
+        Text(
+          AppText.body.findTagHelpTextHeader,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black54,
+            fontSize: 16.0,
+          ),
+        ),
+        AppWidgets.sizedBox.height6,
         SetPlayerHelpText(
             rowNumber: AppText.body.num1, rowText: AppText.body.findTagHelp1),
         AppWidgets.sizedBox.height12,
@@ -60,7 +69,7 @@ class _InputTagState extends State<InputTag> {
     );
   }
 
-  Text _titleText() {
+  Widget _titleText() {
     return Text(
       AppText.ui.toStart,
       textAlign: TextAlign.center,
@@ -112,16 +121,19 @@ class _InputTagState extends State<InputTag> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Color(0xFF00893F)),
                 decoration: InputDecoration(
-                    errorText:
-                        showError ? AppText.error.findTagTextFieldError : null,
-                    fillColor: Colors.blueGrey,
-                    labelText: AppText.body.findTagTextFieldLabel,
-                    labelStyle: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black54),
-                    prefixIcon: Icon(Icons.tag, color: Colors.green),
-                    border: OutlineInputBorder(),
-                    hintText: AppText.body.findTagTextFieldHint,
-                    hintStyle: TextStyle(color: Colors.teal)),
+                  errorText:
+                      showError ? AppText.error.findTagTextFieldError : null,
+                  fillColor: Colors.blueGrey,
+                  labelText: AppText.body.findTagTextFieldLabel,
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
+                  prefixIcon: Icon(Icons.tag, color: Colors.green),
+                  border: OutlineInputBorder(),
+                  hintText: AppText.body.findTagTextFieldHint,
+                  hintStyle: TextStyle(color: Colors.teal),
+                ),
               ),
             ),
             Expanded(
@@ -137,7 +149,7 @@ class _InputTagState extends State<InputTag> {
     );
   }
 
-  Row _searchButton() {
+  Widget _searchButton() {
     return Row(
       children: [
         Expanded(
@@ -214,7 +226,7 @@ class SetPlayerHelpText extends StatelessWidget {
   }
 }
 
-// Fix Step: remove -  it cause repeated letters on input
+@Deprecated('it cause repeated letters on input')
 class UpperCaseTextFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(

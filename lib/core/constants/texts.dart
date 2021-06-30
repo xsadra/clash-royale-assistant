@@ -79,6 +79,7 @@ class BodyTexts {
   String get findTagHelp4 => 'Paste your Tag in the field above';
   String get findTagTextFieldLabel => 'Enter your Player Tag';
   String get findTagTextFieldHint => 'ABCD123';
+  String get findTagHelpTextHeader => 'How to find your Tag';
 }
 
 class UITexts {
