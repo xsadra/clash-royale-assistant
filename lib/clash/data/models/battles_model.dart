@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:convert' show jsonEncode;
 
 import 'package:meta/meta.dart' show required;
 
@@ -11,12 +11,9 @@ class BattlesModel extends Battles {
     @required List<BattleModel> battles,
   }) : super(battles: battles);
 
-  factory BattlesModel.fromJson(Map<String, dynamic> jsonMap) {
-    dynamic battles = jsonMap['battles'];
-    dynamic decodedItems = battles is String ? jsonDecode(battles) : battles;
-    return new BattlesModel(
-      battles:
-          (decodedItems as List).map((e) => BattleModel.fromJson(e)).toList(),
+  factory BattlesModel.fromJson(List<dynamic> jsonMap) {
+    return BattlesModel(
+      battles: jsonMap.map((item) => BattleModel.fromJson(item)).toList(),
     );
   }
 

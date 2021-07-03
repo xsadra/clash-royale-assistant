@@ -90,16 +90,13 @@ class PlayerModel extends Player {
       clan: ClanModel.fromJson(json['clan']),
       arena: ArenaModel.fromJson(json['arena']),
       leagueStatistics: LeagueStatisticsModel.fromMap(json['leagueStatistics']),
-      badges: (jsonDecode(json['badges']) as List)
-          .map((e) => BadgeModel.fromJson(e))
-          .toList(),
-      achievements: (jsonDecode(json['achievements']) as List)
+      badges:
+          (json['badges'] as List).map((e) => BadgeModel.fromJson(e)).toList(),
+      achievements: (json['achievements'] as List)
           .map((e) => AchievementModel.fromJson(e))
           .toList(),
-      cards: (jsonDecode(json['cards']) as List)
-          .map((e) => CardModel.fromJson(e))
-          .toList(),
-      currentDeck: (jsonDecode(json['currentDeck']) as List)
+      cards: (json['cards'] as List).map((e) => CardModel.fromJson(e)).toList(),
+      currentDeck: (json['currentDeck'] as List)
           .map((e) => CardModel.fromJson(e))
           .toList(),
       currentFavouriteCard: CardModel.fromJson(json['currentFavouriteCard']),

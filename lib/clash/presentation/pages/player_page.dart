@@ -27,6 +27,20 @@ class PlayerPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppText.body.appTitle),
+        actions: [
+          TextButton(
+            onPressed: () {
+              showAboutDialog(
+                context: context,
+                applicationVersion: '1.0.1',
+                applicationName: 'Cr-App',
+                applicationIcon: Icon(Icons.all_inclusive_sharp),
+                children: [Text('Developer: Sadra Babai')],
+              );
+            },
+            child: Icon(Icons.info_outline),
+          )
+        ],
       ),
       body: MultiBlocProvider(
         providers: playerProviders,

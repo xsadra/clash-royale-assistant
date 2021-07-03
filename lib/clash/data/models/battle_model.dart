@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:convert' show jsonEncode;
 
 import 'package:meta/meta.dart' show required;
 
@@ -58,10 +58,10 @@ class BattleModel extends Battle {
       arena: ArenaModel.fromJson(jsonData['arena']),
       gameMode: GameModeModel.fromJson(jsonData['gameMode']),
       deckSelection: jsonData['deckSelection'] as String,
-      team: (jsonDecode(jsonData['team']) as List)
+      team: (jsonData['team'] as List)
           .map((e) => TeamMemberModel.fromJson(e))
           .toList(),
-      opponent: (jsonDecode(jsonData['opponent']) as List)
+      opponent: (jsonData['opponent'] as List)
           .map((e) => TeamMemberModel.fromJson(e))
           .toList(),
       challengeTitle: jsonData['challengeTitle'] as String,
@@ -257,9 +257,7 @@ class TeamMemberModel extends TeamMember {
               .toList()
           : [],
       clan: ClanModel.fromJson(json['clan']),
-      cards: (jsonDecode(json['cards']) as List)
-          .map((e) => CardModel.fromJson(e))
-          .toList(),
+      cards: (json['cards'] as List).map((e) => CardModel.fromJson(e)).toList(),
     );
   }
 
