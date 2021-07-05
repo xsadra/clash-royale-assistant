@@ -1,6 +1,6 @@
-import 'package:clash_royale_assistant/core/constants/consts.dart';
 import 'package:flutter/material.dart' hide Card;
 
+import '../../../core/constants/consts.dart';
 import '../../../core/enums/enums_with_extensions.dart';
 import '../../../core/extensions/extensions.dart';
 import '../../../core/platform/assets_controller.dart';
@@ -38,6 +38,15 @@ class TeamMemberWidget extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+          if (!team.hasClan)
+            Text(
+              'Has no Clan',
+              style: TextStyle(
+                fontSize: 10.0,
+                color: Colors.black54,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
           if (team.hasClan)
             Row(
               children: [
