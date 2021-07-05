@@ -25,7 +25,7 @@ class BattlesRemoteDataSourceImpl implements BattlesRemoteDataSource {
   Future<Battles> getBattles(String playerTag) async {
     final response = await dio
         .get(
-          AppText.api.apiBasePlayerUrlProxy + playerTag + AppText.api.battles,
+          AppTexts.api.apiBasePlayerUrlProxy + playerTag + AppTexts.api.battles,
           options: Options(headers: {
             'Content-Type': 'application/json',
             'authorization': "Bearer $API_TOKEN_PROXY",

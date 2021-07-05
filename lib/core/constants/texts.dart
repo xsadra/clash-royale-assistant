@@ -1,4 +1,4 @@
-class AppText {
+class AppTexts {
   static ConstAppTests consts = const ConstAppTests();
   static ApiAppTexts api = const ApiAppTexts();
   static ErrorAppTexts error = const ErrorAppTexts();
@@ -6,7 +6,7 @@ class AppText {
   static BodyAppTexts body = const BodyAppTexts();
   static UIAppTexts ui = const UIAppTexts();
 
-  AppText._();
+  AppTexts._();
 }
 
 class AppRouteTexts {
@@ -133,6 +133,13 @@ class UIAppTexts {
   String get bestSeason => 'Best Season';
   String get currentDeck => 'Current Deck';
   String get arrowFavoriteCardCol => ' > Favorite Card: ';
+  String get spcHyphenSps => ' - ';
+  String get spcWins => ' Wins';
+  String get spcWin => ' Win';
+  String get underline => '_';
+  String get spc => ' ';
+  String get spcPlusOne => ' +1';
+  String get no => 'no';
 
 // static const BATTLE_STATS =  ;
 }

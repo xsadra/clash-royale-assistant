@@ -1,3 +1,4 @@
+import 'package:clash_royale_assistant/core/constants/consts.dart';
 import 'package:flutter/material.dart';
 
 import '../../clash/domain/entities/battle.dart';
@@ -21,13 +22,15 @@ extension BattleEntityExtensions on Battle {
   bool get didTeamWin =>
       (this.team1.crowns ?? 0) > (this.opponent1.crowns ?? 0);
 
-  bool get isDisplayTeamWin =>
-      this.didTeamWin || (this.challengeWinCountBefore ?? 0) > 0;
+  bool get isDisplayTeamWin => this.challengeWinCountBefore != null;
 
   bool get isDisplayPreviousTeamWinNumber =>
       (this.challengeWinCountBefore ?? 0) > 0;
 
-  String get winCount => (this.challengeWinCountBefore ?? 'no').toString();
+  bool get isDisplayTeamWinText => isDisplayPreviousTeamWinNumber || didTeamWin;
+
+  String get winCount =>
+      (this.challengeWinCountBefore ?? AppTexts.ui.no).toString();
 
   String get timeAgo => this.battleTime.timeAgo();
 
@@ -45,12 +48,16 @@ extension BattleEntityExtensions on Battle {
     return BattleResult.Defeat;
   }
 
-  String get winCountText =>
-      (this.challengeWinCountBefore ?? 0) > 0 ? ' Wins' : ' Win';
+  String get winCountText => (this.challengeWinCountBefore ?? 0) > 0
+      ? AppTexts.ui.spcWins
+      : AppTexts.ui.spcWin;
 
   String get gameModeName => this.gameMode.name;
 
-  String get gameModeNameFormatted => this.gameMode.name.replaceAll('_', ' ');
+  String get gameModeNameFormatted => this.gameMode.name.replaceAll(
+        AppTexts.ui.underline,
+        AppTexts.ui.spc,
+      );
 
   int get teamCrowns => this.team1.crowns ?? 0;
 
@@ -66,19 +73,19 @@ extension BattleEntityExtensions on Battle {
 
   Color get resultBackgroundColor {
     if (this.teamCrowns == this.opponentCrowns) {
-      return Colors.black26;
+      return AppColors.battles.tileResultDrawBackgroundColor;
     } else if (this.teamCrowns > this.opponentCrowns) {
-      return Colors.green.shade100;
+      return AppColors.battles.tileResultWinBackgroundColor;
     }
-    return Colors.red.shade50;
+    return AppColors.battles.tileResultDefeatBackgroundColor;
   }
 
   Color get resultStatsColor {
     if (this.teamCrowns == this.opponentCrowns) {
-      return Colors.white70;
+      return AppColors.battles.tileStatusDrawBackgroundColor;
     } else if (this.teamCrowns > this.opponentCrowns) {
-      return Colors.green;
+      return AppColors.battles.tileStatusWinBackgroundColor;
     }
-    return Colors.red;
+    return AppColors.battles.tileStatusDefeatBackgroundColor;
   }
 }

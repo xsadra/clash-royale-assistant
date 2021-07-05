@@ -1,24 +1,12 @@
 import 'package:flutter/material.dart';
 
-const kPaddingVertical_8 = const EdgeInsets.symmetric(vertical: 8.0);
-const kPaddingAll_8 = const EdgeInsets.all(8.0);
-const kStyleClubValue = const TextStyle(color: Colors.black87);
-const kStyleClubCountry =
-    const TextStyle(fontSize: 10.0, color: Colors.black54);
-const kStyleClubName = const TextStyle(
-    fontWeight: FontWeight.bold, fontSize: 18.0, color: Colors.black87);
-const kStyleDetailText = const TextStyle(color: Colors.black);
-const kStyleMessageDisplay = const TextStyle(fontSize: 25.0);
-const kStyleClubCountryText = const TextStyle(
-    color: Colors.white70, fontSize: 22, fontWeight: FontWeight.bold);
-const kStyleClubNameText = const TextStyle(fontWeight: FontWeight.bold);
-
-class AppStyle {
+class AppStyles {
   static Paddings paddings = const Paddings();
   static Margins margins = const Margins();
   static AchievementsAppStyle achievements = const AchievementsAppStyle();
+  static BattlesAppStyle battles = const BattlesAppStyle();
 
-  const AppStyle._();
+  const AppStyles._();
 }
 
 class AchievementsAppStyle {
@@ -88,6 +76,57 @@ class AchievementsAppStyle {
       );
 }
 
+class BattlesAppStyle {
+  const BattlesAppStyle();
+
+  double get tileHeaderCrownIconSize => 24;
+
+  double get tileStatusBattleResultIconSize => 12;
+
+  double get tileStatusBattleTimeIconSize => 12;
+
+  IconData get tileStatusBattleResultWinIconData => Icons.thumb_up;
+
+  IconData get tileStatusBattleResultDefeatIconData => Icons.thumb_down;
+
+  IconData get tileStatusBattleTimeIconData => Icons.thumb_down;
+
+  TextStyle get tileHeaderTitleTextStyle => const TextStyle(
+        color: Colors.black87,
+        fontWeight: FontWeight.w900,
+        letterSpacing: 0.9,
+      );
+
+  TextStyle get tileHeaderCrownTextStyle => const TextStyle(
+        color: Colors.black54,
+        fontWeight: FontWeight.w500,
+      );
+
+  TextStyle get tileHeaderTeamWinCounterTitleTextStyle => const TextStyle(
+        fontSize: 12.0,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+        shadows: [
+          Shadow(color: Colors.red, blurRadius: 2, offset: Offset(1, 1)),
+          Shadow(color: Colors.black, blurRadius: 4, offset: Offset(1, -1)),
+          Shadow(color: Colors.black, blurRadius: 2, offset: Offset(-1, 1)),
+          Shadow(color: Colors.black, blurRadius: 2, offset: Offset(-1, -1)),
+        ],
+      );
+
+  TextStyle get tileStatusBattleResultTitleTextStyle => const TextStyle(
+        fontSize: 10.0,
+        fontWeight: FontWeight.bold,
+        fontStyle: FontStyle.italic,
+      );
+
+  TextStyle get tileStatusBattleTimeTextStyle => const TextStyle(
+        fontSize: 10.0,
+        fontStyle: FontStyle.italic,
+        color: Colors.blueAccent,
+      );
+}
+
 class Margins {
   const Margins();
 
@@ -100,4 +139,10 @@ class Paddings {
   EdgeInsetsGeometry get all8 => const EdgeInsets.all(8.0);
 
   EdgeInsetsGeometry get all12 => const EdgeInsets.all(12.0);
+
+  EdgeInsetsGeometry get symmetricV4 =>
+      const EdgeInsets.symmetric(vertical: 4.0);
+
+  EdgeInsetsGeometry get symmetricH10 =>
+      const EdgeInsets.symmetric(horizontal: 10.0);
 }

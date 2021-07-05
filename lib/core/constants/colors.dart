@@ -6,6 +6,7 @@ class AppColors {
   static SplashAppColor splash = const SplashAppColor();
   static BottomNavBarAppColor bottomNavBar = const BottomNavBarAppColor();
   static AchievementsAppColor achievements = const AchievementsAppColor();
+  static BattlesAppColor battles = const BattlesAppColor();
 
   AppColors._();
 }
@@ -13,7 +14,7 @@ class AppColors {
 class MainAppColor {
   const MainAppColor();
 
-  Color get primaryColor => Color(0xFF190F2A);
+  Color get primaryColor => const Color(0xFF190F2A);
 }
 
 class PlayerAppColor {
@@ -35,7 +36,7 @@ class SplashAppColor {
 class BottomNavBarAppColor {
   const BottomNavBarAppColor();
 
-  Color get backgroundColor => Color(0xFF190F2A);
+  Color get backgroundColor => const Color(0xFF190F2A);
 }
 
 class AchievementsAppColor {
@@ -44,4 +45,16 @@ class AchievementsAppColor {
   Color get cardShadowColor => Colors.black54;
   Color get achievedCompletedColor => Colors.green;
   Color get achievedNotCompletedColor => Colors.red;
+}
+
+class BattlesAppColor {
+  const BattlesAppColor();
+  Color get tileStatusBattleTimeIconColor => Colors.blueAccent;
+
+  Color get tileResultWinBackgroundColor => Colors.green.shade100;
+  Color get tileResultDefeatBackgroundColor => Colors.red.shade50;
+  Color get tileResultDrawBackgroundColor => Colors.black26;
+  Color get tileStatusWinBackgroundColor => Colors.green;
+  Color get tileStatusDefeatBackgroundColor => Colors.red;
+  Color get tileStatusDrawBackgroundColor => Colors.white70;
 }

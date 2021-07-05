@@ -29,7 +29,7 @@ class BattlesLocalDataSourceImpl implements BattlesLocalDataSource {
   Future<BattlesModel> getLastData() {
     log('Getting Data from sharedPreferences', name: 'BattlesLocalDataSource');
     final jsonString =
-        sharedPreferences.getString(AppText.consts.cachedBattles);
+        sharedPreferences.getString(AppTexts.consts.cachedBattles);
     if (jsonString == null) {
       throw CacheException();
     }
@@ -42,7 +42,7 @@ class BattlesLocalDataSourceImpl implements BattlesLocalDataSource {
   @override
   Future<void> cacheBattles(BattlesModel battlesToCache) {
     return sharedPreferences.setString(
-      AppText.consts.cachedBattles,
+      AppTexts.consts.cachedBattles,
       jsonEncode(battlesToCache),
     );
   }
