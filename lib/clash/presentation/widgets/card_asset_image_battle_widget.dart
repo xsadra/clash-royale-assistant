@@ -14,7 +14,7 @@ class CardAssetImageBattle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double cardWidth = MediaQuery.of(context).size.width / 9;
+    double cardWidth = MediaQuery.of(context).size.width / 9.5;
     return SizedBox(
       height: cardWidth + 35, //Fix Step: move to CONSTANTS
       width: cardWidth,
@@ -23,6 +23,8 @@ class CardAssetImageBattle extends StatelessWidget {
           AppAssets.toWidget.cardToImage(card: card),
           Text(
             card.name,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
             style: AppStyles.battles.tileBattleTeamCardNameTextStyle,
           ),
