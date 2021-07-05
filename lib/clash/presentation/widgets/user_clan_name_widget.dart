@@ -16,12 +16,12 @@ class UserClanName extends StatelessWidget {
     return Row(
       children: [
         Text(player.clan.name),
-        AppWidgets.sizedBox.width4,
+        AppStyles.sizedBox.width4,
         Text(
           player.clan.tag,
           style: TextStyle(fontSize: 10, color: Colors.blueGrey),
         ),
-        AppWidgets.sizedBox.width4,
+        AppStyles.sizedBox.width4,
         Text(player.role),
       ],
     );

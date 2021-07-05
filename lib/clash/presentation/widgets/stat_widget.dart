@@ -18,7 +18,7 @@ class Stat extends StatelessWidget {
     return Column(
       children: [
         header,
-        AppWidgets.sizedBox.height4,
+        AppStyles.sizedBox.height4,
         for (var tile in tiles) tile,
       ],
     );

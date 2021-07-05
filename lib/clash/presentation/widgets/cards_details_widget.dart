@@ -51,7 +51,7 @@ class CardsDetails extends StatelessWidget {
         for (var cardLevels in _newList.keys)
           ..._createCard(cardLevels, _colors, colorIndex, _newList,
               currentDeckColumnCount),
-        AppWidgets.sizedBox.height16,
+        AppStyles.sizedBox.height16,
       ],
     );
   }

@@ -19,12 +19,12 @@ class PlayerDetails extends StatelessWidget {
       child: Column(
         children: [
           PlayerName(player: player),
-          AppWidgets.sizedBox.height4,
+          AppStyles.sizedBox.height4,
           Padding(
             padding: const EdgeInsets.only(left: 6),
             child: UserClanName(player: player),
           ),
-          AppWidgets.sizedBox.height8,
+          AppStyles.sizedBox.height8,
           Stat(
             header:
                 StatHeader(icon: Icons.ac_unit, title: AppTexts.ui.trophies),
@@ -37,7 +37,7 @@ class PlayerDetails extends StatelessWidget {
                   value: player.trophies.toString()),
             ],
           ),
-          AppWidgets.sizedBox.height6,
+          AppStyles.sizedBox.height6,
           Stat(
             header: StatHeader(
                 icon: Icons.account_balance, title: AppTexts.ui.battleStats),
@@ -55,7 +55,7 @@ class PlayerDetails extends StatelessWidget {
                   value: player.battleCount.toString()),
             ],
           ),
-          AppWidgets.sizedBox.height6,
+          AppStyles.sizedBox.height6,
           Stat(
             header:
                 StatHeader(icon: Icons.data_usage, title: AppTexts.ui.donation),
@@ -78,7 +78,7 @@ class PlayerDetails extends StatelessWidget {
                   value: player.totalDonations.toString()),
             ],
           ),
-          AppWidgets.sizedBox.height6,
+          AppStyles.sizedBox.height6,
           Stat(
             header: StatHeader(
                 icon: Icons.data_usage, title: AppTexts.ui.leagueSeason),
@@ -86,7 +86,7 @@ class PlayerDetails extends StatelessWidget {
               StatTile(field: AppTexts.ui.arenaCol, value: player.arena.name),
             ],
           ),
-          AppWidgets.sizedBox.height6,
+          AppStyles.sizedBox.height6,
           Stat(
             header: StatHeader(
               title: AppTexts.ui.challengeAndTournament,
@@ -113,7 +113,7 @@ class PlayerDetails extends StatelessWidget {
                   value: player.tournamentBattleCount.toString()),
             ],
           ),
-          AppWidgets.sizedBox.height6,
+          AppStyles.sizedBox.height6,
           Stat(
             header:
                 StatHeader(icon: Icons.data_usage, title: AppTexts.ui.warOld),
@@ -126,7 +126,7 @@ class PlayerDetails extends StatelessWidget {
                   value: player.clanCardsCollected.toString()),
             ],
           ),
-          AppWidgets.sizedBox.height6,
+          AppStyles.sizedBox.height6,
           Stat(
             header:
                 StatHeader(icon: Icons.info, title: AppTexts.ui.currentSeason),
@@ -141,7 +141,7 @@ class PlayerDetails extends StatelessWidget {
                       .toString()),
             ],
           ),
-          AppWidgets.sizedBox.height6,
+          AppStyles.sizedBox.height6,
           Stat(
             header: StatHeader(
                 icon: Icons.all_inclusive_sharp,
@@ -160,7 +160,7 @@ class PlayerDetails extends StatelessWidget {
                       .toString()),
             ],
           ),
-          AppWidgets.sizedBox.height6,
+          AppStyles.sizedBox.height6,
           Stat(
             header: StatHeader(
                 icon: Icons.add_alert, title: AppTexts.ui.bestSeason),
@@ -174,7 +174,7 @@ class PlayerDetails extends StatelessWidget {
                       player.leagueStatistics.bestSeason.trophies.toString()),
             ],
           ),
-          AppWidgets.sizedBox.height6,
+          AppStyles.sizedBox.height6,
           Column(
             children: [
               Row(
@@ -194,7 +194,7 @@ class PlayerDetails extends StatelessWidget {
                   ),
                 ],
               ),
-              AppWidgets.sizedBox.height6,
+              AppStyles.sizedBox.height6,
               AnimationLimiter(
                 child: GridView.count(
                   physics: const NeverScrollableScrollPhysics(),
@@ -221,7 +221,7 @@ class PlayerDetails extends StatelessWidget {
               ),
             ],
           ),
-          AppWidgets.sizedBox.height20,
+          AppStyles.sizedBox.height20,
         ],
       ),
     );

@@ -18,7 +18,7 @@ class PlayerName extends StatelessWidget {
     return Row(
       children: [
         PlayerExperienceWidget(expLevel: player.expLevel.toString()),
-        AppWidgets.sizedBox.width8,
+        AppStyles.sizedBox.width8,
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -26,7 +26,7 @@ class PlayerName extends StatelessWidget {
               player.name,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            AppWidgets.sizedBox.height2,
+            AppStyles.sizedBox.height2,
             Text(
               player.tag,
               style: TextStyle(fontSize: 9, color: Colors.green),
@@ -34,11 +34,11 @@ class PlayerName extends StatelessWidget {
           ],
         ),
         if (player.expLevel == 13) ...[
-          AppWidgets.sizedBox.width16,
+          AppStyles.sizedBox.width16,
           Row(
             children: [
               Image.asset(AppAssets.paths.starLevel, width: 24, height: 24),
-              AppWidgets.sizedBox.width6,
+              AppStyles.sizedBox.width6,
               Text(
                 player.starPoints.toString(),
                 style: TextStyle(

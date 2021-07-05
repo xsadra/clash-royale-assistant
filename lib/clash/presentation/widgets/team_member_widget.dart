@@ -44,7 +44,7 @@ class TeamMemberWidget extends StatelessWidget {
                 if (teamType == TeamMemberType.Team)
                   AppAssets.toWidget
                       .clanBadgeIdToImage(team.clan.badgeId, size: 18),
-                AppWidgets.sizedBox.width4,
+                AppStyles.sizedBox.width4,
                 Text(
                   team.clan.name,
                   style: TextStyle(
@@ -53,20 +53,20 @@ class TeamMemberWidget extends StatelessWidget {
                     fontStyle: FontStyle.italic,
                   ),
                 ),
-                AppWidgets.sizedBox.width4,
+                AppStyles.sizedBox.width4,
                 if (teamType == TeamMemberType.opponent)
                   AppAssets.toWidget
                       .clanBadgeIdToImage(team.clan.badgeId, size: 18),
               ],
             ),
-          AppWidgets.sizedBox.height2,
+          AppStyles.sizedBox.height2,
           if (showTrophies)
             Row(
               children: [
-                AppWidgets.sizedBox.width4,
+                AppStyles.sizedBox.width4,
                 if (teamType == TeamMemberType.Team)
                   Image.asset(AppAssets.paths.trophy, height: 12, width: 12),
-                AppWidgets.sizedBox.width7,
+                AppStyles.sizedBox.width7,
                 Text(
                   team.startingTrophies.toString(),
                   style: TextStyle(
@@ -74,13 +74,13 @@ class TeamMemberWidget extends StatelessWidget {
                     color: Colors.black87,
                   ),
                 ),
-                AppWidgets.sizedBox.width7,
+                AppStyles.sizedBox.width7,
                 if (teamType == TeamMemberType.opponent)
                   Image.asset(AppAssets.paths.trophy, height: 12, width: 12),
-                AppWidgets.sizedBox.width3,
+                AppStyles.sizedBox.width3,
               ],
             ),
-          AppWidgets.sizedBox.height8,
+          AppStyles.sizedBox.height8,
           Row(
             children: [
               CardAssetImageBattle(card: teamCards[0]),

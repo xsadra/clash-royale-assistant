@@ -21,7 +21,7 @@ class StatHeader extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, color: color ?? null),
-        AppWidgets.sizedBox.width4,
+        AppStyles.sizedBox.width4,
         Text(
           title,
           style:
