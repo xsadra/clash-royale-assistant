@@ -5,13 +5,13 @@ extension FailureExtension on Failure {
   String get toMessage {
     switch (this.runtimeType) {
       case ServerFailure:
-        return AppText.error.serverFailureMessage;
+        return AppTexts.error.serverFailureMessage;
       case CacheFailure:
-        return AppText.error.cacheFailureMessage;
+        return AppTexts.error.cacheFailureMessage;
       case NotFoundFailure:
-        return AppText.error.notFoundFailureMessage;
+        return AppTexts.error.notFoundFailureMessage;
       default:
-        return AppText.error.unexpectedError;
+        return AppTexts.error.unexpectedError;
     }
   }
 }

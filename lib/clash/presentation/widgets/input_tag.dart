@@ -45,7 +45,7 @@ class _InputTagState extends State<InputTag> {
     return Column(
       children: [
         Text(
-          AppText.body.findTagHelpTextHeader,
+          AppTexts.body.findTagHelpTextHeader,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.black54,
@@ -54,16 +54,16 @@ class _InputTagState extends State<InputTag> {
         ),
         AppWidgets.sizedBox.height6,
         SetPlayerHelpText(
-            rowNumber: AppText.body.num1, rowText: AppText.body.findTagHelp1),
+            rowNumber: AppTexts.body.num1, rowText: AppTexts.body.findTagHelp1),
         AppWidgets.sizedBox.height12,
         SetPlayerHelpText(
-            rowNumber: AppText.body.num2, rowText: AppText.body.findTagHelp2),
+            rowNumber: AppTexts.body.num2, rowText: AppTexts.body.findTagHelp2),
         AppWidgets.sizedBox.height12,
         SetPlayerHelpText(
-            rowNumber: AppText.body.num3, rowText: AppText.body.findTagHelp3),
+            rowNumber: AppTexts.body.num3, rowText: AppTexts.body.findTagHelp3),
         AppWidgets.sizedBox.height12,
         SetPlayerHelpText(
-            rowNumber: AppText.body.num4, rowText: AppText.body.findTagHelp4),
+            rowNumber: AppTexts.body.num4, rowText: AppTexts.body.findTagHelp4),
         AppWidgets.sizedBox.height12,
       ],
     );
@@ -71,7 +71,7 @@ class _InputTagState extends State<InputTag> {
 
   Widget _titleText() {
     return Text(
-      AppText.ui.toStart,
+      AppTexts.ui.toStart,
       textAlign: TextAlign.center,
       style: TextStyle(
         letterSpacing: 2,
@@ -122,16 +122,16 @@ class _InputTagState extends State<InputTag> {
                     fontWeight: FontWeight.bold, color: Color(0xFF00893F)),
                 decoration: InputDecoration(
                   errorText:
-                      showError ? AppText.error.findTagTextFieldError : null,
+                      showError ? AppTexts.error.findTagTextFieldError : null,
                   fillColor: Colors.blueGrey,
-                  labelText: AppText.body.findTagTextFieldLabel,
+                  labelText: AppTexts.body.findTagTextFieldLabel,
                   labelStyle: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black54,
                   ),
                   prefixIcon: Icon(Icons.tag, color: Colors.green),
                   border: OutlineInputBorder(),
-                  hintText: AppText.body.findTagTextFieldHint,
+                  hintText: AppTexts.body.findTagTextFieldHint,
                   hintStyle: TextStyle(color: Colors.teal),
                 ),
               ),
@@ -155,7 +155,7 @@ class _InputTagState extends State<InputTag> {
         Expanded(
           child: ElevatedButton(
             onPressed: _validateTag,
-            child: Text(AppText.ui.search),
+            child: Text(AppTexts.ui.search),
           ),
         ),
       ],
@@ -164,8 +164,8 @@ class _InputTagState extends State<InputTag> {
 
   void _validateTag() {
     controller.clear();
-    inputString = AppText.ui.spaceUrl +
-        inputString.replaceAll(AppText.ui.hashTag, AppText.ui.empty);
+    inputString = AppTexts.ui.spaceUrl +
+        inputString.replaceAll(AppTexts.ui.hashTag, AppTexts.ui.empty);
 
     log(inputString, name: 'InputTag > _validateTag()');
 

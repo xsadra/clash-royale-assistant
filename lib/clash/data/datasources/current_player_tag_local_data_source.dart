@@ -32,7 +32,7 @@ class CurrentPlayerTagLocalDataSourceImpl
     log(tagToSave.playerTag, name: 'CurrentPlayerTagLocalDataSourceImpl');
 
     return sharedPreferences.setString(
-      AppText.consts.currentPlayerTag,
+      AppTexts.consts.currentPlayerTag,
       jsonEncode(tagToSave),
     );
   }
@@ -41,7 +41,7 @@ class CurrentPlayerTagLocalDataSourceImpl
   Future<CurrentPlayerTagModel> getCurrentPlayerTagData() {
     try {
       final jsonString =
-          sharedPreferences.getString(AppText.consts.currentPlayerTag);
+          sharedPreferences.getString(AppTexts.consts.currentPlayerTag);
       if (jsonString == null) {
         throw NotFoundException();
       }

@@ -28,8 +28,8 @@ class UpcomingChestItem extends StatelessWidget {
               padding: EdgeInsets.only(left: 10.0),
               child: Text(
                 (chest.index == 0)
-                    ? AppText.ui.next
-                    : AppText.ui.plus + (chest.index).toString(),
+                    ? AppTexts.ui.next
+                    : AppTexts.ui.plus + (chest.index).toString(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,

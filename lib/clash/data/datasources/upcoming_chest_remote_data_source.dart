@@ -26,9 +26,9 @@ class UpcomingChestsRemoteDataSourceImpl
   Future<UpChests> getUpcomingChests(String playerTag) async {
     final response = await dio
         .get(
-          AppText.api.apiBasePlayerUrlProxy +
+          AppTexts.api.apiBasePlayerUrlProxy +
               playerTag +
-              AppText.api.upcomingChests,
+              AppTexts.api.upcomingChests,
           options: Options(headers: {
             'Content-Type': 'application/json',
             'authorization': "Bearer $API_TOKEN_PROXY",

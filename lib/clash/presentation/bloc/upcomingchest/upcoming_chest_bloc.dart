@@ -28,7 +28,7 @@ class UpcomingChestsBloc
         (chests) => Loaded(upcomingChests: chests),
       );
     } else {
-      yield Error(message: AppText.error.unexpectedEvent);
+      yield Error(message: AppTexts.error.unexpectedEvent);
     }
   }
 }

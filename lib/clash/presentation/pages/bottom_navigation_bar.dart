@@ -20,8 +20,8 @@ class BottomNavBar extends StatelessWidget {
     return ConvexAppBar.badge(
       {},
       items: [
-        TabItem(icon: Icons.person, title: AppText.ui.player),
-        TabItem(icon: Icons.search, title: AppText.ui.search),
+        TabItem(icon: Icons.person, title: AppTexts.ui.player),
+        TabItem(icon: Icons.search, title: AppTexts.ui.search),
       ],
       badgeMargin: EdgeInsets.only(bottom: 36, left: 30),
       height: 48.0,

@@ -25,7 +25,7 @@ class CardsDetails extends StatelessWidget {
     int currentDeckColumnCount = 4;
     var _cardsChartData = _newList.keys
         .map((e) => CardsChartData(
-            AppText.ui.levelSpc + e.toString(), _newList[e].length))
+            AppTexts.ui.levelSpc + e.toString(), _newList[e].length))
         .toList();
     final _colorPalettes =
         charts.MaterialPalette.getOrderedPalettes(_newList.keys.length);
@@ -68,7 +68,7 @@ class CardsDetails extends StatelessWidget {
         children: [
           StatHeader(
             icon: Icons.label_rounded,
-            title: AppText.ui.levelSpc + cardLevel.toString(),
+            title: AppTexts.ui.levelSpc + cardLevel.toString(),
             color: Color(int.parse(colors.elementAt(colorIndex))),
             textColor: Color(int.parse(colors.elementAt(colorIndex++))),
           ),

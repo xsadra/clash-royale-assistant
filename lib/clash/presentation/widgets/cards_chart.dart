@@ -39,7 +39,7 @@ class _CardsChartState extends State<CardsChart> {
             /*seriesList=*/
             [
               charts.Series<CardsChartData, String>(
-                id: AppText.consts.allCards,
+                id: AppTexts.consts.allCards,
                 colorFn: (_, idx) => _colorPalettes[idx].shadeDefault,
                 domainFn: (CardsChartData sales, _) => sales.category,
                 measureFn: (CardsChartData sales, _) => sales.cost,
@@ -58,7 +58,7 @@ class _CardsChartState extends State<CardsChart> {
             ),
             behaviors: [
               charts.ChartTitle(
-                AppText.ui.allCardsCol + widget.cardsCount.toString(),
+                AppTexts.ui.allCardsCol + widget.cardsCount.toString(),
                 behaviorPosition: charts.BehaviorPosition.bottom,
               ),
               charts.DatumLegend(

@@ -26,7 +26,7 @@ class PlayerPage extends StatelessWidget {
     log('build', name: 'PlayerPage');
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppText.body.appTitle),
+        title: Text(AppTexts.body.appTitle),
         actions: [
           TextButton(
             onPressed: () {

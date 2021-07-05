@@ -24,7 +24,7 @@ class PlayerView extends StatelessWidget {
             } else if (state is Loaded) {
               return PlayerDetails(state: state);
             }
-            return MessageDisplay(message: AppText.uiMessages.unhandledState);
+            return MessageDisplay(message: AppTexts.uiMessages.unhandledState);
           },
         ),
       ),
@@ -36,7 +36,7 @@ class PlayerView extends StatelessWidget {
       child: Column(
         children: [
           RefreshPlayer(),
-          MessageDisplay(message: AppText.uiMessages.noData),
+          MessageDisplay(message: AppTexts.uiMessages.noData),
         ],
       ),
     );

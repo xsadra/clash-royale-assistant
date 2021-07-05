@@ -41,7 +41,7 @@ class CardDeckItem extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 12.0, left: 9),
               width: 56,
               child: Text(
-                AppText.ui.levelSpc +
+                AppTexts.ui.levelSpc +
                     (card.level + 13 - card.maxLevel).toString(),
                 style: TextStyle(
                   color: Colors.white,

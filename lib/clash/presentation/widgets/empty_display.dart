@@ -14,7 +14,7 @@ class EmptyDisplay extends StatelessWidget {
       child: Column(
         children: [
           RefreshPlayer(),
-          MessageDisplay(message: AppText.uiMessages.noData),
+          MessageDisplay(message: AppTexts.uiMessages.noData),
         ],
       ),
     );

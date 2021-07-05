@@ -12,7 +12,7 @@ class AchievementsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: AppStyle.paddings.all8,
+        padding: AppStyles.paddings.all8,
         child: BlocBuilder<PlayerBloc, PlayerState>(
           builder: (context, state) {
             if (state is Empty) {
@@ -22,18 +22,14 @@ class AchievementsView extends StatelessWidget {
             } else if (state is Loading) {
               return LoadingWidget();
             } else if (state is Loaded) {
-              return _loadedDisplay(state);
+              return SingleChildScrollView(
+                child: AchievementsDetails(state: state),
+              );
             }
-            return MessageDisplay(message: AppText.uiMessages.unhandledState);
+            return MessageDisplay(message: AppTexts.uiMessages.unhandledState);
           },
         ),
       ),
-    );
-  }
-
-  Widget _loadedDisplay(Loaded state) {
-    return SingleChildScrollView(
-      child: AchievementsDetails(state: state),
     );
   }
 }

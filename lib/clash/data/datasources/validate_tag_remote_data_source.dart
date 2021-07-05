@@ -7,9 +7,9 @@ import '../../../core/error/exceptions.dart';
 
 // Fix Step: force to use [RoyaleTags] type
 class RoyaleTagsType {
-  static String player = AppText.api.apiBasePlayerUrlProxy;
-  static String clan = AppText.api.apiBaseClanUrlProxy;
-  static String tournaments = AppText.api.apiBaseTournamentUrlProxy;
+  static String player = AppTexts.api.apiBasePlayerUrlProxy;
+  static String clan = AppTexts.api.apiBaseClanUrlProxy;
+  static String tournaments = AppTexts.api.apiBaseTournamentUrlProxy;
 }
 
 abstract class ValidateTagRemoteDataSource {

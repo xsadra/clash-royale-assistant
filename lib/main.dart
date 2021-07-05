@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
               ..add(GetCurrentPlayerTagEvent())),
       ],
       child: MaterialApp(
-        title: AppText.body.appTitle,
+        title: AppTexts.body.appTitle,
         builder: ExtendedNavigator(router: Router()),
         debugShowCheckedModeBanner: false,
         theme: ThemeData().copyWith(

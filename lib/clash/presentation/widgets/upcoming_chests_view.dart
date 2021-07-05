@@ -32,7 +32,7 @@ class UpcomingChestsView extends StatelessWidget {
     } else if (state is Loaded) {
       return _loadedDisplay(state);
     }
-    return MessageDisplay(message: AppText.uiMessages.unhandledState);
+    return MessageDisplay(message: AppTexts.uiMessages.unhandledState);
   }
 
   SingleChildScrollView _emptyDisplay() {
@@ -40,7 +40,7 @@ class UpcomingChestsView extends StatelessWidget {
       child: Column(
         children: [
           InputTag(),
-          MessageDisplay(message: AppText.uiMessages.noData),
+          MessageDisplay(message: AppTexts.uiMessages.noData),
         ],
       ),
     );

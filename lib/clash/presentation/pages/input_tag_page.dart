@@ -23,7 +23,7 @@ class InputTagPage extends StatelessWidget {
       providers: playerProviders,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(AppText.body.appTitle),
+          title: Text(AppTexts.body.appTitle),
         ),
         body: Center(
           child: Padding(
