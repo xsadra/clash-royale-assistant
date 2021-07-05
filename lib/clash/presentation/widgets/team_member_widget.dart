@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' hide Card;
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/constants/consts.dart';
 import '../../../core/enums/enums_with_extensions.dart';
@@ -33,62 +34,17 @@ class TeamMemberWidget extends StatelessWidget {
         children: [
           Text(
             team.name,
-            style: TextStyle(
-              fontSize: 12.0,
-              fontWeight: FontWeight.bold,
-            ),
+            style: AppStyles.battles.tileBattleTeamNameTextStyle,
           ),
           if (!team.hasClan)
             Text(
-              'Has no Clan',
-              style: TextStyle(
-                fontSize: 10.0,
-                color: Colors.black54,
-                fontStyle: FontStyle.italic,
-              ),
+              AppTexts.ui.hasNoClan,
+              style: AppStyles.battles.tileBattleTeamHasNoClanNameTextStyle,
             ),
-          if (team.hasClan)
-            Row(
-              children: [
-                if (teamType == TeamMemberType.Team)
-                  AppAssets.toWidget
-                      .clanBadgeIdToImage(team.clan.badgeId, size: 18),
-                AppStyles.sizedBox.width4,
-                Text(
-                  team.clan.name,
-                  style: TextStyle(
-                    fontSize: 10.0,
-                    color: Colors.black54,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                AppStyles.sizedBox.width4,
-                if (teamType == TeamMemberType.opponent)
-                  AppAssets.toWidget
-                      .clanBadgeIdToImage(team.clan.badgeId, size: 18),
-              ],
-            ),
+          if (team.hasClan) DisplayClanName(teamType: teamType, team: team),
           AppStyles.sizedBox.height2,
           if (showTrophies)
-            Row(
-              children: [
-                AppStyles.sizedBox.width4,
-                if (teamType == TeamMemberType.Team)
-                  Image.asset(AppAssets.paths.trophy, height: 12, width: 12),
-                AppStyles.sizedBox.width7,
-                Text(
-                  team.startingTrophies.toString(),
-                  style: TextStyle(
-                    fontSize: 10.0,
-                    color: Colors.black87,
-                  ),
-                ),
-                AppStyles.sizedBox.width7,
-                if (teamType == TeamMemberType.opponent)
-                  Image.asset(AppAssets.paths.trophy, height: 12, width: 12),
-                AppStyles.sizedBox.width3,
-              ],
-            ),
+            DisplayMemberTrophies(teamType: teamType, team: team),
           AppStyles.sizedBox.height8,
           Row(
             children: [
@@ -106,8 +62,120 @@ class TeamMemberWidget extends StatelessWidget {
               CardAssetImageBattle(card: teamCards[7]),
             ],
           ),
+          if (team.canShareDeck) ShareDeck(teamType: teamType, team: team),
         ],
       ),
+    );
+  }
+}
+
+class DisplayClanName extends StatelessWidget {
+  const DisplayClanName({
+    Key key,
+    @required this.teamType,
+    @required this.team,
+  }) : super(key: key);
+
+  final TeamMemberType teamType;
+  final TeamMember team;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        if (teamType == TeamMemberType.Team)
+          AppAssets.toWidget.clanBadgeIdToImage(
+            team.clan.badgeId,
+            size: AppStyles.battles.tileBattleTeamClanIconSize,
+          ),
+        AppStyles.sizedBox.width4,
+        Text(
+          team.clan.name,
+          style: AppStyles.battles.tileBattleTeamClanNameTextStyle,
+        ),
+        AppStyles.sizedBox.width4,
+        if (teamType == TeamMemberType.opponent)
+          AppAssets.toWidget.clanBadgeIdToImage(
+            team.clan.badgeId,
+            size: AppStyles.battles.tileBattleTeamClanIconSize,
+          ),
+      ],
+    );
+  }
+}
+
+class DisplayMemberTrophies extends StatelessWidget {
+  const DisplayMemberTrophies({
+    Key key,
+    @required this.teamType,
+    @required this.team,
+  }) : super(key: key);
+
+  final TeamMemberType teamType;
+  final TeamMember team;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        AppStyles.sizedBox.width4,
+        if (teamType == TeamMemberType.Team)
+          Image.asset(
+            AppAssets.paths.trophy,
+            height: AppStyles.battles.tileBattleTeamClanTrophiesIconSize,
+            width: AppStyles.battles.tileBattleTeamClanTrophiesIconSize,
+          ),
+        AppStyles.sizedBox.width7,
+        Text(
+          team.startingTrophies.toString(),
+          style: AppStyles.battles.tileBattleTeamClanStartingTrophiesTextStyle,
+        ),
+        AppStyles.sizedBox.width7,
+        if (teamType == TeamMemberType.opponent)
+          Image.asset(
+            AppAssets.paths.trophy,
+            height: AppStyles.battles.tileBattleTeamClanTrophiesIconSize,
+            width: AppStyles.battles.tileBattleTeamClanTrophiesIconSize,
+          ),
+        AppStyles.sizedBox.width3,
+      ],
+    );
+  }
+}
+
+class ShareDeck extends StatelessWidget {
+  const ShareDeck({
+    Key key,
+    @required this.teamType,
+    @required this.team,
+  }) : super(key: key);
+
+  final TeamMemberType teamType;
+  final TeamMember team;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        AppStyles.sizedBox.width4,
+        if (teamType == TeamMemberType.Team)
+          InkWell(
+            onTap: () => launch(team.shareDeckUrl),
+            child: Icon(
+              Icons.ios_share,
+              color: AppColors.battles.tileBattleTeamShareDeckIconColor,
+            ),
+          ),
+        if (teamType == TeamMemberType.opponent)
+          InkWell(
+            onTap: () => launch(team.shareDeckUrl),
+            child: Icon(
+              Icons.ios_share,
+              color: AppColors.battles.tileBattleTeamShareDeckIconColor,
+            ),
+          ),
+        AppStyles.sizedBox.width3,
+      ],
     );
   }
 }
