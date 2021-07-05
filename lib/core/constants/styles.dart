@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppStyles {
-  static Paddings paddings = const Paddings();
+  static Paddings padding = const Paddings();
   static Margins margins = const Margins();
   static SizedBoxesAppWidgets sizedBox = const SizedBoxesAppWidgets();
   static AchievementsAppStyle achievements = const AchievementsAppStyle();
@@ -145,6 +145,9 @@ class Paddings {
       const EdgeInsets.symmetric(vertical: 4.0);
 
   EdgeInsetsGeometry get symmetricV8 => const EdgeInsets.symmetric(vertical: 8);
+
+  EdgeInsetsGeometry get symmetricH4 =>
+      const EdgeInsets.symmetric(horizontal: 4.0);
 
   EdgeInsetsGeometry get symmetricH10 =>
       const EdgeInsets.symmetric(horizontal: 10.0);

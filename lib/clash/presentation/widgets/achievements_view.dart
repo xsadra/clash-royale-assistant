@@ -12,7 +12,7 @@ class AchievementsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: AppStyles.paddings.all8,
+        padding: AppStyles.padding.all8,
         child: BlocBuilder<PlayerBloc, PlayerState>(
           builder: (context, state) {
             if (state is Empty) {

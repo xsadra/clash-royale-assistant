@@ -18,7 +18,7 @@ class BattlesDetails extends StatelessWidget {
       itemBuilder: (context, index) {
         Battle battle = _battles[index];
         return Padding(
-          padding: AppStyles.paddings.symmetricV4,
+          padding: AppStyles.padding.symmetricV4,
           child: BattleListTile(battle: battle),
         );
       },

@@ -20,7 +20,7 @@ class AchievementsCard extends StatelessWidget {
       elevation: AppWidgetsConfig.achievements.cardWidgetElevation,
       shape: AppStyles.achievements.cardWidgetShapeBorder,
       child: Padding(
-        padding: AppStyles.paddings.all12,
+        padding: AppStyles.padding.all12,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

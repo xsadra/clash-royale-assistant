@@ -17,7 +17,7 @@ class Battle2V2ItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: battle.resultBackgroundColor,
-      padding: AppStyles.paddings.symmetricV8,
+      padding: AppStyles.padding.symmetricV8,
       child: Column(
         children: [
           BattleHeader(battle: battle),

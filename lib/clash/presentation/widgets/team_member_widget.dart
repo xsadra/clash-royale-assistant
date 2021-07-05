@@ -25,7 +25,7 @@ class TeamMemberWidget extends StatelessWidget {
     final List<Card> teamCards = team.cards;
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 4.0),
+      padding: AppStyles.padding.symmetricH4,
       child: Column(
         crossAxisAlignment: teamType == TeamMemberType.Team
             ? CrossAxisAlignment.start

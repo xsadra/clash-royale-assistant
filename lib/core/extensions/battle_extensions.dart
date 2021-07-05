@@ -9,15 +9,21 @@ extension BattleEntityExtensions on Battle {
   bool get hasCrowns =>
       this.team1.crowns != null && this.opponent1.crowns != null;
 
+  bool get hasCrowns2v2 =>
+      this.team1.crowns != null &&
+      this.team2.crowns != null &&
+      this.opponent1.crowns != null &&
+      this.opponent2.crowns != null;
+
   bool get hasTrophies =>
       this.team1.startingTrophies != null &&
       this.opponent1.startingTrophies != null;
 
-  bool get hasCrowns2v2 =>
-      this.team1.crowns != null &&
-      this.opponent1.crowns != null &&
-      this.opponent2.crowns != null &&
-      this.opponent2.crowns != null;
+  bool get hasTrophies2v2 =>
+      this.team1.startingTrophies != null &&
+      this.team2.startingTrophies != null &&
+      this.opponent1.startingTrophies != null &&
+      this.opponent2.startingTrophies != null;
 
   bool get didTeamWin =>
       (this.team1.crowns ?? 0) > (this.opponent1.crowns ?? 0);

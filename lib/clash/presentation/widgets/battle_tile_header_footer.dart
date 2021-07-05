@@ -61,7 +61,7 @@ class BattleStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppStyles.paddings.symmetricH10,
+      padding: AppStyles.padding.symmetricH10,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
