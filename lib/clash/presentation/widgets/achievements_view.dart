@@ -12,11 +12,11 @@ class AchievementsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: AppStyle.paddings.all8,
         child: BlocBuilder<PlayerBloc, PlayerState>(
           builder: (context, state) {
             if (state is Empty) {
-              return _emptyDisplay();
+              return EmptyDisplay();
             } else if (state is Error) {
               return MessageDisplay(message: state.message);
             } else if (state is Loading) {
@@ -27,17 +27,6 @@ class AchievementsView extends StatelessWidget {
             return MessageDisplay(message: AppText.uiMessages.unhandledState);
           },
         ),
-      ),
-    );
-  }
-
-  Widget _emptyDisplay() {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          RefreshPlayer(),
-          MessageDisplay(message: 'No data'),
-        ],
       ),
     );
   }

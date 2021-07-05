@@ -1,10 +1,10 @@
 class AppText {
-  static ConstTests consts = const ConstTests();
-  static ApiTexts api = const ApiTexts();
-  static ErrorTexts error = const ErrorTexts();
-  static UIMessagesText uiMessages = const UIMessagesText();
-  static BodyTexts body = const BodyTexts();
-  static UITexts ui = const UITexts();
+  static ConstAppTests consts = const ConstAppTests();
+  static ApiAppTexts api = const ApiAppTexts();
+  static ErrorAppTexts error = const ErrorAppTexts();
+  static UIMessagesAppTexts uiMessages = const UIMessagesAppTexts();
+  static BodyAppTexts body = const BodyAppTexts();
+  static UIAppTexts ui = const UIAppTexts();
 
   AppText._();
 }
@@ -17,8 +17,8 @@ class AppRouteTexts {
   static const PLAYER_PAGE_ROUTE = 'PlayerPageRoute';
 }
 
-class ConstTests {
-  const ConstTests();
+class ConstAppTests {
+  const ConstAppTests();
 
   String get cachedUpcomingChests => 'CACHED_UPCOMING_CHESTS';
   String get cachedPlayer => 'CACHED_PLAYER';
@@ -27,8 +27,8 @@ class ConstTests {
   String get cachedBattles => 'CACHED_BATTLES';
 }
 
-class ApiTexts {
-  const ApiTexts();
+class ApiAppTexts {
+  const ApiAppTexts();
 
   String get apiBaseUrl => 'https://api.clashroyale.com/';
   String get apiBaseUrlProxy => 'https://proxy.royaleapi.dev/';
@@ -45,8 +45,8 @@ class ApiTexts {
   String get battles => '/battlelog';
 }
 
-class ErrorTexts {
-  const ErrorTexts();
+class ErrorAppTexts {
+  const ErrorAppTexts();
 
   String get serverFailureMessage => 'Server Failure';
   String get cacheFailureMessage => 'Cache Failure';
@@ -57,16 +57,16 @@ class ErrorTexts {
   String get findTagTextFieldError => 'Wrong tag, try again!';
 }
 
-class UIMessagesText {
-  const UIMessagesText();
+class UIMessagesAppTexts {
+  const UIMessagesAppTexts();
 
   String get unhandledState => 'Unhandled State';
 
   String get noData => 'No data';
 }
 
-class BodyTexts {
-  const BodyTexts();
+class BodyAppTexts {
+  const BodyAppTexts();
 
   String get appTitle => 'Clash Royale Assistant';
   String get num1 => '1';
@@ -82,8 +82,8 @@ class BodyTexts {
   String get findTagHelpTextHeader => 'How to find your Tag';
 }
 
-class UITexts {
-  const UITexts();
+class UIAppTexts {
+  const UIAppTexts();
   String get player => 'Player';
   String get toStart => 'To Start';
   String get upcoming => 'Upcoming';

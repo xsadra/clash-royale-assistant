@@ -5,6 +5,7 @@ class AppColors {
   static PlayerAppColor player = const PlayerAppColor();
   static SplashAppColor splash = const SplashAppColor();
   static BottomNavBarAppColor bottomNavBar = const BottomNavBarAppColor();
+  static AchievementsAppColor achievements = const AchievementsAppColor();
 
   AppColors._();
 }
@@ -35,4 +36,12 @@ class BottomNavBarAppColor {
   const BottomNavBarAppColor();
 
   Color get backgroundColor => Color(0xFF190F2A);
+}
+
+class AchievementsAppColor {
+  const AchievementsAppColor();
+
+  Color get cardShadowColor => Colors.black54;
+  Color get achievedCompletedColor => Colors.green;
+  Color get achievedNotCompletedColor => Colors.red;
 }

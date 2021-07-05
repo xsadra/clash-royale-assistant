@@ -15,15 +15,12 @@ class AchievementsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(8.0),
-      shadowColor: Colors.black54,
-      elevation: 9,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      // color: Colors.black12,
+      margin: AppStyle.margins.all8,
+      shadowColor: AppColors.achievements.cardShadowColor,
+      elevation: AppWidgetsConfig.achievements.cardWidgetElevation,
+      shape: AppStyle.achievements.cardWidgetShapeBorder,
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: AppStyle.paddings.all12,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,23 +48,11 @@ class AchievementsCard extends StatelessWidget {
         children: [
           Text(
             AppText.ui.targetCol,
-            style: TextStyle(
-              color: Colors.blueGrey,
-              fontWeight: FontWeight.w400,
-              fontSize: 12,
-              letterSpacing: 1.5,
-              fontStyle: FontStyle.italic,
-            ),
+            style: AppStyle.achievements.cardWidgetTargetColTextStyle,
           ),
           Text(
             achieve.target.toString(),
-            style: TextStyle(
-              color: Colors.blueGrey,
-              fontWeight: FontWeight.w400,
-              fontSize: 12,
-              letterSpacing: 1.5,
-              fontStyle: FontStyle.italic,
-            ),
+            style: AppStyle.achievements.cardWidgetTargetValueTextStyle,
           ),
         ],
       ),
@@ -79,26 +64,18 @@ class AchievementsCard extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: AppText.ui.achievedCol,
-          style: TextStyle(
-            color: Colors.green,
-            fontWeight: FontWeight.w600,
-            fontSize: 12,
-            letterSpacing: 1.5,
-            fontStyle: FontStyle.italic,
-          ),
+          style: AppStyle.achievements.cardWidgetAchievedColTextStyle,
           children: [
             TextSpan(
               text: achieve.value.toString(),
-              style: TextStyle(
+              style: AppStyle.achievements.cardWidgetAchievedValueTextStyle
+                  .copyWith(
                 color: (achieve.value < achieve.target)
-                    ? Colors.red
-                    : Colors.green,
+                    ? AppColors.achievements.achievedNotCompletedColor
+                    : AppColors.achievements.achievedCompletedColor,
                 fontWeight: (achieve.value < achieve.target)
-                    ? FontWeight.w600
-                    : FontWeight.bold,
-                fontSize: 12,
-                letterSpacing: 1.5,
-                fontStyle: FontStyle.italic,
+                    ? AppFonts.achievements.achievedNotCompletedFontWeight
+                    : AppFonts.achievements.achievedCompletedFontWeight,
               ),
             ),
           ],
@@ -114,24 +91,13 @@ class AchievementsCard extends StatelessWidget {
         children: [
           Text(
             AppText.ui.starsCol,
-            style: TextStyle(
-              color: Color(0XFF826001),
-              fontWeight: FontWeight.w600,
-              fontSize: 13,
-              letterSpacing: 1.5,
-              fontStyle: FontStyle.italic,
-            ),
+            style: AppStyle.achievements.cardWidgetAchievedStarsColTextStyle,
           ),
           if (achieve.stars == 0)
             Text(
               AppText.ui.notYet,
-              style: TextStyle(
-                color: Colors.red,
-                fontWeight: FontWeight.w400,
-                fontSize: 12,
-                letterSpacing: 1.5,
-                fontStyle: FontStyle.italic,
-              ),
+              style:
+                  AppStyle.achievements.cardWidgetAchievedStarsValueTextStyle,
             ),
           for (var index = 0; index < (achieve.stars ?? 0); index++)
             Image.asset(AppAssets.paths.starLevel, width: 16, height: 16),
@@ -145,13 +111,7 @@ class AchievementsCard extends StatelessWidget {
       child: Text(
         achieve.info,
         textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Color(0xFF183C45),
-          fontWeight: FontWeight.w600,
-          fontSize: 12,
-          letterSpacing: 1.5,
-          fontStyle: FontStyle.italic,
-        ),
+        style: AppStyle.achievements.cardWidgetAchievedInfoTextStyle,
       ),
     );
   }
@@ -162,7 +122,7 @@ class AchievementsCard extends StatelessWidget {
         child: Text(
           achieve.name,
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w900),
+          style: AppStyle.achievements.cardWidgetAchievedNameTextStyle,
         ),
       ),
     );
