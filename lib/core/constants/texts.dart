@@ -61,7 +61,6 @@ class UIMessagesAppTexts {
   const UIMessagesAppTexts();
 
   String get unhandledState => 'Unhandled State';
-
   String get noData => 'No data';
 }
 
@@ -80,6 +79,7 @@ class BodyAppTexts {
   String get findTagTextFieldLabel => 'Enter your Player Tag';
   String get findTagTextFieldHint => 'ABCD123';
   String get findTagHelpTextHeader => 'How to find your Tag';
+  String get shareDeckBaseUrl => 'https://link.clashroyale.com/deck/en?deck=';
 }
 
 class UIAppTexts {
@@ -140,6 +140,7 @@ class UIAppTexts {
   String get spc => ' ';
   String get spcPlusOne => ' +1';
   String get no => 'no';
-
-// static const BATTLE_STATS =  ;
+  String get hasNoClan => 'Has no Clan';
+  String get semicolon => ';';
+  String get vsCap => 'VS';
 }

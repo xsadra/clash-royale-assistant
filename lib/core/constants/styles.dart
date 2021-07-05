@@ -86,6 +86,10 @@ class BattlesAppStyle {
 
   double get tileStatusBattleTimeIconSize => 12;
 
+  double get tileBattleTeamClanIconSize => 12;
+
+  double get tileBattleTeamClanTrophiesIconSize => 12;
+
   IconData get tileStatusBattleResultWinIconData => Icons.thumb_up;
 
   IconData get tileStatusBattleResultDefeatIconData => Icons.thumb_down;
@@ -125,6 +129,33 @@ class BattlesAppStyle {
         fontSize: 10.0,
         fontStyle: FontStyle.italic,
         color: Colors.blueAccent,
+      );
+
+  TextStyle get tileBattleTeamNameTextStyle => const TextStyle(
+        fontSize: 12.0,
+        fontWeight: FontWeight.bold,
+      );
+
+  TextStyle get tileBattleTeamHasNoClanNameTextStyle => const TextStyle(
+        fontSize: 10.0,
+        color: Colors.black54,
+        fontStyle: FontStyle.italic,
+      );
+
+  TextStyle get tileBattleTeamClanNameTextStyle => const TextStyle(
+        fontSize: 10.0,
+        color: Colors.black54,
+        fontStyle: FontStyle.italic,
+      );
+
+  TextStyle get tileBattleTeamClanStartingTrophiesTextStyle => const TextStyle(
+        fontSize: 10.0,
+        color: Colors.black87,
+      );
+
+  TextStyle get tileBattleTeamCardNameTextStyle => const TextStyle(
+        fontSize: 9,
+        color: Colors.black54,
       );
 }
 

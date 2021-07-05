@@ -20,17 +20,17 @@ class MainAppColor {
 class PlayerAppColor {
   const PlayerAppColor();
 
-  Color get tabBarIndicatorColor => Colors.teal;
+  Color get tabBarIndicatorColor => const Color(0xFF009688);
 
-  Color get tabBarLabelColor => Colors.teal;
+  Color get tabBarLabelColor => const Color(0xFF009688);
 
-  Color get tabBarUnselectedLabelColor => Colors.black54;
+  Color get tabBarUnselectedLabelColor => const Color(0x8A000000);
 }
 
 class SplashAppColor {
   const SplashAppColor();
 
-  Color get backgroundColor => Colors.white70;
+  Color get backgroundColor => const Color(0xB3FFFFFF);
 }
 
 class BottomNavBarAppColor {
@@ -42,19 +42,29 @@ class BottomNavBarAppColor {
 class AchievementsAppColor {
   const AchievementsAppColor();
 
-  Color get cardShadowColor => Colors.black54;
-  Color get achievedCompletedColor => Colors.green;
-  Color get achievedNotCompletedColor => Colors.red;
+  Color get cardShadowColor => const Color(0x8A000000);
+
+  Color get achievedCompletedColor => const Color(0xFF4CAF50);
+
+  Color get achievedNotCompletedColor => const Color(0xFFF44336);
 }
 
 class BattlesAppColor {
   const BattlesAppColor();
-  Color get tileStatusBattleTimeIconColor => Colors.blueAccent;
 
-  Color get tileResultWinBackgroundColor => Colors.green.shade100;
-  Color get tileResultDefeatBackgroundColor => Colors.red.shade50;
-  Color get tileResultDrawBackgroundColor => Colors.black26;
-  Color get tileStatusWinBackgroundColor => Colors.green;
-  Color get tileStatusDefeatBackgroundColor => Colors.red;
-  Color get tileStatusDrawBackgroundColor => Colors.white70;
+  Color get tileStatusBattleTimeIconColor => const Color(0xFF448AFF);
+
+  Color get tileResultWinBackgroundColor => const Color(0xFFC8E6C9);
+
+  Color get tileResultDefeatBackgroundColor => const Color(0xFFFFEBEE);
+
+  Color get tileResultDrawBackgroundColor => const Color(0x42000000);
+
+  Color get tileStatusWinBackgroundColor => const Color(0xFF4CAF50);
+
+  Color get tileStatusDefeatBackgroundColor => const Color(0xFFF44336);
+
+  Color get tileStatusDrawBackgroundColor => const Color(0xB3FFFFFF);
+
+  Color get tileBattleTeamShareDeckIconColor => const Color(0xFF3F51B5);
 }
