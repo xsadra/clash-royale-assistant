@@ -28,12 +28,20 @@ extension BattleEntityExtensions on Battle {
   bool get didTeamWin =>
       (this.team1.crowns ?? 0) > (this.opponent1.crowns ?? 0);
 
+  bool get didBoatWin => this.boatBattleWon;
+
   bool get isDisplayTeamWin => this.challengeWinCountBefore != null;
 
   bool get isDisplayPreviousTeamWinNumber =>
       (this.challengeWinCountBefore ?? 0) > 0;
 
   bool get isDisplayTeamWinText => isDisplayPreviousTeamWinNumber || didTeamWin;
+
+  bool get isAttacker =>
+      this.boatBattleSide != null &&
+      this.boatBattleSide == AppTexts.ui.attacker;
+
+  bool get isDefender => !isAttacker;
 
   String get winCount =>
       (this.challengeWinCountBefore ?? AppTexts.ui.no).toString();
@@ -52,6 +60,12 @@ extension BattleEntityExtensions on Battle {
       return BattleResult.Victory;
     }
     return BattleResult.Defeat;
+  }
+
+  String get boatBattleResultTitle => boatBattleResult.title;
+
+  BattleResult get boatBattleResult {
+    return this.boatBattleWon ? BattleResult.Victory : BattleResult.Defeat;
   }
 
   String get winCountText => (this.challengeWinCountBefore ?? 0) > 0
@@ -93,5 +107,17 @@ extension BattleEntityExtensions on Battle {
       return AppColors.battles.tileStatusWinBackgroundColor;
     }
     return AppColors.battles.tileStatusDefeatBackgroundColor;
+  }
+
+  Color get boatResultStatsColor {
+    return this.boatBattleWon
+        ? AppColors.battles.tileStatusWinBackgroundColor
+        : AppColors.battles.tileStatusDefeatBackgroundColor;
+  }
+
+  Color get boatResultBackgroundColor {
+    return this.boatBattleWon
+        ? AppColors.battles.tileResultWinBackgroundColor
+        : AppColors.battles.tileResultDefeatBackgroundColor;
   }
 }
