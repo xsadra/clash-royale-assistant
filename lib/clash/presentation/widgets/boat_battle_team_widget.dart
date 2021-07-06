@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Card;
 
+import '../../../core/constants/consts.dart';
 import '../../../core/enums/enums_with_extensions.dart';
 import '../../../core/extensions/extensions.dart';
 import '../../domain/entities/battle.dart';
@@ -35,7 +36,9 @@ class BoatBattleTeam extends StatelessWidget {
             offset: cardIndexOffset,
             ignorePlayerInfo: ignorePlayerInfo,
           ),
+        if (battle.isDefender) AppStyles.sizedBox.width20,
         BoatResultWidget(battle: battle),
+        if (battle.isAttacker) AppStyles.sizedBox.width20,
         if (battle.isDefender)
           TeamMemberWidget(
             team: battle.opponent1,
