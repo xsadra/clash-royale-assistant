@@ -40,7 +40,7 @@ class _CardsChartState extends State<CardsChart> {
             [
               charts.Series<CardsChartData, String>(
                 id: AppTexts.consts.allCards,
-                colorFn: (_, idx) => _colorPalettes[idx].shadeDefault,
+                colorFn: (_, idx) => _colorPalettes[(idx % 11)].shadeDefault,
                 domainFn: (CardsChartData sales, _) => sales.category,
                 measureFn: (CardsChartData sales, _) => sales.cost,
                 data: chartData,
