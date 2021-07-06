@@ -38,11 +38,9 @@ class TwoToTwoBattleTeam extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(2),
           decoration: BoxDecoration(
-            color: Colors.white38,
             borderRadius: BorderRadius.circular(30),
-            border: Border.all(
-              color: Colors.white38, // red as border color
-            ),
+            border: Border.all(color: Colors.white54 // red as border color
+                ),
           ),
           child: Text(
             AppTexts.ui.vsCap,
