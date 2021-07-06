@@ -10,6 +10,7 @@ class Battle {
   final bool boatBattleWon;
   final int newTowersDestroyed;
   final int prevTowersDestroyed;
+  final int remainingTowers;
   final int challengeId;
   final bool isLadderTournament;
   final Arena arena;
@@ -29,6 +30,7 @@ class Battle {
     @required this.boatBattleWon,
     @required this.newTowersDestroyed,
     @required this.prevTowersDestroyed,
+    @required this.remainingTowers,
     @required this.challengeId,
     @required this.isLadderTournament,
     @required this.arena,

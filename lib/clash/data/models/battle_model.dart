@@ -15,6 +15,7 @@ class BattleModel extends Battle {
     @required bool boatBattleWon,
     @required int newTowersDestroyed,
     @required int prevTowersDestroyed,
+    @required int remainingTowers,
     @required int challengeId,
     @required bool isLadderTournament,
     @required ArenaModel arena,
@@ -33,6 +34,7 @@ class BattleModel extends Battle {
             boatBattleWon: boatBattleWon,
             newTowersDestroyed: newTowersDestroyed,
             prevTowersDestroyed: prevTowersDestroyed,
+            remainingTowers: remainingTowers,
             challengeId: challengeId,
             isLadderTournament: isLadderTournament,
             arena: arena,
@@ -53,6 +55,7 @@ class BattleModel extends Battle {
       boatBattleWon: jsonData['boatBattleWon'] as bool,
       newTowersDestroyed: jsonData['newTowersDestroyed'] as int,
       prevTowersDestroyed: jsonData['prevTowersDestroyed'] as int,
+      remainingTowers: jsonData['remainingTowers'] as int,
       challengeId: jsonData['challengeId'] as int,
       isLadderTournament: jsonData['isLadderTournament'] as bool,
       arena: ArenaModel.fromJson(jsonData['arena']),
@@ -80,6 +83,7 @@ class BattleModel extends Battle {
       'boatBattleWon': this.boatBattleWon,
       'newTowersDestroyed': this.newTowersDestroyed,
       'prevTowersDestroyed': this.prevTowersDestroyed,
+      'remainingTowers': this.remainingTowers,
       'challengeId': this.challengeId,
       'isLadderTournament': this.isLadderTournament,
       'arena': (this.arena as ArenaModel).toJson(),
@@ -106,6 +110,7 @@ class BattleModel extends Battle {
           boatBattleWon == other.boatBattleWon &&
           newTowersDestroyed == other.newTowersDestroyed &&
           prevTowersDestroyed == other.prevTowersDestroyed &&
+          remainingTowers == other.remainingTowers &&
           challengeId == other.challengeId &&
           isLadderTournament == other.isLadderTournament &&
           arena == other.arena &&
@@ -125,6 +130,7 @@ class BattleModel extends Battle {
       boatBattleWon.hashCode ^
       newTowersDestroyed.hashCode ^
       prevTowersDestroyed.hashCode ^
+      remainingTowers.hashCode ^
       challengeId.hashCode ^
       isLadderTournament.hashCode ^
       arena.hashCode ^
@@ -137,7 +143,7 @@ class BattleModel extends Battle {
 
   @override
   String toString() {
-    return 'BattleModel{type: $type, battleTime: $battleTime, princessTowersHitPoints: $princessTowersHitPoints, boatBattleSide: $boatBattleSide, boatBattleWon: $boatBattleWon, newTowersDestroyed: $newTowersDestroyed, prevTowersDestroyed: $prevTowersDestroyed, challengeId: $challengeId, isLadderTournament: $isLadderTournament, arena: $arena, gameMode: $gameMode, deckSelection: $deckSelection, team: $team, opponent: $opponent, challengeTitle: $challengeTitle, isHostedMatch: $isHostedMatch}';
+    return 'BattleModel{type: $type, battleTime: $battleTime, princessTowersHitPoints: $princessTowersHitPoints, boatBattleSide: $boatBattleSide, boatBattleWon: $boatBattleWon, newTowersDestroyed: $newTowersDestroyed, prevTowersDestroyed: $prevTowersDestroyed, remainingTowers: $remainingTowers, challengeId: $challengeId, isLadderTournament: $isLadderTournament, arena: $arena, gameMode: $gameMode, deckSelection: $deckSelection, team: $team, opponent: $opponent, challengeTitle: $challengeTitle, isHostedMatch: $isHostedMatch}';
   }
 }
 
