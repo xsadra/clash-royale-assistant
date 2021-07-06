@@ -114,7 +114,7 @@ class DisplayClanName extends StatelessWidget {
           style: AppStyles.battles.tileBattleTeamClanNameTextStyle,
         ),
         AppStyles.sizedBox.width4,
-        if (teamType == TeamMemberType.opponent)
+        if (teamType == TeamMemberType.Opponent)
           AppAssets.toWidget.clanBadgeIdToImage(
             team.clan.badgeId,
             size: AppStyles.battles.tileBattleTeamClanIconSize,
@@ -151,7 +151,7 @@ class DisplayMemberTrophies extends StatelessWidget {
           style: AppStyles.battles.tileBattleTeamClanStartingTrophiesTextStyle,
         ),
         AppStyles.sizedBox.width7,
-        if (teamType == TeamMemberType.opponent)
+        if (teamType == TeamMemberType.Opponent)
           Image.asset(
             AppAssets.paths.trophy,
             height: AppStyles.battles.tileBattleTeamClanTrophiesIconSize,
@@ -186,7 +186,7 @@ class ShareDeck extends StatelessWidget {
               color: AppColors.battles.tileBattleTeamShareDeckIconColor,
             ),
           ),
-        if (teamType == TeamMemberType.opponent)
+        if (teamType == TeamMemberType.Opponent)
           InkWell(
             onTap: () => launch(shareDeckUrl),
             child: Icon(

@@ -94,7 +94,7 @@ class BattlesAppStyle {
 
   IconData get tileStatusBattleResultDefeatIconData => Icons.thumb_down;
 
-  IconData get tileStatusBattleTimeIconData => Icons.thumb_down;
+  IconData get tileStatusBattleTimeIconData => Icons.timer_sharp;
 
   TextStyle get tileHeaderTitleTextStyle => const TextStyle(
         color: Colors.black87,

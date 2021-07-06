@@ -30,7 +30,7 @@ class TwoToTwoBattleTeam extends StatelessWidget {
                 height: 170.0, thickness: 2.0, color: Colors.black38),
             TeamMemberWidget(
               team: battle.opponent1,
-              teamType: TeamMemberType.opponent,
+              teamType: TeamMemberType.Opponent,
               showTrophies: battle.hasTrophies,
             ),
           ],
@@ -64,7 +64,7 @@ class TwoToTwoBattleTeam extends StatelessWidget {
                 height: 170.0, thickness: 2.0, color: Colors.black38),
             TeamMemberWidget(
               team: battle.opponent2,
-              teamType: TeamMemberType.opponent,
+              teamType: TeamMemberType.Opponent,
               showTrophies: battle.hasTrophies2v2,
             ),
           ],

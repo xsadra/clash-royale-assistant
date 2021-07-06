@@ -45,7 +45,7 @@ class OneToOneBattleTeam extends StatelessWidget {
         ),
         TeamMemberWidget(
           team: battle.opponent1,
-          teamType: TeamMemberType.opponent,
+          teamType: TeamMemberType.Opponent,
           showTrophies: battle.hasTrophies,
           offset: cardIndexOffset,
           ignorePlayerInfo: ignorePlayerInfo,

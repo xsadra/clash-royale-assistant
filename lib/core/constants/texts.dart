@@ -143,4 +143,5 @@ class UIAppTexts {
   String get hasNoClan => 'Has no Clan';
   String get semicolon => ';';
   String get vsCap => 'VS';
+  String get attacker => 'attacker';
 }

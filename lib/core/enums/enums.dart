@@ -1,6 +1,6 @@
 enum TeamMemberType {
   Team,
-  opponent,
+  Opponent,
 }
 
 enum BattleType {
@@ -11,6 +11,7 @@ enum BattleType {
   boatBattle,
   casual2v2,
   riverRaceDuel,
+  tournament,
 }
 
 enum BattleResult {

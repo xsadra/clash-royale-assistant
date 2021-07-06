@@ -10,7 +10,7 @@ extension TeamMemberTypeExtention on TeamMemberType {
     switch (this) {
       case TeamMemberType.Team:
         return Colors.blue;
-      case TeamMemberType.opponent:
+      case TeamMemberType.Opponent:
         return Colors.red;
       default:
         return Colors.transparent;
@@ -37,6 +37,8 @@ extension BattleTypeExtention on BattleType {
         return 'Casual 2v2';
       case BattleType.riverRaceDuel:
         return 'River Race Duel';
+      case BattleType.tournament:
+        return 'Tournament';
 
       default:
         return 'not in list';
