@@ -187,6 +187,10 @@ class Paddings {
 class SizedBoxesAppWidgets {
   const SizedBoxesAppWidgets();
 
+  SizedBox height(double height) => SizedBox(height: height);
+
+  SizedBox width(double width) => SizedBox(width: width);
+
   SizedBox get height1 => const SizedBox(height: 1);
 
   SizedBox get height2 => const SizedBox(height: 2);

@@ -15,11 +15,15 @@ class TeamMemberWidget extends StatelessWidget {
     @required this.team,
     @required this.teamType,
     @required this.showTrophies,
+    this.offset = 0,
+    this.ignorePlayerInfo = false,
   }) : super(key: key);
 
   final TeamMember team;
   final TeamMemberType teamType;
   final bool showTrophies;
+  final bool ignorePlayerInfo;
+  final int offset;
 
   @override
   Widget build(BuildContext context) {
@@ -32,37 +36,53 @@ class TeamMemberWidget extends StatelessWidget {
             ? CrossAxisAlignment.start
             : CrossAxisAlignment.end,
         children: [
-          Text(
-            team.name,
-            style: AppStyles.battles.tileBattleTeamNameTextStyle,
-          ),
-          if (!team.hasClan)
+          if (!ignorePlayerInfo) ...[
             Text(
-              AppTexts.ui.hasNoClan,
-              style: AppStyles.battles.tileBattleTeamHasNoClanNameTextStyle,
+              team.name,
+              style: AppStyles.battles.tileBattleTeamNameTextStyle,
             ),
-          if (team.hasClan) DisplayClanName(teamType: teamType, team: team),
-          AppStyles.sizedBox.height2,
-          if (showTrophies)
-            DisplayMemberTrophies(teamType: teamType, team: team),
+            if (!team.hasClan)
+              Text(
+                AppTexts.ui.hasNoClan,
+                style: AppStyles.battles.tileBattleTeamHasNoClanNameTextStyle,
+              ),
+            if (team.hasClan) DisplayClanName(teamType: teamType, team: team),
+            AppStyles.sizedBox.height2,
+            if (showTrophies)
+              DisplayMemberTrophies(teamType: teamType, team: team),
+          ],
           AppStyles.sizedBox.height8,
           Row(
             children: [
-              CardAssetImageBattle(card: teamCards[0]),
-              CardAssetImageBattle(card: teamCards[1]),
-              CardAssetImageBattle(card: teamCards[2]),
-              CardAssetImageBattle(card: teamCards[3]),
+              CardAssetImageBattle(card: teamCards[0 + offset]),
+              CardAssetImageBattle(card: teamCards[1 + offset]),
+              CardAssetImageBattle(card: teamCards[2 + offset]),
+              CardAssetImageBattle(card: teamCards[3 + offset]),
             ],
           ),
           Row(
             children: [
-              CardAssetImageBattle(card: teamCards[4]),
-              CardAssetImageBattle(card: teamCards[5]),
-              CardAssetImageBattle(card: teamCards[6]),
-              CardAssetImageBattle(card: teamCards[7]),
+              CardAssetImageBattle(card: teamCards[4 + offset]),
+              CardAssetImageBattle(card: teamCards[5 + offset]),
+              CardAssetImageBattle(card: teamCards[6 + offset]),
+              CardAssetImageBattle(card: teamCards[7 + offset]),
             ],
           ),
-          if (team.canShareDeck) ShareDeck(teamType: teamType, team: team),
+          if (team.canShareDeck && offset == 0)
+            ShareDeck(
+              teamType: teamType,
+              shareDeckUrl: team.shareDeckUrl,
+            ),
+          if (team.canShareSecondDeck && offset == 8)
+            ShareDeck(
+              teamType: teamType,
+              shareDeckUrl: team.shareSecondDeckUrl,
+            ),
+          if (team.canShareThirdDeck && offset == 16)
+            ShareDeck(
+              teamType: teamType,
+              shareDeckUrl: team.shareThirdDeckUrl,
+            ),
         ],
       ),
     );
@@ -147,11 +167,11 @@ class ShareDeck extends StatelessWidget {
   const ShareDeck({
     Key key,
     @required this.teamType,
-    @required this.team,
+    @required this.shareDeckUrl,
   }) : super(key: key);
 
   final TeamMemberType teamType;
-  final TeamMember team;
+  final String shareDeckUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +180,7 @@ class ShareDeck extends StatelessWidget {
         AppStyles.sizedBox.width4,
         if (teamType == TeamMemberType.Team)
           InkWell(
-            onTap: () => launch(team.shareDeckUrl),
+            onTap: () => launch(shareDeckUrl),
             child: Icon(
               Icons.ios_share,
               color: AppColors.battles.tileBattleTeamShareDeckIconColor,
@@ -168,7 +188,7 @@ class ShareDeck extends StatelessWidget {
           ),
         if (teamType == TeamMemberType.opponent)
           InkWell(
-            onTap: () => launch(team.shareDeckUrl),
+            onTap: () => launch(shareDeckUrl),
             child: Icon(
               Icons.ios_share,
               color: AppColors.battles.tileBattleTeamShareDeckIconColor,
