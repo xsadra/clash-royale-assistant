@@ -157,11 +157,26 @@ class BattlesAppStyle {
         fontSize: 9,
         color: Colors.black54,
       );
+  BoxDecoration get resultBoxDecoration => const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black45,
+            blurRadius: 3,
+            offset: Offset(0, 0),
+          ),
+        ],
+      );
 }
 
 class Margins {
   const Margins();
 
+  EdgeInsetsGeometry get all1 => const EdgeInsets.all(1.0);
+  EdgeInsetsGeometry get all2 => const EdgeInsets.all(2.0);
+  EdgeInsetsGeometry get all3 => const EdgeInsets.all(3.0);
+  EdgeInsetsGeometry get all4 => const EdgeInsets.all(4.0);
+  EdgeInsetsGeometry get all5 => const EdgeInsets.all(5.0);
+  EdgeInsetsGeometry get all6 => const EdgeInsets.all(6.0);
   EdgeInsetsGeometry get all8 => const EdgeInsets.all(8.0);
 }
 

@@ -16,8 +16,12 @@ class BattleRiverRaceDuelItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: battle.resultBackgroundColor,
       padding: AppStyles.padding.symmetricV8,
+      margin: AppStyles.margins.all2,
+      decoration: AppStyles.battles.resultBoxDecoration.copyWith(
+        borderRadius: BorderRadius.circular(10),
+        color: battle.resultBackgroundColor,
+      ),
       child: Column(
         children: [
           BattleHeader(battle: battle),
