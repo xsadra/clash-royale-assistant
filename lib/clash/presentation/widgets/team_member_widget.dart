@@ -181,17 +181,19 @@ class ShareDeck extends StatelessWidget {
         if (teamType == TeamMemberType.Team)
           InkWell(
             onTap: () => launch(shareDeckUrl),
-            child: Icon(
-              Icons.ios_share,
-              color: AppColors.battles.tileBattleTeamShareDeckIconColor,
+            child: Image.asset(
+              AppAssets.paths.shareDeck,
+              height: 32,
+              width: 32,
             ),
           ),
         if (teamType == TeamMemberType.Opponent)
           InkWell(
             onTap: () => launch(shareDeckUrl),
-            child: Icon(
-              Icons.ios_share,
-              color: AppColors.battles.tileBattleTeamShareDeckIconColor,
+            child: Image.asset(
+              AppAssets.paths.shareDeck,
+              height: 32,
+              width: 32,
             ),
           ),
         AppStyles.sizedBox.width3,

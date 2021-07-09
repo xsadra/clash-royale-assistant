@@ -19,6 +19,10 @@ class AssetPaths {
 
   String get trophy => 'assets/images/ui/ui-trophy.png';
 
+  String get shareDeck => 'assets/images/ui/ui-share-deck.png';
+
+  String get tournament => 'assets/images/ui/ui-tournament.png';
+
   String get crownRed => 'assets/images/crown/crown-red.png';
 
   String get crownBlue => 'assets/images/crown/crown-blue.png';

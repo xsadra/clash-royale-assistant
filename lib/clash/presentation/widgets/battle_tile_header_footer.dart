@@ -67,8 +67,8 @@ class BattleStatus extends StatelessWidget {
         children: [
           Icon(
             battle.didTeamWin
-                ? AppStyles.battles.tileStatusBattleResultDefeatIconData
-                : AppStyles.battles.tileStatusBattleResultWinIconData,
+                ? AppStyles.battles.tileStatusBattleResultWinIconData
+                : AppStyles.battles.tileStatusBattleResultDefeatIconData,
             size: AppStyles.battles.tileStatusBattleResultIconSize,
             color: battle.resultStatsColor,
           ),
