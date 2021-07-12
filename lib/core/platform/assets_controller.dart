@@ -6,6 +6,8 @@ class AppAssets {
   static AssetPaths paths = const AssetPaths();
   static AssetToPaths toPath = const AssetToPaths();
   static AssetToWidgets toWidget = const AssetToWidgets();
+  static AssetFonts fonts = const AssetFonts();
+  static AssetIcons icons = const AssetIcons();
 
   AppAssets._();
 }
@@ -93,6 +95,28 @@ class AssetToWidgets {
   }
 
   const AssetToWidgets();
+}
+
+class AssetFonts {
+  String get alfaSlabOne => 'AlfaSlabOne';
+  String get monoton => 'Monoton';
+  String get pacifico => 'Pacifico';
+  String get openSansCondensed => 'OpenSansCondensed';
+  String get rajdhani => 'Rajdhani';
+  String get roboto => 'Roboto';
+  String get staatliches => 'Staatliches';
+  String get teko => 'Teko';
+  String get yanoneKaffeesatz => 'YanoneKaffeesatz';
+  String get zillaSlab => 'ZillaSlab';
+
+  const AssetFonts();
+}
+
+class AssetIcons {
+  String get appIcon => 'assets/icons/ic_launcher.png';
+  String get appIconRound => 'assets/icons/ic_launcher_round.png';
+
+  const AssetIcons();
 }
 
 class Assets {

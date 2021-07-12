@@ -1,15 +1,25 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart' hide Router;
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'clash/presentation/bloc/currentplayertag/bloc.dart';
 import 'core/constants/consts.dart';
+import 'core/platform/assets_controller.dart';
 import 'core/routes/router.gr.dart';
 import 'injection_container.dart' as injection;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await injection.init();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarIconBrightness: Brightness.light,
+    statusBarIconBrightness: Brightness.light,
+    systemNavigationBarColor:
+        AppColors.main.primaryColor, // navigation bar color
+    statusBarColor: Colors.white60, // status bar color
+  ));
+
   runApp(MyApp());
 }
 
@@ -26,7 +36,7 @@ class MyApp extends StatelessWidget {
         title: AppTexts.body.appTitle,
         builder: ExtendedNavigator(router: Router()),
         debugShowCheckedModeBanner: false,
-        theme: ThemeData().copyWith(
+        theme: ThemeData(fontFamily: AppAssets.fonts.zillaSlab).copyWith(
           primaryColor: AppColors.main.primaryColor,
         ),
       ),

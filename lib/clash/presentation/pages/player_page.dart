@@ -1,7 +1,9 @@
 import 'dart:developer';
 
+import 'package:clash_royale_assistant/core/platform/assets_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/constants/consts.dart';
 import '../../../injection_container.dart' as injection;
@@ -24,31 +26,66 @@ class PlayerPage extends StatelessWidget {
       BlocProvider(create: (context) => injection.sl<BattlesBloc>())
     ];
     log('build', name: 'PlayerPage');
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppTexts.body.appTitle),
-        actions: [
-          TextButton(
-            onPressed: () {
-              showAboutDialog(
-                context: context,
-                applicationVersion: '1.0.1',
-                applicationName: 'Cr-App',
-                applicationIcon: Icon(Icons.all_inclusive_sharp),
-                children: [Text('Developer: Sadra Babai')],
-              );
-            },
-            child: Icon(Icons.info_outline),
-          )
-        ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(AppTexts.body.appTitle),
+          actions: [
+            TextButton(
+              onPressed: () {
+                buildShowAboutDialog(context);
+              },
+              child: Icon(Icons.info_outline),
+            )
+          ],
+        ),
+        body: MultiBlocProvider(
+          providers: playerProviders,
+          child: PlayerNestedTabPage(),
+        ),
+        bottomNavigationBar: BottomNavBar(
+          initialActiveIndex: 0,
+        ),
       ),
-      body: MultiBlocProvider(
-        providers: playerProviders,
-        child: PlayerNestedTabPage(),
+    );
+  }
+
+  void buildShowAboutDialog(BuildContext context) {
+    return showAboutDialog(
+      context: context,
+      applicationVersion: '1.0.1',
+      applicationName: 'Cr-App',
+      applicationIcon: Image.asset(
+        AppAssets.icons.appIconRound,
+        width: 96,
+        height: 96,
       ),
-      bottomNavigationBar: BottomNavBar(
-        initialActiveIndex: 0,
-      ),
+      applicationLegalese: 'Developer: Sadra Babai',
+      children: [
+        Text(
+          'Clash Royale Assistant helps you have a better gaming experience. All information used in this app is taken from the clashroyale.com website.',
+          style: TextStyle(fontFamily: AppAssets.fonts.rajdhani),
+        ),
+        Text(
+          'Email us if you have any suggestions for improving the app, or if you encounter an error in the app. We read all your emails carefully and make changes.',
+          style: TextStyle(
+            fontFamily: AppAssets.fonts.rajdhani,
+            fontWeight: FontWeight.bold,
+            color: Colors.green.shade900,
+          ),
+        ),
+        InkWell(
+          onTap: () => launch('mailto:cra@sadra.at?subject=From%20Cr-App'),
+          child: Text(
+            'cra@sadra.at',
+            style: TextStyle(
+              color: Colors.blue,
+              fontStyle: FontStyle.italic,
+              letterSpacing: 2,
+            ),
+          ),
+        )
+      ],
     );
   }
 }
