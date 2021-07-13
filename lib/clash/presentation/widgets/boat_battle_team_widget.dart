@@ -36,9 +36,9 @@ class BoatBattleTeam extends StatelessWidget {
             offset: cardIndexOffset,
             ignorePlayerInfo: ignorePlayerInfo,
           ),
-        if (battle.isDefender) AppStyles.sizedBox.width20,
+        if (battle.isDefender) AppStyles.sizedBox.width10,
         BoatResultWidget(battle: battle),
-        if (battle.isAttacker) AppStyles.sizedBox.width20,
+        if (battle.isAttacker) AppStyles.sizedBox.width10,
         if (battle.isDefender)
           TeamMemberWidget(
             team: battle.opponent1,
