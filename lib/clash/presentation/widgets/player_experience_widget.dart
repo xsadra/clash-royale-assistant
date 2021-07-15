@@ -21,7 +21,7 @@ class PlayerExperienceWidget extends StatelessWidget {
           width: 32,
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 1, bottom: 1),
+          padding: const EdgeInsets.only(right: 1, bottom: 6),
           child: Text(
             expLevel,
             style: TextStyle(

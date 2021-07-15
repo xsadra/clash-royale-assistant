@@ -18,7 +18,7 @@ class AchievementsDetails extends StatelessWidget {
     return Column(
       children: [
         StatHeader(
-            icon: Icons.playlist_add_check_rounded,
+            icon: Icon(Icons.playlist_add_check_rounded),
             title: AppTexts.ui.achievementsCol),
         AnimationLimiter(
           child: GridView.count(

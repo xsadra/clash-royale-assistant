@@ -67,9 +67,11 @@ class CardsDetails extends StatelessWidget {
       Row(
         children: [
           StatHeader(
-            icon: Icons.label_rounded,
+            icon: Icon(
+              Icons.label_rounded,
+              color: Color(int.parse(colors.elementAt(colorIndex))),
+            ),
             title: AppTexts.ui.levelSpc + cardLevel.toString(),
-            color: Color(int.parse(colors.elementAt(colorIndex))),
             textColor: Color(int.parse(colors.elementAt(colorIndex++))),
           ),
           Text(

@@ -1,3 +1,4 @@
+import 'package:clash_royale_assistant/core/constants/consts.dart';
 import 'package:flutter/material.dart';
 
 class StatTile extends StatelessWidget {
@@ -20,6 +21,15 @@ class StatTile extends StatelessWidget {
             field,
             style: TextStyle(fontSize: 13),
           ),
+          AppStyles.sizedBox.width8,
+          Expanded(
+            child: Container(
+              height: 1,
+              color: Colors.black12,
+              margin: const EdgeInsets.only(left: 1.0, right: 1.0),
+            ),
+          ),
+          AppStyles.sizedBox.width8,
           Text(
             value,
             style: TextStyle(fontSize: 13),
