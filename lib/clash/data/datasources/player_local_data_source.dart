@@ -35,7 +35,8 @@ class PlayerLocalDataSourceImpl implements PlayerLocalDataSource {
     }
     log(jsonString.toString().substring(0, 200), name: 'PlayerLocalDataSource');
 
-    return Future.value(PlayerModel.fromJson(json.decode(jsonString)));
+    return Future.value(
+        PlayerModel.fromJson(jsonDecode(json.decode(jsonString).toString())));
   }
 
   @override
@@ -46,7 +47,7 @@ class PlayerLocalDataSourceImpl implements PlayerLocalDataSource {
 
     return sharedPreferences.setString(
       AppTexts.consts.cachedPlayer,
-      jsonEncode(playerToCache),
+      jsonEncode(playerToCache.toJson()),
     );
   }
 }

@@ -107,35 +107,36 @@ class PlayerModel extends Player {
   Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast
     return {
-      'tag': this.tag,
-      'name': this.name,
-      'expLevel': this.expLevel,
-      'trophies': this.trophies,
-      'bestTrophies': this.bestTrophies,
-      'wins': this.wins,
-      'losses': this.losses,
-      'battleCount': this.battleCount,
-      'threeCrownWins': this.threeCrownWins,
-      'challengeCardsWon': this.challengeCardsWon,
-      'challengeMaxWins': this.challengeMaxWins,
-      'tournamentCardsWon': this.tournamentCardsWon,
-      'tournamentBattleCount': this.tournamentBattleCount,
-      'role': this.role,
-      'donations': this.donations,
-      'donationsReceived': this.donationsReceived,
-      'totalDonations': this.totalDonations,
-      'warDayWins': this.warDayWins,
-      'clanCardsCollected': this.clanCardsCollected,
-      'clan': (this.clan as ClanModel).toJson(),
-      'arena': (this.arena as ArenaModel).toJson(),
-      'leagueStatistics':
+      '"tag"': '"${this.tag}"',
+      '"name"': '"${this.name}"',
+      '"expLevel"': this.expLevel,
+      '"trophies"': this.trophies,
+      '"bestTrophies"': this.bestTrophies,
+      '"wins"': this.wins,
+      '"losses"': this.losses,
+      '"battleCount"': this.battleCount,
+      '"threeCrownWins"': this.threeCrownWins,
+      '"challengeCardsWon"': this.challengeCardsWon,
+      '"challengeMaxWins"': this.challengeMaxWins,
+      '"tournamentCardsWon"': this.tournamentCardsWon,
+      '"tournamentBattleCount"': this.tournamentBattleCount,
+      '"role"': '"${this.role}"',
+      '"donations"': this.donations,
+      '"donationsReceived"': this.donationsReceived,
+      '"totalDonations"': this.totalDonations,
+      '"warDayWins"': this.warDayWins,
+      '"clanCardsCollected"': this.clanCardsCollected,
+      '"clan"': (this.clan as ClanModel).toJson(),
+      '"arena"': (this.arena as ArenaModel).toJson(),
+      '"leagueStatistics"':
           (this.leagueStatistics as LeagueStatisticsModel).toJson(),
-      'badges': _toBadgesJson(),
-      'achievements': _toAchievementsJson(),
-      'cards': _toCardsJson(),
-      'currentDeck': _toCurrentDeckJson(),
-      'currentFavouriteCard': (this.currentFavouriteCard as CardModel).toJson(),
-      'starPoints': this.starPoints,
+      '"badges"': _toBadgesJson(),
+      '"achievements"': _toAchievementsJson(),
+      '"cards"': _toCardsJson(),
+      '"currentDeck"': _toCurrentDeckJson(),
+      '"currentFavouriteCard"':
+          jsonEncode(this.currentFavouriteCard as CardModel),
+      '"starPoints"': this.starPoints,
     } as Map<String, dynamic>;
   }
 
@@ -244,9 +245,9 @@ class ClanModel extends Clan {
   Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast
     return {
-      'tag': this.tag,
-      'name': this.name,
-      'badgeId': this.badgeId,
+      '"tag"': '"${this.tag}"',
+      '"name"': '"${this.name}"',
+      '"badgeId"': this.badgeId,
     } as Map<String, dynamic>;
   }
 
@@ -284,8 +285,8 @@ class ArenaModel extends Arena {
   Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast
     return {
-      'id': this.id,
-      'name': this.name,
+      '"id"': this.id,
+      '"name"': '"${this.name}"',
     } as Map<String, dynamic>;
   }
 
@@ -327,9 +328,9 @@ class LeagueStatisticsModel extends LeagueStatistics {
   Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast
     return {
-      'currentSeason': (this.currentSeason as CurrentSeasonModel).toJson(),
-      'previousSeason': (this.previousSeason as PreviousSeasonModel).toJson(),
-      'bestSeason': (this.bestSeason as BestSeasonModel).toJson(),
+      '"currentSeason"': (this.currentSeason as CurrentSeasonModel).toJson(),
+      '"previousSeason"': (this.previousSeason as PreviousSeasonModel).toJson(),
+      '"bestSeason"': (this.bestSeason as BestSeasonModel).toJson(),
     } as Map<String, dynamic>;
   }
 
@@ -368,8 +369,8 @@ class CurrentSeasonModel extends CurrentSeason {
   Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast
     return {
-      'trophies': this.trophies,
-      'bestTrophies': this.bestTrophies,
+      '"trophies"': this.trophies,
+      '"bestTrophies"': this.bestTrophies,
     } as Map<String, dynamic>;
   }
 
@@ -408,9 +409,9 @@ class PreviousSeasonModel extends PreviousSeason {
   Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast
     return {
-      'id': this.id,
-      'trophies': this.trophies,
-      'bestTrophies': this.bestTrophies,
+      '"id"': '"${this.id}"',
+      '"trophies"': this.trophies,
+      '"bestTrophies"': this.bestTrophies,
     } as Map<String, dynamic>;
   }
 
@@ -448,8 +449,8 @@ class BestSeasonModel extends BestSeason {
   Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast
     return {
-      'id': this.id,
-      'trophies': this.trophies,
+      '"id"': '"${this.id}"',
+      '"trophies"': this.trophies,
     } as Map<String, dynamic>;
   }
 
