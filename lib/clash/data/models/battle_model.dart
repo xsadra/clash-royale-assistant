@@ -1,5 +1,3 @@
-import 'dart:convert' show jsonEncode;
-
 import 'package:meta/meta.dart' show required;
 
 import '../../domain/entities/battle.dart';
@@ -89,10 +87,9 @@ class BattleModel extends Battle {
       'arena': (this.arena as ArenaModel).toJson(),
       'gameMode': (this.gameMode as GameModeModel).toJson(),
       'deckSelection': this.deckSelection,
-      'team': jsonEncode(
-          this.team.map((e) => (e as TeamMemberModel).toJson()).toList()),
-      'opponent': jsonEncode(
-          this.opponent.map((e) => (e as TeamMemberModel).toJson()).toList()),
+      'team': this.team.map((e) => (e as TeamMemberModel).toJson()).toList(),
+      'opponent':
+          this.opponent.map((e) => (e as TeamMemberModel).toJson()).toList(),
       'challengeTitle': this.challengeTitle,
       'isHostedMatch': this.isHostedMatch,
     } as Map<String, dynamic>;
@@ -276,8 +273,7 @@ class TeamMemberModel extends TeamMember {
       'kingTowerHitPoints': this.kingTowerHitPoints,
       'princessTowersHitPoints': this.princessTowersHitPoints,
       'clan': this.clan,
-      'cards':
-          jsonEncode(this.cards.map((e) => (e as CardModel).toJson()).toList()),
+      'cards': this.cards.map((e) => (e as CardModel).toJson()).toList(),
     } as Map<String, dynamic>;
   }
 

@@ -43,7 +43,7 @@ class BattlesLocalDataSourceImpl implements BattlesLocalDataSource {
   Future<void> cacheBattles(BattlesModel battlesToCache) {
     return sharedPreferences.setString(
       AppTexts.consts.cachedBattles,
-      jsonEncode(battlesToCache),
+      battlesToCache.toJson()['battles'],
     );
   }
 }
