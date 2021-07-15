@@ -1,3 +1,4 @@
+import 'package:clash_royale_assistant/core/platform/assets_controller.dart';
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
@@ -26,8 +27,9 @@ class PlayerDetails extends StatelessWidget {
           ),
           AppStyles.sizedBox.height8,
           Stat(
-            header:
-                StatHeader(icon: Icons.ac_unit, title: AppTexts.ui.trophies),
+            header: StatHeader(
+                icon: AppAssets.imageIcons.trophy(),
+                title: AppTexts.ui.trophies),
             tiles: [
               StatTile(
                   field: AppTexts.ui.bestTrophiesCol,
@@ -40,7 +42,8 @@ class PlayerDetails extends StatelessWidget {
           AppStyles.sizedBox.height6,
           Stat(
             header: StatHeader(
-                icon: Icons.account_balance, title: AppTexts.ui.battleStats),
+                icon: AppAssets.imageIcons.battle(),
+                title: AppTexts.ui.battleStats),
             tiles: [
               StatTile(
                   field: AppTexts.ui.winsCol, value: player.wins.toString()),
@@ -57,8 +60,9 @@ class PlayerDetails extends StatelessWidget {
           ),
           AppStyles.sizedBox.height6,
           Stat(
-            header:
-                StatHeader(icon: Icons.data_usage, title: AppTexts.ui.donation),
+            header: StatHeader(
+                icon: AppAssets.imageIcons.donate(),
+                title: AppTexts.ui.donation),
             tiles: [
               StatTile(
                 field: AppTexts.ui.donationsBalanceCol,
@@ -66,6 +70,9 @@ class PlayerDetails extends StatelessWidget {
                     ? AppTexts.ui.plus +
                         (player.donations - player.donationsReceived).toString()
                     : (player.donations - player.donationsReceived).toString(),
+                valueColor: (player.donations - player.donationsReceived) > 0
+                    ? Colors.green
+                    : Colors.red,
               ),
               StatTile(
                   field: AppTexts.ui.donationsCol,
@@ -81,7 +88,8 @@ class PlayerDetails extends StatelessWidget {
           AppStyles.sizedBox.height6,
           Stat(
             header: StatHeader(
-                icon: Icons.data_usage, title: AppTexts.ui.leagueSeason),
+                icon: AppAssets.imageIcons.league(),
+                title: AppTexts.ui.leagueSeason),
             tiles: [
               StatTile(field: AppTexts.ui.arenaCol, value: player.arena.name),
             ],
@@ -90,7 +98,7 @@ class PlayerDetails extends StatelessWidget {
           Stat(
             header: StatHeader(
               title: AppTexts.ui.challengeAndTournament,
-              icon: Icons.toys_rounded,
+              icon: AppAssets.imageIcons.tournament(),
             ),
             tiles: [
               StatTile(
@@ -115,8 +123,9 @@ class PlayerDetails extends StatelessWidget {
           ),
           AppStyles.sizedBox.height6,
           Stat(
-            header:
-                StatHeader(icon: Icons.data_usage, title: AppTexts.ui.warOld),
+            header: StatHeader(
+                icon: AppAssets.imageIcons.clanWars(),
+                title: AppTexts.ui.warOld),
             tiles: [
               StatTile(
                   field: AppTexts.ui.warDayWinsCol,
@@ -128,8 +137,9 @@ class PlayerDetails extends StatelessWidget {
           ),
           AppStyles.sizedBox.height6,
           Stat(
-            header:
-                StatHeader(icon: Icons.info, title: AppTexts.ui.currentSeason),
+            header: StatHeader(
+                icon: AppAssets.imageIcons.currentSeason(),
+                title: AppTexts.ui.currentSeason),
             tiles: [
               StatTile(
                   field: AppTexts.ui.trophiesCol,
@@ -144,7 +154,7 @@ class PlayerDetails extends StatelessWidget {
           AppStyles.sizedBox.height6,
           Stat(
             header: StatHeader(
-                icon: Icons.all_inclusive_sharp,
+                icon: AppAssets.imageIcons.prevSeason(),
                 title: AppTexts.ui.previousSeason),
             tiles: [
               StatTile(
@@ -163,7 +173,8 @@ class PlayerDetails extends StatelessWidget {
           AppStyles.sizedBox.height6,
           Stat(
             header: StatHeader(
-                icon: Icons.add_alert, title: AppTexts.ui.bestSeason),
+                icon: AppAssets.imageIcons.bestSeason(),
+                title: AppTexts.ui.bestSeason),
             tiles: [
               StatTile(
                   field: AppTexts.ui.bestTrophiesCol,
@@ -179,7 +190,9 @@ class PlayerDetails extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  StatHeader(icon: Icons.deck, title: AppTexts.ui.currentDeck),
+                  StatHeader(
+                      icon: AppAssets.imageIcons.deck(),
+                      title: AppTexts.ui.currentDeck),
                   Text(
                     AppTexts.ui.arrowFavoriteCardCol,
                     style: TextStyle(fontSize: 12, color: Colors.purple),
@@ -189,7 +202,7 @@ class PlayerDetails extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 13,
                         fontStyle: FontStyle.italic,
-                        color: Colors.purple,
+                        color: Colors.green,
                         fontWeight: FontWeight.bold),
                   ),
                 ],

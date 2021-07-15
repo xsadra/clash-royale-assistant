@@ -38,6 +38,14 @@ class _AssetPaths {
 
   String get rank => 'assets/images/ui/ui-rank.png';
 
+  String get bestSeason => 'assets/images/ui/ui-best-season.png';
+
+  String get currentSeason => 'assets/images/ui/ui-current-season.png';
+
+  String get currentSeasonV2 => 'assets/images/ui/ui-current-season2.png';
+
+  String get prevSeason => 'assets/images/ui/ui-prev-season.png';
+
   String get crownRed => 'assets/images/crown/crown-red.png';
 
   String get crownBlue => 'assets/images/crown/crown-blue.png';
@@ -114,6 +122,30 @@ class _AssetImageIcons {
 
   Image rank({double size = 24}) => Image.asset(
         _AssetPaths().rank,
+        height: size,
+        width: size,
+      );
+
+  Image bestSeason({double size = 24}) => Image.asset(
+        _AssetPaths().bestSeason,
+        height: size,
+        width: size,
+      );
+
+  Image currentSeason({double size = 24}) => Image.asset(
+        _AssetPaths().currentSeason,
+        height: size,
+        width: size,
+      );
+
+  Image currentSeasonV2({double size = 24}) => Image.asset(
+        _AssetPaths().currentSeasonV2,
+        height: size,
+        width: size,
+      );
+
+  Image prevSeason({double size = 24}) => Image.asset(
+        _AssetPaths().prevSeason,
         height: size,
         width: size,
       );

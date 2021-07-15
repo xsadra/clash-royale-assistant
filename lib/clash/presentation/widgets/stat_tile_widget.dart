@@ -6,10 +6,14 @@ class StatTile extends StatelessWidget {
     Key key,
     @required this.field,
     @required this.value,
+    this.fieldColor,
+    this.valueColor,
   }) : super(key: key);
 
   final String field;
   final String value;
+  final Color fieldColor;
+  final Color valueColor;
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +23,12 @@ class StatTile extends StatelessWidget {
         children: [
           Text(
             field,
-            style: TextStyle(fontSize: 13),
+            style: TextStyle(fontSize: 13, color: fieldColor),
           ),
           AppStyles.sizedBox.width8,
           Expanded(
             child: Container(
-              height: 1,
+              height: 0.5,
               color: Colors.black12,
               margin: const EdgeInsets.only(left: 1.0, right: 1.0),
             ),
@@ -32,7 +36,7 @@ class StatTile extends StatelessWidget {
           AppStyles.sizedBox.width8,
           Text(
             value,
-            style: TextStyle(fontSize: 13),
+            style: TextStyle(fontSize: 13, color: valueColor),
           ),
         ],
       ),
