@@ -3,16 +3,17 @@ import 'package:flutter/material.dart' hide Card;
 import '../../clash/domain/entities/card.dart';
 
 class AppAssets {
-  static AssetPaths paths = const AssetPaths();
-  static AssetToPaths toPath = const AssetToPaths();
-  static AssetToWidgets toWidget = const AssetToWidgets();
-  static AssetFonts fonts = const AssetFonts();
-  static AssetIcons icons = const AssetIcons();
+  static _AssetPaths paths = const _AssetPaths();
+  static _AssetToPaths toPath = const _AssetToPaths();
+  static _AssetToWidgets toWidget = const _AssetToWidgets();
+  static _AssetFonts fonts = const _AssetFonts();
+  static _AssetIcons icons = const _AssetIcons();
+  static _AssetImageIcons imageIcons = const _AssetImageIcons();
 
   AppAssets._();
 }
 
-class AssetPaths {
+class _AssetPaths {
   String get experience => 'assets/images/ui/ui-experience.png';
 
   String get starLevel => 'assets/images/ui/ui-star-level.png';
@@ -25,14 +26,114 @@ class AssetPaths {
 
   String get tournament => 'assets/images/ui/ui-tournament.png';
 
+  String get battle => 'assets/images/ui/ui-battle.png';
+
+  String get clanWars => 'assets/images/ui/ui-clan-wars.png';
+
+  String get deck => 'assets/images/ui/ui-deck.png';
+
+  String get donate => 'assets/images/ui/ui-donate.png';
+
+  String get league => 'assets/images/ui/ui-league.png';
+
+  String get rank => 'assets/images/ui/ui-rank.png';
+
   String get crownRed => 'assets/images/crown/crown-red.png';
 
   String get crownBlue => 'assets/images/crown/crown-blue.png';
 
-  const AssetPaths();
+  const _AssetPaths();
 }
 
-class AssetToPaths {
+class _AssetImageIcons {
+  Image experience({double size = 24}) => Image.asset(
+        _AssetPaths().experience,
+        height: size,
+        width: size,
+      );
+
+  Image starLevel({double size = 24}) => Image.asset(
+        _AssetPaths().starLevel,
+        height: size,
+        width: size,
+      );
+
+  Image notFound({double size = 24}) => Image.asset(
+        _AssetPaths().notFound,
+        height: size,
+        width: size,
+      );
+
+  Image trophy({double size = 24}) => Image.asset(
+        _AssetPaths().trophy,
+        height: size,
+        width: size,
+      );
+
+  Image shareDeck({double size = 24}) => Image.asset(
+        _AssetPaths().shareDeck,
+        height: size,
+        width: size,
+      );
+
+  Image tournament({double size = 24}) => Image.asset(
+        _AssetPaths().tournament,
+        height: size,
+        width: size,
+      );
+
+  Image battle({double size = 24}) => Image.asset(
+        _AssetPaths().battle,
+        height: size,
+        width: size,
+      );
+
+  Image clanWars({double size = 24}) => Image.asset(
+        _AssetPaths().clanWars,
+        height: size,
+        width: size,
+      );
+
+  Image deck({double size = 24}) => Image.asset(
+        _AssetPaths().deck,
+        height: size,
+        width: size,
+      );
+
+  Image donate({double size = 24}) => Image.asset(
+        _AssetPaths().donate,
+        height: size,
+        width: size,
+      );
+
+  Image league({double size = 24}) => Image.asset(
+        _AssetPaths().league,
+        height: size,
+        width: size,
+      );
+
+  Image rank({double size = 24}) => Image.asset(
+        _AssetPaths().rank,
+        height: size,
+        width: size,
+      );
+
+  Image crownRed({double size = 24}) => Image.asset(
+        _AssetPaths().crownRed,
+        height: size,
+        width: size,
+      );
+
+  Image crownBlue({double size = 24}) => Image.asset(
+        _AssetPaths().crownBlue,
+        height: size,
+        width: size,
+      );
+
+  const _AssetImageIcons();
+}
+
+class _AssetToPaths {
   String chestNameToPath(String name) {
     final images = {
       'Silver Chest': 'assets/images/chests/chest-silver.png',
@@ -61,10 +162,10 @@ class AssetToPaths {
     return 'assets/images/clan-badges/${id.toString()}.png';
   }
 
-  const AssetToPaths();
+  const _AssetToPaths();
 }
 
-class AssetToWidgets {
+class _AssetToWidgets {
   Image cardToImage({Card card}) {
     String path = card.starLevel != null
         ? 'assets/images/cards-gold/'
@@ -94,29 +195,39 @@ class AssetToWidgets {
     );
   }
 
-  const AssetToWidgets();
+  const _AssetToWidgets();
 }
 
-class AssetFonts {
+class _AssetFonts {
   String get alfaSlabOne => 'AlfaSlabOne';
+
   String get monoton => 'Monoton';
+
   String get pacifico => 'Pacifico';
+
   String get openSansCondensed => 'OpenSansCondensed';
+
   String get rajdhani => 'Rajdhani';
+
   String get roboto => 'Roboto';
+
   String get staatliches => 'Staatliches';
+
   String get teko => 'Teko';
+
   String get yanoneKaffeesatz => 'YanoneKaffeesatz';
+
   String get zillaSlab => 'ZillaSlab';
 
-  const AssetFonts();
+  const _AssetFonts();
 }
 
-class AssetIcons {
+class _AssetIcons {
   String get appIcon => 'assets/icons/ic_launcher.png';
+
   String get appIconRound => 'assets/icons/ic_launcher_round.png';
 
-  const AssetIcons();
+  const _AssetIcons();
 }
 
 class Assets {
