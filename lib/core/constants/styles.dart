@@ -82,13 +82,13 @@ class BattlesAppStyle {
 
   double get tileHeaderCrownIconSize => 24;
 
-  double get tileStatusBattleResultIconSize => 12;
+  double get tileStatusBattleResultIconSize => 18;
 
-  double get tileStatusBattleTimeIconSize => 12;
+  double get tileStatusBattleTimeIconSize => 18;
 
-  double get tileBattleTeamClanIconSize => 12;
+  double get tileBattleTeamClanIconSize => 18;
 
-  double get tileBattleTeamClanTrophiesIconSize => 12;
+  double get tileBattleTeamClanTrophiesIconSize => 18;
 
   IconData get tileStatusBattleResultWinIconData => Icons.thumb_up;
 
@@ -97,12 +97,14 @@ class BattlesAppStyle {
   IconData get tileStatusBattleTimeIconData => Icons.timer_sharp;
 
   TextStyle get tileHeaderTitleTextStyle => const TextStyle(
+        fontSize: 21,
         color: Colors.black87,
         fontWeight: FontWeight.w900,
         letterSpacing: 0.9,
       );
 
   TextStyle get tileHeaderCrownTextStyle => const TextStyle(
+        fontSize: 18.0,
         color: Colors.black54,
         fontWeight: FontWeight.w500,
       );
@@ -120,36 +122,36 @@ class BattlesAppStyle {
       );
 
   TextStyle get tileStatusBattleResultTitleTextStyle => const TextStyle(
-        fontSize: 10.0,
+        fontSize: 16.0,
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.italic,
       );
 
   TextStyle get tileStatusBattleTimeTextStyle => const TextStyle(
-        fontSize: 10.0,
+        fontSize: 16.0,
         fontStyle: FontStyle.italic,
         color: Colors.blueAccent,
       );
 
   TextStyle get tileBattleTeamNameTextStyle => const TextStyle(
-        fontSize: 12.0,
+        fontSize: 16.0,
         fontWeight: FontWeight.bold,
       );
 
   TextStyle get tileBattleTeamHasNoClanNameTextStyle => const TextStyle(
-        fontSize: 10.0,
+        fontSize: 14.0,
         color: Colors.black54,
         fontStyle: FontStyle.italic,
       );
 
   TextStyle get tileBattleTeamClanNameTextStyle => const TextStyle(
-        fontSize: 10.0,
+        fontSize: 14.0,
         color: Colors.black54,
         fontStyle: FontStyle.italic,
       );
 
   TextStyle get tileBattleTeamClanStartingTrophiesTextStyle => const TextStyle(
-        fontSize: 10.0,
+        fontSize: 14.0,
         color: Colors.black87,
       );
 
@@ -157,6 +159,7 @@ class BattlesAppStyle {
         fontSize: 9,
         color: Colors.black54,
       );
+
   BoxDecoration get resultBoxDecoration => const BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -172,11 +175,17 @@ class Margins {
   const Margins();
 
   EdgeInsetsGeometry get all1 => const EdgeInsets.all(1.0);
+
   EdgeInsetsGeometry get all2 => const EdgeInsets.all(2.0);
+
   EdgeInsetsGeometry get all3 => const EdgeInsets.all(3.0);
+
   EdgeInsetsGeometry get all4 => const EdgeInsets.all(4.0);
+
   EdgeInsetsGeometry get all5 => const EdgeInsets.all(5.0);
+
   EdgeInsetsGeometry get all6 => const EdgeInsets.all(6.0);
+
   EdgeInsetsGeometry get all8 => const EdgeInsets.all(8.0);
 }
 

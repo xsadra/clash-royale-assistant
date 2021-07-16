@@ -41,13 +41,14 @@ class TeamMemberWidget extends StatelessWidget {
               team.name,
               style: AppStyles.battles.tileBattleTeamNameTextStyle,
             ),
+            AppStyles.sizedBox.height4,
             if (!team.hasClan)
               Text(
                 AppTexts.ui.hasNoClan,
                 style: AppStyles.battles.tileBattleTeamHasNoClanNameTextStyle,
               ),
             if (team.hasClan) DisplayClanName(teamType: teamType, team: team),
-            AppStyles.sizedBox.height2,
+            AppStyles.sizedBox.height4,
             if (showTrophies)
               DisplayMemberTrophies(teamType: teamType, team: team),
           ],

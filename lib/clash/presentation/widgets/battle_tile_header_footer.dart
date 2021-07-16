@@ -148,6 +148,7 @@ class BattleHeader extends StatelessWidget {
           battle.gameModeNameFormatted,
           style: AppStyles.battles.tileHeaderTitleTextStyle,
         ),
+        AppStyles.sizedBox.height8,
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
