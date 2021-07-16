@@ -18,7 +18,7 @@ class StatTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 6.0, bottom: 2),
+      padding: const EdgeInsets.only(left: 36.0, bottom: 2, right: 8.0),
       child: Row(
         children: [
           Text(
