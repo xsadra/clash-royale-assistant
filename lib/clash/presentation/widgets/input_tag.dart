@@ -9,7 +9,7 @@ import '../../../core/constants/consts.dart';
 import '../../../core/routes/router.gr.dart';
 import '../../data/datasources/validate_tag_remote_data_source.dart';
 import '../../domain/entities/current_player_tag.dart';
-import '../bloc/currentplayertag/bloc.dart';
+import '../bloc/currentplayertag/bloc.dart' hide Loading;
 import '../bloc/validatetag/bloc.dart';
 
 class InputTag extends StatefulWidget {
@@ -22,6 +22,7 @@ class InputTag extends StatefulWidget {
 class _InputTagState extends State<InputTag> {
   final controller = TextEditingController();
   String inputString = '';
+  bool isFormEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class _InputTagState extends State<InputTag> {
           _inputTextField(),
           AppStyles.sizedBox.height12,
           _searchButton(),
-          AppStyles.sizedBox.height12,
+          AppStyles.sizedBox.height16,
           _helpText(),
         ],
       ),
@@ -49,10 +50,10 @@ class _InputTagState extends State<InputTag> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.black54,
-            fontSize: 16.0,
+            fontSize: 21.0,
           ),
         ),
-        AppStyles.sizedBox.height6,
+        AppStyles.sizedBox.height10,
         SetPlayerHelpText(
             rowNumber: AppTexts.body.num1, rowText: AppTexts.body.findTagHelp1),
         AppStyles.sizedBox.height12,
@@ -89,12 +90,16 @@ class _InputTagState extends State<InputTag> {
       builder: (BuildContext context, state) {
         log(state.runtimeType.toString(),
             name: ' InputTag > _inputTextField()');
-        if (state is IsValid) {
+        if (state is Loading) {
+          isFormEnabled = false;
+        } else if (state is IsValid) {
+          isFormEnabled = true;
           context.read<CurrentPlayerTagBloc>().add(SaveCurrentPlayerTagEvent(
               playerTag: CurrentPlayerTag(playerTag: inputString)));
           log('Navigate to HomePage', name: 'InputTag > _inputTextField()');
           ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);
         } else if (state is NotValid) {
+          isFormEnabled = true;
           showError = true;
         }
         return Row(
@@ -110,6 +115,7 @@ class _InputTagState extends State<InputTag> {
                       name: 'InputTag > _inputTextField');
                   inputString = value;
                 },
+                enabled: isFormEnabled,
                 onSubmitted: (_) => _validateTag(),
                 controller: controller,
                 keyboardType: TextInputType.text,
@@ -139,7 +145,7 @@ class _InputTagState extends State<InputTag> {
             Expanded(
               flex: 1,
               child: IconButton(
-                onPressed: () => controller.clear(),
+                onPressed: () => isFormEnabled ? controller.clear() : null,
                 icon: Icon(Icons.delete),
               ),
             ),
@@ -154,7 +160,7 @@ class _InputTagState extends State<InputTag> {
       children: [
         Expanded(
           child: ElevatedButton(
-            onPressed: _validateTag,
+            onPressed: isFormEnabled ? _validateTag : null,
             child: Text(AppTexts.ui.search),
           ),
         ),
