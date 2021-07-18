@@ -6,3 +6,5 @@ export 'player_remote_data_source.dart';
 export 'upcoming_chest_local_data_source.dart';
 export 'upcoming_chest_remote_data_source.dart';
 export 'validate_tag_remote_data_source.dart';
+export 'version_Local_data_source.dart';
+export 'version_remote_data_source.dart';

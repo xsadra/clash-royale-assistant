@@ -25,6 +25,8 @@ class ConstAppTests {
   String get currentPlayerTag => 'CURRENT_PLAYER_TAG';
   String get allCards => 'ALL_CARDS';
   String get cachedBattles => 'CACHED_BATTLES';
+  String get cachedVersion => 'CACHED_VERSION';
+  String get cachedVersionInfo => 'CACHED_VERSION_INFO';
 }
 
 class ApiAppTexts {
@@ -43,6 +45,7 @@ class ApiAppTexts {
   String get apiBaseTournamentUrlProxy => apiBaseUrlProxy + apiTournamentUrl;
   String get upcomingChests => '/upcomingchests';
   String get battles => '/battlelog';
+  String get apiGetVersion => 'https://api.sadra.at/cra/get/version.json';
 }
 
 class ErrorAppTexts {
