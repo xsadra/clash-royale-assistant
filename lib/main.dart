@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'clash/presentation/bloc/currentplayertag/bloc.dart';
+import 'clash/presentation/bloc/network_connection_checker/bloc.dart';
 import 'core/constants/consts.dart';
 import 'core/platform/assets_controller.dart';
 import 'core/routes/router.gr.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => injection.sl<CurrentPlayerTagBloc>()
               ..add(GetCurrentPlayerTagEvent())),
+        BlocProvider(
+            create: (context) => injection.sl<NetworkConnectionCheckerBloc>()
+              ..add(ConnectionCheckerEvent())),
       ],
       child: MaterialApp(
         title: AppTexts.body.appTitle,

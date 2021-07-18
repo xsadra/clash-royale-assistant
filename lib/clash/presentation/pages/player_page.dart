@@ -1,16 +1,17 @@
 import 'dart:developer';
 
-import 'package:clash_royale_assistant/core/platform/assets_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/constants/consts.dart';
+import '../../../core/platform/assets_controller.dart';
 import '../../../injection_container.dart' as injection;
 import '../../presentation/bloc/player/bloc.dart';
 import '../../presentation/bloc/upcomingchest/bloc.dart';
 import '../bloc/battles/bloc.dart';
 import '../bloc/currentplayertag/bloc.dart';
+import '../widgets/widgets.dart';
 import 'bottom_navigation_bar.dart';
 import 'player_nested_tab_page.dart';
 
@@ -23,7 +24,7 @@ class PlayerPage extends StatelessWidget {
       BlocProvider(create: (context) => injection.sl<PlayerBloc>()),
       BlocProvider(create: (context) => injection.sl<CurrentPlayerTagBloc>()),
       BlocProvider(create: (context) => injection.sl<UpcomingChestsBloc>()),
-      BlocProvider(create: (context) => injection.sl<BattlesBloc>())
+      BlocProvider(create: (context) => injection.sl<BattlesBloc>()),
     ];
     log('build', name: 'PlayerPage');
     return SafeArea(
@@ -43,9 +44,8 @@ class PlayerPage extends StatelessWidget {
           providers: playerProviders,
           child: PlayerNestedTabPage(),
         ),
-        bottomNavigationBar: BottomNavBar(
-          initialActiveIndex: 0,
-        ),
+        bottomSheet: NotConnectedMessageWidget(),
+        bottomNavigationBar: BottomNavBar(initialActiveIndex: 0),
       ),
     );
   }

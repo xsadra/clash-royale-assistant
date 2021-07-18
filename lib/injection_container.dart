@@ -7,11 +7,13 @@ import 'clash/data/datasources/datasources.dart';
 import 'clash/data/datasources/player_local_data_source.dart';
 import 'clash/data/repositories/battles_repository_impl.dart';
 import 'clash/data/repositories/current_player_tag_repository_impl.dart';
+import 'clash/data/repositories/network_connection_checker_repository_impl.dart';
 import 'clash/data/repositories/player_repository_impl.dart';
 import 'clash/data/repositories/upcoming_chest_repository_impl.dart';
 import 'clash/data/repositories/validate_tag_repository_impl.dart';
 import 'clash/domain/repository/battles_repository.dart';
 import 'clash/domain/repository/current_player_tag_repository.dart';
+import 'clash/domain/repository/network_connection_checker_repository.dart';
 import 'clash/domain/repository/player_repository.dart';
 import 'clash/domain/repository/upcoming_chest_repository.dart';
 import 'clash/domain/repository/validate_tag_repository.dart';
@@ -19,6 +21,7 @@ import 'clash/domain/usecases/get_player.dart';
 import 'clash/domain/usecases/get_upcoming_chests.dart';
 import 'clash/presentation/bloc/battles/bloc.dart';
 import 'clash/presentation/bloc/currentplayertag/bloc.dart';
+import 'clash/presentation/bloc/network_connection_checker/bloc.dart';
 import 'clash/presentation/bloc/player/bloc.dart';
 import 'clash/presentation/bloc/upcomingchest/bloc.dart';
 import 'clash/presentation/bloc/validatetag/bloc.dart';
@@ -43,6 +46,10 @@ Future<void> init() async {
 
   sl.registerFactory(
     () => BattlesBloc(repository: sl()),
+  );
+
+  sl.registerFactory(
+    () => NetworkConnectionCheckerBloc(repository: sl()),
   );
 
   sl.registerLazySingleton(() => GetUpcomingChests(repository: sl()));
@@ -81,6 +88,12 @@ Future<void> init() async {
       networkInfo: sl(),
       remoteDataSource: sl(),
       localDataSource: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<NetworkConnectionCheckerRepository>(
+    () => NetworkConnectionCheckerRepositoryImpl(
+      networkInfo: sl(),
     ),
   );
 

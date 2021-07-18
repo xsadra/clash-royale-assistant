@@ -10,6 +10,7 @@ import '../../../core/routes/router.gr.dart';
 import '../../data/datasources/validate_tag_remote_data_source.dart';
 import '../../domain/entities/current_player_tag.dart';
 import '../bloc/currentplayertag/bloc.dart' hide Loading;
+import '../bloc/network_connection_checker/bloc.dart';
 import '../bloc/validatetag/bloc.dart';
 
 class InputTag extends StatefulWidget {
@@ -26,6 +27,7 @@ class _InputTagState extends State<InputTag> {
 
   @override
   Widget build(BuildContext context) {
+    context.read<NetworkConnectionCheckerBloc>().add(ConnectionCheckerEvent());
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,

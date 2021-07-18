@@ -3,9 +3,11 @@ import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart' hide Router;
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants/consts.dart';
 import '../../../core/routes/router.gr.dart';
+import '../bloc/network_connection_checker/bloc.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int initialActiveIndex;
@@ -17,6 +19,7 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<NetworkConnectionCheckerBloc>().add(ConnectionCheckerEvent());
     return ConvexAppBar.badge(
       {},
       items: [

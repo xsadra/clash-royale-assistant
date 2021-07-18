@@ -42,3 +42,4 @@ export 'upcoming_chests_list_view.dart';
 export 'upcoming_chests_view.dart';
 export 'user_clan_name_widget.dart';
 export 'vertical_divider_widget.dart';
+export 'not_connected_message_widget.dart';

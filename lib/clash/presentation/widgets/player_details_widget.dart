@@ -102,12 +102,6 @@ class PlayerDetails extends StatelessWidget {
             ),
             tiles: [
               StatTile(
-                  field: AppTexts.ui.warDayWinsCol,
-                  value: player.warDayWins.toString()),
-              StatTile(
-                  field: AppTexts.ui.clanCardsCollectedCol,
-                  value: player.clanCardsCollected.toString()),
-              StatTile(
                   field: AppTexts.ui.challengeCardsWonCol,
                   value: player.challengeCardsWon.toString()),
               StatTile(

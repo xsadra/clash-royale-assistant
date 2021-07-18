@@ -31,6 +31,7 @@ class InputTagPage extends StatelessWidget {
             child: InputTag(),
           ),
         ),
+        bottomSheet: NotConnectedMessageWidget(),
         bottomNavigationBar: BottomNavBar(initialActiveIndex: 1),
       ),
     );

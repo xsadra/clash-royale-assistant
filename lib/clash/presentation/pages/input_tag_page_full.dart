@@ -1,3 +1,4 @@
+import 'package:clash_royale_assistant/clash/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,6 +27,7 @@ class InputTagPageFull extends StatelessWidget {
             child: InputTag(),
           ),
         ),
+        bottomSheet: NotConnectedMessageWidget(),
       ),
     );
   }

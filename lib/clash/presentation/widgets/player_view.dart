@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants/consts.dart';
+import '../bloc/network_connection_checker/bloc.dart' hide Empty, Error;
 import '../bloc/player/bloc.dart';
 import 'widgets.dart';
 
@@ -10,6 +11,7 @@ class PlayerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<NetworkConnectionCheckerBloc>().add(ConnectionCheckerEvent());
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
