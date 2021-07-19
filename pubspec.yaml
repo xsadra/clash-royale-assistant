@@ -26,6 +26,7 @@ dependencies:
   auto_route: ^0.6.9
   timeago: ^3.1.0
   url_launcher:
+  package_info_plus: ^1.0.4
 
 dev_dependencies:
   build_runner:
