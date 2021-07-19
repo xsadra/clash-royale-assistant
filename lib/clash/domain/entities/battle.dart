@@ -5,6 +5,7 @@ import 'card.dart';
 class Battle {
   final String type;
   final String battleTime;
+  final String tournamentTag;
   final int princessTowersHitPoints;
   final String boatBattleSide;
   final bool boatBattleWon;
@@ -25,6 +26,7 @@ class Battle {
   const Battle({
     @required this.type,
     @required this.battleTime,
+    @required this.tournamentTag,
     @required this.princessTowersHitPoints,
     @required this.boatBattleSide,
     @required this.boatBattleWon,

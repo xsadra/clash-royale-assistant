@@ -8,6 +8,7 @@ class BattleModel extends Battle {
   const BattleModel({
     @required String type,
     @required String battleTime,
+    @required String tournamentTag,
     @required int princessTowersHitPoints,
     @required String boatBattleSide,
     @required bool boatBattleWon,
@@ -27,6 +28,7 @@ class BattleModel extends Battle {
   }) : super(
             type: type,
             battleTime: battleTime,
+            tournamentTag: tournamentTag,
             princessTowersHitPoints: princessTowersHitPoints,
             boatBattleSide: boatBattleSide,
             boatBattleWon: boatBattleWon,
@@ -48,6 +50,7 @@ class BattleModel extends Battle {
     return BattleModel(
       type: jsonData['type'] as String,
       battleTime: jsonData['battleTime'] as String,
+      tournamentTag: jsonData['tournamentTag'] as String,
       princessTowersHitPoints: jsonData['princessTowersHitPoints'] as int,
       boatBattleSide: jsonData['boatBattleSide'] as String,
       boatBattleWon: jsonData['boatBattleWon'] as bool,
@@ -76,6 +79,7 @@ class BattleModel extends Battle {
     return {
       'type': this.type,
       'battleTime': this.battleTime,
+      'tournamentTag': this.tournamentTag,
       'princessTowersHitPoints': this.princessTowersHitPoints,
       'boatBattleSide': this.boatBattleSide,
       'boatBattleWon': this.boatBattleWon,
@@ -102,6 +106,7 @@ class BattleModel extends Battle {
           runtimeType == other.runtimeType &&
           type == other.type &&
           battleTime == other.battleTime &&
+          tournamentTag == other.tournamentTag &&
           princessTowersHitPoints == other.princessTowersHitPoints &&
           boatBattleSide == other.boatBattleSide &&
           boatBattleWon == other.boatBattleWon &&
@@ -122,6 +127,7 @@ class BattleModel extends Battle {
   int get hashCode =>
       type.hashCode ^
       battleTime.hashCode ^
+      tournamentTag.hashCode ^
       princessTowersHitPoints.hashCode ^
       boatBattleSide.hashCode ^
       boatBattleWon.hashCode ^
@@ -140,7 +146,7 @@ class BattleModel extends Battle {
 
   @override
   String toString() {
-    return 'BattleModel{type: $type, battleTime: $battleTime, princessTowersHitPoints: $princessTowersHitPoints, boatBattleSide: $boatBattleSide, boatBattleWon: $boatBattleWon, newTowersDestroyed: $newTowersDestroyed, prevTowersDestroyed: $prevTowersDestroyed, remainingTowers: $remainingTowers, challengeId: $challengeId, isLadderTournament: $isLadderTournament, arena: $arena, gameMode: $gameMode, deckSelection: $deckSelection, team: $team, opponent: $opponent, challengeTitle: $challengeTitle, isHostedMatch: $isHostedMatch}';
+    return 'BattleModel{type: $type, battleTime: $battleTime, tournamentTag: $tournamentTag, princessTowersHitPoints: $princessTowersHitPoints, boatBattleSide: $boatBattleSide, boatBattleWon: $boatBattleWon, newTowersDestroyed: $newTowersDestroyed, prevTowersDestroyed: $prevTowersDestroyed, remainingTowers: $remainingTowers, challengeId: $challengeId, isLadderTournament: $isLadderTournament, arena: $arena, gameMode: $gameMode, deckSelection: $deckSelection, team: $team, opponent: $opponent, challengeTitle: $challengeTitle, isHostedMatch: $isHostedMatch}';
   }
 }
 

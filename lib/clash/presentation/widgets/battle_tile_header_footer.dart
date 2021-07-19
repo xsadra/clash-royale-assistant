@@ -185,6 +185,24 @@ class BattleHeader extends StatelessWidget {
         ),
         if (battle.isDisplayTeamWin)
           TeamWinCounterDisplayWidget(battle: battle),
+        if (battle.hasTournamentTag)
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: RichText(
+                text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Tournament Tag: ',
+                  style: AppStyles.battles.tileHeaderTournamentTagTextStyle,
+                ),
+                TextSpan(
+                  text: battle.tournamentTag,
+                  style:
+                      AppStyles.battles.tileHeaderTournamentTagValueTextStyle,
+                ),
+              ],
+            )),
+          ),
       ],
     );
   }

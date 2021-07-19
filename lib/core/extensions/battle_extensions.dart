@@ -32,6 +32,8 @@ extension BattleEntityExtensions on Battle {
 
   bool get isDisplayTeamWin => this.challengeWinCountBefore != null;
 
+  bool get hasTournamentTag => this.tournamentTag != null;
+
   bool get isDisplayPreviousTeamWinNumber =>
       (this.challengeWinCountBefore ?? 0) > 0;
 

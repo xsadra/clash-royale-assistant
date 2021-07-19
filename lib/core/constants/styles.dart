@@ -109,7 +109,19 @@ class _BattlesAppStyle {
 
   TextStyle get tileHeaderCrownTextStyle => const TextStyle(
         fontSize: 18.0,
+        color: Color(0x8A000000),
+        fontWeight: FontWeight.w500,
+      );
+
+  TextStyle get tileHeaderTournamentTagTextStyle => const TextStyle(
+        fontSize: 14.0,
         color: Colors.black54,
+        fontWeight: FontWeight.w500,
+      );
+
+  TextStyle get tileHeaderTournamentTagValueTextStyle => const TextStyle(
+        fontSize: 14.0,
+        color: Color(0xFF66BB6A),
         fontWeight: FontWeight.w500,
       );
 
