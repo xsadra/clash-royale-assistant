@@ -147,4 +147,7 @@ class UIAppTexts {
   String get semicolon => ';';
   String get vsCap => 'VS';
   String get attacker => 'attacker';
+  String get updateApp => 'Update App';
+  String get newVersionCol => 'new version:';
+  String get updateIsAvailable => 'Update is Available';
 }

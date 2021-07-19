@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
+import 'consts.dart';
+
 class AppStyles {
-  static Paddings padding = const Paddings();
-  static Margins margins = const Margins();
-  static SizedBoxesAppWidgets sizedBox = const SizedBoxesAppWidgets();
-  static AchievementsAppStyle achievements = const AchievementsAppStyle();
-  static BattlesAppStyle battles = const BattlesAppStyle();
+  static _Paddings padding = const _Paddings();
+  static _Margins margins = const _Margins();
+  static _SizedBoxesAppWidgets sizedBox = const _SizedBoxesAppWidgets();
+  static _AchievementsAppStyle achievements = const _AchievementsAppStyle();
+  static _BattlesAppStyle battles = const _BattlesAppStyle();
+  static _UpdateNotificationAppStyle notification =
+      const _UpdateNotificationAppStyle();
 
   const AppStyles._();
 }
 
-class AchievementsAppStyle {
-  const AchievementsAppStyle();
+class _AchievementsAppStyle {
+  const _AchievementsAppStyle();
 
   ShapeBorder get cardWidgetShapeBorder => RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
@@ -77,8 +81,8 @@ class AchievementsAppStyle {
       );
 }
 
-class BattlesAppStyle {
-  const BattlesAppStyle();
+class _BattlesAppStyle {
+  const _BattlesAppStyle();
 
   double get tileHeaderCrownIconSize => 24;
 
@@ -171,8 +175,81 @@ class BattlesAppStyle {
       );
 }
 
-class Margins {
-  const Margins();
+class _UpdateNotificationAppStyle {
+  const _UpdateNotificationAppStyle();
+
+  BoxDecoration get updateNotificationBoxDecoration => const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x809e9e9e),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 3),
+          ),
+        ],
+        gradient: LinearGradient(
+          begin: Alignment.bottomRight,
+          end: Alignment.topLeft,
+          colors: [
+            Color(0xfffbe9e7),
+            Color(0xfffff9c4),
+          ],
+        ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(30),
+        ),
+      );
+
+  BoxDecoration get updateNotificationButtonBoxDecoration =>
+      const BoxDecoration(
+        color: Color(0xff81c784),
+        borderRadius: BorderRadius.all(
+          Radius.circular(20),
+        ),
+      );
+
+  EdgeInsetsGeometry get updateNotificationMargin => const EdgeInsets.only(
+        top: 8,
+        right: 5,
+        left: 5,
+        bottom: 16,
+      );
+
+  EdgeInsetsGeometry get updateNotificationPadding => _Paddings().all12;
+
+  TextStyle get updateNotificationTitleTextStyle => const TextStyle(
+        fontSize: 15.0,
+        fontFamily: AppFonts.alfaSlabOne,
+        color: Color(0xff1b5e20),
+        letterSpacing: 1.5,
+      );
+
+  TextStyle get updateNotificationNewVersionTitleTextStyle => const TextStyle(
+        fontSize: 14,
+        fontFamily: AppFonts.rajdhani,
+      );
+
+  TextStyle get updateNotificationMessageTextStyle => const TextStyle(
+        letterSpacing: 0.6,
+        fontSize: 16,
+        fontFamily: AppFonts.yanoneKaffeesatz,
+        fontWeight: FontWeight.bold,
+      );
+
+  TextStyle get updateNotificationFeatureTextStyle => const TextStyle(
+        fontSize: 14,
+        fontFamily: AppFonts.yanoneKaffeesatz,
+      );
+
+  TextStyle get updateNotificationButtonTextStyle => const TextStyle(
+        color: Color(0xffffffff),
+        fontSize: 14,
+        letterSpacing: 1.5,
+      );
+}
+
+class _Margins {
+  const _Margins();
 
   EdgeInsetsGeometry get all1 => const EdgeInsets.all(1.0);
 
@@ -189,10 +266,20 @@ class Margins {
   EdgeInsetsGeometry get all8 => const EdgeInsets.all(8.0);
 }
 
-class Paddings {
-  const Paddings();
+class _Paddings {
+  const _Paddings();
+
+  EdgeInsetsGeometry get all2 => const EdgeInsets.all(2.0);
+
+  EdgeInsetsGeometry get all4 => const EdgeInsets.all(4.0);
+
+  EdgeInsetsGeometry get all6 => const EdgeInsets.all(6.0);
+
+  EdgeInsetsGeometry get all7 => const EdgeInsets.all(7.0);
 
   EdgeInsetsGeometry get all8 => const EdgeInsets.all(8.0);
+
+  EdgeInsetsGeometry get all10 => const EdgeInsets.all(10.0);
 
   EdgeInsetsGeometry get all12 => const EdgeInsets.all(12.0);
 
@@ -208,8 +295,8 @@ class Paddings {
       const EdgeInsets.symmetric(horizontal: 10.0);
 }
 
-class SizedBoxesAppWidgets {
-  const SizedBoxesAppWidgets();
+class _SizedBoxesAppWidgets {
+  const _SizedBoxesAppWidgets();
 
   SizedBox height(double height) => SizedBox(height: height);
 
@@ -288,4 +375,14 @@ class SizedBoxesAppWidgets {
   SizedBox get width18 => const SizedBox(width: 18);
 
   SizedBox get width20 => const SizedBox(width: 20);
+
+  SizedBox get width25 => const SizedBox(width: 25);
+
+  SizedBox get width30 => const SizedBox(width: 30);
+
+  SizedBox get width35 => const SizedBox(width: 35);
+
+  SizedBox get width40 => const SizedBox(width: 40);
+
+  SizedBox get width50 => const SizedBox(width: 50);
 }
