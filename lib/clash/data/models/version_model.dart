@@ -5,11 +5,13 @@ import '../../domain/entities/version.dart';
 class VersionModel extends Version {
   const VersionModel({
     @required String current,
+    @required String message,
     @required List<String> features,
     @required String updateUrl,
     @required List<OldVersionModel> allVersions,
   }) : super(
             current: current,
+            message: message,
             features: features,
             updateUrl: updateUrl,
             allVersions: allVersions);
@@ -17,9 +19,12 @@ class VersionModel extends Version {
   factory VersionModel.fromJson(Map<String, dynamic> json) {
     return VersionModel(
       current: json['current'] as String,
-      features: json['features'] as List<String>,
+      message: json['message'] as String,
+      features: json['features'].cast<String>() as List<String>,
       updateUrl: json['updateUrl'] as String,
-      allVersions: json['allVersions'] as List<OldVersionModel>,
+      allVersions: (json['allVersions'] as List)
+          .map((e) => OldVersionModel.fromJson(e))
+          .toList(),
     );
   }
 
@@ -27,6 +32,7 @@ class VersionModel extends Version {
     // ignore: unnecessary_cast
     return {
       'current': this.current,
+      'message': this.message,
       'features': this.features,
       'updateUrl': this.updateUrl,
       'allVersions': this.allVersions,
@@ -39,6 +45,7 @@ class VersionModel extends Version {
       other is VersionModel &&
           runtimeType == other.runtimeType &&
           current == other.current &&
+          message == other.message &&
           features == other.features &&
           updateUrl == other.updateUrl &&
           allVersions == other.allVersions;
@@ -46,13 +53,14 @@ class VersionModel extends Version {
   @override
   int get hashCode =>
       current.hashCode ^
+      message.hashCode ^
       features.hashCode ^
       updateUrl.hashCode ^
       allVersions.hashCode;
 
   @override
   String toString() {
-    return 'VersionModel{current: $current, features: $features,updateUrl: $updateUrl, allVersions: $allVersions}';
+    return 'VersionModel{current: $current, message: $message, features: $features, updateUrl: $updateUrl, allVersions: $allVersions}';
   }
 }
 
@@ -65,7 +73,7 @@ class OldVersionModel extends OldVersion {
   factory OldVersionModel.fromJson(Map<String, dynamic> json) {
     return OldVersionModel(
       version: json['version'] as String,
-      features: json['features'] as List<String>,
+      features: json['features'].cast<String>() as List<String>,
     );
   }
 
