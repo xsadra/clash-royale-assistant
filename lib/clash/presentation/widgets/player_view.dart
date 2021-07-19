@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/constants/consts.dart';
 import '../bloc/network_connection_checker/bloc.dart' hide Empty, Error;
 import '../bloc/player/bloc.dart';
+import '../bloc/version_checker/bloc.dart' hide Empty, Error, Loading, Loaded;
 import 'widgets.dart';
 
 class PlayerView extends StatelessWidget {
@@ -12,6 +13,7 @@ class PlayerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<NetworkConnectionCheckerBloc>().add(ConnectionCheckerEvent());
+    context.read<VersionCheckerBloc>().add(CheckIsUpdatedVersionEvent());
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),

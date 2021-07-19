@@ -1,10 +1,12 @@
-import 'package:clash_royale_assistant/core/platform/assets_controller.dart';
 import 'package:flutter/material.dart' hide Card;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../../../core/constants/consts.dart';
+import '../../../core/platform/assets_controller.dart';
 import '../../domain/entities/card.dart';
-import '../../presentation/bloc/player/bloc.dart';
+import '../bloc/player/bloc.dart';
+import '../bloc/version_checker/bloc.dart' as version;
 import 'widgets.dart';
 
 class PlayerDetails extends StatelessWidget {
@@ -19,6 +21,22 @@ class PlayerDetails extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
+          BlocBuilder<version.VersionCheckerBloc, version.VersionCheckerState>(
+            builder: (context, state) {
+              if (state is version.Loading) {
+                return Center(
+                  child: const CircularProgressIndicator(
+                      color: const Color(0xFF4CAF50)),
+                );
+              } else if (state is version.Hidden) {
+                return EmptyContainer();
+              } else if (state is version.Loaded) {
+                final versionInfo = state.version;
+                return UpdateNotificationWidget(versionInfo: versionInfo);
+              }
+              return EmptyContainer();
+            },
+          ),
           PlayerName(player: player),
           AppStyles.sizedBox.height4,
           Padding(
@@ -194,10 +212,11 @@ class PlayerDetails extends StatelessWidget {
                   Text(
                     player.currentFavouriteCard.name,
                     style: TextStyle(
-                        fontSize: 13,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold),
+                      fontSize: 13,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
