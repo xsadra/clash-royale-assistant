@@ -6,13 +6,19 @@ class VersionModel extends Version {
   const VersionModel({
     @required String current,
     @required List<String> features,
+    @required String updateUrl,
     @required List<OldVersionModel> allVersions,
-  }) : super(current: current, features: features, allVersions: allVersions);
+  }) : super(
+            current: current,
+            features: features,
+            updateUrl: updateUrl,
+            allVersions: allVersions);
 
   factory VersionModel.fromJson(Map<String, dynamic> json) {
     return VersionModel(
       current: json['current'] as String,
       features: json['features'] as List<String>,
+      updateUrl: json['updateUrl'] as String,
       allVersions: json['allVersions'] as List<OldVersionModel>,
     );
   }
@@ -22,6 +28,7 @@ class VersionModel extends Version {
     return {
       'current': this.current,
       'features': this.features,
+      'updateUrl': this.updateUrl,
       'allVersions': this.allVersions,
     } as Map<String, dynamic>;
   }
@@ -33,15 +40,19 @@ class VersionModel extends Version {
           runtimeType == other.runtimeType &&
           current == other.current &&
           features == other.features &&
+          updateUrl == other.updateUrl &&
           allVersions == other.allVersions;
 
   @override
   int get hashCode =>
-      current.hashCode ^ features.hashCode ^ allVersions.hashCode;
+      current.hashCode ^
+      features.hashCode ^
+      updateUrl.hashCode ^
+      allVersions.hashCode;
 
   @override
   String toString() {
-    return 'VersionModel{current: $current, features: $features, allVersions: $allVersions}';
+    return 'VersionModel{current: $current, features: $features,updateUrl: $updateUrl, allVersions: $allVersions}';
   }
 }
 
