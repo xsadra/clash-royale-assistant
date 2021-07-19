@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../core/error/exceptions.dart';
 import '../../../core/error/failure.dart';
@@ -24,6 +27,8 @@ class VersionRepositoryImpl implements VersionRepository {
     if (await networkInfo.isConnected) {
       try {
         final remoteVersion = await remoteDataSource.getVersion();
+        log('Get remoteVersion', name: 'VersionRepositoryImpl');
+        log(remoteVersion.toString(), name: 'VersionRepositoryImpl');
         localDataSource.cacheVersion(remoteVersion);
         return right(remoteVersion);
       } on ServerException {
@@ -40,13 +45,23 @@ class VersionRepositoryImpl implements VersionRepository {
 
   @override
   Future<bool> isUpdatedVersion() async {
-    final remoteVersion = await remoteDataSource.getVersion();
-    final localVersion = await localDataSource.getLastData();
-    return localVersion.current == remoteVersion.current;
+    final serverVersion = await networkInfo.isConnected
+        ? await remoteDataSource.getVersion()
+        : await localDataSource.getLastData();
+
+    log('Server Version: ' + serverVersion.current,
+        name: 'VersionRepositoryImpl');
+
+    final platformInfo = await PackageInfo.fromPlatform();
+    log('Platform Version: ' + platformInfo.version,
+        name: 'VersionRepositoryImpl');
+
+    return platformInfo.version == serverVersion.current;
   }
 
   @override
-  Future<void> saveCurrentVersion(String versionTag) async {
-    localDataSource.saveCurrentVersion(versionTag);
+  Future<void> saveCurrentVersion() async {
+    final platformInfo = await PackageInfo.fromPlatform();
+    localDataSource.saveCurrentVersion(platformInfo.version);
   }
 }

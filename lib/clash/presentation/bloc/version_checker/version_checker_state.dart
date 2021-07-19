@@ -1,5 +1,6 @@
-import 'package:clash_royale_assistant/clash/domain/entities/version.dart';
 import 'package:meta/meta.dart';
+
+import '../../../domain/entities/version.dart';
 
 @immutable
 abstract class VersionCheckerState {}
@@ -25,6 +26,8 @@ class Loaded extends VersionCheckerState {
 class Saving extends VersionCheckerState {}
 
 class Saved extends VersionCheckerState {}
+
+class Hidden extends VersionCheckerState {}
 
 class Error extends VersionCheckerState {
   final String message;

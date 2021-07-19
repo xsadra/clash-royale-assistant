@@ -6,5 +6,5 @@ import '../entities/version.dart';
 abstract class VersionRepository {
   Future<Either<Failure, Version>> getVersion();
   Future<bool> isUpdatedVersion();
-  Future<void> saveCurrentVersion(String versionTag);
+  Future<void> saveCurrentVersion();
 }

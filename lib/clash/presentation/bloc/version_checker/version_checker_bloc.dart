@@ -24,7 +24,7 @@ class VersionCheckerBloc
     if (event is GetVersionEvent) {
       yield Loading();
       final failureOrVersion = await _repository.getVersion();
-      failureOrVersion.fold(
+      yield failureOrVersion.fold(
         (failure) => Error(message: failure.toMessage),
         (version) => Loaded(version: version),
       );
@@ -32,10 +32,21 @@ class VersionCheckerBloc
       yield CheckingVersion();
       final isUpdated = await _repository.isUpdatedVersion();
       yield isUpdated ? IsUpdated() : NotUpdate();
+
+      if (!isUpdated) {
+        yield Loading();
+        final failureOrVersion = await _repository.getVersion();
+        yield failureOrVersion.fold(
+          (failure) => Error(message: failure.toMessage),
+          (version) => Loaded(version: version),
+        );
+      }
     } else if (event is SaveCurrentVersionEvent) {
       yield Saving();
-      await _repository.saveCurrentVersion(event.currentVersion);
+      await _repository.saveCurrentVersion();
       yield Saved();
+    } else if (event is HideVersionEvent) {
+      yield Hidden();
     } else {
       yield Error(message: AppTexts.error.unexpectedEvent);
     }

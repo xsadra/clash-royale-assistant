@@ -7,10 +7,6 @@ class GetVersionEvent extends VersionCheckerEvent {}
 
 class CheckIsUpdatedVersionEvent extends VersionCheckerEvent {}
 
-class SaveCurrentVersionEvent extends VersionCheckerEvent {
-  final String currentVersion;
+class SaveCurrentVersionEvent extends VersionCheckerEvent {}
 
-  SaveCurrentVersionEvent({
-    @required this.currentVersion,
-  });
-}
+class HideVersionEvent extends VersionCheckerEvent {}
