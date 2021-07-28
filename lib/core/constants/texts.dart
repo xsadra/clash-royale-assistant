@@ -70,7 +70,7 @@ class UIMessagesAppTexts {
 class BodyAppTexts {
   const BodyAppTexts();
 
-  String get appTitle => 'Clash Royale Assistant';
+  String get appTitle => 'CR Assistant';
   String get num1 => '1';
   String get num2 => '2';
   String get num3 => '3';
