@@ -53,7 +53,7 @@ class PlayerPage extends StatelessWidget {
   void buildShowAboutDialog(BuildContext context) {
     return showAboutDialog(
       context: context,
-      applicationVersion: '1.0.1',
+      applicationVersion: '1.0.3',
       applicationName: 'Cr-App',
       applicationIcon: Image.asset(
         AppAssets.icons.appIconRound,
