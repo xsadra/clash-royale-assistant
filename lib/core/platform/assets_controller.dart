@@ -255,9 +255,9 @@ class _AssetFonts {
 }
 
 class _AssetIcons {
-  String get appIcon => 'assets/icons/ic_launcher.png';
+  String get appIcon => 'assets/icons/app_icon.png';
 
-  String get appIconRound => 'assets/icons/ic_launcher_round.png';
+  String get appIconRound => 'assets/icons/app_icon.png';
 
   const _AssetIcons();
 }

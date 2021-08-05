@@ -34,6 +34,7 @@ class BattleListTile extends StatelessWidget {
       // } else if (battle.type == BattleType.casual1v1.name) {
       //   return Container();
     } else
-      return Container(child: Text(battle.type));
+      return Container();
+    // return Container(child: Text(battle.type));
   }
 }
