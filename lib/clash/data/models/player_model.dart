@@ -87,9 +87,11 @@ class PlayerModel extends Player {
       totalDonations: json['totalDonations'] as int,
       warDayWins: json['warDayWins'] as int,
       clanCardsCollected: json['clanCardsCollected'] as int,
-      clan: ClanModel.fromJson(json['clan']),
+      clan: json['clan'] == null ? null : ClanModel.fromJson(json['clan']),
       arena: ArenaModel.fromJson(json['arena']),
-      leagueStatistics: LeagueStatisticsModel.fromMap(json['leagueStatistics']),
+      leagueStatistics: json['leagueStatistics'] == null
+          ? null
+          : LeagueStatisticsModel.fromMap(json['leagueStatistics']),
       badges:
           (json['badges'] as List).map((e) => BadgeModel.fromJson(e)).toList(),
       achievements: (json['achievements'] as List)
@@ -126,10 +128,11 @@ class PlayerModel extends Player {
       '"totalDonations"': this.totalDonations,
       '"warDayWins"': this.warDayWins,
       '"clanCardsCollected"': this.clanCardsCollected,
-      '"clan"': (this.clan as ClanModel).toJson(),
+      '"clan"': this.clan == null ? '' : (this.clan as ClanModel).toJson(),
       '"arena"': (this.arena as ArenaModel).toJson(),
-      '"leagueStatistics"':
-          (this.leagueStatistics as LeagueStatisticsModel).toJson(),
+      '"leagueStatistics"': this.leagueStatistics == null
+          ? ''
+          : (this.leagueStatistics as LeagueStatisticsModel).toJson(),
       '"badges"': _toBadgesJson(),
       '"achievements"': _toAchievementsJson(),
       '"cards"': _toCardsJson(),

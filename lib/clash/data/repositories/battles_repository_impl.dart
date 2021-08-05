@@ -30,10 +30,10 @@ class BattlesRepositoryImpl implements BattlesRepository {
       );
       try {
         final remoteBattles = await remoteDataSource.getBattles(playerTag);
-        log(
-          remoteBattles.toString().substring(0, 200),
-          name: 'BattlesRepositoryImpl',
-        );
+        // log(
+        //   remoteBattles.toString().substring(0, 200),
+        //   name: 'BattlesRepositoryImpl',
+        // );
         log(
           'Saving Player to local...',
           name: 'BattlesRepositoryImpl',

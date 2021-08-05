@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../../../core/constants/consts.dart';
+import '../../../core/extensions/extensions.dart';
 import '../../../core/platform/assets_controller.dart';
 import '../../domain/entities/card.dart';
 import '../bloc/player/bloc.dart';
@@ -148,56 +149,59 @@ class PlayerDetails extends StatelessWidget {
             ],
           ),
           AppStyles.sizedBox.height6,
-          Stat(
-            header: StatHeader(
-                icon: AppAssets.imageIcons.currentSeason(),
-                title: AppTexts.ui.currentSeason),
-            tiles: [
-              StatTile(
-                  field: AppTexts.ui.trophiesCol,
-                  value: player.leagueStatistics.currentSeason.trophies
-                      .toString()),
-              StatTile(
-                  field: AppTexts.ui.bestTrophiesCol,
-                  value: player.leagueStatistics.currentSeason.bestTrophies
-                      .toString()),
-            ],
-          ),
-          AppStyles.sizedBox.height6,
-          Stat(
-            header: StatHeader(
-                icon: AppAssets.imageIcons.prevSeason(),
-                title: AppTexts.ui.previousSeason),
-            tiles: [
-              StatTile(
-                  field: AppTexts.ui.dateCol,
-                  value: player.leagueStatistics.previousSeason.id.toString()),
-              StatTile(
-                  field: AppTexts.ui.trophiesCol,
-                  value: player.leagueStatistics.previousSeason.trophies
-                      .toString()),
-              StatTile(
-                  field: AppTexts.ui.bestTrophiesCol,
-                  value: player.leagueStatistics.previousSeason.bestTrophies
-                      .toString()),
-            ],
-          ),
-          AppStyles.sizedBox.height6,
-          Stat(
-            header: StatHeader(
-                icon: AppAssets.imageIcons.bestSeason(),
-                title: AppTexts.ui.bestSeason),
-            tiles: [
-              StatTile(
-                  field: AppTexts.ui.bestTrophiesCol,
-                  value: player.leagueStatistics.bestSeason.id.toString()),
-              StatTile(
-                  field: AppTexts.ui.trophiesCol,
-                  value:
-                      player.leagueStatistics.bestSeason.trophies.toString()),
-            ],
-          ),
-          AppStyles.sizedBox.height6,
+          if (player.hasLeagueStatistics) ...[
+            Stat(
+              header: StatHeader(
+                  icon: AppAssets.imageIcons.currentSeason(),
+                  title: AppTexts.ui.currentSeason),
+              tiles: [
+                StatTile(
+                    field: AppTexts.ui.trophiesCol,
+                    value: player.leagueStatistics.currentSeason.trophies
+                        .toString()),
+                StatTile(
+                    field: AppTexts.ui.bestTrophiesCol,
+                    value: player.leagueStatistics.currentSeason.bestTrophies
+                        .toString()),
+              ],
+            ),
+            AppStyles.sizedBox.height6,
+            Stat(
+              header: StatHeader(
+                  icon: AppAssets.imageIcons.prevSeason(),
+                  title: AppTexts.ui.previousSeason),
+              tiles: [
+                StatTile(
+                    field: AppTexts.ui.dateCol,
+                    value:
+                        player.leagueStatistics.previousSeason.id.toString()),
+                StatTile(
+                    field: AppTexts.ui.trophiesCol,
+                    value: player.leagueStatistics.previousSeason.trophies
+                        .toString()),
+                StatTile(
+                    field: AppTexts.ui.bestTrophiesCol,
+                    value: player.leagueStatistics.previousSeason.bestTrophies
+                        .toString()),
+              ],
+            ),
+            AppStyles.sizedBox.height6,
+            Stat(
+              header: StatHeader(
+                  icon: AppAssets.imageIcons.bestSeason(),
+                  title: AppTexts.ui.bestSeason),
+              tiles: [
+                StatTile(
+                    field: AppTexts.ui.bestTrophiesCol,
+                    value: player.leagueStatistics.bestSeason.id.toString()),
+                StatTile(
+                    field: AppTexts.ui.trophiesCol,
+                    value:
+                        player.leagueStatistics.bestSeason.trophies.toString()),
+              ],
+            ),
+            AppStyles.sizedBox.height6,
+          ],
           Column(
             children: [
               Row(
