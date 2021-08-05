@@ -11,6 +11,7 @@ import '../../presentation/bloc/player/bloc.dart';
 import '../../presentation/bloc/upcomingchest/bloc.dart';
 import '../bloc/battles/bloc.dart';
 import '../bloc/currentplayertag/bloc.dart';
+import '../bloc/version_checker/bloc.dart' as version;
 import '../widgets/widgets.dart';
 import 'bottom_navigation_bar.dart';
 import 'player_nested_tab_page.dart';
@@ -32,12 +33,18 @@ class PlayerPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(AppTexts.body.appTitle),
           actions: [
-            TextButton(
-              onPressed: () {
-                buildShowAboutDialog(context);
-              },
-              child: Icon(Icons.info_outline),
-            )
+            BlocBuilder<version.VersionCheckerBloc,
+                version.VersionCheckerState>(builder: (context, state) {
+              var appVersion = state is version.ReadVersion
+                  ? state.version.current
+                  : 'x.x.x';
+              return TextButton(
+                onPressed: () {
+                  buildShowAboutDialog(context, appVersion);
+                },
+                child: Icon(Icons.info_outline),
+              );
+            })
           ],
         ),
         body: MultiBlocProvider(
@@ -50,10 +57,10 @@ class PlayerPage extends StatelessWidget {
     );
   }
 
-  void buildShowAboutDialog(BuildContext context) {
+  void buildShowAboutDialog(BuildContext context, String appVersion) {
     return showAboutDialog(
       context: context,
-      applicationVersion: '1.0.3',
+      applicationVersion: appVersion,
       applicationName: 'Cr-App',
       applicationIcon: Image.asset(
         AppAssets.icons.appIconRound,

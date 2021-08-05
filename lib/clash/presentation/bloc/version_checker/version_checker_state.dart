@@ -23,6 +23,14 @@ class Loaded extends VersionCheckerState {
   });
 }
 
+class ReadVersion extends VersionCheckerState {
+  final Version version;
+
+  ReadVersion({
+    @required this.version,
+  });
+}
+
 class Saving extends VersionCheckerState {}
 
 class Saved extends VersionCheckerState {}

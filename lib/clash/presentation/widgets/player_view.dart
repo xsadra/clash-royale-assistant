@@ -14,6 +14,8 @@ class PlayerView extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<NetworkConnectionCheckerBloc>().add(ConnectionCheckerEvent());
     context.read<VersionCheckerBloc>().add(CheckIsUpdatedVersionEvent());
+    context.read<VersionCheckerBloc>().add(ReadVersionEvent());
+
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),

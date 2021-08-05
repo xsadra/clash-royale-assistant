@@ -28,6 +28,13 @@ class VersionCheckerBloc
         (failure) => Error(message: failure.toMessage),
         (version) => Loaded(version: version),
       );
+    } else if (event is ReadVersionEvent) {
+      yield Loading();
+      final failureOrVersion = await _repository.getVersion();
+      yield failureOrVersion.fold(
+        (failure) => Error(message: failure.toMessage),
+        (version) => ReadVersion(version: version),
+      );
     } else if (event is CheckIsUpdatedVersionEvent) {
       yield CheckingVersion();
       final isUpdated = await _repository.isUpdatedVersion();

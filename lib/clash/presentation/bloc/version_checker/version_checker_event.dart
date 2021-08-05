@@ -5,6 +5,8 @@ abstract class VersionCheckerEvent {}
 
 class GetVersionEvent extends VersionCheckerEvent {}
 
+class ReadVersionEvent extends VersionCheckerEvent {}
+
 class CheckIsUpdatedVersionEvent extends VersionCheckerEvent {}
 
 class SaveCurrentVersionEvent extends VersionCheckerEvent {}
