@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/constants/consts.dart';
@@ -71,12 +72,12 @@ class PlayerPage extends StatelessWidget {
       children: [
         Text(
           'Clash Royale Assistant helps you have a better gaming experience. All information used in this app is taken from the clashroyale.com website.',
-          style: TextStyle(fontFamily: AppAssets.fonts.rajdhani),
+          style: TextStyle(fontFamily: GoogleFonts.rajdhani().fontFamily),
         ),
         Text(
           'Email us if you have any suggestions for improving the app, or if you encounter an error in the app. We read all your emails carefully and make changes.',
           style: TextStyle(
-            fontFamily: AppAssets.fonts.rajdhani,
+            fontFamily: GoogleFonts.rajdhani().fontFamily,
             fontWeight: FontWeight.bold,
             color: Colors.green.shade900,
           ),

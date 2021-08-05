@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'consts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppStyles {
   static _Paddings padding = const _Paddings();
@@ -229,28 +228,28 @@ class _UpdateNotificationAppStyle {
 
   EdgeInsetsGeometry get updateNotificationPadding => _Paddings().all12;
 
-  TextStyle get updateNotificationTitleTextStyle => const TextStyle(
+  TextStyle get updateNotificationTitleTextStyle => TextStyle(
         fontSize: 15.0,
-        fontFamily: AppFonts.alfaSlabOne,
+        fontFamily: GoogleFonts.alfaSlabOne().fontFamily,
         color: Color(0xff1b5e20),
         letterSpacing: 1.5,
       );
 
-  TextStyle get updateNotificationNewVersionTitleTextStyle => const TextStyle(
+  TextStyle get updateNotificationNewVersionTitleTextStyle => TextStyle(
         fontSize: 14,
-        fontFamily: AppFonts.rajdhani,
+        fontFamily: GoogleFonts.rajdhani().fontFamily,
       );
 
-  TextStyle get updateNotificationMessageTextStyle => const TextStyle(
+  TextStyle get updateNotificationMessageTextStyle => TextStyle(
         letterSpacing: 0.6,
         fontSize: 16,
-        fontFamily: AppFonts.yanoneKaffeesatz,
+        fontFamily: GoogleFonts.yanoneKaffeesatz().fontFamily,
         fontWeight: FontWeight.bold,
       );
 
-  TextStyle get updateNotificationFeatureTextStyle => const TextStyle(
+  TextStyle get updateNotificationFeatureTextStyle => TextStyle(
         fontSize: 14,
-        fontFamily: AppFonts.yanoneKaffeesatz,
+        fontFamily: GoogleFonts.yanoneKaffeesatz().fontFamily,
       );
 
   TextStyle get updateNotificationButtonTextStyle => const TextStyle(
