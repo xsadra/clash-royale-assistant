@@ -37,9 +37,17 @@ class TeamMemberWidget extends StatelessWidget {
             : CrossAxisAlignment.end,
         children: [
           if (!ignorePlayerInfo) ...[
-            Text(
-              team.name,
-              style: AppStyles.battles.tileBattleTeamNameTextStyle,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.4,
+              child: Text(
+                team.name,
+                style: AppStyles.battles.tileBattleTeamNameTextStyle,
+                maxLines: 1,
+                overflow: TextOverflow.fade,
+                textAlign: teamType == TeamMemberType.Team
+                    ? TextAlign.start
+                    : TextAlign.end,
+              ),
             ),
             AppStyles.sizedBox.height4,
             if (!team.hasClan)
