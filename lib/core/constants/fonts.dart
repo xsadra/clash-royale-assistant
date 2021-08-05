@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@Deprecated('Use [GoogleFont] package instead!')
 class AppFonts {
   static const String alfaSlabOne = 'AlfaSlabOne';
   static const String monoton = 'Monoton';

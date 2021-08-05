@@ -2,12 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'clash/presentation/bloc/currentplayertag/bloc.dart';
 import 'clash/presentation/bloc/network_connection_checker/bloc.dart';
 import 'clash/presentation/bloc/version_checker/bloc.dart';
 import 'core/constants/consts.dart';
-import 'core/platform/assets_controller.dart';
 import 'core/routes/router.gr.dart';
 import 'injection_container.dart' as injection;
 
@@ -42,7 +42,8 @@ class MyApp extends StatelessWidget {
         title: AppTexts.body.appTitle,
         builder: ExtendedNavigator(router: Router()),
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: AppAssets.fonts.zillaSlab).copyWith(
+        theme:
+            ThemeData(fontFamily: GoogleFonts.zillaSlab().fontFamily).copyWith(
           primaryColor: AppColors.main.primaryColor,
         ),
       ),

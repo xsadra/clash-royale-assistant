@@ -6,6 +6,7 @@ class AppAssets {
   static _AssetPaths paths = const _AssetPaths();
   static _AssetToPaths toPath = const _AssetToPaths();
   static _AssetToWidgets toWidget = const _AssetToWidgets();
+  @Deprecated('Use [GoogleFont] package instead!')
   static _AssetFonts fonts = const _AssetFonts();
   static _AssetIcons icons = const _AssetIcons();
   static _AssetImageIcons imageIcons = const _AssetImageIcons();
@@ -14,41 +15,41 @@ class AppAssets {
 }
 
 class _AssetPaths {
-  String get experience => 'assets/images/ui/ui-experience.png';
+  String get experience => 'assets/images/ui/ui-experience.webp';
 
-  String get starLevel => 'assets/images/ui/ui-star-level.png';
+  String get starLevel => 'assets/images/ui/ui-star-level.webp';
 
-  String get notFound => 'assets/images/ui/not-found.png';
+  String get notFound => 'assets/images/ui/not-found.webp';
 
-  String get trophy => 'assets/images/ui/ui-trophy.png';
+  String get trophy => 'assets/images/ui/ui-trophy.webp';
 
-  String get shareDeck => 'assets/images/ui/ui-share-deck.png';
+  String get shareDeck => 'assets/images/ui/ui-share-deck.webp';
 
-  String get tournament => 'assets/images/ui/ui-tournament.png';
+  String get tournament => 'assets/images/ui/ui-tournament.webp';
 
-  String get battle => 'assets/images/ui/ui-battle.png';
+  String get battle => 'assets/images/ui/ui-battle.webp';
 
-  String get clanWars => 'assets/images/ui/ui-clan-wars.png';
+  String get clanWars => 'assets/images/ui/ui-clan-wars.webp';
 
-  String get deck => 'assets/images/ui/ui-deck.png';
+  String get deck => 'assets/images/ui/ui-deck.webp';
 
-  String get donate => 'assets/images/ui/ui-donate.png';
+  String get donate => 'assets/images/ui/ui-donate.webp';
 
-  String get league => 'assets/images/ui/ui-league.png';
+  String get league => 'assets/images/ui/ui-league.webp';
 
-  String get rank => 'assets/images/ui/ui-rank.png';
+  String get rank => 'assets/images/ui/ui-rank.webp';
 
-  String get bestSeason => 'assets/images/ui/ui-best-season.png';
+  String get bestSeason => 'assets/images/ui/ui-best-season.webp';
 
-  String get currentSeason => 'assets/images/ui/ui-current-season.png';
+  String get currentSeason => 'assets/images/ui/ui-current-season.webp';
 
-  String get currentSeasonV2 => 'assets/images/ui/ui-current-season2.png';
+  String get currentSeasonV2 => 'assets/images/ui/ui-current-season2.webp';
 
-  String get prevSeason => 'assets/images/ui/ui-prev-season.png';
+  String get prevSeason => 'assets/images/ui/ui-prev-season.webp';
 
-  String get crownRed => 'assets/images/crown/crown-red.png';
+  String get crownRed => 'assets/images/crown/crown-red.webp';
 
-  String get crownBlue => 'assets/images/crown/crown-blue.png';
+  String get crownBlue => 'assets/images/crown/crown-blue.webp';
 
   const _AssetPaths();
 }
@@ -168,30 +169,30 @@ class _AssetImageIcons {
 class _AssetToPaths {
   String chestNameToPath(String name) {
     final images = {
-      'Silver Chest': 'assets/images/chests/chest-silver.png',
-      'Golden Chest': 'assets/images/chests/chest-golden.png',
-      'Epic Chest': 'assets/images/chests/chest-epic.png',
-      'Giant Chest': 'assets/images/chests/chest-giant.png',
-      'Magical Chest': 'assets/images/chests/chest-magical.png',
-      'Legendary Chest': 'assets/images/chests/chest-legendary.png',
-      'Mega Lightning Chest': 'assets/images/chests/chest-megalightning.png',
-      'Gold Crate': 'assets/images/chests/chest-goldcrate.png',
+      'Silver Chest': 'assets/images/chests/chest-silver.webp',
+      'Golden Chest': 'assets/images/chests/chest-golden.webp',
+      'Epic Chest': 'assets/images/chests/chest-epic.webp',
+      'Giant Chest': 'assets/images/chests/chest-giant.webp',
+      'Magical Chest': 'assets/images/chests/chest-magical.webp',
+      'Legendary Chest': 'assets/images/chests/chest-legendary.webp',
+      'Mega Lightning Chest': 'assets/images/chests/chest-megalightning.webp',
+      'Gold Crate': 'assets/images/chests/chest-goldcrate.webp',
       'Overflowing Gold Crate':
-          'assets/images/chests/chest-overflowinggoldcrate.png',
+          'assets/images/chests/chest-overflowinggoldcrate.webp',
       'Plentiful Gold Crate':
-          'assets/images/chests/chest-plentifulgoldcrate.png',
+          'assets/images/chests/chest-plentifulgoldcrate.webp',
     };
     return images.keys.contains(name)
         ? images[name]
-        : 'assets/images/ui/not-found.png';
+        : 'assets/images/ui/not-found.webp';
   }
 
   String arenaIdToPath(int id) {
-    return 'assets/images/arena/${id.toString()}.png';
+    return 'assets/images/arena/${id.toString()}.webp';
   }
 
   String clanBadgeIdToPath(int id) {
-    return 'assets/images/clan-badges/${id.toString()}.png';
+    return 'assets/images/clan-badges/${id.toString()}.webp';
   }
 
   const _AssetToPaths();
@@ -204,7 +205,7 @@ class _AssetToWidgets {
         : 'assets/images/cards/';
     String fileName =
         card.name.replaceAll(' ', '-').replaceAll('.', '').toLowerCase() +
-            '.png';
+            '.webp';
 
     return Image.asset(
       path + fileName,
@@ -215,7 +216,7 @@ class _AssetToWidgets {
   }
 
   Widget clanBadgeIdToImage(int id, {double size}) {
-    String path = 'assets/images/clan-badges/${id.toString()}.png';
+    String path = 'assets/images/clan-badges/${id.toString()}.webp';
     if (size == null) {
       return Image.asset(path);
     }
@@ -230,6 +231,7 @@ class _AssetToWidgets {
   const _AssetToWidgets();
 }
 
+@Deprecated('Use [GoogleFont] package instead!')
 class _AssetFonts {
   String get alfaSlabOne => 'AlfaSlabOne';
 
@@ -255,9 +257,9 @@ class _AssetFonts {
 }
 
 class _AssetIcons {
-  String get appIcon => 'assets/icons/app_icon.png';
+  String get appIcon => 'assets/icons/app_icon.webp';
 
-  String get appIconRound => 'assets/icons/app_icon.png';
+  String get appIconRound => 'assets/icons/app_icon.webp';
 
   const _AssetIcons();
 }
@@ -270,7 +272,7 @@ class Assets {
   static String cardToPath(String name, {bool isGold}) {
     String path = isGold ? 'assets/images/cards-gold/' : 'assets/images/cards/';
     String fileName =
-        name.replaceAll(' ', '-').replaceAll('.', '').toLowerCase() + '.png';
+        name.replaceAll(' ', '-').replaceAll('.', '').toLowerCase() + '.webp';
 
     return path + fileName;
   }
