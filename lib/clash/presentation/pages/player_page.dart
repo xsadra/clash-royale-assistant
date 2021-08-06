@@ -29,23 +29,27 @@ class PlayerPage extends StatelessWidget {
       BlocProvider(create: (context) => injection.sl<BattlesBloc>()),
     ];
     log('build', name: 'PlayerPage');
+    String appVersion;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: Text(AppTexts.body.appTitle),
           actions: [
             BlocBuilder<version.VersionCheckerBloc,
-                version.VersionCheckerState>(builder: (context, state) {
-              var appVersion = state is version.ReadVersion
-                  ? state.version.current
-                  : 'x.x.x';
-              return TextButton(
-                onPressed: () {
-                  buildShowAboutDialog(context, appVersion);
-                },
-                child: Icon(Icons.info_outline),
-              );
-            })
+                version.VersionCheckerState>(
+              buildWhen: (previous, current) => current != previous,
+              builder: (context, state) {
+                if (state is version.ReadVersion) {
+                  appVersion = state.version.current;
+                }
+                return TextButton(
+                  onPressed: () {
+                    buildShowAboutDialog(context, appVersion ?? 'Vx.x.x');
+                  },
+                  child: Icon(Icons.info_outline),
+                );
+              },
+            ),
           ],
         ),
         body: MultiBlocProvider(

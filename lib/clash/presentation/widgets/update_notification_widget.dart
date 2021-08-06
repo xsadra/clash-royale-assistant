@@ -1,5 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/constants/consts.dart';
@@ -16,23 +18,40 @@ class UpdateNotificationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: AppStyles.notification.updateNotificationBoxDecoration,
-      margin: AppStyles.notification.updateNotificationMargin,
-      padding: AppStyles.notification.updateNotificationPadding,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildHeader(context),
-          _buildVersion(),
-          AppStyles.sizedBox.height6,
-          _buildMessage(),
-          _buildFeatures(),
-          Center(
-            child: UpdateNotificationButton(updateUrl: versionInfo.updateUrl),
+    return Column(
+      children: [
+        Container(
+          decoration: AppStyles.notification.updateNotificationBoxDecorationTop,
+          margin: AppStyles.notification.updateNotificationMarginTop,
+          padding: AppStyles.notification.updateNotificationPaddingTop,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeader(context),
+              _buildVersion(),
+              AppStyles.sizedBox.height6,
+              _buildMessage(),
+              _buildFeatures(),
+            ],
           ),
-        ],
-      ),
+        ),
+        Container(
+          decoration:
+              AppStyles.notification.updateNotificationBoxDecorationBottom,
+          margin: AppStyles.notification.updateNotificationMarginBottom,
+          padding: AppStyles.notification.updateNotificationPaddingBottom,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: UpdateNotificationButton(
+                  updateUrl: AppTexts.body.googlePlayLink,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -40,16 +59,27 @@ class UpdateNotificationWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           AppStyles.sizedBox.width50,
-          Text(
-            AppTexts.ui.updateIsAvailable,
-            style: AppStyles.notification.updateNotificationTitleTextStyle,
+          Spacer(),
+          SizedBox(
+            width: 180.0,
+            child: TextLiquidFill(
+              text: AppTexts.ui.updateIsAvailable,
+              waveColor: Colors.green,
+              boxBackgroundColor: Colors.white,
+              textStyle: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+              boxHeight: 50.0,
+            ),
           ),
+          Spacer(),
           Padding(
             padding: AppStyles.padding.all7,
             child: InkWell(
               child: Icon(
                 Icons.close,
-                color: Colors.red,
+                color: Colors.black54,
               ),
               onTap: () =>
                   context.read<VersionCheckerBloc>().add(HideVersionEvent()),
@@ -110,8 +140,6 @@ class UpdateNotificationButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: AppStyles.notification.updateNotificationButtonBoxDecoration,
-      padding: AppStyles.padding.symmetricH4,
       child: TextButton(
         onPressed: () {
           context.read<VersionCheckerBloc>().add(HideVersionEvent());
@@ -119,7 +147,12 @@ class UpdateNotificationButton extends StatelessWidget {
         },
         child: Text(
           AppTexts.ui.updateApp,
-          style: AppStyles.notification.updateNotificationButtonTextStyle,
+          style: GoogleFonts.poppins(
+            color: Color(0xffffffff),
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 1.3,
+          ),
         ),
       ),
     );

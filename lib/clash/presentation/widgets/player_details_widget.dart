@@ -23,6 +23,8 @@ class PlayerDetails extends StatelessWidget {
       child: Column(
         children: [
           BlocBuilder<version.VersionCheckerBloc, version.VersionCheckerState>(
+            buildWhen: (previous, current) =>
+                current != previous && current is! version.ReadVersion,
             builder: (context, state) {
               if (state is version.Loading) {
                 return Center(

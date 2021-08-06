@@ -189,26 +189,29 @@ class _BattlesAppStyle {
 class _UpdateNotificationAppStyle {
   const _UpdateNotificationAppStyle();
 
-  BoxDecoration get updateNotificationBoxDecoration => const BoxDecoration(
+  BoxDecoration get updateNotificationBoxDecorationBottom =>
+      const BoxDecoration(
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        color: Colors.green,
         boxShadow: [
           BoxShadow(
-            color: Color(0x809e9e9e),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3),
+            color: Color(0x2f9e9e9e),
+            blurRadius: 30,
+            offset: Offset(0, 4),
           ),
         ],
-        gradient: LinearGradient(
-          begin: Alignment.bottomRight,
-          end: Alignment.topLeft,
-          colors: [
-            Color(0xfffbe9e7),
-            Color(0xfffff9c4),
-          ],
-        ),
-        borderRadius: BorderRadius.all(
-          Radius.circular(30),
-        ),
+      );
+
+  BoxDecoration get updateNotificationBoxDecorationTop => const BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x2f9e9e9e),
+            blurRadius: 30,
+            offset: Offset(0, 4),
+          ),
+        ],
       );
 
   BoxDecoration get updateNotificationButtonBoxDecoration =>
@@ -219,14 +222,31 @@ class _UpdateNotificationAppStyle {
         ),
       );
 
-  EdgeInsetsGeometry get updateNotificationMargin => const EdgeInsets.only(
+  EdgeInsetsGeometry get updateNotificationMarginTop => const EdgeInsets.only(
         top: 8,
+        right: 5,
+        left: 5,
+      );
+
+  EdgeInsetsGeometry get updateNotificationMarginBottom =>
+      const EdgeInsets.only(
         right: 5,
         left: 5,
         bottom: 16,
       );
 
-  EdgeInsetsGeometry get updateNotificationPadding => _Paddings().all12;
+  EdgeInsetsGeometry get updateNotificationPaddingTop => const EdgeInsets.only(
+        top: 12,
+        right: 12,
+        left: 12,
+      );
+
+  EdgeInsetsGeometry get updateNotificationPaddingBottom =>
+      const EdgeInsets.only(
+        right: 12,
+        left: 12,
+        //bottom: 12,
+      );
 
   TextStyle get updateNotificationTitleTextStyle => TextStyle(
         fontSize: 15.0,

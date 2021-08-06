@@ -83,6 +83,8 @@ class BodyAppTexts {
   String get findTagTextFieldHint => 'ABCD123';
   String get findTagHelpTextHeader => 'How to find your Tag';
   String get shareDeckBaseUrl => 'https://link.clashroyale.com/deck/en?deck=';
+  String get googlePlayLink =>
+      'https://play.google.com/store/apps/details?id=at.sadra.app.clashroyaleassistant';
 }
 
 class UIAppTexts {

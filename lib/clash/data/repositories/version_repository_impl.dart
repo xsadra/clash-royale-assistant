@@ -55,6 +55,8 @@ class VersionRepositoryImpl implements VersionRepository {
     final platformInfo = await PackageInfo.fromPlatform();
     log('Platform Version: ' + platformInfo.version,
         name: 'VersionRepositoryImpl');
+    log('Platform buildNumber: ' + platformInfo.buildNumber,
+        name: 'VersionRepositoryImpl');
 
     return platformInfo.version == serverVersion.current;
   }

@@ -62,7 +62,6 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
             tabs: _playerTabBarList(),
           ),
           Expanded(
-            //flex: 1,
             child: Container(
               height: screenHeight * 0.72,
               child: TabBarView(
