@@ -29,7 +29,6 @@ class VersionCheckerBloc
         (version) => Loaded(version: version),
       );
     } else if (event is ReadVersionEvent) {
-      yield Loading();
       final failureOrVersion = await _repository.getVersion();
       yield failureOrVersion.fold(
         (failure) => Error(message: failure.toMessage),

@@ -20,6 +20,7 @@ class PlayerView extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<PlayerBloc, PlayerState>(
+          buildWhen: (previous, current) => current != previous,
           builder: (context, state) {
             if (state is Empty) {
               return _emptyDisplay();

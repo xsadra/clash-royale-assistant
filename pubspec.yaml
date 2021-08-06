@@ -29,6 +29,7 @@ dependencies:
   package_info_plus: ^1.0.4
   introduction_screen: ^2.1.0
   google_fonts:
+  animated_text_kit: ^4.2.1
 
 dev_dependencies:
   build_runner:
