@@ -74,8 +74,8 @@ class AchievementsCard extends StatelessWidget {
                     ? AppColors.achievements.achievedNotCompletedColor
                     : AppColors.achievements.achievedCompletedColor,
                 fontWeight: (achieve.value < achieve.target)
-                    ? AppFonts.achievements.achievedNotCompletedFontWeight
-                    : AppFonts.achievements.achievedCompletedFontWeight,
+                    ? FontWeight.w600
+                    : FontWeight.bold,
               ),
             ),
           ],
