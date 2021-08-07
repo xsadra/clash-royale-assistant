@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -27,8 +25,6 @@ class VersionRepositoryImpl implements VersionRepository {
     if (await networkInfo.isConnected) {
       try {
         final remoteVersion = await remoteDataSource.getVersion();
-        log('Get remoteVersion', name: 'VersionRepositoryImpl');
-        log(remoteVersion.toString(), name: 'VersionRepositoryImpl');
         localDataSource.cacheVersion(remoteVersion);
         return right(remoteVersion);
       } on ServerException {
@@ -48,16 +44,7 @@ class VersionRepositoryImpl implements VersionRepository {
     final serverVersion = await networkInfo.isConnected
         ? await remoteDataSource.getVersion()
         : await localDataSource.getLastData();
-
-    log('Server Version: ' + serverVersion.current,
-        name: 'VersionRepositoryImpl');
-
     final platformInfo = await PackageInfo.fromPlatform();
-    log('Platform Version: ' + platformInfo.version,
-        name: 'VersionRepositoryImpl');
-    log('Platform buildNumber: ' + platformInfo.buildNumber,
-        name: 'VersionRepositoryImpl');
-
     return platformInfo.version == serverVersion.current;
   }
 

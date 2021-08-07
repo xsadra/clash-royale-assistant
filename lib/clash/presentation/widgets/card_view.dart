@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +11,6 @@ class CardsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('build', name: 'CardsView');
     context.read<NetworkConnectionCheckerBloc>().add(ConnectionCheckerEvent());
     return Center(
       child: Padding(
