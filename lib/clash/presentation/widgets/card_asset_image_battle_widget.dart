@@ -16,7 +16,7 @@ class CardAssetImageBattle extends StatelessWidget {
   Widget build(BuildContext context) {
     double cardWidth = MediaQuery.of(context).size.width / 9.5;
     return SizedBox(
-      height: cardWidth + 35, //Fix Step: move to CONSTANTS
+      height: cardWidth + 36, //Fix Step: move to CONSTANTS
       width: cardWidth,
       child: Column(
         children: [
