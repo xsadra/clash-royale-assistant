@@ -11,6 +11,7 @@ class CardDeckItem extends StatelessWidget {
   }) : super(key: key);
 
   final Card card;
+  static const int maxLvl = 14;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class CardDeckItem extends StatelessWidget {
               width: 56,
               child: Text(
                 AppTexts.ui.levelSpc +
-                    (card.level + 13 - card.maxLevel).toString(),
+                    (card.level + maxLvl - card.maxLevel).toString(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,

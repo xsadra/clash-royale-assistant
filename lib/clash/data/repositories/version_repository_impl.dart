@@ -4,6 +4,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../core/error/exceptions.dart';
 import '../../../core/error/failure.dart';
+import '../../../core/logs/logger.dart';
 import '../../../core/platform/network_info.dart';
 import '../../domain/entities/version.dart';
 import '../../domain/repository/version_repository.dart';
@@ -25,6 +26,8 @@ class VersionRepositoryImpl implements VersionRepository {
     if (await networkInfo.isConnected) {
       try {
         final remoteVersion = await remoteDataSource.getVersion();
+        logVersion.v('Get remoteVersion', 'VersionRepositoryImpl');
+        logVersion.v(remoteVersion.toString(), 'VersionRepositoryImpl');
         localDataSource.cacheVersion(remoteVersion);
         return right(remoteVersion);
       } on ServerException {
@@ -44,7 +47,16 @@ class VersionRepositoryImpl implements VersionRepository {
     final serverVersion = await networkInfo.isConnected
         ? await remoteDataSource.getVersion()
         : await localDataSource.getLastData();
+
+    logVersion.d(
+        'Server Version: ' + serverVersion.current, 'VersionRepositoryImpl');
+
     final platformInfo = await PackageInfo.fromPlatform();
+    logVersion.d(
+        'Platform Version: ' + platformInfo.version, 'VersionRepositoryImpl');
+    logVersion.d('Platform buildNumber: ' + platformInfo.buildNumber,
+        'VersionRepositoryImpl');
+
     return platformInfo.version == serverVersion.current;
   }
 
