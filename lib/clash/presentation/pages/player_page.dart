@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +26,6 @@ class PlayerPage extends StatelessWidget {
       BlocProvider(create: (context) => injection.sl<UpcomingChestsBloc>()),
       BlocProvider(create: (context) => injection.sl<BattlesBloc>()),
     ];
-    log('build', name: 'PlayerPage');
     String appVersion;
     return SafeArea(
       child: Scaffold(

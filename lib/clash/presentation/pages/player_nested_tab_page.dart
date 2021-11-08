@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,31 +20,16 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
 
   @override
   Widget build(BuildContext context) {
-    log('build', name: 'PlayerNestedTabPage');
-
     double screenHeight = MediaQuery.of(context).size.height;
     return BlocListener<CurrentPlayerTagBloc, CurrentPlayerTagState>(
       listener: (BuildContext context, state) {
-        log('BlocListener', name: 'PlayerNestedTabPage BlocListener');
-        log(state.runtimeType.toString(),
-            name: 'PlayerNestedTabPage BlocListener');
-
         if (state is Loaded) {
-          log('state is Loaded', name: 'PlayerNestedTabPage BlocListener');
           var playerTag = state.playerTag.playerTag;
 
-          log('add GetPlayerEvent to PlayerBloc: ' + playerTag,
-              name: 'PlayerNestedTabPage BlocListener');
-
           context.read<PlayerBloc>().add(GetPlayerEvent(playerTag));
-          log('add GetUpcomingChestsEvent to UpcomingChestsBloc: ' + playerTag,
-              name: 'PlayerNestedTabPage BlocListener');
           context
               .read<UpcomingChestsBloc>()
               .add(GetUpcomingChestsEvent(playerTag));
-
-          log('add GetBattlesEvent to BattlesBloc: ' + playerTag,
-              name: 'PlayerNestedTabPage BlocListener');
           context.read<BattlesBloc>().add(GetBattlesEvent(playerTag));
         }
       },
@@ -117,7 +100,6 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
 
   @override
   void initState() {
-    log('initState', name: 'PlayerNestedTabPage');
     super.initState();
     _nestedTabController =
         new TabController(length: _playerTabBarList().length, vsync: this);

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 
@@ -19,17 +17,12 @@ class CurrentPlayerTagRepositoryImpl implements CurrentPlayerTagRepository {
 
   @override
   Future<Either<Failure, CurrentPlayerTag>> getCurrentPlayerTag() async {
-    log('getCurrentPlayerTag', name: 'CurrentPlayerTagRepositoryImpl');
     try {
       final currentTag = await localDataSource.getCurrentPlayerTagData();
       return Right(currentTag);
     } on CacheException {
-      log('getCurrentPlayerTag',
-          name: 'CurrentPlayerTagRepositoryImpl', error: 'CacheException');
       return Left(CacheFailure());
     } on NotFoundException {
-      log('getCurrentPlayerTag',
-          name: 'CurrentPlayerTagRepositoryImpl', error: 'NotFoundException');
       return Left(NotFoundFailure());
     }
   }
@@ -39,14 +32,11 @@ class CurrentPlayerTagRepositoryImpl implements CurrentPlayerTagRepository {
       {CurrentPlayerTag playerTag}) async {
     try {
       bool result = true;
-      log('saveCurrentPlayerTag', name: 'CurrentPlayerTagRepositoryImpl');
       await localDataSource
           .saveCurrentPlayerTag(CurrentPlayerTagModel.fromObject(playerTag));
 
       return Right(result);
     } on CacheException {
-      log('saveCurrentPlayerTag',
-          name: 'CurrentPlayerTagRepositoryImpl', error: 'CacheException');
       return Left(CacheFailure());
     }
   }
