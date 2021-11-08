@@ -33,7 +33,7 @@ class PlayerName extends StatelessWidget {
             ),
           ],
         ),
-        if (player.expLevel == 13) ...[
+        if (player.expLevel > 10) ...[
           AppStyles.sizedBox.width16,
           Row(
             children: [

@@ -13,15 +13,16 @@ import 'widgets.dart';
 class CardsDetails extends StatelessWidget {
   const CardsDetails({Key key, this.state}) : super(key: key);
   final Loaded state;
+  static const int maxLvl = 14;
 
   @override
   Widget build(BuildContext context) {
     // Step move all logic to a controller class
     var _cards = state.player.cards;
-    _cards.sort((b, a) =>
-        (a.level + 13 - a.maxLevel).compareTo(b.level + 13 - b.maxLevel));
-    var _newList = groupBy(
-        _cards, (card) => (card as Card).level + 13 - (card as Card).maxLevel);
+    _cards.sort((b, a) => (a.level + maxLvl - a.maxLevel)
+        .compareTo(b.level + maxLvl - b.maxLevel));
+    var _newList = groupBy(_cards,
+        (card) => (card as Card).level + maxLvl - (card as Card).maxLevel);
     int currentDeckColumnCount = 4;
     var _cardsChartData = _newList.keys
         .map((e) => CardsChartData(
