@@ -2,7 +2,7 @@ name: clash_royale_assistant
 description: Stats Royale Assistant helps you enjoy Clash Royale more by providing the most accurate statistics possible.
 homepage: https://app.sadra.at/clash-royale-assistant
 repository: https://github.com/xsadra/clash-royale-assistant.git
-version: 1.1.0+5
+version: 1.2.0+6
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
