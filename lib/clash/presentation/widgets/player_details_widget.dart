@@ -41,12 +41,9 @@ class PlayerDetails extends StatelessWidget {
             },
           ),
           PlayerName(player: player),
-          AppStyles.sizedBox.height4,
-          Padding(
-            padding: const EdgeInsets.only(left: 6),
-            child: UserClanName(player: player),
-          ),
-          AppStyles.sizedBox.height8,
+          AppStyles.sizedBox.height2,
+          UserClanName(player: player),
+          AppStyles.sizedBox.height12,
           Stat(
             header: StatHeader(
                 icon: AppAssets.imageIcons.trophy(),

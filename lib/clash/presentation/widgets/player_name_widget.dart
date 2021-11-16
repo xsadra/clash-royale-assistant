@@ -28,6 +28,15 @@ class PlayerName extends StatelessWidget {
             ),
             AppStyles.sizedBox.height2,
             Text(
+              player.role,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Colors.blueGrey,
+              ),
+            ),
+            AppStyles.sizedBox.height4,
+            Text(
               player.tag,
               style: TextStyle(fontSize: 9, color: Colors.green),
             ),
