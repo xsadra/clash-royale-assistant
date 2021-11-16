@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,6 +34,7 @@ class PlayerPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.main.primaryColor,
           title: Text(AppTexts.body.appTitle),
           actions: [
             BlocBuilder<version.VersionCheckerBloc,
@@ -52,9 +54,15 @@ class PlayerPage extends StatelessWidget {
             ),
           ],
         ),
-        body: MultiBlocProvider(
-          providers: playerProviders,
-          child: PlayerNestedTabPage(),
+        body: DoubleBackToCloseApp(
+          snackBar: const SnackBar(
+            backgroundColor: Color(0xFF190F2A),
+            content: Text('Tap back again to leave'),
+          ),
+          child: MultiBlocProvider(
+            providers: playerProviders,
+            child: PlayerNestedTabPage(),
+          ),
         ),
         bottomSheet: NotConnectedMessageWidget(),
         bottomNavigationBar: BottomNavBar(initialActiveIndex: 0),
