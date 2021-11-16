@@ -33,7 +33,20 @@ class PlayerName extends StatelessWidget {
             ),
           ],
         ),
-        if (player.expLevel > 10) ...[
+        if (player.expPoints > 0) ...[
+          AppStyles.sizedBox.width16,
+          Row(
+            children: [
+              Image.asset(AppAssets.paths.experience, width: 24, height: 24),
+              AppStyles.sizedBox.width6,
+              Text(
+                player.expPoints.toString(),
+                style: starPointTextStyle(Colors.lightBlue, hasShadow: false),
+              ),
+            ],
+          ),
+        ],
+        if (player.starPoints > 0) ...[
           AppStyles.sizedBox.width16,
           Row(
             children: [
@@ -41,32 +54,29 @@ class PlayerName extends StatelessWidget {
               AppStyles.sizedBox.width6,
               Text(
                 player.starPoints.toString(),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow,
-                  fontSize: 14,
-                  shadows: [
-                    Shadow(
-                        color: Colors.black,
-                        blurRadius: 0,
-                        offset: Offset(1, 1)),
-                    Shadow(
-                        color: Colors.black,
-                        blurRadius: 6,
-                        offset: Offset(-1, -1)),
-                    Shadow(
-                        color: Colors.black,
-                        blurRadius: 6,
-                        offset: Offset(-1, 1)),
-                    Shadow(
-                        color: Colors.black,
-                        blurRadius: 0,
-                        offset: Offset(1, -1)),
-                  ],
-                ),
+                style: starPointTextStyle(Colors.yellow),
               ),
             ],
           ),
+        ],
+      ],
+    );
+  }
+
+  TextStyle starPointTextStyle(
+    Color color, {
+    bool hasShadow = true,
+  }) {
+    return TextStyle(
+      fontWeight: FontWeight.bold,
+      color: color,
+      fontSize: 14,
+      shadows: [
+        if (hasShadow) ...[
+          Shadow(color: Colors.black, blurRadius: 0, offset: Offset(1, 1)),
+          Shadow(color: Colors.black, blurRadius: 6, offset: Offset(-1, -1)),
+          Shadow(color: Colors.black, blurRadius: 6, offset: Offset(-1, 1)),
+          Shadow(color: Colors.black, blurRadius: 0, offset: Offset(1, -1)),
         ],
       ],
     );
