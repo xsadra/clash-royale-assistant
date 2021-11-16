@@ -1,3 +1,4 @@
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,10 +26,16 @@ class InputTagPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(AppTexts.body.appTitle),
         ),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: screenWidth / 7),
-            child: InputTag(),
+        body: DoubleBackToCloseApp(
+          snackBar: const SnackBar(
+            backgroundColor: Color(0xFF190F2A),
+            content: Text('Tap back again to leave'),
+          ),
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: screenWidth / 7),
+              child: InputTag(),
+            ),
           ),
         ),
         bottomSheet: NotConnectedMessageWidget(),
