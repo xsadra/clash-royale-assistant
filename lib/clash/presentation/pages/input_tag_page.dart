@@ -24,6 +24,7 @@ class InputTagPage extends StatelessWidget {
       providers: playerProviders,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.main.primaryColor,
           title: Text(AppTexts.body.appTitle),
         ),
         body: DoubleBackToCloseApp(

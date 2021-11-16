@@ -34,6 +34,7 @@ class PlayerPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.main.primaryColor,
           title: Text(AppTexts.body.appTitle),
           actions: [
             BlocBuilder<version.VersionCheckerBloc,
