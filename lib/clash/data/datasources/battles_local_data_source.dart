@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:meta/meta.dart' show required;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,14 +26,11 @@ class BattlesLocalDataSourceImpl implements BattlesLocalDataSource {
 
   @override
   Future<BattlesModel> getLastData() {
-    log('Getting Data from sharedPreferences', name: 'BattlesLocalDataSource');
     final jsonString =
         sharedPreferences.getString(AppTexts.consts.cachedBattles);
     if (jsonString == null) {
       throw CacheException();
     }
-    log(jsonString.toString().substring(0, 200),
-        name: 'BattlesLocalDataSource');
 
     return Future.value(BattlesModel.fromJson(json.decode(jsonString)));
   }

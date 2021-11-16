@@ -29,7 +29,6 @@ class PlayerPage extends StatelessWidget {
       BlocProvider(create: (context) => injection.sl<UpcomingChestsBloc>()),
       BlocProvider(create: (context) => injection.sl<BattlesBloc>()),
     ];
-    log('build', name: 'PlayerPage');
     String appVersion;
     return SafeArea(
       child: Scaffold(

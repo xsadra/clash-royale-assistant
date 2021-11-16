@@ -1,5 +1,4 @@
 import 'dart:async' show Stream;
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart' show Bloc;
 import 'package:meta/meta.dart' show required;
@@ -22,8 +21,6 @@ class ValidateTagBloc extends Bloc<ValidateTagEvent, ValidateTagState> {
       yield Loading();
       final validateTag =
           await _repository.isValidTag(tag: event.tag, type: event.type);
-
-      log(' Bloc: ' + validateTag.toString(), name: 'ValidateTagBloc');
 
       yield validateTag ? IsValid() : NotValid();
     }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:collection/collection.dart' show groupBy;
 import 'package:flutter/material.dart' hide Card;
@@ -31,14 +29,11 @@ class CardsDetails extends StatelessWidget {
     final _colorPalettes =
         charts.MaterialPalette.getOrderedPalettes(_newList.keys.length);
     var colorIndex = 0;
-    log('Color Palette: ' + _colorPalettes.length.toString(),
-        name: 'CardsDetails');
 
     final _colors = _colorPalettes
         .map((e) =>
             e.shadeDefault.hexString.replaceAll('#', '0xff').toUpperCase())
         .toList();
-    log('Color Palette: [' + _colors.join(' ') + ']', name: 'CardsDetails');
 
     return Column(
       children: [
