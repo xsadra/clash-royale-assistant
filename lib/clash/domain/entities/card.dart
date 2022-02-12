@@ -6,6 +6,7 @@ class Card {
   final int level;
   final int starLevel;
   final int maxLevel;
+  final int count;
   final IconUrls iconUrls;
 
   const Card({
@@ -14,6 +15,7 @@ class Card {
     @required this.level,
     @required this.starLevel,
     @required this.maxLevel,
+    @required this.count,
     @required this.iconUrls,
   });
 }

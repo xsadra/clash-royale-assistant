@@ -9,6 +9,7 @@ class CardModel extends Card {
     @required int level,
     @required int starLevel,
     @required int maxLevel,
+    @required int count,
     @required IconUrlsModel iconUrls,
   }) : super(
           name: name,
@@ -16,6 +17,7 @@ class CardModel extends Card {
           level: level,
           starLevel: starLevel,
           maxLevel: maxLevel,
+          count: count,
           iconUrls: iconUrls,
         );
 
@@ -26,6 +28,7 @@ class CardModel extends Card {
       level: json['level'] as int,
       starLevel: json['starLevel'] as int,
       maxLevel: json['maxLevel'] as int,
+      count: json['count'] as int,
       iconUrls: IconUrlsModel.fromJson(json['iconUrls']),
     );
   }
@@ -38,6 +41,7 @@ class CardModel extends Card {
       'level': this.level,
       'starLevel': this.starLevel,
       'maxLevel': this.maxLevel,
+      'count': this.count,
       'iconUrls': (this.iconUrls as IconUrlsModel).toJson(),
     } as Map<String, dynamic>;
   }
@@ -52,6 +56,7 @@ class CardModel extends Card {
           level == other.level &&
           starLevel == other.starLevel &&
           maxLevel == other.maxLevel &&
+          count == other.count &&
           iconUrls == other.iconUrls;
 
   @override
@@ -61,11 +66,12 @@ class CardModel extends Card {
       level.hashCode ^
       starLevel.hashCode ^
       maxLevel.hashCode ^
+      count.hashCode ^
       iconUrls.hashCode;
 
   @override
   String toString() {
-    return 'CardModel{name: $name, id: $id, level: $level, starLevel: $starLevel, maxLevel: $maxLevel, iconUrls: $iconUrls}';
+    return 'CardModel{name: $name, id: $id, level: $level, starLevel: $starLevel, maxLevel: $maxLevel, count: $count, iconUrls: $iconUrls}';
   }
 }
 
