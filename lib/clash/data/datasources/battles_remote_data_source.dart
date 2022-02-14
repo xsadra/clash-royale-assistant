@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:meta/meta.dart' show required;
 
 import '../../../core/constants/consts.dart';
-import '../../../core/constants/secret.dart';
 import '../../../core/error/exceptions.dart';
 import '../../domain/entities/battles.dart';
 import '../models/battles_model.dart';

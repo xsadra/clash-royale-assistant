@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/consts.dart';
 import '../../../core/extensions/extensions.dart';
+import '../../../core/platform/assets_controller.dart';
 import '../../domain/entities/player.dart';
 
 class UserClanName extends StatelessWidget {
@@ -17,14 +18,29 @@ class UserClanName extends StatelessWidget {
     return Row(
       children: [
         if (player.hasClan) ...[
-          Text(player.clan.name),
+          AppAssets.toWidget.clanBadgeIdToImage(player.clan.badgeId, size: 32),
           AppStyles.sizedBox.width4,
-          Text(
-            player.clan.tag,
-            style: TextStyle(fontSize: 10, color: Colors.blueGrey),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                player.clan.name,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.green.shade900,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              Text(
+                player.clan.tag,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.green.shade900,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
           ),
-          AppStyles.sizedBox.width4,
-          Text(player.role),
         ],
         if (player.hasNotClan)
           Padding(

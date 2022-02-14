@@ -1,8 +1,6 @@
-import 'package:clash_royale_assistant/clash/presentation/widgets/battle_tile_boat.dart';
 import 'package:flutter/material.dart' hide Card;
 
 import '../../../core/enums/enums_with_extensions.dart';
-import '../../../core/extensions/extensions.dart';
 import '../../domain/entities/battle.dart';
 import 'widgets.dart';
 

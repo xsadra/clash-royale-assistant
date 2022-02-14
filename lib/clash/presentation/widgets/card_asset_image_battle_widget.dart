@@ -22,7 +22,7 @@ class CardAssetImageBattle extends StatelessWidget {
         children: [
           AppAssets.toWidget.cardToImage(card: card),
           Text(
-            card.name,
+            card.name ?? '-',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
