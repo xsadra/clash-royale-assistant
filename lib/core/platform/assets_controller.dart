@@ -200,6 +200,10 @@ class _AssetToPaths {
 
 class _AssetToWidgets {
   Image cardToImage({Card card}) {
+    if (card == null || card.name == null) {
+      return Image.asset('assets/images/ui/not-found.webp');
+    }
+
     String path = card.starLevel != null
         ? 'assets/images/cards-gold/'
         : 'assets/images/cards/';

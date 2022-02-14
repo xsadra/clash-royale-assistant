@@ -20,8 +20,9 @@ class CardDeckItem extends StatelessWidget {
         height: 86.0,
         width: 86.0,
         child: Tooltip(
-          message: 'Card \n'
-              'final ',
+          message: card.level == card.maxLevel
+              ? 'Max Level'
+              : 'Count: ' + card.count.toString(),
           triggerMode: TooltipTriggerMode.tap,
           verticalOffset: -65,
           child: Stack(

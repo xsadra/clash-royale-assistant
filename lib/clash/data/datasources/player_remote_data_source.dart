@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -24,7 +22,6 @@ class PlayerRemoteDataSourceImpl implements PlayerRemoteDataSource {
 
   @override
   Future<Player> getPlayer(String playerTag) async {
-    log('getPlayer', name: 'PlayerRemoteDataSourceImpl');
     final response = await dio
         .get(
           AppTexts.api.apiBasePlayerUrlProxy + playerTag,
@@ -37,7 +34,7 @@ class PlayerRemoteDataSourceImpl implements PlayerRemoteDataSource {
         .catchError((onError) {
       throw ServerException();
     });
-    log(response.data.toString(), name: 'PlayerRemoteDataSourceImpl');
+
     return PlayerModel.fromJson(response.data);
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:meta/meta.dart' show required;
 
 import '../../domain/entities/card.dart';
@@ -24,7 +22,6 @@ class CardModel extends Card {
         );
 
   factory CardModel.fromJson(Map<String, dynamic> json) {
-    log(json.toString(), name: 'CardModel');
     return new CardModel(
       name: json['name'] as String,
       id: json['id'] as int,
@@ -86,6 +83,10 @@ class IconUrlsModel extends IconUrls {
         );
 
   factory IconUrlsModel.fromJson(Map<String, dynamic> json) {
+    if (json == null)
+      return IconUrlsModel(
+        medium: '',
+      );
     return new IconUrlsModel(
       medium: json['medium'] as String,
     );
