@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:meta/meta.dart' show required;
 
 import '../../domain/entities/card.dart';
@@ -22,6 +24,7 @@ class CardModel extends Card {
         );
 
   factory CardModel.fromJson(Map<String, dynamic> json) {
+    log(json.toString(), name: 'CardModel');
     return new CardModel(
       name: json['name'] as String,
       id: json['id'] as int,

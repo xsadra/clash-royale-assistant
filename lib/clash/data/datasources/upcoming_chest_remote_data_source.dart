@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../core/constants/consts.dart';
-import '../../../core/constants/secret.dart';
 import '../../../core/error/exceptions.dart';
 import '../../domain/entities/up_chests.dart';
 import '../models/up_chests_model.dart';

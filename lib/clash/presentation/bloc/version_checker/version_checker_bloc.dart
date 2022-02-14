@@ -17,7 +17,6 @@ class VersionCheckerBloc
         _repository = repository,
         super(Empty());
 
-  @override
   Stream<VersionCheckerState> mapEventToState(
     VersionCheckerEvent event,
   ) async* {

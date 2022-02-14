@@ -16,7 +16,6 @@ class ValidateTagBloc extends Bloc<ValidateTagEvent, ValidateTagState> {
         _repository = repository,
         super(Empty());
 
-  @override
   Stream<ValidateTagState> mapEventToState(ValidateTagEvent event) async* {
     if (event is CheckValidateTagEvent) {
       yield Loading();
