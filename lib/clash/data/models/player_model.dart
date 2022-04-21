@@ -35,6 +35,7 @@ class PlayerModel extends Player {
     @required List<CardModel> currentDeck,
     @required CardModel currentFavouriteCard,
     @required int starPoints,
+    @required int expPoints,
   }) : super(
           tag: tag,
           name: name,
@@ -64,6 +65,7 @@ class PlayerModel extends Player {
           currentDeck: currentDeck,
           currentFavouriteCard: currentFavouriteCard,
           starPoints: starPoints,
+          expPoints: expPoints,
         );
 
   factory PlayerModel.fromJson(Map<String, dynamic> json) {
@@ -103,6 +105,7 @@ class PlayerModel extends Player {
           .toList(),
       currentFavouriteCard: CardModel.fromJson(json['currentFavouriteCard']),
       starPoints: json['starPoints'] as int,
+      expPoints: json['expPoints'] as int,
     );
   }
 
@@ -140,6 +143,7 @@ class PlayerModel extends Player {
       '"currentFavouriteCard"':
           jsonEncode(this.currentFavouriteCard as CardModel),
       '"starPoints"': this.starPoints,
+      '"expPoints"': this.expPoints,
     } as Map<String, dynamic>;
   }
 
@@ -187,7 +191,8 @@ class PlayerModel extends Player {
           cards == other.cards &&
           currentDeck == other.currentDeck &&
           currentFavouriteCard == other.currentFavouriteCard &&
-          starPoints == other.starPoints;
+          starPoints == other.starPoints &&
+          expPoints == other.expPoints;
 
   @override
   int get hashCode =>
@@ -218,11 +223,12 @@ class PlayerModel extends Player {
       cards.hashCode ^
       currentDeck.hashCode ^
       currentFavouriteCard.hashCode ^
-      starPoints.hashCode;
+      starPoints.hashCode ^
+      expPoints.hashCode;
 
   @override
   String toString() {
-    return 'PlayerModel{tag: $tag, name: $name, expLevel: $expLevel, trophies: $trophies, bestTrophies: $bestTrophies, wins: $wins, losses: $losses, battleCount: $battleCount, threeCrownWins: $threeCrownWins, challengeCardsWon: $challengeCardsWon, challengeMaxWins: $challengeMaxWins, tournamentCardsWon: $tournamentCardsWon, tournamentBattleCount: $tournamentBattleCount, role: $role, donations: $donations, donationsReceived: $donationsReceived, totalDonations: $totalDonations, warDayWins: $warDayWins, clanCardsCollected: $clanCardsCollected, clan: $clan, arena: $arena, leagueStatistics: $leagueStatistics, badges: $badges, achievements: $achievements, cards: $cards, currentDeck: $currentDeck, currentFavouriteCard: $currentFavouriteCard, starPoints: $starPoints}';
+    return 'PlayerModel{tag: $tag, name: $name, expLevel: $expLevel, trophies: $trophies, bestTrophies: $bestTrophies, wins: $wins, losses: $losses, battleCount: $battleCount, threeCrownWins: $threeCrownWins, challengeCardsWon: $challengeCardsWon, challengeMaxWins: $challengeMaxWins, tournamentCardsWon: $tournamentCardsWon, tournamentBattleCount: $tournamentBattleCount, role: $role, donations: $donations, donationsReceived: $donationsReceived, totalDonations: $totalDonations, warDayWins: $warDayWins, clanCardsCollected: $clanCardsCollected, clan: $clan, arena: $arena, leagueStatistics: $leagueStatistics, badges: $badges, achievements: $achievements, cards: $cards, currentDeck: $currentDeck, currentFavouriteCard: $currentFavouriteCard, starPoints: $starPoints, expPoints: $expPoints}';
   }
 }
 

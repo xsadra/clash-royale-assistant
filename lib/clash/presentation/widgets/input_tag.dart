@@ -37,6 +37,8 @@ class _InputTagState extends State<InputTag> {
           _searchButton(),
           AppStyles.sizedBox.height16,
           _helpText(),
+          AppStyles.sizedBox.height16,
+          _demoButton(),
         ],
       ),
     );
@@ -163,6 +165,24 @@ class _InputTagState extends State<InputTag> {
     );
   }
 
+  Widget _demoButton() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.white38),
+              foregroundColor: MaterialStateProperty.all(Colors.blueGrey),
+              textStyle: MaterialStateProperty.all(
+                TextStyle(fontWeight: FontWeight.w700),
+              )),
+          onPressed: isFormEnabled ? _loadDemo : null,
+          child: Text(AppTexts.ui.demo),
+        ),
+      ],
+    );
+  }
+
   void _validateTag() {
     controller.clear();
     inputString = AppTexts.ui.spaceUrl +
@@ -170,6 +190,23 @@ class _InputTagState extends State<InputTag> {
 
     context.read<ValidateTagBloc>().add(
         CheckValidateTagEvent(tag: inputString, type: RoyaleTagsType.player));
+  }
+
+  void _loadDemo() {
+    controller.clear();
+    inputString = AppTexts.ui.demoTag;
+
+    log('load Demo');
+
+    context.read<ValidateTagBloc>().add(
+        CheckValidateTagEvent(tag: inputString, type: RoyaleTagsType.player));
+    log(
+        'add CheckValidateTagEvent event to ValidateTagBloc: [' +
+            inputString +
+            '] - [' +
+            RoyaleTagsType.player +
+            ']',
+        name: 'InputTag > _validateTag()');
   }
 }
 

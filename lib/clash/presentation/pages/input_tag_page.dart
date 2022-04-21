@@ -6,7 +6,6 @@ import '../../../core/constants/consts.dart';
 import '../../../injection_container.dart' as injection;
 import '../bloc/player/bloc.dart';
 import '../bloc/validatetag/bloc.dart';
-import '../widgets/input_tag.dart';
 import '../widgets/widgets.dart';
 import 'bottom_navigation_bar.dart';
 

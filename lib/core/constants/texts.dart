@@ -97,6 +97,8 @@ class UIAppTexts {
   String get achievedCol => 'Achieved: ';
   String get battles => 'Battles';
   String get search => 'Search';
+  String get demo => 'See Demo';
+  String get demoTag => '%23PPGRVJJQ';
   String get plus => '+';
   String get hashTag => '#';
   String get empty => '';

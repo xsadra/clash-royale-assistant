@@ -31,6 +31,7 @@ class Player {
   final List<Card> currentDeck;
   final Card currentFavouriteCard;
   final int starPoints;
+  final int expPoints;
 
   const Player({
     @required this.tag,
@@ -61,6 +62,7 @@ class Player {
     @required this.currentDeck,
     @required this.currentFavouriteCard,
     @required this.starPoints,
+    @required this.expPoints,
   });
 }
 

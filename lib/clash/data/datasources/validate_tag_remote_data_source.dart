@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../core/constants/consts.dart';
-import '../../../core/constants/secret.dart';
 import '../../../core/error/exceptions.dart';
 
 // Fix Step: force to use [RoyaleTags] type

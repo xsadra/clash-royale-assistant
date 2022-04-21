@@ -17,7 +17,6 @@ class NetworkConnectionCheckerBloc
         _repository = repository,
         super(Empty());
 
-  @override
   Stream<NetworkConnectionCheckerState> mapEventToState(
       NetworkConnectionCheckerEvent event) async* {
     if (event is ConnectionCheckerEvent) {

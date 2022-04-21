@@ -1,4 +1,5 @@
 import 'dart:async' show Stream;
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
@@ -16,11 +17,13 @@ class BattlesBloc extends Bloc<BattlesEvent, BattlesState> {
         _repository = repository,
         super(Empty());
 
-  @override
   Stream<BattlesState> mapEventToState(BattlesEvent event) async* {
     if (event is GetBattlesEvent) {
+      log('Loading', name: 'BattlesBloc');
       yield Loading();
+      log('getBattles', name: 'BattlesBloc');
       final failureOrBattles = await _repository.getBattles(event.playerTag);
+      log('getBattles fold', name: 'BattlesBloc');
       yield failureOrBattles.fold(
         (failure) => Error(message: failure.toMessage),
         (battles) => Loaded(battles: battles),

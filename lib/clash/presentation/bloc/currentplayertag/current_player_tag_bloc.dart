@@ -18,7 +18,6 @@ class CurrentPlayerTagBloc
         _repository = repository,
         super(Empty());
 
-  @override
   Stream<CurrentPlayerTagState> mapEventToState(
       CurrentPlayerTagEvent event) async* {
     if (event is GetCurrentPlayerTagEvent) {

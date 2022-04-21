@@ -17,7 +17,6 @@ class UpcomingChestsBloc
         _getUpcomingChests = upcomingChests,
         super(Empty());
 
-  @override
   Stream<UpcomingChestsState> mapEventToState(
       UpcomingChestsEvent event) async* {
     if (event is GetUpcomingChestsEvent) {

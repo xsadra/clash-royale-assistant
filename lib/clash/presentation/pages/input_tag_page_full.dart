@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../injection_container.dart' as injection;
 import '../bloc/player/bloc.dart';
 import '../bloc/validatetag/bloc.dart';
-import '../widgets/input_tag.dart';
 import '../widgets/widgets.dart';
 
 class InputTagPageFull extends StatelessWidget {
