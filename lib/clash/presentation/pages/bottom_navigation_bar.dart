@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart' hide Router;
@@ -34,8 +32,6 @@ class BottomNavBar extends StatelessWidget {
       top: -14,
       initialActiveIndex: initialActiveIndex,
       onTap: (int pageIndex) {
-        log('pageIndex: ' + pageIndex.toString(), name: 'BottomNavBar');
-
         if (pageIndex == 0) {
           // Fix Step: get local data instead of Live
           ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);

@@ -11,16 +11,12 @@ import '../bloc/currentplayertag/bloc.dart';
 class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    log('build', name: 'SplashPage');
     return BlocListener<CurrentPlayerTagBloc, CurrentPlayerTagState>(
       listener: (context, state) {
         if (state is Empty) {
-          log('Empty> InputTagPage', name: 'SplashPage');
           ExtendedNavigator.of(context)
               .replace(Routes.InputTagPageFullScreenRoute);
         } else if (state is Loaded) {
-          log('Loaded > Loaded', name: 'SplashPage');
-          log(state.playerTag.playerTag, name: 'SplashPage');
           ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);
         } else {
           log('Else State ' + state.runtimeType.toString(), name: 'SplashPage');

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter/services.dart';
@@ -92,15 +90,12 @@ class _InputTagState extends State<InputTag> {
     bool showError = false;
     return BlocBuilder<ValidateTagBloc, ValidateTagState>(
       builder: (BuildContext context, state) {
-        log(state.runtimeType.toString(),
-            name: ' InputTag > _inputTextField()');
         if (state is Loading) {
           isFormEnabled = false;
         } else if (state is IsValid) {
           isFormEnabled = true;
           context.read<CurrentPlayerTagBloc>().add(SaveCurrentPlayerTagEvent(
               playerTag: CurrentPlayerTag(playerTag: inputString)));
-          log('Navigate to HomePage', name: 'InputTag > _inputTextField()');
           ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);
         } else if (state is NotValid) {
           isFormEnabled = true;
@@ -115,8 +110,6 @@ class _InputTagState extends State<InputTag> {
               flex: 7,
               child: TextField(
                 onChanged: (value) {
-                  log('Input value is: ' + value,
-                      name: 'InputTag > _inputTextField');
                   inputString = value;
                 },
                 enabled: isFormEnabled,
@@ -195,17 +188,8 @@ class _InputTagState extends State<InputTag> {
     inputString = AppTexts.ui.spaceUrl +
         inputString.replaceAll(AppTexts.ui.hashTag, AppTexts.ui.empty);
 
-    log(inputString, name: 'InputTag > _validateTag()');
-
     context.read<ValidateTagBloc>().add(
         CheckValidateTagEvent(tag: inputString, type: RoyaleTagsType.player));
-    log(
-        'add CheckValidateTagEvent event to ValidateTagBloc: [' +
-            inputString +
-            '] - [' +
-            RoyaleTagsType.player +
-            ']',
-        name: 'InputTag > _validateTag()');
   }
 
   void _loadDemo() {
@@ -267,26 +251,6 @@ class SetPlayerHelpText extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-@Deprecated('it cause repeated letters on input')
-class UpperCaseTextFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    log('oldValue: ' + oldValue.text,
-        name: 'InputTag > SetPlayerHelpText > UpperCaseTextFormatter');
-    log('oldValue Selection: ' + oldValue.selection.toString(),
-        name: 'InputTag > SetPlayerHelpText > UpperCaseTextFormatter');
-    log('newValue: ' + newValue.text,
-        name: 'InputTag > SetPlayerHelpText > UpperCaseTextFormatter');
-    log('newValue Selection: ' + newValue.selection.toString(),
-        name: 'InputTag > SetPlayerHelpText > UpperCaseTextFormatter');
-    return TextEditingValue(
-      text: newValue.text?.toUpperCase(),
-      selection: newValue.selection,
     );
   }
 }

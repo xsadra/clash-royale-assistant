@@ -1,5 +1,4 @@
 import 'dart:async' show Stream;
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart' show Bloc;
 import 'package:meta/meta.dart' show required;
@@ -23,31 +22,22 @@ class CurrentPlayerTagBloc
       CurrentPlayerTagEvent event) async* {
     if (event is GetCurrentPlayerTagEvent) {
       yield Loading();
-      log('event is GetCurrentPlayerTagEvent', name: 'CurrentPlayerTagBloc');
       final failureOrPlayerTag = await _repository.getCurrentPlayerTag();
       yield failureOrPlayerTag.fold(
         (failure) {
-          log('get current player tag from local failed',
-              name: 'CurrentPlayerTagBloc');
           return Empty();
         },
         (playerTag) {
-          log('get current player tag from local success',
-              name: 'CurrentPlayerTagBloc');
-          log(playerTag.playerTag, name: 'CurrentPlayerTagBloc');
           return Loaded(playerTag: playerTag);
         },
       );
     } else if (event is SaveCurrentPlayerTagEvent) {
-      log('event is SaveCurrentPlayerTagEvent', name: 'CurrentPlayerTagBloc');
       yield Saving();
       final failureOrSavePlayerTag =
           await _repository.saveCurrentPlayerTag(playerTag: event.playerTag);
       yield failureOrSavePlayerTag.fold(
         (failure) => Error(message: failure.toMessage),
         (isSaved) {
-          log('saveCurrentPlayerTag is ' + isSaved.toString(),
-              name: 'CurrentPlayerTagBloc');
           if (isSaved) {
             return Saved();
           }
