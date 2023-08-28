@@ -6,8 +6,8 @@ import '../../domain/entities/upcoming_chest.dart';
 
 class UpcomingChestItem extends StatelessWidget {
   const UpcomingChestItem({
-    Key key,
-    @required this.chest,
+    Key? key,
+    required this.chest,
   }) : super(key: key);
 
   final UpcomingChest chest;
@@ -21,7 +21,7 @@ class UpcomingChestItem extends StatelessWidget {
         width: 80.0,
         child: Stack(
           children: [
-            Image.asset(AppAssets.toPath.chestNameToPath(chest.name)),
+            Image.asset(AppAssets.toPath.chestNameToPath(chest.name!)),
             Container(
               alignment: Alignment.bottomCenter,
               margin: EdgeInsets.only(bottom: 18.0),

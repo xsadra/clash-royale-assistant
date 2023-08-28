@@ -22,7 +22,7 @@ class CurrentPlayerTagLocalDataSourceImpl
   final SharedPreferences sharedPreferences;
 
   const CurrentPlayerTagLocalDataSourceImpl({
-    @required this.sharedPreferences,
+    required this.sharedPreferences,
   });
 
   @override

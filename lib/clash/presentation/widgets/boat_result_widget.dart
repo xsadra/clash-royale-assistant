@@ -8,8 +8,8 @@ import 'widgets.dart';
 
 class BoatResultWidget extends StatelessWidget {
   const BoatResultWidget({
-    Key key,
-    @required this.battle,
+    Key? key,
+    required this.battle,
   }) : super(key: key);
 
   final Battle battle;
@@ -56,7 +56,7 @@ class BoatResultWidget extends StatelessWidget {
                       text: 'Towers at\nStart',
                       shieldColor: Colors.brown,
                       shieldTextValue:
-                          (3 - battle.prevTowersDestroyed).toString(),
+                          (3 - battle.prevTowersDestroyed!).toString(),
                     ),
                     AppStyles.sizedBox.width8,
                     BoatShieldResultWidget(
@@ -95,10 +95,10 @@ class BoatResultWidget extends StatelessWidget {
 
 class BoatShieldResultWidget extends StatelessWidget {
   const BoatShieldResultWidget({
-    Key key,
-    @required this.text,
-    @required this.shieldColor,
-    @required this.shieldTextValue,
+    Key? key,
+    required this.text,
+    required this.shieldColor,
+    required this.shieldTextValue,
   }) : super(key: key);
 
   final String text;

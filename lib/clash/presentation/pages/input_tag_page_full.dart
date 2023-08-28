@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,8 +8,9 @@ import '../bloc/player/bloc.dart';
 import '../bloc/validatetag/bloc.dart';
 import '../widgets/widgets.dart';
 
+@RoutePage()
 class InputTagPageFull extends StatelessWidget {
-  const InputTagPageFull({Key key}) : super(key: key);
+  const InputTagPageFull({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

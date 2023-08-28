@@ -9,7 +9,7 @@ class GetCurrentPlayerTag {
   final CurrentPlayerTagRepository repository;
 
   const GetCurrentPlayerTag({
-    @required this.repository,
+    required this.repository,
   });
 
   Future<Either<Failure, CurrentPlayerTag>> call() async =>

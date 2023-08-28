@@ -8,8 +8,8 @@ import 'widgets.dart';
 
 class TwoToTwoBattleTeam extends StatelessWidget {
   const TwoToTwoBattleTeam({
-    Key key,
-    @required this.battle,
+    Key? key,
+    required this.battle,
   }) : super(key: key);
 
   final Battle battle;
@@ -56,14 +56,14 @@ class TwoToTwoBattleTeam extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TeamMemberWidget(
-              team: battle.team2,
+              team: battle.team2!,
               teamType: TeamMemberType.Team,
               showTrophies: battle.hasTrophies2v2,
             ),
             VerticalDividerWidget(
                 height: 170.0, thickness: 2.0, color: Colors.black38),
             TeamMemberWidget(
-              team: battle.opponent2,
+              team: battle.opponent2!,
               teamType: TeamMemberType.Opponent,
               showTrophies: battle.hasTrophies2v2,
             ),

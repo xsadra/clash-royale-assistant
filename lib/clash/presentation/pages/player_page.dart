@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,8 +17,9 @@ import '../widgets/widgets.dart';
 import 'bottom_navigation_bar.dart';
 import 'player_nested_tab_page.dart';
 
+@RoutePage()
 class PlayerPage extends StatelessWidget {
-  const PlayerPage({Key key}) : super(key: key);
+  const PlayerPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class PlayerPage extends StatelessWidget {
       BlocProvider(create: (context) => injection.sl<UpcomingChestsBloc>()),
       BlocProvider(create: (context) => injection.sl<BattlesBloc>()),
     ];
-    String appVersion;
+    String? appVersion;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -39,7 +41,7 @@ class PlayerPage extends StatelessWidget {
               buildWhen: (previous, current) => current != previous,
               builder: (context, state) {
                 if (state is version.ReadVersion) {
-                  appVersion = state.version.current;
+                  appVersion = state.version.current!;
                 }
                 return TextButton(
                   onPressed: () {

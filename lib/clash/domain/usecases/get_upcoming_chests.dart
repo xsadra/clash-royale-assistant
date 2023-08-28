@@ -9,7 +9,7 @@ class GetUpcomingChests {
   final UpcomingChestsRepository repository;
 
   const GetUpcomingChests({
-    @required this.repository,
+    required this.repository,
   });
 
   Future<Either<Failure, UpChests>> call(String playerTag) async =>

@@ -7,12 +7,13 @@ import '../../../core/constants/consts.dart';
 import '../../../core/routes/router.gr.dart';
 import '../bloc/network_connection_checker/bloc.dart';
 
+@RoutePage()
 class BottomNavBar extends StatelessWidget {
   final int initialActiveIndex;
 
   const BottomNavBar({
-    Key key,
-    @required this.initialActiveIndex,
+    Key? key,
+    required this.initialActiveIndex,
   }) : super(key: key);
 
   @override
@@ -34,9 +35,9 @@ class BottomNavBar extends StatelessWidget {
       onTap: (int pageIndex) {
         if (pageIndex == 0) {
           // Fix Step: get local data instead of Live
-          ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);
+          context.replaceRoute(PlayerRoute());
         } else if (pageIndex == 1) {
-          ExtendedNavigator.of(context).replace(Routes.InputTagPageRoute);
+          context.replaceRoute(InputTagRoute());
         }
       },
     );

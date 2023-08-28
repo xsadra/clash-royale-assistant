@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:meta/meta.dart';
 
 import '../../../core/error/exceptions.dart';
 import '../../../core/error/failure.dart';
@@ -12,7 +11,7 @@ class CurrentPlayerTagRepositoryImpl implements CurrentPlayerTagRepository {
   final CurrentPlayerTagLocalDataSource localDataSource;
 
   const CurrentPlayerTagRepositoryImpl({
-    @required this.localDataSource,
+    required this.localDataSource,
   });
 
   @override
@@ -29,7 +28,7 @@ class CurrentPlayerTagRepositoryImpl implements CurrentPlayerTagRepository {
 
   @override
   Future<Either<Failure, bool>> saveCurrentPlayerTag(
-      {CurrentPlayerTag playerTag}) async {
+      {required CurrentPlayerTag playerTag}) async {
     try {
       bool result = true;
       await localDataSource

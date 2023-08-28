@@ -15,6 +15,6 @@ class Error extends ValidateTagState {
   final String message;
 
   Error({
-    @required this.message,
+    required this.message,
   });
 }

@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../presentation/bloc/player/bloc.dart';
 
 class RefreshPlayer extends StatelessWidget {
-  const RefreshPlayer({Key key}) : super(key: key);
+  const RefreshPlayer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

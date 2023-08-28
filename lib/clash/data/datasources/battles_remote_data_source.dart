@@ -17,7 +17,7 @@ class BattlesRemoteDataSourceImpl implements BattlesRemoteDataSource {
   final Dio dio;
 
   BattlesRemoteDataSourceImpl({
-    @required this.dio,
+    required this.dio,
   });
 
   @override

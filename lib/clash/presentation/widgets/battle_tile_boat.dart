@@ -7,8 +7,8 @@ import 'widgets.dart';
 
 class BattleBoatItemWidget extends StatelessWidget {
   const BattleBoatItemWidget({
-    Key key,
-    @required this.battle,
+    Key? key,
+    required this.battle,
   }) : super(key: key);
 
   final Battle battle;

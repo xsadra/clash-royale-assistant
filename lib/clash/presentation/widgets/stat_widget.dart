@@ -5,9 +5,9 @@ import 'widgets.dart';
 
 class Stat extends StatelessWidget {
   const Stat({
-    Key key,
-    @required this.header,
-    @required this.tiles,
+    Key? key,
+    required this.header,
+    required this.tiles,
   }) : super(key: key);
 
   final StatHeader header;

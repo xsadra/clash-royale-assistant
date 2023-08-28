@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class VerticalDividerWidget extends StatelessWidget {
   const VerticalDividerWidget({
-    Key key,
-    @required this.height,
-    @required this.thickness,
-    @required this.color,
+    Key? key,
+    required this.height,
+    required this.thickness,
+    required this.color,
   }) : super(key: key);
 
   final double height;

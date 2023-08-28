@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart' hide Card;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,6 +10,7 @@ import '../bloc/upcomingchest/bloc.dart' hide Loaded;
 import '../widgets/battles_view.dart';
 import '../widgets/widgets.dart';
 
+@RoutePage()
 class PlayerNestedTabPage extends StatefulWidget {
   @override
   _PlayerNestedTabPageState createState() => _PlayerNestedTabPageState();
@@ -16,7 +18,7 @@ class PlayerNestedTabPage extends StatefulWidget {
 
 class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
     with TickerProviderStateMixin {
-  TabController _nestedTabController;
+  late TabController _nestedTabController;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
         if (state is Loaded) {
           var playerTag = state.playerTag.playerTag;
 
-          context.read<PlayerBloc>().add(GetPlayerEvent(playerTag));
+          context.read<PlayerBloc>().add(GetPlayerEvent(playerTag!));
           context
               .read<UpcomingChestsBloc>()
               .add(GetUpcomingChestsEvent(playerTag));

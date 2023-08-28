@@ -4,8 +4,8 @@ import '../../domain/entities/current_player_tag.dart';
 
 class CurrentPlayerTagModel extends CurrentPlayerTag {
   const CurrentPlayerTagModel({
-    @required String playerTag,
-    String playerClanTag,
+    required String playerTag,
+    String? playerClanTag,
   }) : super(
           playerTag: playerTag,
           playerClanTag: playerClanTag,
@@ -20,7 +20,7 @@ class CurrentPlayerTagModel extends CurrentPlayerTag {
 
   factory CurrentPlayerTagModel.fromObject(CurrentPlayerTag playerTag) {
     return new CurrentPlayerTagModel(
-      playerTag: playerTag.playerTag,
+      playerTag: playerTag.playerTag!,
       playerClanTag: playerTag.playerClanTag,
     );
   }

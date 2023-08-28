@@ -12,7 +12,7 @@ import 'bloc.dart';
 class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   final GetPlayer _getPlayer;
 
-  PlayerBloc({@required GetPlayer player})
+  PlayerBloc({required GetPlayer player})
       : assert(player != null),
         _getPlayer = player,
         super(Empty());

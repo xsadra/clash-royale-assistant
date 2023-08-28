@@ -22,7 +22,7 @@ class UpcomingChestsLocalDataSourceImpl
   final SharedPreferences sharedPreferences;
 
   const UpcomingChestsLocalDataSourceImpl({
-    @required this.sharedPreferences,
+    required this.sharedPreferences,
   });
 
   @override

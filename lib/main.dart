@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +7,7 @@ import 'clash/presentation/bloc/currentplayertag/bloc.dart';
 import 'clash/presentation/bloc/network_connection_checker/bloc.dart';
 import 'clash/presentation/bloc/version_checker/bloc.dart';
 import 'core/constants/consts.dart';
-import 'core/routes/router.gr.dart';
+import 'core/routes/router.dart';
 import 'injection_container.dart' as injection;
 
 void main() async {
@@ -37,11 +36,14 @@ class MyApp extends StatelessWidget {
             injection.sl<VersionCheckerBloc>()..add(SaveCurrentVersionEvent()),
       ),
     ];
+
+    final _router = Router();
+
     return MultiBlocProvider(
       providers: _providers,
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: AppTexts.body.appTitle,
-        builder: ExtendedNavigator(router: Router()),
+        routerConfig: _router.config(),
         debugShowCheckedModeBanner: false,
         theme:
             ThemeData(fontFamily: GoogleFonts.zillaSlab().fontFamily).copyWith(

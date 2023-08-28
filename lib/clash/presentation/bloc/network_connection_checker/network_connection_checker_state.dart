@@ -15,6 +15,6 @@ class Error extends NetworkConnectionCheckerState {
   final String message;
 
   Error({
-    @required this.message,
+    required this.message,
   });
 }

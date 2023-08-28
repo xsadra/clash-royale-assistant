@@ -6,25 +6,25 @@ import 'card_model.dart';
 
 class BattleModel extends Battle {
   const BattleModel({
-    @required String type,
-    @required String battleTime,
-    @required String tournamentTag,
-    @required int princessTowersHitPoints,
-    @required String boatBattleSide,
-    @required bool boatBattleWon,
-    @required int newTowersDestroyed,
-    @required int prevTowersDestroyed,
-    @required int remainingTowers,
-    @required int challengeId,
-    @required bool isLadderTournament,
-    @required ArenaModel arena,
-    @required GameModeModel gameMode,
-    @required String deckSelection,
-    @required List<TeamMemberModel> team,
-    @required List<TeamMemberModel> opponent,
-    @required String challengeTitle,
-    @required bool isHostedMatch,
-    @required int challengeWinCountBefore,
+    required String type,
+    required String battleTime,
+    required String tournamentTag,
+    required int princessTowersHitPoints,
+    required String boatBattleSide,
+    required bool boatBattleWon,
+    required int newTowersDestroyed,
+    required int prevTowersDestroyed,
+    required int remainingTowers,
+    required int challengeId,
+    required bool isLadderTournament,
+    required ArenaModel arena,
+    required GameModeModel gameMode,
+    required String deckSelection,
+    required List<TeamMemberModel> team,
+    required List<TeamMemberModel> opponent,
+    required String challengeTitle,
+    required bool isHostedMatch,
+    required int challengeWinCountBefore,
   }) : super(
             type: type,
             battleTime: battleTime,
@@ -91,9 +91,10 @@ class BattleModel extends Battle {
       'arena': (this.arena as ArenaModel).toJson(),
       'gameMode': (this.gameMode as GameModeModel).toJson(),
       'deckSelection': this.deckSelection,
-      'team': this.team.map((e) => (e as TeamMemberModel).toJson()).toList(),
-      'opponent':
-          this.opponent.map((e) => (e as TeamMemberModel).toJson()).toList(),
+      'team': this.team!.map((e) => (e as TeamMemberModel).toJson()).toList(),
+      'opponent': this.opponent != null
+          ? this.opponent!.map((e) => (e as TeamMemberModel).toJson()).toList()
+          : [],
       'challengeTitle': this.challengeTitle,
       'isHostedMatch': this.isHostedMatch,
     } as Map<String, dynamic>;
@@ -152,8 +153,8 @@ class BattleModel extends Battle {
 
 class ArenaModel extends Arena {
   const ArenaModel({
-    @required int id,
-    @required String name,
+    required int id,
+    required String name,
   }) : super(
           name: name,
           id: id,
@@ -193,8 +194,8 @@ class ArenaModel extends Arena {
 
 class GameModeModel extends GameMode {
   const GameModeModel({
-    @required int id,
-    @required String name,
+    required int id,
+    required String name,
   }) : super(
           name: name,
           id: id,
@@ -234,14 +235,14 @@ class GameModeModel extends GameMode {
 
 class TeamMemberModel extends TeamMember {
   const TeamMemberModel({
-    @required String tag,
-    @required String name,
-    @required int crowns,
-    @required int startingTrophies,
-    @required int kingTowerHitPoints,
-    @required List<int> princessTowersHitPoints,
-    @required Clan clan,
-    @required List<Card> cards,
+    required String tag,
+    required String name,
+    required int crowns,
+    required int startingTrophies,
+    required int kingTowerHitPoints,
+    required List<int> princessTowersHitPoints,
+    required Clan clan,
+    required List<Card> cards,
   }) : super(
           tag: tag,
           name: name,
@@ -279,7 +280,9 @@ class TeamMemberModel extends TeamMember {
       'kingTowerHitPoints': this.kingTowerHitPoints,
       'princessTowersHitPoints': this.princessTowersHitPoints,
       'clan': this.clan,
-      'cards': this.cards.map((e) => (e as CardModel).toJson()).toList(),
+      'cards': this.cards != null
+          ? this.cards?.map((e) => (e as CardModel).toJson()).toList()
+          : [],
     } as Map<String, dynamic>;
   }
 
@@ -314,24 +317,22 @@ class TeamMemberModel extends TeamMember {
 
 class ClanModel extends Clan {
   const ClanModel({
-    @required String tag,
-    @required String name,
-    @required int badgeId,
+    required String tag,
+    required String name,
+    required int badgeId,
+    required bool hasClan,
   }) : super(
           tag: tag,
           name: name,
           badgeId: badgeId,
+          hasClan: hasClan
         );
 
-  factory ClanModel.fromJson(Map<String, dynamic> json) {
-    return json == null
-        ? null
-        : new ClanModel(
-            tag: json['tag'] as String,
-            name: json['name'] as String,
-            badgeId: json['badgeId'] as int,
+  factory ClanModel.fromJson(Map<String, dynamic>? json) =>   ClanModel(
+            tag: json?['tag'] as String ?? '',
+            name: json?['name'] as String,
+            badgeId: json?['badgeId'] as int, hasClan: json != null,
           );
-  }
 
   Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast

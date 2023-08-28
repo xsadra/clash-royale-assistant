@@ -1,6 +1,6 @@
-import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:dio/dio.dart' show Dio;
 import 'package:get_it/get_it.dart' show GetIt;
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'clash/data/datasources/datasources.dart';
@@ -155,7 +155,7 @@ Future<void> init() async {
 
   sl.registerLazySingleton(() => Dio());
 
-  sl.registerLazySingleton(() => DataConnectionChecker());
+  sl.registerLazySingleton(() => InternetConnectionChecker());
 
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);

@@ -4,8 +4,8 @@ import '../../../core/platform/assets_controller.dart';
 
 class PlayerExperienceWidget extends StatelessWidget {
   const PlayerExperienceWidget({
-    @required this.expLevel,
-    Key key,
+    required this.expLevel,
+    Key? key,
   }) : super(key: key);
 
   final String expLevel;

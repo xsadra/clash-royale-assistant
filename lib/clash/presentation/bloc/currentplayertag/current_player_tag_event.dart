@@ -10,5 +10,5 @@ class GetCurrentPlayerTagEvent extends CurrentPlayerTagEvent {}
 class SaveCurrentPlayerTagEvent extends CurrentPlayerTagEvent {
   final CurrentPlayerTag playerTag;
 
-  SaveCurrentPlayerTagEvent({@required this.playerTag});
+  SaveCurrentPlayerTagEvent({required this.playerTag});
 }

@@ -9,8 +9,8 @@ class UpcomingChestsGridView extends StatelessWidget {
   final Loaded state;
 
   UpcomingChestsGridView({
-    this.state,
-    Key key,
+    required this.state,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -22,9 +22,9 @@ class UpcomingChestsGridView extends StatelessWidget {
         shrinkWrap: true,
         crossAxisCount: columnCount,
         children: List.generate(
-          state.upcomingChests.items.length,
+          state.upcomingChests.items!.length,
           (int index) {
-            UpcomingChest chest = state.upcomingChests.items.elementAt(index);
+            UpcomingChest chest = state.upcomingChests.items!.elementAt(index);
             return AnimationConfiguration.staggeredGrid(
               position: index,
               duration: const Duration(milliseconds: 575),

@@ -12,7 +12,7 @@ class VersionCheckerBloc
     extends Bloc<VersionCheckerEvent, VersionCheckerState> {
   final VersionRepository _repository;
 
-  VersionCheckerBloc({@required VersionRepository repository})
+  VersionCheckerBloc({required VersionRepository repository})
       : assert(repository != null),
         _repository = repository,
         super(Empty());

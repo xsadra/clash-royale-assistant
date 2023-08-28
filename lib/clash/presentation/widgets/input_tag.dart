@@ -13,7 +13,7 @@ import '../bloc/network_connection_checker/bloc.dart';
 import '../bloc/validatetag/bloc.dart';
 
 class InputTag extends StatefulWidget {
-  const InputTag({Key key}) : super(key: key);
+  const InputTag({Key? key}) : super(key: key);
 
   @override
   _InputTagState createState() => _InputTagState();
@@ -97,7 +97,7 @@ class _InputTagState extends State<InputTag> {
           isFormEnabled = true;
           context.read<CurrentPlayerTagBloc>().add(SaveCurrentPlayerTagEvent(
               playerTag: CurrentPlayerTag(playerTag: inputString)));
-          ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);
+          context.replaceRoute(PlayerRoute());
         } else if (state is NotValid) {
           isFormEnabled = true;
           showError = true;
@@ -216,9 +216,9 @@ class SetPlayerHelpText extends StatelessWidget {
   final String rowText;
 
   const SetPlayerHelpText({
-    Key key,
-    @required this.rowNumber,
-    @required this.rowText,
+    Key? key,
+    required this.rowNumber,
+    required this.rowText,
   }) : super(key: key);
 
   @override

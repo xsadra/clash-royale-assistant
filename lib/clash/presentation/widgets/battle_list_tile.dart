@@ -8,8 +8,8 @@ class BattleListTile extends StatelessWidget {
   final Battle battle;
 
   const BattleListTile({
-    Key key,
-    this.battle,
+    Key? key,
+    required this.battle,
   }) : super(key: key);
 
   @override

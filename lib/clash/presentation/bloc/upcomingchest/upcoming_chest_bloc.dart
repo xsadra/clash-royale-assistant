@@ -12,7 +12,7 @@ class UpcomingChestsBloc
     extends Bloc<UpcomingChestsEvent, UpcomingChestsState> {
   final GetUpcomingChests _getUpcomingChests;
 
-  UpcomingChestsBloc({@required GetUpcomingChests upcomingChests})
+  UpcomingChestsBloc({required GetUpcomingChests upcomingChests})
       : assert(upcomingChests != null),
         _getUpcomingChests = upcomingChests,
         super(Empty());

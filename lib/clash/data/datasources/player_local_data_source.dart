@@ -21,7 +21,7 @@ class PlayerLocalDataSourceImpl implements PlayerLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   const PlayerLocalDataSourceImpl({
-    @required this.sharedPreferences,
+    required this.sharedPreferences,
   });
 
   @override

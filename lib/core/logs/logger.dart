@@ -49,7 +49,7 @@ class MyPrinter extends LogPrinter {
     var prefix = levelPrefixes[level];
     var color = levelColors[level];
 
-    return colors ? color(prefix) : prefix;
+    return colors ? color!(prefix!) : prefix!;
   }
 
   String _stringifyMessage(dynamic message) {

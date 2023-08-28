@@ -29,7 +29,7 @@ class VersionLocalDataSourceImpl implements VersionLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   VersionLocalDataSourceImpl({
-    @required this.sharedPreferences,
+    required this.sharedPreferences,
   });
 
   @override

@@ -1,13 +1,13 @@
 import 'package:meta/meta.dart' show required;
 
 class Card {
-  final String name;
-  final int id;
-  final int level;
-  final int starLevel;
-  final int maxLevel;
-  final int count;
-  final IconUrls iconUrls;
+  final String? name;
+  final int? id;
+  final int? level;
+  final int? starLevel;
+  final int? maxLevel;
+  final int? count;
+  final IconUrls? iconUrls;
 
   const Card({
     @required this.name,
@@ -21,7 +21,7 @@ class Card {
 }
 
 class IconUrls {
-  final String medium;
+  final String? medium;
 
   const IconUrls({
     @required this.medium,

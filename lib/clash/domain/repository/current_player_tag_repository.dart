@@ -8,6 +8,6 @@ abstract class CurrentPlayerTagRepository {
   Future<Either<Failure, CurrentPlayerTag>> getCurrentPlayerTag();
 
   Future<Either<Failure, bool>> saveCurrentPlayerTag({
-    @required CurrentPlayerTag playerTag,
+    required CurrentPlayerTag playerTag,
   });
 }

@@ -1,48 +1,46 @@
-import 'package:meta/meta.dart' show required;
-
 import 'card.dart';
 
 class Battle {
-  final String type;
-  final String battleTime;
-  final String tournamentTag;
-  final int princessTowersHitPoints;
-  final String boatBattleSide;
-  final bool boatBattleWon;
-  final int newTowersDestroyed;
-  final int prevTowersDestroyed;
-  final int remainingTowers;
-  final int challengeId;
-  final bool isLadderTournament;
-  final Arena arena;
-  final GameMode gameMode;
-  final String deckSelection;
-  final List<TeamMember> team;
-  final List<TeamMember> opponent;
-  final String challengeTitle;
-  final bool isHostedMatch;
-  final int challengeWinCountBefore;
+  final String? type;
+  final String? battleTime;
+  final String? tournamentTag;
+  final int? princessTowersHitPoints;
+  final String? boatBattleSide;
+  final bool? boatBattleWon;
+  final int? newTowersDestroyed;
+  final int? prevTowersDestroyed;
+  final int? remainingTowers;
+  final int? challengeId;
+  final bool? isLadderTournament;
+  final Arena? arena;
+  final GameMode? gameMode;
+  final String? deckSelection;
+  final List<TeamMember>? team;
+  final List<TeamMember>? opponent;
+  final String? challengeTitle;
+  final bool? isHostedMatch;
+  final int? challengeWinCountBefore;
 
   const Battle({
-    @required this.type,
-    @required this.battleTime,
-    @required this.tournamentTag,
-    @required this.princessTowersHitPoints,
-    @required this.boatBattleSide,
-    @required this.boatBattleWon,
-    @required this.newTowersDestroyed,
-    @required this.prevTowersDestroyed,
-    @required this.remainingTowers,
-    @required this.challengeId,
-    @required this.isLadderTournament,
-    @required this.arena,
-    @required this.gameMode,
-    @required this.deckSelection,
-    @required this.team,
-    @required this.opponent,
-    @required this.challengeTitle,
-    @required this.isHostedMatch,
-    @required this.challengeWinCountBefore,
+    required this.type,
+    required this.battleTime,
+    required this.tournamentTag,
+    required this.princessTowersHitPoints,
+    required this.boatBattleSide,
+    required this.boatBattleWon,
+    required this.newTowersDestroyed,
+    required this.prevTowersDestroyed,
+    required this.remainingTowers,
+    required this.challengeId,
+    required this.isLadderTournament,
+    required this.arena,
+    required this.gameMode,
+    required this.deckSelection,
+    required this.team,
+    required this.opponent,
+    required this.challengeTitle,
+    required this.isHostedMatch,
+    required this.challengeWinCountBefore,
   });
 }
 
@@ -51,8 +49,8 @@ class Arena {
   final String name;
 
   const Arena({
-    @required this.id,
-    @required this.name,
+    required this.id,
+    required this.name,
   });
 }
 
@@ -61,8 +59,8 @@ class GameMode {
   final String name;
 
   const GameMode({
-    @required this.id,
-    @required this.name,
+    required this.id,
+    required this.name,
   });
 }
 
@@ -77,14 +75,14 @@ class TeamMember {
   final List<Card> cards;
 
   const TeamMember({
-    @required this.tag,
-    @required this.name,
-    @required this.crowns,
-    @required this.startingTrophies,
-    @required this.kingTowerHitPoints,
-    @required this.princessTowersHitPoints,
-    @required this.clan,
-    @required this.cards,
+    required this.tag,
+    required this.name,
+    required this.crowns,
+    required this.startingTrophies,
+    required this.kingTowerHitPoints,
+    required this.princessTowersHitPoints,
+    required this.clan,
+    required this.cards,
   });
 }
 
@@ -92,10 +90,12 @@ class Clan {
   final String tag;
   final String name;
   final int badgeId;
+  final bool hasClan;
 
   const Clan({
-    @required this.tag,
-    @required this.name,
-    @required this.badgeId,
+    required this.tag,
+    required this.name,
+    required this.badgeId,
+    required this.hasClan,
   });
 }

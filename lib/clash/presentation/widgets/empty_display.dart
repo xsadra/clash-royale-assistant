@@ -5,7 +5,7 @@ import 'widgets.dart';
 
 class EmptyDisplay extends StatelessWidget {
   const EmptyDisplay({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

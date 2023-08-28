@@ -10,7 +10,7 @@ class ValidateTagBloc extends Bloc<ValidateTagEvent, ValidateTagState> {
   final ValidateTagRepository _repository;
 
   ValidateTagBloc({
-    @required ValidateTagRepository repository,
+    required ValidateTagRepository repository,
   })  : assert(repository != null),
         _repository = repository,
         super(Empty());

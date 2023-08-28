@@ -7,8 +7,8 @@ import 'widgets.dart';
 
 class PlayerName extends StatelessWidget {
   const PlayerName({
-    Key key,
-    @required this.player,
+    Key? key,
+    required this.player,
   }) : super(key: key);
 
   final Player player;
@@ -23,12 +23,12 @@ class PlayerName extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              player.name,
+              player.name!,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             AppStyles.sizedBox.height2,
             Text(
-              player.role,
+              player.role!,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -37,12 +37,12 @@ class PlayerName extends StatelessWidget {
             ),
             AppStyles.sizedBox.height4,
             Text(
-              player.tag,
+              player.tag!,
               style: TextStyle(fontSize: 9, color: Colors.green),
             ),
           ],
         ),
-        if (player.expPoints > 0) ...[
+        if (player.expPoints! > 0) ...[
           AppStyles.sizedBox.width16,
           Row(
             children: [
@@ -55,7 +55,7 @@ class PlayerName extends StatelessWidget {
             ],
           ),
         ],
-        if (player.starPoints > 0) ...[
+        if (player.starPoints! > 0) ...[
           AppStyles.sizedBox.width16,
           Row(
             children: [

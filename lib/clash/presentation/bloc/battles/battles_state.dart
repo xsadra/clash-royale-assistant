@@ -13,7 +13,7 @@ class Loaded extends BattlesState {
   final Battles battles;
 
   Loaded({
-    @required this.battles,
+    required this.battles,
   });
 }
 
@@ -21,6 +21,6 @@ class Error extends BattlesState {
   final String message;
 
   Error({
-    @required this.message,
+    required this.message,
   });
 }

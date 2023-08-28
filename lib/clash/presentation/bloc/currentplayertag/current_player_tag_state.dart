@@ -13,7 +13,7 @@ class Loaded extends CurrentPlayerTagState {
   final CurrentPlayerTag playerTag;
 
   Loaded({
-    @required this.playerTag,
+    required this.playerTag,
   });
 }
 
@@ -25,6 +25,6 @@ class Error extends CurrentPlayerTagState {
   final String message;
 
   Error({
-    @required this.message,
+    required this.message,
   });
 }

@@ -12,7 +12,7 @@ import 'bloc.dart';
 class BattlesBloc extends Bloc<BattlesEvent, BattlesState> {
   final BattlesRepository _repository;
 
-  BattlesBloc({@required BattlesRepository repository})
+  BattlesBloc({required BattlesRepository repository})
       : assert(repository != null),
         _repository = repository,
         super(Empty());

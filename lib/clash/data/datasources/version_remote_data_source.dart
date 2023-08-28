@@ -17,7 +17,7 @@ class VersionRemoteDataSourceImpl implements VersionRemoteDataSource {
   final Dio dio;
 
   VersionRemoteDataSourceImpl({
-    @required this.dio,
+    required this.dio,
   });
 
   @override

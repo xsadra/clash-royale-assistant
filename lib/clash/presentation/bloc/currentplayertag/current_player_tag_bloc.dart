@@ -13,9 +13,8 @@ class CurrentPlayerTagBloc
   final CurrentPlayerTagRepository _repository;
 
   CurrentPlayerTagBloc({
-    @required CurrentPlayerTagRepository repository,
-  })  : assert(repository != null),
-        _repository = repository,
+    required CurrentPlayerTagRepository repository,
+  })  : _repository = repository,
         super(Empty());
 
   Stream<CurrentPlayerTagState> mapEventToState(

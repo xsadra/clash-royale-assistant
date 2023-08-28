@@ -17,7 +17,7 @@ class PlayerRemoteDataSourceImpl implements PlayerRemoteDataSource {
   final Dio dio;
 
   PlayerRemoteDataSourceImpl({
-    @required this.dio,
+    required this.dio,
   });
 
   @override

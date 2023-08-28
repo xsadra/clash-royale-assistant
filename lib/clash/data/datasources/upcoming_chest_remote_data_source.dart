@@ -18,7 +18,7 @@ class UpcomingChestsRemoteDataSourceImpl
   final Dio dio;
 
   UpcomingChestsRemoteDataSourceImpl({
-    @required this.dio,
+    required this.dio,
   });
 
   @override

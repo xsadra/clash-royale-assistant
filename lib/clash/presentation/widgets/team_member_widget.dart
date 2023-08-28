@@ -11,10 +11,10 @@ import 'widgets.dart';
 
 class TeamMemberWidget extends StatelessWidget {
   const TeamMemberWidget({
-    Key key,
-    @required this.team,
-    @required this.teamType,
-    @required this.showTrophies,
+    Key? key,
+    required this.team,
+    required this.teamType,
+    required this.showTrophies,
     this.offset = 0,
     this.ignorePlayerInfo = false,
   }) : super(key: key);
@@ -100,9 +100,9 @@ class TeamMemberWidget extends StatelessWidget {
 
 class DisplayClanName extends StatelessWidget {
   const DisplayClanName({
-    Key key,
-    @required this.teamType,
-    @required this.team,
+    Key? key,
+    required this.teamType,
+    required this.team,
   }) : super(key: key);
 
   final TeamMemberType teamType;
@@ -135,9 +135,9 @@ class DisplayClanName extends StatelessWidget {
 
 class DisplayMemberTrophies extends StatelessWidget {
   const DisplayMemberTrophies({
-    Key key,
-    @required this.teamType,
-    @required this.team,
+    Key? key,
+    required this.teamType,
+    required this.team,
   }) : super(key: key);
 
   final TeamMemberType teamType;
@@ -174,9 +174,9 @@ class DisplayMemberTrophies extends StatelessWidget {
 
 class ShareDeck extends StatelessWidget {
   const ShareDeck({
-    Key key,
-    @required this.teamType,
-    @required this.shareDeckUrl,
+    Key? key,
+    required this.teamType,
+    required this.shareDeckUrl,
   }) : super(key: key);
 
   final TeamMemberType teamType;

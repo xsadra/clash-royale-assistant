@@ -1,14 +1,13 @@
-import 'package:meta/meta.dart';
 
 import '../../domain/entities/version.dart';
 
 class VersionModel extends Version {
   const VersionModel({
-    @required String current,
-    @required String message,
-    @required List<String> features,
-    @required String updateUrl,
-    @required List<OldVersionModel> allVersions,
+    required String current,
+    required String message,
+    required List<String> features,
+    required String updateUrl,
+    required List<OldVersionModel> allVersions,
   }) : super(
             current: current,
             message: message,
@@ -66,8 +65,8 @@ class VersionModel extends Version {
 
 class OldVersionModel extends OldVersion {
   const OldVersionModel({
-    @required String version,
-    @required List<String> features,
+    required String version,
+    required List<String> features,
   }) : super(version: version, features: features);
 
   factory OldVersionModel.fromJson(Map<String, dynamic> json) {

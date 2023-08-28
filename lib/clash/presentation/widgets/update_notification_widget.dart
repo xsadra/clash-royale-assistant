@@ -10,8 +10,8 @@ import '../bloc/version_checker/bloc.dart';
 
 class UpdateNotificationWidget extends StatelessWidget {
   const UpdateNotificationWidget({
-    Key key,
-    @required this.versionInfo,
+    Key? key,
+    required this.versionInfo,
   }) : super(key: key);
 
   final Version versionInfo;
@@ -97,7 +97,7 @@ class UpdateNotificationWidget extends StatelessWidget {
           ),
           AppStyles.sizedBox.width2,
           Text(
-            versionInfo.current,
+            versionInfo.current!,
             style: AppStyles
                 .notification.updateNotificationNewVersionTitleTextStyle,
           ),
@@ -108,7 +108,7 @@ class UpdateNotificationWidget extends StatelessWidget {
         padding: AppStyles.padding.all8,
         child: Column(
           children: [
-            for (var feature in versionInfo.features)
+            for (var feature in versionInfo.features!)
               Row(
                 children: [
                   Icon(Icons.arrow_right),
@@ -124,15 +124,15 @@ class UpdateNotificationWidget extends StatelessWidget {
       );
 
   Widget _buildMessage() => Text(
-        versionInfo.message,
+        versionInfo.message!,
         style: AppStyles.notification.updateNotificationMessageTextStyle,
       );
 }
 
 class UpdateNotificationButton extends StatelessWidget {
   const UpdateNotificationButton({
-    Key key,
-    @required this.updateUrl,
+    Key? key,
+    required this.updateUrl,
   }) : super(key: key);
 
   final String updateUrl;

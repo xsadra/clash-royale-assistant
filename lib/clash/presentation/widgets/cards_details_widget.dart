@@ -9,7 +9,7 @@ import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
 
 class CardsDetails extends StatelessWidget {
-  const CardsDetails({Key key, this.state}) : super(key: key);
+  const CardsDetails({Key? key, required this.state}) : super(key: key);
   final Loaded state;
   static const int maxLvl = 14;
 
@@ -17,14 +17,14 @@ class CardsDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     // Step move all logic to a controller class
     var _cards = state.player.cards;
-    _cards.sort((b, a) => (a.level + maxLvl - a.maxLevel)
-        .compareTo(b.level + maxLvl - b.maxLevel));
+    _cards!.sort((b, a) => (a.level! + maxLvl - a.maxLevel!)
+        .compareTo(b.level! + maxLvl - b.maxLevel!));
     var _newList = groupBy(_cards,
-        (card) => (card as Card).level + maxLvl - (card as Card).maxLevel);
+        (card) => (card as Card).level! + maxLvl - (card as Card).maxLevel!);
     int currentDeckColumnCount = 4;
     var _cardsChartData = _newList.keys
         .map((e) => CardsChartData(
-            AppTexts.ui.levelSpc + e.toString(), _newList[e].length))
+            AppTexts.ui.levelSpc + e.toString(), _newList[e]!.length))
         .toList();
     final _colorPalettes =
         charts.MaterialPalette.getOrderedPalettes(_newList.keys.length);
@@ -72,7 +72,7 @@ class CardsDetails extends StatelessWidget {
             textColor: Color(int.parse(colors.elementAt(colorIndex++))),
           ),
           Text(
-            ' (${cardList[cardLevel].length})',
+            ' (${cardList[cardLevel]!.length})',
             style: TextStyle(color: Colors.green),
           )
         ],
@@ -84,9 +84,9 @@ class CardsDetails extends StatelessWidget {
           shrinkWrap: true,
           crossAxisCount: columnCount,
           children: List.generate(
-            cardList[cardLevel].length,
+            cardList[cardLevel]!.length,
             (int index) {
-              Card card = cardList[cardLevel].elementAt(index);
+              Card card = cardList[cardLevel]!.elementAt(index);
               return AnimationConfiguration.staggeredGrid(
                 position: index,
                 duration: const Duration(milliseconds: 775),
