@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class EmptyContainer extends StatelessWidget {
   const EmptyContainer({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

@@ -19,7 +19,7 @@ class Loaded extends VersionCheckerState {
   final Version version;
 
   Loaded({
-    @required this.version,
+    required this.version,
   });
 }
 
@@ -27,7 +27,7 @@ class ReadVersion extends VersionCheckerState {
   final Version version;
 
   ReadVersion({
-    @required this.version,
+    required this.version,
   });
 }
 
@@ -41,6 +41,6 @@ class Error extends VersionCheckerState {
   final String message;
 
   Error({
-    @required this.message,
+    required this.message,
   });
 }

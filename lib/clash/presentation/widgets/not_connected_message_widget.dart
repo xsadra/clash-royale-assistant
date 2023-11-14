@@ -5,7 +5,7 @@ import '../bloc/network_connection_checker/bloc.dart';
 
 class NotConnectedMessageWidget extends StatelessWidget {
   const NotConnectedMessageWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -26,7 +26,7 @@ class NotConnectedMessageWidget extends StatelessWidget {
 
 class NotConnectedMessage extends StatelessWidget {
   const NotConnectedMessage({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

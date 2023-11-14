@@ -3,84 +3,86 @@ import 'package:meta/meta.dart';
 import 'card.dart';
 
 class Player {
-  final String tag;
-  final String name;
-  final int expLevel;
-  final int trophies;
-  final int bestTrophies;
-  final int wins;
-  final int losses;
-  final int battleCount;
-  final int threeCrownWins;
-  final int challengeCardsWon;
-  final int challengeMaxWins;
-  final int tournamentCardsWon;
-  final int tournamentBattleCount;
-  final String role;
-  final int donations;
-  final int donationsReceived;
-  final int totalDonations;
-  final int warDayWins;
-  final int clanCardsCollected;
-  final Clan clan;
-  final Arena arena;
-  final LeagueStatistics leagueStatistics;
-  final List<Badge> badges;
-  final List<Achievement> achievements;
-  final List<Card> cards;
-  final List<Card> currentDeck;
-  final Card currentFavouriteCard;
-  final int starPoints;
-  final int expPoints;
+  final String? tag;
+  final String? name;
+  final int? expLevel;
+  final int? trophies;
+  final int? bestTrophies;
+  final int? wins;
+  final int? losses;
+  final int? battleCount;
+  final int? threeCrownWins;
+  final int? challengeCardsWon;
+  final int? challengeMaxWins;
+  final int? tournamentCardsWon;
+  final int? tournamentBattleCount;
+  final String? role;
+  final int? donations;
+  final int? donationsReceived;
+  final int? totalDonations;
+  final int? warDayWins;
+  final int? clanCardsCollected;
+  final Clan? clan;
+  final Arena? arena;
+  final LeagueStatistics? leagueStatistics;
+  final List<Badge>? badges;
+  final List<Achievement>? achievements;
+  final List<Card>? cards;
+  final List<Card>? currentDeck;
+  final Card? currentFavouriteCard;
+  final int? starPoints;
+  final int? expPoints;
 
   const Player({
-    @required this.tag,
-    @required this.name,
-    @required this.expLevel,
-    @required this.trophies,
-    @required this.bestTrophies,
-    @required this.wins,
-    @required this.losses,
-    @required this.battleCount,
-    @required this.threeCrownWins,
-    @required this.challengeCardsWon,
-    @required this.challengeMaxWins,
-    @required this.tournamentCardsWon,
-    @required this.tournamentBattleCount,
-    @required this.role,
-    @required this.donations,
-    @required this.donationsReceived,
-    @required this.totalDonations,
-    @required this.warDayWins,
-    @required this.clanCardsCollected,
-    @required this.clan,
-    @required this.arena,
-    @required this.leagueStatistics,
-    @required this.badges,
-    @required this.achievements,
-    @required this.cards,
-    @required this.currentDeck,
-    @required this.currentFavouriteCard,
-    @required this.starPoints,
-    @required this.expPoints,
+    required this.tag,
+    required this.name,
+    required this.expLevel,
+    required this.trophies,
+    required this.bestTrophies,
+    required this.wins,
+    required this.losses,
+    required this.battleCount,
+    required this.threeCrownWins,
+    required this.challengeCardsWon,
+    required this.challengeMaxWins,
+    required this.tournamentCardsWon,
+    required this.tournamentBattleCount,
+    required this.role,
+    required this.donations,
+    required this.donationsReceived,
+    required this.totalDonations,
+    required this.warDayWins,
+    required this.clanCardsCollected,
+    required this.clan,
+     this.arena,
+    required this.leagueStatistics,
+    required this.badges,
+    required this.achievements,
+    required this.cards,
+    required this.currentDeck,
+    required this.currentFavouriteCard,
+    required this.starPoints,
+    required this.expPoints,
   });
 }
 
 class Clan {
-  final String tag;
-  final String name;
-  final int badgeId;
+  final String? tag;
+  final String? name;
+  final int? badgeId;
+  final bool? hasClan;
 
   const Clan({
-    @required this.tag,
-    @required this.name,
-    @required this.badgeId,
+    required this.tag,
+    required this.name,
+    required this.badgeId,
+    this.hasClan
   });
 }
 
 class Arena {
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
 
   const Arena({
     @required this.name,
@@ -89,9 +91,9 @@ class Arena {
 }
 
 class LeagueStatistics {
-  final CurrentSeason currentSeason;
-  final PreviousSeason previousSeason;
-  final BestSeason bestSeason;
+  final CurrentSeason? currentSeason;
+  final PreviousSeason? previousSeason;
+  final BestSeason? bestSeason;
 
   const LeagueStatistics({
     @required this.currentSeason,
@@ -101,8 +103,8 @@ class LeagueStatistics {
 }
 
 class CurrentSeason {
-  final int trophies;
-  final int bestTrophies;
+  final int? trophies;
+  final int? bestTrophies;
 
   const CurrentSeason({
     @required this.trophies,
@@ -111,9 +113,9 @@ class CurrentSeason {
 }
 
 class PreviousSeason {
-  final String id;
-  final int trophies;
-  final int bestTrophies;
+  final String? id;
+  final int? trophies;
+  final int? bestTrophies;
 
   const PreviousSeason({
     @required this.id,
@@ -123,8 +125,8 @@ class PreviousSeason {
 }
 
 class BestSeason {
-  final String id;
-  final int trophies;
+  final String? id;
+  final int? trophies;
 
   const BestSeason({
     @required this.id,
@@ -139,8 +141,8 @@ class BestSeason {
 //             "progress": 148
 
 class Badge {
-  final String name;
-  final int progress;
+  final String? name;
+  final int? progress;
 
   const Badge({
     @required this.name,
@@ -149,12 +151,12 @@ class Badge {
 }
 
 class Achievement {
-  final String name;
-  final int stars;
-  final int value;
-  final int target;
-  final String info;
-  final String completionInfo;
+  final String? name;
+  final int? stars;
+  final int? value;
+  final int? target;
+  final String? info;
+  final String? completionInfo;
 
   const Achievement({
     @required this.name,

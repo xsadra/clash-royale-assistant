@@ -1,41 +1,39 @@
 import 'dart:convert';
 
-import 'package:meta/meta.dart';
-
 import '../../domain/entities/player.dart';
 import 'card_model.dart';
 
 class PlayerModel extends Player {
   const PlayerModel({
-    @required String tag,
-    @required String name,
-    @required int expLevel,
-    @required int trophies,
-    @required int bestTrophies,
-    @required int wins,
-    @required int losses,
-    @required int battleCount,
-    @required int threeCrownWins,
-    @required int challengeCardsWon,
-    @required int challengeMaxWins,
-    @required int tournamentCardsWon,
-    @required int tournamentBattleCount,
-    @required String role,
-    @required int donations,
-    @required int donationsReceived,
-    @required int totalDonations,
-    @required int warDayWins,
-    @required int clanCardsCollected,
-    @required ClanModel clan,
-    @required ArenaModel arena,
-    @required LeagueStatisticsModel leagueStatistics,
-    @required List<BadgeModel> badges,
-    @required List<AchievementModel> achievements,
-    @required List<CardModel> cards,
-    @required List<CardModel> currentDeck,
-    @required CardModel currentFavouriteCard,
-    @required int starPoints,
-    @required int expPoints,
+    required String tag,
+    required String name,
+    required int expLevel,
+    required int trophies,
+    required int bestTrophies,
+    required int wins,
+    required int losses,
+    required int battleCount,
+    required int threeCrownWins,
+    required int challengeCardsWon,
+    required int challengeMaxWins,
+    required int tournamentCardsWon,
+    required int tournamentBattleCount,
+    required String role,
+    required int donations,
+    required int donationsReceived,
+    required int totalDonations,
+    required int warDayWins,
+    required int clanCardsCollected,
+     ClanModel? clan,
+    required ArenaModel arena,
+     LeagueStatisticsModel? leagueStatistics,
+    required List<BadgeModel> badges,
+    required List<AchievementModel> achievements,
+    required List<CardModel> cards,
+    required List<CardModel> currentDeck,
+    required CardModel currentFavouriteCard,
+    required int starPoints,
+    required int expPoints,
   }) : super(
           tag: tag,
           name: name,
@@ -148,16 +146,16 @@ class PlayerModel extends Player {
   }
 
   String _toAchievementsJson() => jsonEncode(
-      this.achievements.map((e) => (e as AchievementModel).toJson()).toList());
+      this.achievements!.map((e) => (e as AchievementModel).toJson()).toList());
 
   String _toBadgesJson() =>
-      jsonEncode(this.badges.map((e) => (e as BadgeModel).toJson()).toList());
+      jsonEncode(this.badges!.map((e) => (e as BadgeModel).toJson()).toList());
 
   String _toCardsJson() =>
-      jsonEncode(this.cards.map((e) => (e as CardModel).toJson()).toList());
+      jsonEncode(this.cards!.map((e) => (e as CardModel).toJson()).toList());
 
   String _toCurrentDeckJson() => jsonEncode(
-      this.currentDeck.map((e) => (e as CardModel).toJson()).toList());
+      this.currentDeck!.map((e) => (e as CardModel).toJson()).toList());
 
   @override
   bool operator ==(Object other) =>
@@ -234,13 +232,15 @@ class PlayerModel extends Player {
 
 class ClanModel extends Clan {
   const ClanModel({
-    @required String tag,
-    @required String name,
-    @required int badgeId,
+    required String tag,
+    required String name,
+    required int badgeId,
+    bool? hasClan,
   }) : super(
           tag: tag,
           name: name,
           badgeId: badgeId,
+          hasClan: hasClan,
         );
 
   factory ClanModel.fromJson(Map<String, dynamic> json) {
@@ -280,8 +280,8 @@ class ClanModel extends Clan {
 
 class ArenaModel extends Arena {
   const ArenaModel({
-    @required int id,
-    @required String name,
+    required int id,
+    required String name,
   }) : super(name: name, id: id);
 
   factory ArenaModel.fromJson(Map<String, dynamic> json) {
@@ -318,9 +318,9 @@ class ArenaModel extends Arena {
 
 class LeagueStatisticsModel extends LeagueStatistics {
   const LeagueStatisticsModel({
-    @required CurrentSeasonModel currentSeason,
-    @required PreviousSeasonModel previousSeason,
-    @required BestSeasonModel bestSeason,
+    required CurrentSeasonModel currentSeason,
+    required PreviousSeasonModel previousSeason,
+    required BestSeasonModel bestSeason,
   }) : super(
             currentSeason: currentSeason,
             previousSeason: previousSeason,
@@ -364,8 +364,8 @@ class LeagueStatisticsModel extends LeagueStatistics {
 
 class CurrentSeasonModel extends CurrentSeason {
   const CurrentSeasonModel({
-    @required int trophies,
-    @required int bestTrophies,
+    required int trophies,
+    required int bestTrophies,
   }) : super(trophies: trophies, bestTrophies: bestTrophies);
 
   factory CurrentSeasonModel.fromJson(Map<String, dynamic> json) {
@@ -402,9 +402,9 @@ class CurrentSeasonModel extends CurrentSeason {
 
 class PreviousSeasonModel extends PreviousSeason {
   const PreviousSeasonModel({
-    @required String id,
-    @required int trophies,
-    @required int bestTrophies,
+    required String id,
+    required int trophies,
+    required int bestTrophies,
   }) : super(id: id, trophies: trophies, bestTrophies: bestTrophies);
 
   factory PreviousSeasonModel.fromJson(Map<String, dynamic> json) {
@@ -444,8 +444,8 @@ class PreviousSeasonModel extends PreviousSeason {
 
 class BestSeasonModel extends BestSeason {
   const BestSeasonModel({
-    @required String id,
-    @required int trophies,
+    required String id,
+    required int trophies,
   }) : super(id: id, trophies: trophies);
 
   factory BestSeasonModel.fromJson(Map<String, dynamic> json) {
@@ -482,8 +482,8 @@ class BestSeasonModel extends BestSeason {
 
 class BadgeModel extends Badge {
   const BadgeModel({
-    @required String name,
-    @required int progress,
+    required String name,
+    required int progress,
   }) : super(name: name, progress: progress);
 
   factory BadgeModel.fromJson(Map<String, dynamic> json) {
@@ -520,12 +520,12 @@ class BadgeModel extends Badge {
 
 class AchievementModel extends Achievement {
   const AchievementModel({
-    @required String name,
-    @required int stars,
-    @required int value,
-    @required int target,
-    @required String info,
-    @required String completionInfo,
+    required String name,
+    required int stars,
+    required int value,
+    required int target,
+    required String info,
+    required String completionInfo,
   }) : super(
           name: name,
           stars: stars,

@@ -1,11 +1,9 @@
-import 'package:meta/meta.dart' show required;
-
 import '../../domain/entities/current_player_tag.dart';
 
 class CurrentPlayerTagModel extends CurrentPlayerTag {
   const CurrentPlayerTagModel({
-    @required String playerTag,
-    String playerClanTag,
+    required String playerTag,
+    String? playerClanTag,
   }) : super(
           playerTag: playerTag,
           playerClanTag: playerClanTag,

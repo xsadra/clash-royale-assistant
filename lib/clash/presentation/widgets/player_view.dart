@@ -8,7 +8,7 @@ import '../bloc/version_checker/bloc.dart' hide Empty, Error, Loading, Loaded;
 import 'widgets.dart';
 
 class PlayerView extends StatelessWidget {
-  const PlayerView({Key key}) : super(key: key);
+  const PlayerView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

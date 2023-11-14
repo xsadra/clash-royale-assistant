@@ -1,16 +1,13 @@
-import 'package:meta/meta.dart' show required;
-
 import '../../domain/entities/card.dart';
-
 class CardModel extends Card {
   const CardModel({
-    @required String name,
-    @required int id,
-    @required int level,
-    @required int starLevel,
-    @required int maxLevel,
-    @required int count,
-    @required IconUrlsModel iconUrls,
+    required String name,
+    required int id,
+    required int level,
+    required int starLevel,
+    required int maxLevel,
+    required int count,
+    required IconUrlsModel iconUrls,
   }) : super(
           name: name,
           id: id,
@@ -77,12 +74,12 @@ class CardModel extends Card {
 
 class IconUrlsModel extends IconUrls {
   const IconUrlsModel({
-    @required String medium,
+    required String medium,
   }) : super(
           medium: medium,
         );
 
-  factory IconUrlsModel.fromJson(Map<String, dynamic> json) {
+  factory IconUrlsModel.fromJson(Map<String, dynamic>? json) {
     if (json == null)
       return IconUrlsModel(
         medium: '',

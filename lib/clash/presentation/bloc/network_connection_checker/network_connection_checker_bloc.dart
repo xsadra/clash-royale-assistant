@@ -1,7 +1,6 @@
 import 'dart:async' show Stream;
 
 import 'package:bloc/bloc.dart' show Bloc;
-import 'package:meta/meta.dart' show required;
 
 import '../../../../core/constants/consts.dart' show AppTexts;
 import '../../../domain/repository/network_connection_checker_repository.dart';
@@ -12,9 +11,8 @@ class NetworkConnectionCheckerBloc
   final NetworkConnectionCheckerRepository _repository;
 
   NetworkConnectionCheckerBloc({
-    @required NetworkConnectionCheckerRepository repository,
-  })  : assert(repository != null),
-        _repository = repository,
+    required NetworkConnectionCheckerRepository repository,
+  })  : _repository = repository,
         super(Empty());
 
   Stream<NetworkConnectionCheckerState> mapEventToState(

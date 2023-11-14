@@ -4,15 +4,15 @@ import '../../../core/constants/consts.dart';
 
 class StatHeader extends StatelessWidget {
   const StatHeader({
-    @required this.icon,
-    @required this.title,
-    this.textColor,
-    Key key,
+    required this.icon,
+    required this.title,
+     this.textColor,
+    Key? key,
   }) : super(key: key);
 
   final Widget icon;
   final String title;
-  final Color textColor;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class StatHeader extends StatelessWidget {
         Text(
           title,
           style:
-              TextStyle(fontWeight: FontWeight.bold, color: textColor ?? null),
+              TextStyle(fontWeight: FontWeight.bold, color: textColor),
         ),
       ],
     );

@@ -1,7 +1,6 @@
 import 'dart:async' show Stream;
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/foundation.dart' show required;
 
 import '../../../../core/constants/consts.dart';
 import '../../../../core/error/failure_extensions.dart';
@@ -12,9 +11,8 @@ class UpcomingChestsBloc
     extends Bloc<UpcomingChestsEvent, UpcomingChestsState> {
   final GetUpcomingChests _getUpcomingChests;
 
-  UpcomingChestsBloc({@required GetUpcomingChests upcomingChests})
-      : assert(upcomingChests != null),
-        _getUpcomingChests = upcomingChests,
+  UpcomingChestsBloc({required GetUpcomingChests upcomingChests})
+      : _getUpcomingChests = upcomingChests,
         super(Empty());
 
   Stream<UpcomingChestsState> mapEventToState(

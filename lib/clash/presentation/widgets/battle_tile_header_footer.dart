@@ -6,7 +6,7 @@ import '../../../core/platform/assets_controller.dart';
 import '../../domain/entities/battle.dart';
 
 @Deprecated('Use [BattleTileHeader] instead')
-List<Widget> generateBattleItemHeader({@required Battle battle}) {
+List<Widget> generateBattleItemHeader({required Battle battle}) {
   return [
     Text(
       battle.gameModeNameFormatted,
@@ -52,8 +52,8 @@ List<Widget> generateBattleItemHeader({@required Battle battle}) {
 
 class BattleStatus extends StatelessWidget {
   const BattleStatus({
-    Key key,
-    @required this.battle,
+    Key? key,
+    required this.battle,
   }) : super(key: key);
 
   final Battle battle;
@@ -99,8 +99,8 @@ class BattleStatus extends StatelessWidget {
 
 class TeamWinCounterDisplayWidget extends StatelessWidget {
   const TeamWinCounterDisplayWidget({
-    Key key,
-    @required this.battle,
+    Key? key,
+    required this.battle,
   }) : super(key: key);
 
   final Battle battle;
@@ -138,7 +138,7 @@ class TeamWinCounterDisplayWidget extends StatelessWidget {
 class BattleHeader extends StatelessWidget {
   final Battle battle;
 
-  const BattleHeader({Key key, @required this.battle}) : super(key: key);
+  const BattleHeader({Key? key, required this.battle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

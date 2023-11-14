@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../core/constants/consts.dart';
 import '../../../core/error/exceptions.dart';
@@ -17,7 +16,7 @@ class PlayerRemoteDataSourceImpl implements PlayerRemoteDataSource {
   final Dio dio;
 
   PlayerRemoteDataSourceImpl({
-    @required this.dio,
+    required this.dio,
   });
 
   @override

@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/constants/consts.dart';
@@ -21,7 +20,7 @@ class PlayerLocalDataSourceImpl implements PlayerLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   const PlayerLocalDataSourceImpl({
-    @required this.sharedPreferences,
+    required this.sharedPreferences,
   });
 
   @override

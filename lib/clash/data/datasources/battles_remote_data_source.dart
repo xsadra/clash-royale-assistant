@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:meta/meta.dart' show required;
 
 import '../../../core/constants/consts.dart';
 import '../../../core/error/exceptions.dart';
@@ -17,7 +16,7 @@ class BattlesRemoteDataSourceImpl implements BattlesRemoteDataSource {
   final Dio dio;
 
   BattlesRemoteDataSourceImpl({
-    @required this.dio,
+    required this.dio,
   });
 
   @override

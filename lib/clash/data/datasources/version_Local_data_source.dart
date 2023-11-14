@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:meta/meta.dart' show required;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/constants/consts.dart';
@@ -29,7 +28,7 @@ class VersionLocalDataSourceImpl implements VersionLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   VersionLocalDataSourceImpl({
-    @required this.sharedPreferences,
+    required this.sharedPreferences,
   });
 
   @override

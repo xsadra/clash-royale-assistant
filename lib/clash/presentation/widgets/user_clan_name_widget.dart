@@ -7,8 +7,8 @@ import '../../domain/entities/player.dart';
 
 class UserClanName extends StatelessWidget {
   const UserClanName({
-    Key key,
-    @required this.player,
+    Key? key,
+    required this.player,
   }) : super(key: key);
 
   final Player player;
@@ -18,13 +18,13 @@ class UserClanName extends StatelessWidget {
     return Row(
       children: [
         if (player.hasClan) ...[
-          AppAssets.toWidget.clanBadgeIdToImage(player.clan.badgeId, size: 32),
+          AppAssets.toWidget.clanBadgeIdToImage(player.clan!.badgeId!, size: 32),
           AppStyles.sizedBox.width4,
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                player.clan.name,
+                player.clan!.name!,
                 style: TextStyle(
                   fontSize: 14,
                   color: Colors.green.shade900,
@@ -32,7 +32,7 @@ class UserClanName extends StatelessWidget {
                 ),
               ),
               Text(
-                player.clan.tag,
+                player.clan!.tag!,
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.green.shade900,

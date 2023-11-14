@@ -7,7 +7,7 @@ import '../bloc/upcomingchest/bloc.dart';
 import 'widgets.dart';
 
 class UpcomingChestsView extends StatelessWidget {
-  const UpcomingChestsView({Key key}) : super(key: key);
+  const UpcomingChestsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

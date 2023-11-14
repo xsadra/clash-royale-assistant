@@ -5,7 +5,7 @@ class NetworkConnectionCheckerRepositoryImpl
     implements NetworkConnectionCheckerRepository {
   final NetworkInfo networkInfo;
 
-  NetworkConnectionCheckerRepositoryImpl({this.networkInfo});
+  NetworkConnectionCheckerRepositoryImpl({required this.networkInfo});
 
   @override
   Future<bool> hasConnection() async {

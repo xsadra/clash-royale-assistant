@@ -5,7 +5,7 @@ extension StringExtentions on String {
     return this.startsWith('#');
   }
 
-  String timeAgo({String local}) {
+  String timeAgo({String? local}) {
     var parsedDate = DateTime.parse(this);
     return local == null
         ? timeago.format(parsedDate)

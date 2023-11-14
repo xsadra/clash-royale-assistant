@@ -1,6 +1,5 @@
 import 'dart:convert' show json, jsonEncode;
 
-import 'package:meta/meta.dart' show required;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/constants/consts.dart';
@@ -22,7 +21,7 @@ class CurrentPlayerTagLocalDataSourceImpl
   final SharedPreferences sharedPreferences;
 
   const CurrentPlayerTagLocalDataSourceImpl({
-    @required this.sharedPreferences,
+    required this.sharedPreferences,
   });
 
   @override

@@ -1,13 +1,11 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 import '../../domain/entities/upcoming_chest.dart';
 
 class UpcomingChestModel extends UpcomingChest {
   const UpcomingChestModel({
-    @required int index,
-    @required String name,
+    required int index,
+    required String name,
   }) : super(index: index, name: name);
 
   factory UpcomingChestModel.fromJson(Map<String, dynamic> json) {

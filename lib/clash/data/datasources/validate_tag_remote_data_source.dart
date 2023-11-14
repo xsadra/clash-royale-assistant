@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-
 import '../../../core/constants/consts.dart';
 import '../../../core/error/exceptions.dart';
 
@@ -17,8 +15,8 @@ abstract class ValidateTagRemoteDataSource {
   ///
   /// Throws [ServerException] for all error codes.
   Future<bool> isValidTag({
-    @required String tag,
-    @required String type,
+    required String tag,
+    required String type,
   });
 }
 
@@ -26,13 +24,13 @@ class ValidateTagRemoteDataSourceImpl implements ValidateTagRemoteDataSource {
   final Dio dio;
 
   ValidateTagRemoteDataSourceImpl({
-    @required this.dio,
+    required this.dio,
   });
 
   @override
   Future<bool> isValidTag({
-    @required String tag,
-    @required String type,
+    required String tag,
+    required String type,
   }) async {
     final response = await dio
         .get(

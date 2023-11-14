@@ -1,5 +1,5 @@
+import 'package:clash_royale_assistant/clash/data/models/battles_model.dart';
 import 'package:dartz/dartz.dart';
-import 'package:meta/meta.dart' show required;
 
 import '../../../core/error/exceptions.dart';
 import '../../../core/error/failure.dart';
@@ -14,9 +14,9 @@ class BattlesRepositoryImpl implements BattlesRepository {
   final BattlesRemoteDataSource remoteDataSource;
 
   BattlesRepositoryImpl({
-    @required this.networkInfo,
-    @required this.localDataSource,
-    @required this.remoteDataSource,
+    required this.networkInfo,
+    required this.localDataSource,
+    required this.remoteDataSource,
   });
 
   @override
@@ -24,7 +24,7 @@ class BattlesRepositoryImpl implements BattlesRepository {
     if (await networkInfo.isConnected) {
       try {
         final remoteBattles = await remoteDataSource.getBattles(playerTag);
-        localDataSource.cacheBattles(remoteBattles);
+        localDataSource.cacheBattles(remoteBattles as BattlesModel?);
         return right(remoteBattles);
       } on ServerException {
         return left(ServerFailure());

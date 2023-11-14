@@ -1,14 +1,12 @@
 import 'dart:convert' show jsonEncode;
 
-import 'package:meta/meta.dart' show required;
-
 import '../../domain/entities/battle.dart';
 import '../../domain/entities/battles.dart';
 import 'battle_model.dart';
 
 class BattlesModel extends Battles {
   const BattlesModel({
-    @required List<BattleModel> battles,
+    required List<BattleModel> battles,
   }) : super(battles: battles);
 
   factory BattlesModel.fromJson(List<dynamic> jsonMap) {
@@ -21,7 +19,7 @@ class BattlesModel extends Battles {
     // ignore: unnecessary_cast
     return {
       'battles':
-          jsonEncode(this.battles.map((element) => _toJson(element)).toList()),
+          jsonEncode(this.battles?.map((element) => _toJson(element)).toList()),
     } as Map<String, dynamic>;
   }
 

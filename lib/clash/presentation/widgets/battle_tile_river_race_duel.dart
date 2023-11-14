@@ -7,8 +7,8 @@ import 'widgets.dart';
 
 class BattleRiverRaceDuelItemWidget extends StatelessWidget {
   const BattleRiverRaceDuelItemWidget({
-    Key key,
-    @required this.battle,
+    Key? key,
+    required this.battle,
   }) : super(key: key);
 
   final Battle battle;

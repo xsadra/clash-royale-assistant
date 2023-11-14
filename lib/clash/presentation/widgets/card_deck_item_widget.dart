@@ -6,8 +6,8 @@ import '../../domain/entities/card.dart';
 
 class CardDeckItem extends StatelessWidget {
   const CardDeckItem({
-    Key key,
-    @required this.card,
+    Key? key,
+    required this.card,
   }) : super(key: key);
 
   final Card card;
@@ -51,7 +51,7 @@ class CardDeckItem extends StatelessWidget {
                 width: 56,
                 child: Text(
                   AppTexts.ui.levelSpc +
-                      (card.level + maxLvl - card.maxLevel).toString(),
+                      (card.level! + maxLvl - card.maxLevel!).toString(),
                   style: levelSpcTextStyle,
                 ),
               ),

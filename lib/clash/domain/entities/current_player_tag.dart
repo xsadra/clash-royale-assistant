@@ -1,11 +1,9 @@
-import 'package:meta/meta.dart' show required;
-
 class CurrentPlayerTag {
   final String playerTag;
-  final String playerClanTag;
+  final String? playerClanTag;
 
   const CurrentPlayerTag({
-    @required this.playerTag,
+    required this.playerTag,
     this.playerClanTag,
   });
 }

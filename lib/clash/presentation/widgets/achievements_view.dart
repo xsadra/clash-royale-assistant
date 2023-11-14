@@ -7,7 +7,7 @@ import '../bloc/network_connection_checker/bloc.dart' hide Empty, Error;
 import 'widgets.dart';
 
 class AchievementsView extends StatelessWidget {
-  const AchievementsView({Key key}) : super(key: key);
+  const AchievementsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'input_tag.dart';
 
 class SetCurrentPlayerView extends StatelessWidget {
   const SetCurrentPlayerView({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

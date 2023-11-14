@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 
 class StatTile extends StatelessWidget {
   const StatTile({
-    Key key,
-    @required this.field,
-    @required this.value,
-    this.fieldColor,
-    this.valueColor,
+    Key? key,
+    required this.field,
+    required this.value,
+     this.fieldColor,
+     this.valueColor,
   }) : super(key: key);
 
   final String field;
   final String value;
-  final Color fieldColor;
-  final Color valueColor;
+  final Color? fieldColor;
+  final Color? valueColor;
 
   @override
   Widget build(BuildContext context) {

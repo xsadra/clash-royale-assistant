@@ -7,7 +7,10 @@ import '../../domain/entities/battle.dart';
 class BoatBattleHeader extends StatelessWidget {
   final Battle battle;
 
-  const BoatBattleHeader({Key key, @required this.battle}) : super(key: key);
+  const BoatBattleHeader({
+    Key? key,
+    required this.battle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +27,8 @@ class BoatBattleHeader extends StatelessWidget {
 
 class BoatBattleStatus extends StatelessWidget {
   const BoatBattleStatus({
-    Key key,
-    @required this.battle,
+    Key? key,
+    required this.battle,
   }) : super(key: key);
 
   final Battle battle;

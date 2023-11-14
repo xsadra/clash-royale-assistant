@@ -6,8 +6,8 @@ import '../../domain/entities/card.dart';
 
 class CardAssetImageBattle extends StatelessWidget {
   const CardAssetImageBattle({
-    Key key,
-    @required this.card,
+    Key? key,
+    required this.card,
   }) : super(key: key);
 
   final Card card;

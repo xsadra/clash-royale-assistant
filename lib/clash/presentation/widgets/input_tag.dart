@@ -1,6 +1,8 @@
-import 'package:auto_route/auto_route.dart';
+import 'dart:developer';
+
+import 'package:clash_royale_assistant/core/routes/router.dart';
+import 'package:clash_royale_assistant/injection_container.dart';
 import 'package:flutter/material.dart' hide Router;
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants/consts.dart';
@@ -12,7 +14,7 @@ import '../bloc/network_connection_checker/bloc.dart';
 import '../bloc/validatetag/bloc.dart';
 
 class InputTag extends StatefulWidget {
-  const InputTag({Key key}) : super(key: key);
+  const InputTag({Key? key}) : super(key: key);
 
   @override
   _InputTagState createState() => _InputTagState();
@@ -96,7 +98,7 @@ class _InputTagState extends State<InputTag> {
           isFormEnabled = true;
           context.read<CurrentPlayerTagBloc>().add(SaveCurrentPlayerTagEvent(
               playerTag: CurrentPlayerTag(playerTag: inputString)));
-          ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);
+          sl<Router>().replace(PlayerRoute());
         } else if (state is NotValid) {
           isFormEnabled = true;
           showError = true;
@@ -215,9 +217,9 @@ class SetPlayerHelpText extends StatelessWidget {
   final String rowText;
 
   const SetPlayerHelpText({
-    Key key,
-    @required this.rowNumber,
-    @required this.rowText,
+    Key? key,
+    required this.rowNumber,
+    required this.rowText,
   }) : super(key: key);
 
   @override

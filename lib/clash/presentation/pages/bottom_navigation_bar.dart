@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:clash_royale_assistant/core/routes/router.dart';
+import 'package:clash_royale_assistant/injection_container.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,12 +9,13 @@ import '../../../core/constants/consts.dart';
 import '../../../core/routes/router.gr.dart';
 import '../bloc/network_connection_checker/bloc.dart';
 
+@RoutePage()
 class BottomNavBar extends StatelessWidget {
   final int initialActiveIndex;
 
   const BottomNavBar({
-    Key key,
-    @required this.initialActiveIndex,
+    Key? key,
+    required this.initialActiveIndex,
   }) : super(key: key);
 
   @override
@@ -34,9 +37,9 @@ class BottomNavBar extends StatelessWidget {
       onTap: (int pageIndex) {
         if (pageIndex == 0) {
           // Fix Step: get local data instead of Live
-          ExtendedNavigator.of(context).replace(Routes.PlayerPageRoute);
+          sl<Router>().replace(PlayerRoute());
         } else if (pageIndex == 1) {
-          ExtendedNavigator.of(context).replace(Routes.InputTagPageRoute);
+          sl<Router>().replace(InputTagRoute());
         }
       },
     );

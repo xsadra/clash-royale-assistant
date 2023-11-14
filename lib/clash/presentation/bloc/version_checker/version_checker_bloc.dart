@@ -1,7 +1,6 @@
 import 'dart:async' show Stream;
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../core/constants/consts.dart';
 import '../../../../core/error/failure_extensions.dart';
@@ -12,9 +11,8 @@ class VersionCheckerBloc
     extends Bloc<VersionCheckerEvent, VersionCheckerState> {
   final VersionRepository _repository;
 
-  VersionCheckerBloc({@required VersionRepository repository})
-      : assert(repository != null),
-        _repository = repository,
+  VersionCheckerBloc({required VersionRepository repository})
+      : _repository = repository,
         super(Empty());
 
   Stream<VersionCheckerState> mapEventToState(

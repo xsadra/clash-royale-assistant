@@ -8,8 +8,8 @@ import 'widgets.dart';
 
 class OneToOneBattleTeam extends StatelessWidget {
   const OneToOneBattleTeam({
-    Key key,
-    @required this.battle,
+    Key? key,
+    required this.battle,
     this.cardIndexOffset = 0,
     this.verticalDividerTopOffset = 0,
     this.ignorePlayerInfo = false,

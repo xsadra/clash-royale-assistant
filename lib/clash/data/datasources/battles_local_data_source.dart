@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:meta/meta.dart' show required;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/constants/consts.dart';
@@ -14,14 +13,14 @@ abstract class BattlesLocalDataSource {
   /// Trows [CacheException] if no cached data is present.
   Future<BattlesModel> getLastData();
 
-  Future<void> cacheBattles(BattlesModel battlesToCache);
+  Future<void> cacheBattles(BattlesModel? battlesToCache);
 }
 
 class BattlesLocalDataSourceImpl implements BattlesLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   BattlesLocalDataSourceImpl({
-    @required this.sharedPreferences,
+    required this.sharedPreferences,
   });
 
   @override
@@ -36,7 +35,8 @@ class BattlesLocalDataSourceImpl implements BattlesLocalDataSource {
   }
 
   @override
-  Future<void> cacheBattles(BattlesModel battlesToCache) {
+  Future<void> cacheBattles(BattlesModel? battlesToCache) {
+    if (battlesToCache == null) return Future(() => null);
     return sharedPreferences.setString(
       AppTexts.consts.cachedBattles,
       battlesToCache.toJson()['battles'],

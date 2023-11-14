@@ -13,7 +13,7 @@ class Loaded extends UpcomingChestsState {
   final UpChests upcomingChests;
 
   Loaded({
-    @required this.upcomingChests,
+    required this.upcomingChests,
   });
 }
 
@@ -21,6 +21,6 @@ class Error extends UpcomingChestsState {
   final String message;
 
   Error({
-    @required this.message,
+    required this.message,
   });
 }

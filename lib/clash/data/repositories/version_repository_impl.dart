@@ -1,5 +1,5 @@
+import 'package:clash_royale_assistant/clash/data/models/version_model.dart';
 import 'package:dartz/dartz.dart';
-import 'package:meta/meta.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../core/error/exceptions.dart';
@@ -16,19 +16,19 @@ class VersionRepositoryImpl implements VersionRepository {
   final VersionRemoteDataSource remoteDataSource;
 
   const VersionRepositoryImpl({
-    @required this.networkInfo,
-    @required this.localDataSource,
-    @required this.remoteDataSource,
+    required this.networkInfo,
+    required this.localDataSource,
+    required this.remoteDataSource,
   });
 
   @override
   Future<Either<Failure, Version>> getVersion() async {
     if (await networkInfo.isConnected) {
       try {
-        final remoteVersion = await remoteDataSource.getVersion();
+        final Version remoteVersion = await remoteDataSource.getVersion();
         logVersion.v('Get remoteVersion', 'VersionRepositoryImpl');
         logVersion.v(remoteVersion.toString(), 'VersionRepositoryImpl');
-        localDataSource.cacheVersion(remoteVersion);
+        localDataSource.cacheVersion(remoteVersion as VersionModel);
         return right(remoteVersion);
       } on ServerException {
         return left(ServerFailure());
@@ -49,7 +49,7 @@ class VersionRepositoryImpl implements VersionRepository {
         : await localDataSource.getLastData();
 
     logVersion.d(
-        'Server Version: ' + serverVersion.current, 'VersionRepositoryImpl');
+        'Server Version: ' + serverVersion.current!, 'VersionRepositoryImpl');
 
     final platformInfo = await PackageInfo.fromPlatform();
     logVersion.d(

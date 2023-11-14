@@ -13,7 +13,10 @@ import 'widgets.dart';
 class PlayerDetails extends StatelessWidget {
   final Loaded state;
 
-  const PlayerDetails({Key key, this.state}) : super(key: key);
+  const PlayerDetails({
+    Key? key,
+    required this.state,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,11 +87,13 @@ class PlayerDetails extends StatelessWidget {
             tiles: [
               StatTile(
                 field: AppTexts.ui.donationsBalanceCol,
-                value: (player.donations - player.donationsReceived) > 0
+                value: (player.donations! - player.donationsReceived!) > 0
                     ? AppTexts.ui.plus +
-                        (player.donations - player.donationsReceived).toString()
-                    : (player.donations - player.donationsReceived).toString(),
-                valueColor: (player.donations - player.donationsReceived) > 0
+                        (player.donations! - player.donationsReceived!)
+                            .toString()
+                    : (player.donations! - player.donationsReceived!)
+                        .toString(),
+                valueColor: (player.donations! - player.donationsReceived!) > 0
                     ? Colors.green
                     : Colors.red,
               ),
@@ -109,7 +114,7 @@ class PlayerDetails extends StatelessWidget {
                 icon: AppAssets.imageIcons.league(),
                 title: AppTexts.ui.leagueSeason),
             tiles: [
-              StatTile(field: AppTexts.ui.arenaCol, value: player.arena.name),
+              StatTile(field: AppTexts.ui.arenaCol, value: player.arena!.name!),
             ],
           ),
           AppStyles.sizedBox.height6,
@@ -156,11 +161,11 @@ class PlayerDetails extends StatelessWidget {
               tiles: [
                 StatTile(
                     field: AppTexts.ui.trophiesCol,
-                    value: player.leagueStatistics.currentSeason.trophies
+                    value: player.leagueStatistics!.currentSeason!.trophies
                         .toString()),
                 StatTile(
                     field: AppTexts.ui.bestTrophiesCol,
-                    value: player.leagueStatistics.currentSeason.bestTrophies
+                    value: player.leagueStatistics!.currentSeason!.bestTrophies
                         .toString()),
               ],
             ),
@@ -173,14 +178,14 @@ class PlayerDetails extends StatelessWidget {
                 StatTile(
                     field: AppTexts.ui.dateCol,
                     value:
-                        player.leagueStatistics.previousSeason.id.toString()),
+                        player.leagueStatistics!.previousSeason!.id.toString()),
                 StatTile(
                     field: AppTexts.ui.trophiesCol,
-                    value: player.leagueStatistics.previousSeason.trophies
+                    value: player.leagueStatistics!.previousSeason!.trophies
                         .toString()),
                 StatTile(
                     field: AppTexts.ui.bestTrophiesCol,
-                    value: player.leagueStatistics.previousSeason.bestTrophies
+                    value: player.leagueStatistics!.previousSeason!.bestTrophies
                         .toString()),
               ],
             ),
@@ -192,11 +197,11 @@ class PlayerDetails extends StatelessWidget {
               tiles: [
                 StatTile(
                     field: AppTexts.ui.bestTrophiesCol,
-                    value: player.leagueStatistics.bestSeason.id.toString()),
+                    value: player.leagueStatistics!.bestSeason!.id.toString()),
                 StatTile(
                     field: AppTexts.ui.trophiesCol,
-                    value:
-                        player.leagueStatistics.bestSeason.trophies.toString()),
+                    value: player.leagueStatistics!.bestSeason!.trophies
+                        .toString()),
               ],
             ),
             AppStyles.sizedBox.height6,
@@ -213,7 +218,7 @@ class PlayerDetails extends StatelessWidget {
                     style: TextStyle(fontSize: 12, color: Colors.purple),
                   ),
                   Text(
-                    player.currentFavouriteCard.name,
+                    player.currentFavouriteCard!.name!,
                     style: TextStyle(
                       fontSize: 13,
                       fontStyle: FontStyle.italic,
@@ -231,9 +236,9 @@ class PlayerDetails extends StatelessWidget {
                   shrinkWrap: true,
                   crossAxisCount: currentDeckColumnCount,
                   children: List.generate(
-                    player.currentDeck.length,
+                    player.currentDeck!.length,
                     (int index) {
-                      Card card = player.currentDeck.elementAt(index);
+                      Card card = player.currentDeck!.elementAt(index);
                       return AnimationConfiguration.staggeredGrid(
                         position: index,
                         duration: const Duration(milliseconds: 575),

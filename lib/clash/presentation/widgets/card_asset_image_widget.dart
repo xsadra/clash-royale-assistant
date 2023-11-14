@@ -6,8 +6,8 @@ import '../../domain/entities/card.dart';
 @Deprecated('Use [AppAssets.toWidget.cardToImage] instead')
 class CardAssetImage extends StatelessWidget {
   const CardAssetImage({
-    Key key,
-    @required this.card,
+    Key? key,
+    required this.card,
   }) : super(key: key);
 
   final Card card;
@@ -15,6 +15,6 @@ class CardAssetImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-        Assets.cardToPath(card.name, isGold: card.starLevel != null));
+        Assets.cardToPath(card.name!, isGold: card.starLevel != null));
   }
 }

@@ -13,7 +13,7 @@ class Loaded extends PlayerState {
   final Player player;
 
   Loaded({
-    @required this.player,
+    required this.player,
   });
 }
 
@@ -21,6 +21,6 @@ class Error extends PlayerState {
   final String message;
 
   Error({
-    @required this.message,
+    required this.message,
   });
 }

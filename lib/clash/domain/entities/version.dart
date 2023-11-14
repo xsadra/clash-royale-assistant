@@ -1,11 +1,11 @@
 import 'package:meta/meta.dart';
 
 class Version {
-  final String current;
-  final String message;
-  final List<String> features;
-  final String updateUrl;
-  final List<OldVersion> allVersions;
+  final String? current;
+  final String? message;
+  final List<String>? features;
+  final String? updateUrl;
+  final List<OldVersion>? allVersions;
 
   const Version({
     @required this.current,
@@ -17,8 +17,8 @@ class Version {
 }
 
 class OldVersion {
-  final String version;
-  final List<String> features;
+  final String? version;
+  final List<String>? features;
 
   const OldVersion({
     @required this.version,

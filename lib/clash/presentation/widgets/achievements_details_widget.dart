@@ -7,12 +7,12 @@ import '../../presentation/bloc/player/bloc.dart';
 import 'widgets.dart';
 
 class AchievementsDetails extends StatelessWidget {
-  const AchievementsDetails({Key key, this.state}) : super(key: key);
+  const AchievementsDetails({Key? key, required this.state}) : super(key: key);
   final Loaded state;
 
   @override
   Widget build(BuildContext context) {
-    List<Achievement> achieves = state.player.achievements;
+    List<Achievement> achieves = state.player.achievements!;
     int currentDeckColumnCount =
         AppWidgetsConfig.achievements.detailsDisplayColumnCount;
     return Column(

@@ -1,14 +1,12 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 import '../../domain/entities/up_chests.dart';
 import '../../domain/entities/upcoming_chest.dart';
 import 'upcoming_chest_model.dart';
 
 class UpChestsModel extends UpChests {
   const UpChestsModel({
-    @required List<UpcomingChestModel> items,
+    required List<UpcomingChestModel> items,
   }) : super(items: items);
 
   factory UpChestsModel.fromJson(Map<String, dynamic> jsonMap) {
@@ -25,7 +23,7 @@ class UpChestsModel extends UpChests {
     // ignore: unnecessary_cast
     return {
       'items':
-          jsonEncode(this.items.map((element) => _toJson(element)).toList()),
+          jsonEncode(this.items!.map((element) => _toJson(element)).toList()),
     } as Map<String, dynamic>;
   }
 

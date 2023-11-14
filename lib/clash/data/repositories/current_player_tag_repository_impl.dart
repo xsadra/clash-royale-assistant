@@ -1,5 +1,5 @@
+import 'package:clash_royale_assistant/core/logs/logger.dart';
 import 'package:dartz/dartz.dart';
-import 'package:meta/meta.dart';
 
 import '../../../core/error/exceptions.dart';
 import '../../../core/error/failure.dart';
@@ -12,31 +12,42 @@ class CurrentPlayerTagRepositoryImpl implements CurrentPlayerTagRepository {
   final CurrentPlayerTagLocalDataSource localDataSource;
 
   const CurrentPlayerTagRepositoryImpl({
-    @required this.localDataSource,
+    required this.localDataSource,
   });
 
   @override
   Future<Either<Failure, CurrentPlayerTag>> getCurrentPlayerTag() async {
+    logger.d('CurrentPlayerTagRepositoryImpl: Try getCurrentPlayerTag');
     try {
       final currentTag = await localDataSource.getCurrentPlayerTagData();
+      logger.d(
+          'CurrentPlayerTagRepositoryImpl: getCurrentPlayerTag - currentTag $currentTag');
       return Right(currentTag);
     } on CacheException {
+      logger.d(
+          'CurrentPlayerTagRepositoryImpl: getCurrentPlayerTag - CacheException');
       return Left(CacheFailure());
     } on NotFoundException {
+      logger.d(
+          'CurrentPlayerTagRepositoryImpl: getCurrentPlayerTag - NotFoundException');
       return Left(NotFoundFailure());
     }
   }
 
   @override
-  Future<Either<Failure, bool>> saveCurrentPlayerTag(
-      {CurrentPlayerTag playerTag}) async {
+  Future<Either<Failure, bool>> saveCurrentPlayerTag({
+    required CurrentPlayerTag playerTag,
+  }) async {
+    logger.d('CurrentPlayerTagRepositoryImpl: Try saveCurrentPlayerTag');
     try {
       bool result = true;
       await localDataSource
           .saveCurrentPlayerTag(CurrentPlayerTagModel.fromObject(playerTag));
+      logger.d('CurrentPlayerTagRepositoryImpl: Saved saveCurrentPlayerTag');
 
       return Right(result);
     } on CacheException {
+      logger.d('CurrentPlayerTagRepositoryImpl: CacheException saveCurrentPlayerTag');
       return Left(CacheFailure());
     }
   }

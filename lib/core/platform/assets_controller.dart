@@ -182,9 +182,7 @@ class _AssetToPaths {
       'Plentiful Gold Crate':
           'assets/images/chests/chest-plentifulgoldcrate.webp',
     };
-    return images.keys.contains(name)
-        ? images[name]
-        : 'assets/images/ui/not-found.webp';
+    return images.keys.contains(name) ? images[name] ?? 'assets/images/ui/not-found.webp' : 'assets/images/ui/not-found.webp';
   }
 
   String arenaIdToPath(int id) {
@@ -199,7 +197,7 @@ class _AssetToPaths {
 }
 
 class _AssetToWidgets {
-  Image cardToImage({Card card}) {
+  Image cardToImage({Card? card}) {
     if (card == null || card.name == null) {
       return Image.asset('assets/images/ui/not-found.webp');
     }
@@ -208,18 +206,18 @@ class _AssetToWidgets {
         ? 'assets/images/cards-gold/'
         : 'assets/images/cards/';
     String fileName =
-        card.name.replaceAll(' ', '-').replaceAll('.', '').toLowerCase() +
+        card.name!.replaceAll(' ', '-').replaceAll('.', '').toLowerCase() +
             '.webp';
 
     return Image.asset(
       path + fileName,
       errorBuilder: (context, error, stackTrace) {
-        return Image.network(card.iconUrls.medium);
+        return Image.network(card.iconUrls!.medium!);
       },
     );
   }
 
-  Widget clanBadgeIdToImage(int id, {double size}) {
+  Widget clanBadgeIdToImage(int id, {double? size}) {
     String path = 'assets/images/clan-badges/${id.toString()}.webp';
     if (size == null) {
       return Image.asset(path);
@@ -273,7 +271,7 @@ class Assets {
 
   @Deprecated(
       'Use `AppAssets.toWidget.cardToImage` to get an image instead. This method cause an ERROR, on parsing missing Card')
-  static String cardToPath(String name, {bool isGold}) {
+  static String cardToPath(String name, {bool isGold=false}) {
     String path = isGold ? 'assets/images/cards-gold/' : 'assets/images/cards/';
     String fileName =
         name.replaceAll(' ', '-').replaceAll('.', '').toLowerCase() + '.webp';

@@ -5,11 +5,11 @@ import 'widgets.dart';
 
 class OneToOneBattleVerticalDivider extends StatelessWidget {
   const OneToOneBattleVerticalDivider({
-    Key key,
-    @required this.color,
-    @required this.height,
-    @required this.thickness,
-    @required this.text,
+    Key? key,
+    required this.color,
+    required this.height,
+    required this.thickness,
+    required this.text,
     this.topOffset = 0,
     this.hasBottomOffset = false,
   }) : super(key: key);

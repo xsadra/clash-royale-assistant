@@ -8,7 +8,7 @@ import 'battles_details.dart';
 import 'widgets.dart';
 
 class BattlesView extends StatelessWidget {
-  const BattlesView({Key key}) : super(key: key);
+  const BattlesView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

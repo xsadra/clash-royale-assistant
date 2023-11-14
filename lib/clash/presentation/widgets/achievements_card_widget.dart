@@ -6,8 +6,8 @@ import '../../domain/entities/player.dart';
 
 class AchievementsCard extends StatelessWidget {
   const AchievementsCard({
-    Key key,
-    @required this.achieve,
+    Key? key,
+    required this.achieve,
   }) : super(key: key);
 
   final Achievement achieve;
@@ -70,10 +70,10 @@ class AchievementsCard extends StatelessWidget {
               text: achieve.value.toString(),
               style: AppStyles.achievements.cardWidgetAchievedValueTextStyle
                   .copyWith(
-                color: (achieve.value < achieve.target)
+                color: (achieve.value! < achieve.target!)
                     ? AppColors.achievements.achievedNotCompletedColor
                     : AppColors.achievements.achievedCompletedColor,
-                fontWeight: (achieve.value < achieve.target)
+                fontWeight: (achieve.value! < achieve.target!)
                     ? FontWeight.w600
                     : FontWeight.bold,
               ),
@@ -109,7 +109,7 @@ class AchievementsCard extends StatelessWidget {
   Center _achieveInfo() {
     return Center(
       child: Text(
-        achieve.info,
+        achieve.info!,
         textAlign: TextAlign.center,
         style: AppStyles.achievements.cardWidgetAchievedInfoTextStyle,
       ),
@@ -120,7 +120,7 @@ class AchievementsCard extends StatelessWidget {
     return Container(
       child: Center(
         child: Text(
-          achieve.name,
+          achieve.name!,
           textAlign: TextAlign.center,
           style: AppStyles.achievements.cardWidgetAchievedNameTextStyle,
         ),

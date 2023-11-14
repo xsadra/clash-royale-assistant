@@ -8,7 +8,7 @@ class CheckValidateTagEvent extends ValidateTagEvent {
   final String type;
 
   CheckValidateTagEvent({
-    @required this.tag,
-    @required this.type,
+    required this.tag,
+    required this.type,
   });
 }
