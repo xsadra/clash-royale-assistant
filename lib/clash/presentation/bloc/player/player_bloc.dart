@@ -2,7 +2,6 @@ import 'dart:async' show Stream;
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../core/constants/consts.dart';
 import '../../../../core/error/failure_extensions.dart';
@@ -13,8 +12,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   final GetPlayer _getPlayer;
 
   PlayerBloc({required GetPlayer player})
-      : assert(player != null),
-        _getPlayer = player,
+      : _getPlayer = player,
         super(Empty());
 
   Stream<PlayerState> mapEventToState(PlayerEvent event) async* {

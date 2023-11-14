@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart' show required;
-
 import '../../domain/entities/battle.dart';
 import '../../domain/entities/card.dart';
 import 'card_model.dart';
@@ -281,7 +279,7 @@ class TeamMemberModel extends TeamMember {
       'princessTowersHitPoints': this.princessTowersHitPoints,
       'clan': this.clan,
       'cards': this.cards != null
-          ? this.cards?.map((e) => (e as CardModel).toJson()).toList()
+          ? this.cards.map((e) => (e as CardModel).toJson()).toList()
           : [],
     } as Map<String, dynamic>;
   }
@@ -329,7 +327,7 @@ class ClanModel extends Clan {
         );
 
   factory ClanModel.fromJson(Map<String, dynamic>? json) =>   ClanModel(
-            tag: json?['tag'] as String ?? '',
+            tag: json?['tag'] as String,
             name: json?['name'] as String,
             badgeId: json?['badgeId'] as int, hasClan: json != null,
           );

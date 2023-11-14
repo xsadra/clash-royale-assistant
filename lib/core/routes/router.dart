@@ -1,11 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clash_royale_assistant/core/routes/router.gr.dart';
 
-import '../../clash/presentation/pages/input_tag_page.dart';
-import '../../clash/presentation/pages/input_tag_page_full.dart';
-import '../../clash/presentation/pages/player_page.dart';
-import '../../clash/presentation/pages/splash_page.dart';
-import '../constants/consts.dart';
 //
 // @MaterialAutoRouter(
 //     generateNavigationHelperExtension: true,

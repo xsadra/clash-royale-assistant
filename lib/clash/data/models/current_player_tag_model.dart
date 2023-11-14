@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart' show required;
-
 import '../../domain/entities/current_player_tag.dart';
 
 class CurrentPlayerTagModel extends CurrentPlayerTag {
@@ -20,7 +18,7 @@ class CurrentPlayerTagModel extends CurrentPlayerTag {
 
   factory CurrentPlayerTagModel.fromObject(CurrentPlayerTag playerTag) {
     return new CurrentPlayerTagModel(
-      playerTag: playerTag.playerTag!,
+      playerTag: playerTag.playerTag,
       playerClanTag: playerTag.playerClanTag,
     );
   }

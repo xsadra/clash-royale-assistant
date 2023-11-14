@@ -1,5 +1,5 @@
-import '../../core/constants/consts.dart';
-import 'failure.dart';
+import 'package:clash_royale_assistant/core/constants/consts.dart';
+import 'package:clash_royale_assistant/core/error/failure.dart';
 
 extension FailureExtension on Failure {
   String get toMessage {

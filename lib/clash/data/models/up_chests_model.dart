@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 import '../../domain/entities/up_chests.dart';
 import '../../domain/entities/upcoming_chest.dart';
 import 'upcoming_chest_model.dart';

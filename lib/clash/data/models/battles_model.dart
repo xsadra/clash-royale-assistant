@@ -1,7 +1,5 @@
 import 'dart:convert' show jsonEncode;
 
-import 'package:meta/meta.dart' show required;
-
 import '../../domain/entities/battle.dart';
 import '../../domain/entities/battles.dart';
 import 'battle_model.dart';

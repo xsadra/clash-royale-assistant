@@ -12,7 +12,7 @@ class AchievementsDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Achievement> achieves = state.player!.achievements!;
+    List<Achievement> achieves = state.player.achievements!;
     int currentDeckColumnCount =
         AppWidgetsConfig.achievements.detailsDisplayColumnCount;
     return Column(

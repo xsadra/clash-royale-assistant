@@ -2,7 +2,6 @@ import 'dart:async' show Stream;
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../core/constants/consts.dart';
 import '../../../../core/error/failure_extensions.dart';
@@ -12,9 +11,9 @@ import 'bloc.dart';
 class BattlesBloc extends Bloc<BattlesEvent, BattlesState> {
   final BattlesRepository _repository;
 
-  BattlesBloc({required BattlesRepository repository})
+  BattlesBloc({required BattlesRepository? repository})
       : assert(repository != null),
-        _repository = repository,
+        _repository = repository!,
         super(Empty());
 
   Stream<BattlesState> mapEventToState(BattlesEvent event) async* {

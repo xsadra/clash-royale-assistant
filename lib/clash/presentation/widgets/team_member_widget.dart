@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide Card;
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../core/constants/consts.dart';
 import '../../../core/enums/enums_with_extensions.dart';
@@ -114,18 +114,18 @@ class DisplayClanName extends StatelessWidget {
       children: [
         if (teamType == TeamMemberType.Team)
           AppAssets.toWidget.clanBadgeIdToImage(
-            team.clan.badgeId,
+            team.clan!.badgeId,
             size: AppStyles.battles.tileBattleTeamClanIconSize,
           ),
         AppStyles.sizedBox.width4,
         Text(
-          team.clan.name,
+          team.clan!.name,
           style: AppStyles.battles.tileBattleTeamClanNameTextStyle,
         ),
         AppStyles.sizedBox.width4,
         if (teamType == TeamMemberType.Opponent)
           AppAssets.toWidget.clanBadgeIdToImage(
-            team.clan.badgeId,
+            team.clan!.badgeId,
             size: AppStyles.battles.tileBattleTeamClanIconSize,
           ),
       ],
@@ -189,7 +189,7 @@ class ShareDeck extends StatelessWidget {
         AppStyles.sizedBox.width4,
         if (teamType == TeamMemberType.Team)
           InkWell(
-            onTap: () => launch(shareDeckUrl),
+            onTap: () => launchUrlString(shareDeckUrl),
             child: Image.asset(
               AppAssets.paths.shareDeck,
               height: 32,
@@ -198,7 +198,7 @@ class ShareDeck extends StatelessWidget {
           ),
         if (teamType == TeamMemberType.Opponent)
           InkWell(
-            onTap: () => launch(shareDeckUrl),
+            onTap: () => launchUrlString(shareDeckUrl),
             child: Image.asset(
               AppAssets.paths.shareDeck,
               height: 32,

@@ -1,7 +1,6 @@
 import 'dart:async' show Stream;
 
 import 'package:bloc/bloc.dart' show Bloc;
-import 'package:meta/meta.dart' show required;
 
 import '../../../domain/repository/validate_tag_repository.dart';
 import 'bloc.dart';
@@ -11,8 +10,7 @@ class ValidateTagBloc extends Bloc<ValidateTagEvent, ValidateTagState> {
 
   ValidateTagBloc({
     required ValidateTagRepository repository,
-  })  : assert(repository != null),
-        _repository = repository,
+  })  : _repository = repository,
         super(Empty());
 
   Stream<ValidateTagState> mapEventToState(ValidateTagEvent event) async* {

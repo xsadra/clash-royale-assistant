@@ -1,6 +1,5 @@
 import 'package:clash_royale_assistant/clash/data/models/battles_model.dart';
 import 'package:dartz/dartz.dart';
-import 'package:meta/meta.dart' show required;
 
 import '../../../core/error/exceptions.dart';
 import '../../../core/error/failure.dart';

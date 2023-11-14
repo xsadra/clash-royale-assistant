@@ -1,7 +1,4 @@
-import 'package:meta/meta.dart' show required;
-
 import '../../domain/entities/card.dart';
-
 class CardModel extends Card {
   const CardModel({
     required String name,
@@ -82,7 +79,7 @@ class IconUrlsModel extends IconUrls {
           medium: medium,
         );
 
-  factory IconUrlsModel.fromJson(Map<String, dynamic> json) {
+  factory IconUrlsModel.fromJson(Map<String, dynamic>? json) {
     if (json == null)
       return IconUrlsModel(
         medium: '',

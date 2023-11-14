@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-
 import '../../../core/constants/consts.dart';
 import '../../../core/error/exceptions.dart';
 

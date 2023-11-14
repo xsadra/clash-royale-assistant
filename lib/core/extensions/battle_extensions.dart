@@ -7,26 +7,21 @@ import 'string_extensions.dart';
 
 extension BattleEntityExtensions on Battle {
   bool get hasCrowns =>
-      this.team1.crowns != null && this.opponent1.crowns != null;
+      this.opponent1.crowns != null;
 
   bool get hasCrowns2v2 =>
-      this.team1.crowns != null &&
       this.team2?.crowns != null &&
-      this.opponent1.crowns != null &&
       this.opponent2?.crowns != null;
 
   bool get hasTrophies =>
-      this.team1.startingTrophies != null &&
       this.opponent1.startingTrophies != null;
 
   bool get hasTrophies2v2 =>
-      this.team1.startingTrophies != null &&
       this.team2?.startingTrophies != null &&
-      this.opponent1.startingTrophies != null &&
       this.opponent2?.startingTrophies != null;
 
   bool get didTeamWin =>
-      (this.team1.crowns ?? 0) > (this.opponent1.crowns ?? 0);
+      (this.team1.crowns) > (this.opponent1.crowns);
 
   bool get didBoatWin => this.boatBattleWon ?? false;
 
@@ -74,16 +69,16 @@ extension BattleEntityExtensions on Battle {
       ? AppTexts.ui.spcWins
       : AppTexts.ui.spcWin;
 
-  String get gameModeName => this.gameMode!.name ?? '';
+  String get gameModeName => this.gameMode!.name;
 
-  String get gameModeNameFormatted => this.gameMode!.name!.replaceAll(
+  String get gameModeNameFormatted => this.gameMode!.name.replaceAll(
         AppTexts.ui.underline,
         AppTexts.ui.spc,
       );
 
-  int get teamCrowns => this.team1.crowns ?? 0;
+  int get teamCrowns => this.team1.crowns;
 
-  int get opponentCrowns => this.opponent1.crowns ?? 0;
+  int get opponentCrowns => this.opponent1.crowns;
 
   TeamMember get team1 => this.team![0];
 

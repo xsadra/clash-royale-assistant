@@ -3,7 +3,7 @@ import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../core/constants/consts.dart';
 import '../../../core/platform/assets_controller.dart';
@@ -94,7 +94,7 @@ class PlayerPage extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () => launch('mailto:cra@sadra.at?subject=From%20Cr-App'),
+          onTap: () => launchUrlString('mailto:cra@sadra.at?subject=From%20Cr-App'),
           child: Text(
             'cra@sadra.at',
             style: TextStyle(

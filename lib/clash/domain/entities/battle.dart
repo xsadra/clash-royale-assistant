@@ -71,7 +71,7 @@ class TeamMember {
   final int startingTrophies;
   final int kingTowerHitPoints;
   final List<int> princessTowersHitPoints;
-  final Clan clan;
+  final Clan? clan;
   final List<Card> cards;
 
   const TeamMember({

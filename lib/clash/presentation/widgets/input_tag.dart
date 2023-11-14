@@ -1,6 +1,7 @@
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
+import 'package:clash_royale_assistant/core/routes/router.dart';
+import 'package:clash_royale_assistant/injection_container.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -97,7 +98,7 @@ class _InputTagState extends State<InputTag> {
           isFormEnabled = true;
           context.read<CurrentPlayerTagBloc>().add(SaveCurrentPlayerTagEvent(
               playerTag: CurrentPlayerTag(playerTag: inputString)));
-          context.replaceRoute(PlayerRoute());
+          sl<Router>().replace(PlayerRoute());
         } else if (state is NotValid) {
           isFormEnabled = true;
           showError = true;

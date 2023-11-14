@@ -1,6 +1,5 @@
 import 'package:clash_royale_assistant/clash/data/models/version_model.dart';
 import 'package:dartz/dartz.dart';
-import 'package:meta/meta.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../core/error/exceptions.dart';

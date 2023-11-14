@@ -20,7 +20,7 @@ class CardsDetails extends StatelessWidget {
     _cards!.sort((b, a) => (a.level! + maxLvl - a.maxLevel!)
         .compareTo(b.level! + maxLvl - b.maxLevel!));
     var _newList = groupBy(_cards,
-        (card) => (card as Card).level! + maxLvl - (card as Card).maxLevel!);
+        (card) => (card as Card).level! + maxLvl - card.maxLevel!);
     int currentDeckColumnCount = 4;
     var _cardsChartData = _newList.keys
         .map((e) => CardsChartData(

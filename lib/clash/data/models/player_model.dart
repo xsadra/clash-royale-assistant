@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:meta/meta.dart';
-
 import '../../domain/entities/player.dart';
 import 'card_model.dart';
 

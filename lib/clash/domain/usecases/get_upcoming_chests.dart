@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../core/error/failure.dart';
 import '../entities/up_chests.dart';

@@ -28,7 +28,7 @@ class _PlayerNestedTabPageState extends State<PlayerNestedTabPage>
         if (state is Loaded) {
           var playerTag = state.playerTag.playerTag;
 
-          context.read<PlayerBloc>().add(GetPlayerEvent(playerTag!));
+          context.read<PlayerBloc>().add(GetPlayerEvent(playerTag));
           context
               .read<UpcomingChestsBloc>()
               .add(GetUpcomingChestsEvent(playerTag));

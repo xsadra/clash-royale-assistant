@@ -2,7 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../core/constants/consts.dart';
 import '../../domain/entities/version.dart';
@@ -143,7 +143,7 @@ class UpdateNotificationButton extends StatelessWidget {
       child: TextButton(
         onPressed: () {
           context.read<VersionCheckerBloc>().add(HideVersionEvent());
-          launch(updateUrl);
+          launchUrlString(updateUrl);
         },
         child: Text(
           AppTexts.ui.updateApp,
